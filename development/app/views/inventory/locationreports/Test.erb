@@ -1,0 +1,24 @@
+
+        g.column :column_name => 'Sr. No', :attribute_name => 'id', :model_class=>"Location", :no_filter => true do |loc|
+          loc.location.id
+        end
+
+        g.column :column_name => 'Type', :auto_reload => true,:attribute_name => 'locationtypename', :model_class=>"LocationType"  do |loc|
+          loc.location_type.locationtypename
+        end
+
+        g.column :column_name => 'Location Name', :attribute_name => 'locationname', :model_class=>"Location" do |loc|
+          loc.location.locationname
+        end
+
+        g.column :column_name => 'Owner', :attribute_name => 'name', :model_class=>"User" do |loc|
+          loc.user.name
+        end
+
+        g.column :column_name => 'Start Date', :attribute_name => 'startdate', :no_filter => true do |loc|
+          loc.startdate
+        end
+
+        g.column :column_name => 'End Date', :attribute_name => 'enddate', :no_filter => true do |loc|
+          loc.startdate
+        end

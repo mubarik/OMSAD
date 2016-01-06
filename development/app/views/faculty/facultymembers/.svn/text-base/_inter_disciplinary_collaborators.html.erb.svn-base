@@ -1,0 +1,73 @@
+<fieldset>
+  <legend class="dynamicFieldSetLegend">
+    Inter-disciplinary Collaborator
+  </legend>
+  <table style="float:left;">
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Name<span class="requiredFieldAsterisk"> *</span>
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=  idc.text_field :name,
+                          :title=>"Enter the collaborator name",
+                          :class=>"inputTextbox",
+                          :required=>'true'%>
+    </td>
+     <td class="fieldErrorPlacement">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Affiliation<span class="requiredFieldAsterisk"> *</span>
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%= idc.text_field :affiliation,
+                         :title=>"Enter affiliation e.g Computer Engineering",
+                         :class=>"inputTextbox",
+                         :required=>true%>
+    </td>
+    <td class="fieldErrorPlacement">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Description
+      </label>
+    </td>
+    <td>
+       <%= idc.text_field :description,
+                          :title=>"Enter description of the collaboration",
+                          :class=>"inputTextbox"%>
+    </td>
+    <td class="fieldErrorPlacement">
+    </td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">
+        Start Date:
+      </td>
+      <td class="inputBoxPlacement">
+          <%= idc.text_field :startdate,:class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+      </td>
+  </tr>
+   <tr>
+      <td class="labelDefinitionTerm">
+        End Date:
+      </td>
+      <td class="inputBoxPlacement">
+          <%= idc.text_field :enddate,:class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+      </td>
+    </tr>
+</table>
+        <%= idc.link_to_remove(image_tag("",:alt=>"",:class=>"iconDeleteButton",:style=>'float:right; margin-right:1%;'))%>
+</fieldset><br/>
+

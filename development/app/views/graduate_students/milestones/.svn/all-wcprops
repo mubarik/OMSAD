@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/5322/OMSAD/development/app/views/graduate_students/milestones
+END
+destroy.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/3624/OMSAD/development/app/views/graduate_students/milestones/destroy.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/5242/OMSAD/development/app/views/graduate_students/milestones/new.erb
+END
+_examination.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/5014/OMSAD/development/app/views/graduate_students/milestones/_examination.html.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/5244/OMSAD/development/app/views/graduate_students/milestones/show.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/5257/OMSAD/development/app/views/graduate_students/milestones/_newedit.html.erb
+END
+_studentgrant.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/5247/OMSAD/development/app/views/graduate_students/milestones/_studentgrant.erb
+END
+update.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/3624/OMSAD/development/app/views/graduate_students/milestones/update.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/3624/OMSAD/development/app/views/graduate_students/milestones/create.erb
+END
+_cosupervisor.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/5247/OMSAD/development/app/views/graduate_students/milestones/_cosupervisor.html.erb
+END
+_proposalcommittee.erb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/5216/OMSAD/development/app/views/graduate_students/milestones/_proposalcommittee.erb
+END
+_thesiscommittee.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/5216/OMSAD/development/app/views/graduate_students/milestones/_thesiscommittee.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/3624/OMSAD/development/app/views/graduate_students/milestones/edit.erb
+END
+_phdreport.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/5014/OMSAD/development/app/views/graduate_students/milestones/_phdreport.erb
+END
+phdreport.erb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/5322/OMSAD/development/app/views/graduate_students/milestones/phdreport.erb
+END

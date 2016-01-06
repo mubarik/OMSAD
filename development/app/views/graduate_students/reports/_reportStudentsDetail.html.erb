@@ -1,0 +1,66 @@
+<%= grid(@students_report_grid, :show_filters => :always) do |g|
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+  g.blank_slate  do
+    "No record found"
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_csv => false, :model_class => User do |student|
+    link_to student.user.name, "/GraduateStudents/students/"+(student.user.id).to_s
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_html => false, :model_class => User do |student|
+    student.user.name
+  end
+  #g.column :column_name => 'DOB' do |student|
+    #student.user.dateofbirth
+  #end
+  #g.column :column_name => 'Gender' do |student|
+    #student.user.gender
+  #end
+  #g.column :column_name => 'Address' do |student|
+    #student.user.address
+  #end
+  g.column :column_name => 'RollNo', :in_csv => false do |student|
+    link_to student.rollno, "/GraduateStudents/students/"+(student.user.id).to_s
+  end
+  g.column :column_name => 'RollNo', :in_html => false do |student|
+    student.rollno
+  end
+  g.column :column_name => 'Contact' do |student|
+    student.user.contactnumber.blank?? 'Not provided' : student.user.contactnumber
+  end
+  g.column :column_name => 'Email' do |student|
+    student.user.email.blank?? 'Not provided' : student.user.email
+  end
+  g.column :column_name => 'Credithour Taken'do |student|
+    student.credithrstaken.blank?? 'Not provided' : student.credithrstaken
+  end
+  #g.column:column_name => 'Financial Aid Status' do |student|
+    #student.financialaidstatus
+  #end
+  g.column :column_name => 'CGPA' do |student|
+    student.cgpa.blank?? 'Not provided' : student.cgpa
+  end
+  g.column :column_name => 'Degree Level', :attribute_name => 'degreelevel', :custom_filter => [['MS', 'ms'],['PhD', 'phd']] do |student|
+    student.degreelevel.blank?? 'Not provided' : student.degreelevel
+  end
+  g.column :column_name => 'Probation', :attribute_name => 'name',:model_class=>StudentProbationStatusType,:auto_reload=>true,
+           :custom_filter => StudentProbationStatusType.find(:all).map{|pr| [pr.name, pr.name]} do |student|
+    student.probationstatus.blank?? 'Not provided' : student.probationstatus
+  end
+  #g.column :column_name => 'Degree Type' do |student|
+    #student.degreetype.blank?? 'Not provided' : student.degreetype
+  #end
+  #g.column :column_name => 'Degree Status' do |student|
+    #student.degreestatus
+  #end
+  g.column :column_name => 'Current Semester' do |student|
+    student.currentsemester.blank?? 'Not provided' : student.currentsemester
+  end
+  #g.column :column_name => 'Admission Date', :attribute_name => 'admissiondate', do |student|
+    #student.admissiondate
+  #end
+  #g.column :column_name => 'Graduation Date' do |student|
+    #student.graduationdate
+  #end
+end -%>

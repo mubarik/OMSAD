@@ -1,0 +1,9 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%= link_to "Please Add Scanner Details", :controller => "inventory/scanners", :action => "new"%><br/>
+<%unless @scanners.blank?%>
+
+<%end%>

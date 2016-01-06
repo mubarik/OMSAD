@@ -1,0 +1,33 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+  <head>
+
+  </head>
+  <div class="pageHeadingBar">
+        <h1>Edit Inventory Item</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash[:msgRed].blank? %>
+    <div class="errors">
+      <p><%=flash[:msgRed]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+    <%=nested_form_for([:inventory,@inventory],
+                        :url => {:controller => "inventory/inventories",:action=>"update", :id => @inventory.id},
+                        :html=>{:id=>"forminventory",:class=>'clientSideValidatedForm'}) do |f| %>
+
+    <%=render "newedit", :new_inventory =>f %>
+
+    <%end%>
+<%end%>
+
+
+
+

@@ -1,0 +1,316 @@
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>
+
+
+<% content_for :content do %>
+
+  <div class="pageHeadingBar">
+    <h1>Grant Details</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+  <% if !flash[:notice].blank? %>
+    <div class="messages">
+      <p><%=flash[:notice]%></p>
+    </div>
+  <%end%>
+  <div class="moreInfodisplayPicWithTextWrap">
+    <%=image_tag("", :alt=>'',
+      :class=>'displayPicGrant')%>
+
+    <h1>
+      <%=@researchgrant.title%>
+    </h1>
+  </div>
+
+  <div class="clearFloatingAndStartFromBelow"></div>
+  <div class="expandingBlock">
+    <div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'',
+        :class=>'expanderDownButton')%>
+      <h2>
+        Grant Information
+      </h2>
+      <div class="expander">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">
+              Grant Number:
+            </td>
+            <td class="labelDefinitionDetails">
+              <%= @researchgrant.grantnumber%>
+            </td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">
+              Funding Agency:
+            </td>
+            <td class="labelDefinitionDetails">
+              <%= @researchgrant.fundingagency%>
+            </td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">
+              Starting Date:
+            </td>
+            <td class="labelDefinitionDetails">
+              <%if !@researchgrant.startdate.blank?%>
+                <%= label_tag(nil,@researchgrant.startdate,:id=>"lbstartdate")%>
+              <%else%>
+                Not provided
+              <%end%>
+            </td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm" id="lbenddate">
+              Ending Date:
+            </td>
+            <td class="labelDefinitionDetails">
+              <%if !@researchgrant.enddate.blank?%>
+                <%= label_tag(nil,@researchgrant.enddate,:id=>"lbenddate")%>
+              <%else%>
+                Not provided
+              <%end%>
+            </td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">
+              Amount:
+            </td>
+            <td class="labelDefinitionDetails">
+              <%= @researchgrant.amount%> Rs
+            </td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">
+              Description:
+            </td>
+            <td class="labelDefinitionDetails">
+              <%if !@researchgrant.description.blank?%>
+                <%= @researchgrant.description%>
+              <%else%>
+                Not provided
+              <%end%>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+      <h2>
+        PI
+      </h2>
+      <div class="expander">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">
+              Affiliated with LUMS:
+            </td>
+            <td>
+              <%=@researchgrant.affiliation_type_string%>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label class="labelDefinitionTerm">Name:</label>
+            </td>
+            <td class="labelDefinitionDetails">
+              <%=@researchgrant.pi_name%>
+            </td>
+          </tr>
+          <%if !@researchgrant.pi_affiliation_type%>
+            <tr>
+              <td>
+                <label class="labelDefinitionTerm">Affiliation:</label>
+              </td>
+              <td class="labelDefinitionDetails">
+                <%if !@researchgrant.external_pi_affiliation.blank?%>
+                  <%=@researchgrant.external_pi_affiliation%>
+                <%else%>
+                  Not provided
+                <%end%>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+
+      </div>
+    </div>
+    <%if @researchgrant.co_pi_count > 0%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+        <h2>
+          Co-PIs
+        </h2>
+        <div class="expander">
+          <% if !@researchgrant.external_co_pis.blank? and @researchgrant.external_co_pis.length>0 %>
+            <h4>External</h4>
+            <hr/>
+            <table class="flexExternalCoPI">
+              <% for coprincinvest in @researchgrant.external_co_pis %>
+                <tr>
+                  <td>
+                    <%=coprincinvest.external_entity_name%>
+                  </td>
+                  <td>
+                    <%=coprincinvest.affiliationname%>
+                  </td>
+                </tr>
+              <%end%>
+            </table>
+          <%end%>
+          <% if !@researchgrant.internal_co_pis.blank? and @researchgrant.internal_co_pis.length>0 %>
+            <h4>Internal</h4>
+            <hr/>
+            <table class="flexInternalCoPI">
+              <% for coprincinvest in @researchgrant.internal_co_pis %>
+                <tr>
+                  <td>
+                    <%= link_to coprincinvest.faculty_member.user.name,
+                      {:controller => "faculty/facultymembers",
+                      :action => 'show',
+                      :id => coprincinvest.faculty_member.user.id}%>
+                  </td>
+                  <td>
+                    <%=coprincinvest.faculty_member.designation%>
+                  </td>
+                  <td>
+                    <%=coprincinvest.faculty_member.user.department.name%>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              <%end%>
+            </table>
+          <%end%>
+          <%if @researchgrant.co_pi_count == 0%>
+            <%= link_to "Add Co-PIs",{:controller => "faculty/researchgrants",
+              :action => 'show',
+              :id => @researchgrant.id
+            }%>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+    <%if @researchgrant.collaborator_count > 0%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+        <h2>
+          Collaborators
+        </h2>
+
+        <div class="expander">
+          <% if !@researchgrant.external_collaborators.blank? and @researchgrant.external_collaborators.length>0 %>
+            <h4>External</h4>
+            <hr/>
+            <table class="flexExternalCoPI">
+              <% for collaborator in @researchgrant.external_collaborators %>
+                <tr>
+                  <td>
+                    <%=collaborator.external_entity_name%>
+                  </td>
+                  <td>
+                    <%=collaborator.affiliationname%>
+                  </td>
+                </tr>
+              <%end%>
+            </table>
+          <%end%>
+          <% if !@researchgrant.internal_collaborators.blank? and @researchgrant.internal_collaborators.length>0 %>
+            <h4>Internal</h4>
+            <hr/>
+            <table class="flexInternalCoPI">
+              <% for collaborator in @researchgrant.internal_collaborators %>
+                <tr>
+                  <td>
+                    <%= link_to collaborator.faculty_member.user.name,
+                      {:controller => "faculty/facultymembers",
+                      :action => 'edit',
+                      :id => collaborator.faculty_member.user.id}%>
+                  </td>
+                  <td>
+                    <%=collaborator.faculty_member.designation%>
+                  </td>
+                  <td>
+                    <%=collaborator.faculty_member.user.department.name%>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+              <%end%>
+            </table>
+          <%end%>
+          <%if @researchgrant.collaborator_count == 0%>
+            <%= link_to "Add Collaborators",{:controller => "faculty/researchgrants",
+              :action => 'edit',
+              :id => @researchgrant.id
+            }%>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+    <%if @researchgrant.team_members.count > 0%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+        <h2>
+          Team
+        </h2>
+        <div class="expander">
+          <% if !@researchgrant.team_members.blank? and @researchgrant.team_members_count>0 %>
+            <table class="flexTeamMember">
+              <% for team_member in @researchgrant.team_members %>
+                <tr>
+                  <td>
+                    <%@controller_name%>
+                    <%@user_type%>
+                    <%if !team_member.user.student.blank?%>
+                      <%@controller_name = "GraduateStudents/students"%>
+                      <%@user_type = " Graduate Student"%>
+                    <%elsif !team_member.user.t_assistant.blank?%>
+                      <%@controller_name= "inventory/tassistants"%>
+                      <%@user_type = "T.A"%>
+                    <% elsif !team_member.user.ustudent.blank? %>
+                      <%@controller_name= "inventory/ustudents"%>
+                      <%@user_type = "Undergraduate Student"%>
+                    <%else%>
+                      <%@controller_name= "inventory/researchassistants"%>
+                      <%@user_type = "R.A"%>
+                    <%end%>
+                    <%if ! @controller_name.empty?%>
+                      <%= link_to team_member.user.name,
+                        {:controller => @controller_name,
+                        :action => 'show',
+                        :id => team_member.user.id}%>
+                    <%else%>
+                      <%team_member.user.name%>
+                    <%end%>
+                  </td>
+                  <td>
+                    <%= @user_type %>
+                  </td>
+                  <td>
+                    <%=  team_member.designation%>
+                  </td>
+                  <td>
+                    <%= label_tag(nil,team_member.teamstartdate,:id=>"lbstartdate")%>
+                  </td>
+                  <td>
+                    <%= label_tag(nil,team_member.teamenddate,:id=>"lbstartdate")%>
+                  </td>
+                </tr>
+              <%end%>
+            </table>
+          <%else%>
+            <%= link_to "Add Team Members",{:controller => "faculty/researchgrants",
+              :action => 'edit',
+              :id => @researchgrant.id
+            }%>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+<%end%>
+

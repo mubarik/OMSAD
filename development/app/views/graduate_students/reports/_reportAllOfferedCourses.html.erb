@@ -1,0 +1,20 @@
+<%= grid(@students_report_grid, :show_filters => :always) do |g|
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+  g.blank_slate  do
+    "No record found"
+  end
+  g.column :column_name => 'Course Code', :attribute_name => 'coursecode' , :model_class => Course do |offeredcou|
+    offeredcou.course.coursecode.blank?? 'Not provided' : offeredcou.course.coursecode
+  end
+  g.column :column_name => 'Course Name', :attribute_name => 'coursename' , :model_class => Course do |offeredcou|
+    offeredcou.course.coursename.blank?? 'Not provided' : offeredcou.course.coursename
+  end
+  g.column :column_name => 'Semester', :attribute_name => 'offering' , :model_class => Semester do |offeredcou|
+    offeredcou.semester.offering.blank?? 'Not provided' : offeredcou.semester.offering
+  end
+  g.column :column_name => 'Year', :attribute_name => 'year' , :model_class => Semester do |offeredcou|
+    offeredcou.semester.year.blank?? 'Not provided' : offeredcou.semester.year
+  end
+end -%>

@@ -1,0 +1,43 @@
+ <%= grid(@ra_grid) do |g|
+        g.row_attributes do |version|
+          {:style => 'text-align:left;'}
+        end
+        g.blank_slate  do
+          "No record found"
+        end
+         g.column :column_name => 'Owner Name' do |task|
+          task.user.name
+        end
+
+         g.column :column_name => 'Start date' do |task|
+          task.startdate
+        end
+
+         g.column :column_name => 'End date' do |task|
+          task.enddate
+        end
+
+        g.column :column_name => 'Create date' do |task|
+          task.created_at
+        end
+
+         g.column :column_name => 'Update date' do |task|
+          task.updated_at
+        end
+         g.column :column_name => 'Inventory Type' do |task|
+          task.inventory.inventory_type.inventorytypename
+        end
+        
+       
+
+
+      end %>
+ <%#= javascript_include_tag "application" %>
+                    <%#*<table class="clsInvHistory">%>
+                          
+                               <%#*<tr> <td> 1 </td>%>
+                                    <%#*<td>2</td>%>
+                                    <%#*<td> 3 </td>%>
+                               <%#*</tr>%>
+                            
+                        <%#*</table>%>

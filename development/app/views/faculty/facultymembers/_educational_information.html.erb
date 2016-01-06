@@ -1,0 +1,31 @@
+<fieldset>
+
+  <legend class="dynamicFieldSetLegend">Education</legend>
+
+  <table style="float:left;">
+    <tr>
+      <td class="labelDefinitionTerm"><label>Degree: <span class="requiredFieldAsterisk"> *</span></label></td>
+      <td class="inputBoxPlacement"><%=ei.text_field :degree,
+                                                     :title=>"Enter the degree. e.g M.S Computer Sciences",
+                                                     :class=>"inputTextbox",
+                                                     :required=>true%></td>
+      <td class="fieldErrorPlacement"/>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm"><label>University: <span class="requiredFieldAsterisk"> *</span></label></td>
+      <td class="inputBoxPlacement">
+        <%=ei.text_field :university,
+                         :title=>"Enter the name of university e.g National Unviersity of Science and Technology",
+                         :class=>"inputTextbox",
+                         :required=>true%></td>
+      <td class="fieldErrorPlacement"></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm"><label>Year: </label></td>
+      <td><%=ei.select :year, 1947..Time.now.year,{},:class=>"dropdown", :style=>'margin-left:2px;'%></td>
+    </tr>
+  </table>
+
+  <%= ei.link_to_remove(image_tag("",:alt=>"",:class=>"iconDeleteButton", :style=>'float:right; margin-right:1%;'))%>
+
+</fieldset><br/>

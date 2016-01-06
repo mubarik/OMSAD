@@ -1,0 +1,84 @@
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+
+    $("#formLocation").bind("nested:fieldAdded",function(event)
+    {
+      event.field.find("*[id*=startdate]").each(function()
+      {
+        attachDynamicDatePicker($(this))
+
+      })
+
+      event.field.find("*[id*=enddate]").each(function()
+      {
+      
+        
+        if ($(this).attr("id").indexOf("enddate")>-1)
+        {
+          attachDynamicDatePicker($(this))
+          $(this).rules("add",
+          {
+            greaterThanEndDate:$(this).closest('tr').prev('tr').find('input:first'),
+            messages:
+              {
+              greaterThanEndDate:"Start date must be before end date"
+            }
+          })
+        }
+      })
+    })
+
+   
+
+
+  })
+</script>
+
+<div class="expandingBlock">
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>Room Information <span class="requiredFillExpander">*</span></h2>
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">Room Type: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement"><%=f.collection_select :location_type_id, @locationtypes,
+              :id,:locationtypename, options={:prompt => "Select Room type"},
+              :class => "dropdown", :title=>'Select Room Type',:required=>true%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @roomdetail.errors[:location_type_id][0] %></td>
+        </tr>
+        <tr><td class="labelDefinitionTerm">Room Number: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement"><%=f.text_field :roomnumber,:class=>"inputTextbox",:required=> true, :title=>'Special Charachters are not allowed'%></td>
+          <td class="fieldErrorPlacement"><%= @roomdetail.errors[:roomnumber][0] %></td>
+        </tr>
+
+        <tr>
+          <td class="labelDefinitionTerm">Name: </td>
+          <td class="inputBoxPlacement"><%=f.text_field :roomname,:class=>"inputTextbox", :title=>'Special Charachters are not allowed'%></td>
+          <td class="fieldErrorPlacement"><%= @roomdetail.errors[:roomname][0] %></td>
+        </tr>
+
+        <tr>
+          <td class="labelDefinitionTerm">Description: </td>
+          <td class="inputBoxPlacement"><%=f.text_field :description,:class=>"inputTextbox", :title=>'Enter description'%></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <%=f.fields_for :locations do |loc|%>
+    <%= render "locations",:f=>loc%>
+  <%end%>
+  <td><%=f.link_to_add "Add Desk",:locations, :style=>'font-weight:bold; margin-left:15px;'%></td>
+
+  <div class="bottomButtons" id="saveButton">
+    <table>
+      <tr>
+        <td><span class="submitErrorPlacement"></span></td>
+        <td><%=submit_tag("Save")%></td>
+      </tr>
+    </table>
+  </div>
+</div>

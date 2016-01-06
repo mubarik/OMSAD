@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag    "common" %>
+
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+      <h1>Edit Semester</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash[:notice].blank? %>
+      <div class="messages">
+        <p><%=flash[:notice]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <% if !flash.now[:error].blank? %>
+    <div class="errors">
+      <p><%=flash.now[:error]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <%= render 'newedit' %>
+<%end%>

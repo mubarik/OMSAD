@@ -1,0 +1,55 @@
+<script text="text/javascript">
+  $('.flexFacultyPhdSupervision').flexigrid({
+        height:'auto',
+        colModel : [
+                {display: 'Roll No', name : 'rollno', width : 150, align: 'center'},
+                {display: 'Student Name', name : 'studentname', width : 150, align: 'center'},
+                {display: 'Title', name : 'title', width : 150, align: 'center'},
+                {display: 'Proposal Submission Date', name : 'proposalsubmission', width : 150, align: 'center'},
+                {display: 'Thesis Defence date', name : 'thesisdefence', width : 150, align: 'center'},
+           ]
+        });
+</script>
+
+<table class="flexFacultyPhdSupervision">
+  <%for phd in phd_supervision %>
+    <tr>
+    <td>
+      <%if !phd.student.rollno.blank?%>
+        <%=  phd.student.rollno %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !phd.student.user.name.blank? %>
+        <%= phd.student.user.name %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+          <%if !phd.title.blank? %>
+            <%= phd.title %>
+          <%else%>
+            Not provided
+          <%end%>
+    </td>
+    <td>
+          <%if !phd.proposalsubmission.blank? %>
+            <%= phd.proposalsubmission %>
+          <%else%>
+            Not provided
+          <%end%>
+    </td>
+    <td>
+          <%if !phd.thesisdefence.blank? %>
+            <%= phd.thesisdefence %>
+          <%else%>
+            Not provided
+          <%end%>
+    </td>
+    
+    </tr>
+  <%end%>
+</table>

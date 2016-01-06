@@ -1,0 +1,42 @@
+/* 
+    Document   : InvStyleSheet
+    Created on : Jun 10, 2012, 5:02:04 AM
+    Author     : ist
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+
+.Label_Tag_Setting
+{
+        position:relative;
+        height:100%;
+        width:20%;
+        float:left;
+}
+
+.Inv_Flashnotice_Setting
+{
+        color:red;
+        position:relative;
+        height:100%;
+        width:25%;
+        float:left;
+}
+.mandatory
+{
+        color:black;
+        display:inline;
+        margin-left: 20px ;
+        margin-bottom: 20px;
+        float:left;
+}

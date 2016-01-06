@@ -1,0 +1,44 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+#one: {}
+# column: value
+#
+#two: {}
+#  column: value
+
+data1:
+  id: 1
+  user_id: 1
+  department_id: 1
+  rollno: 11030038
+  credithrstaken: 18
+  financialaidstatus: Provided
+  cgpa: 3.65
+  degreelevel: MS
+  probationstatus: No
+  degreetype: Full time
+  degreestatus: In Progress
+  currentsemester: 3
+  admissiondate: 2011-09-01
+  graduationdate: 2012-12-30
+
+data2:
+  id: 2
+  user_id: 2
+  department_id: 1
+  rollno: nil
+  credithrstaken: nil
+  financialaidstatus: nil
+  cgpa: nil
+  degreelevel: nil
+  probationstatus:
+  degreetype: nil
+  degreestatus: nil
+  currentsemester: nil
+  admissiondate: nil
+  graduationdate: nil
+  

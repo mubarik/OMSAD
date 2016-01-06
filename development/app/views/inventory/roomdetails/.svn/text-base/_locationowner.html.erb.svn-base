@@ -1,0 +1,15 @@
+
+<table>
+      <tr>
+          <td class="labelDefinitionTerm">Owner: <span class="requiredFieldAsterisk">*</span></td>
+          <td><%=f.collection_select(:user_id,@users,:id,:name,options={:prompt => "Please select the owner"}, :class => "dropdown", :title=>'Select Owner',:required=>true)%></td>
+      </tr>
+
+      <tr>
+        <td class="labelDefinitionTerm">Ownership Start Date: <span class="requiredFieldAsterisk">*</span></td>
+        <td>
+          <%=f.text_field :startdate,:class=>"inputTextbox", :title=>'Select Start Date', :required=>true%>
+        </td>
+      </tr>
+ </table>
+<br/>

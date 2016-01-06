@@ -1,0 +1,56 @@
+<% content_for :menu do %>
+<%= link_to "Add new Inventory", :controller => "inventory/inventories", :action => "new"%><br/>
+<%= link_to "Show All ", :controller => "inventory/cpus", :action => "new"%>
+
+<%end%>
+
+<% content_for :content do %>
+
+<h3>Please Add Scanner Details</h3>
+<%= form_tag({:controller => "inventory/scanners", :action => "create"}) do%>
+
+ <div style="margin-left: 10%;margin-top:10%; ">
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblscannertype,"Scanner Type:") %>
+      </div>
+      <div style="width:70%;float:left;">
+      <%=text_field_tag(:scannertype,nil)%>
+      </div>
+      <br/>
+
+
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblresolution, "Resolution:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:resolution,nil)%>
+      </div>
+      <br/>
+
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblscansize, "Scan size:") %>
+      </div>
+      <div style="width:70%;float:left;">
+         <%=text_field_tag(:scansize,nil)%>
+      </div>
+      <br/>
+
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblfileformate, "File format:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:fileformate,nil)%>
+      </div>
+      <br/>
+
+  <br/>
+     <div style="width:50%;float:left;"></div>
+     <div style="width:70%;float:left;"><%=submit_tag("Create")%></div>
+       </div
+
+
+
+
+
+<%end%>
+<%end%>

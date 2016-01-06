@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/279/OMSAD/development/app/views/inventory/scanners
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/60/OMSAD/development/app/views/inventory/scanners/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/31/OMSAD/development/app/views/inventory/scanners/show.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/279/OMSAD/development/app/views/inventory/scanners/create.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/DSSD_Summer2012/!svn/ver/31/OMSAD/development/app/views/inventory/scanners/index.erb
+END

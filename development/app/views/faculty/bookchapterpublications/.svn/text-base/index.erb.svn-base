@@ -1,0 +1,26 @@
+<%= content_for :content do  %>
+  <div class="pageHeadingBar">
+    <h1>Book Chapters</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+      <%unless @book_chapter_publication_wrappers.blank?%>
+        <% if !flash[:success].blank? %>
+          <div class="messages">
+          <p><%=flash[:success]%></p>
+          </div>
+        <%end%>
+        <%=render :partial=>"layouts/applicationindex" ,
+            :collection=>@book_chapter_publication_wrappers,
+            :as=>:wrapper%>
+      <%else%>
+        <div class="dataBlock">
+          <div class="dataPadder">
+            No book chapter is available right now. To continue, please <%= link_to "add a book chapter", :controller => "bookchapterpublications", :action => "new"%>
+          </div>
+        </div>
+      <%end%>
+<%end%>
+
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>

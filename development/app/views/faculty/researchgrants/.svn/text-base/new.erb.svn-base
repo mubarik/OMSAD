@@ -1,0 +1,28 @@
+<%= content_for :content do  %>
+  <div class="pageHeadingBar">
+      <h1>Add Research Grant</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash[:error].blank? %>
+    <div class="errors">
+      <p><%=flash[:error]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <%= nested_form_for @research_grant ,:html=>{:id=>"formGrant", :class=>'clientSideValidatedForm'},
+                                           :url =>{ :controller => "faculty/researchgrants",
+                                           :action => "create"}  do |research_grant_new| %>
+      <%= render "newedit",
+            :r =>research_grant_new,
+            :object=>@research_grant,
+            :as=>:research_grant%>
+  <%end%>
+
+
+<%end%>
+
+<% content_for :menu do %>
+   <%= render "faculty/navigationmenu" %>
+<%end%>

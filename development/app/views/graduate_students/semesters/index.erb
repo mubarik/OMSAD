@@ -1,0 +1,52 @@
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+      <h1>Semesters</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash[:noticename].blank? %>
+    <div class="messages">
+      <p><%=flash[:noticename]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+  
+  <%unless @semesters.blank?%>
+    <%@semesters.each do |semester|%>
+      <div class="dataBlock">
+        <div class="dataPadder">
+          <div class ="rightImageButtons">
+              <%= link_to(image_tag("", :alt=>'', :class=>'iconEditButton', :title=>'Edit semester information'), {:controller => :semesters, :action => 'edit', :id => semester.id}) %>
+              <%= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete semester'), {:controller => :semesters, :action => 'destroy', :id => semester.id, :what=>'semester'}, :method => :delete) %>
+              <br/><br/><br/>              
+          </div>
+
+          <h3><%=semester.offering.to_s+" "+semester.year.to_s%></h3><br/>
+          
+          <%= link_to(image_tag("", :alt=>'', :class=>'iconAddButton', :style=>'margin-left:10px;', :title=>'Add course'), {:controller => :semester_courses, :action => "new", :id => semester.id}, {:class => "fancybox" })%>
+          <%#= link_to(image_tag("", :alt=>'', :class=>'  iconCrossButton', :style=>'margin-left:10px;', :title=>'Delete course'), {:controller => :semester_courses, :action => "delete_courses", :id => semester.id}, {:class => "fancybox" })%>
+          <%= link_to(image_tag("", :alt=>'', :class=>'iconDeleteAllButton', :style=>'margin-left:10px; margin-top:3px', :title=>'Delete all courses'), {:controller => :semester_courses, :action => "destroy", :id => semester.id, :mode=>'all'}, :method => :delete)%>
+
+          <div class="clearFloatingAndStartFromBelow"></div>
+
+          <table class="flexCourseList">
+            <%semester.courses.each do |course|%>
+              <tr><td><%= course.coursecode %></td><td><%= course.coursename %></td><td><%= course.coursetype %></td><td><%= course.credithrs %></td>
+                <td><%= link_to(image_tag("iconCross.png", :alt=>'', :style=>'height:11px;width:11px;', :title=>'Delete course'), {:controller => :semester_courses, :action => "destroy", :id => course.id,:semid=> semester.id,:mode=>'single'}, :method => :delete)%><%#= smecour.faculty_member.user.name%></td></tr>
+            <%end%>
+          </table>
+        </div>
+      </div>
+    <%end%>
+  <%else%>
+    <div class="dataBlock">
+      <div class="dataPadder">
+         No semester added yet. To continue, please <%= link_to "add a semester", :controller => "semesters", :action => "new"%>
+      </div>
+    </div>
+  <%end%>
+<%end%>

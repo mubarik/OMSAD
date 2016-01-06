@@ -1,0 +1,37 @@
+
+<%= javascript_include_tag "inventoryreports" %>
+<% content_for :menu do %>
+            <%= render "inventory/navigationmenuRATA" %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>RA Report</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+      <%= form_tag({:controller => 'inventory/rareports', :action => 'create'},:remote => true, :id=>"postform") do%>
+        <div class="groupBox" style="overflow: auto;">
+          <table style="float:left;">
+            <tr>
+                     <td class="labelDefinitionTerm" id="nameLabel">
+                       Name:
+                     </td>
+                     <td class="inputBoxPlacement">
+                       <%= select_tag :selectreport ,
+                                                options_for_select([['RA Report',1]
+                                                                     ]),:prompt=>'Please select report',:required=> 'true'%>
+
+                     </td>
+            </tr>
+          </table>
+           <%= button_tag "View Report" ,:style=>'float:right;'%>
+        </div>
+        <br/>
+
+       <div class ="reportsGrid">
+       </div>
+     <%end%>
+       
+      
+<%end%>

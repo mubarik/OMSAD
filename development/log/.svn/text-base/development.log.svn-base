@@ -1,0 +1,145 @@
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-06-01 04:04:57 -0400
+
+Mysql2::Error (Access denied for user 'root'@'localhost' (using password: YES)):
+  
+
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.6ms)
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.2ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-06-01 04:05:02 -0400
+
+Mysql2::Error (Access denied for user 'root'@'localhost' (using password: YES)):
+  
+
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.1ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2012-06-01 04:08:23 -0400
+
+Mysql2::Error (Access denied for user 'root'@'localhost' (using password: YES)):
+  
+
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /home/adil/.rvm/gems/ruby-1.9.2-p320/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.1ms)
+  [1m[36m (410.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (401.2ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateBookChapterPublications (20120601081513)
+  [1m[35m (227.1ms)[0m  CREATE TABLE `book_chapter_publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `publication_id` int(11), `bookname` varchar(255), `chaptername` varchar(255), `publishername` varchar(255), `editors` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (142.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081513')[0m
+Migrating to CreateBookPublications (20120601081537)
+  [1m[35m (231.9ms)[0m  CREATE TABLE `book_publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `publication_id` int(11), `bookname` varchar(255), `publishername` varchar(255), `publicationdate` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (77.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081537')[0m
+Migrating to CreateConferencePublications (20120601081605)
+  [1m[35m (198.5ms)[0m  CREATE TABLE `conference_publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `publication_id` int(11), `conferencename` varchar(255), `acceptancedate` datetime, `website` varchar(255), `rank` varchar(255), `conferencestartdate` datetime, `conferenceenddate` datetime, `city` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (77.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081605')[0m
+Migrating to CreateCourses (20120601081616)
+  [1m[35m (209.9ms)[0m  CREATE TABLE `courses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `coursetype` varchar(255), `coursename` varchar(255), `coursecode` varchar(255), `credithrs` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (77.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081616')[0m
+Migrating to CreateCpus (20120601081625)
+  [1m[35m (220.9ms)[0m  CREATE TABLE `cpus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `processorname` varchar(255), `numberofcores` int(11), `numberofthreads` int(11), `memorytype` varchar(255), `processorgraphics` varchar(255), `inventory_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (88.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081625')[0m
+Migrating to CreateDepartements (20120601081635)
+  [1m[35m (197.5ms)[0m  CREATE TABLE `departements` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `school_id` int(11), `name` varchar(255), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081635')[0m
+Migrating to CreateFacultyMemberPublications (20120601081703)
+  [1m[35m (199.0ms)[0m  CREATE TABLE `faculty_member_publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `facultymember_id` int(11), `publication_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081703')[0m
+Migrating to CreateFacultyMemberResearchGrants (20120601081747)
+  [1m[35m (199.1ms)[0m  CREATE TABLE `faculty_member_research_grants` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `facultymember_id` int(11), `researchgrant_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081747')[0m
+Migrating to CreateFacultyMembers (20120601081807)
+  [1m[35m (198.7ms)[0m  CREATE TABLE `faculty_members` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `designation` varchar(255), `biography` text, `awardsinfo` text, `academicrecords` text, `researchinterests` text, `jobexperiences` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (67.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081807')[0m
+Migrating to CreateFinancialAids (20120601081824)
+  [1m[35m (231.9ms)[0m  CREATE TABLE `financial_aids` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `student_id` int(11), `amount` float, `startdate` date, `enddate` date, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081824')[0m
+Migrating to CreateInventories (20120601081837)
+  [1m[35m (198.5ms)[0m  CREATE TABLE `inventories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `inventoryname` varchar(255), `description` varchar(255), `inventorytype_id` int(11), `brand` varchar(255), `model` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081837')[0m
+Migrating to CreateInventoryOwnerships (20120601081849)
+  [1m[35m (198.6ms)[0m  CREATE TABLE `inventory_ownerships` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `inventory_id` int(11), `user_id` int(11), `startdate` datetime, `enddate` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081849')[0m
+Migrating to CreateInventoryTypes (20120601081900)
+  [1m[35m (198.6ms)[0m  CREATE TABLE `inventory_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `inventorytypename` varchar(255), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081900')[0m
+Migrating to CreateJournalPublications (20120601081919)
+  [1m[35m (200.3ms)[0m  CREATE TABLE `journal_publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `publication_id` int(11), `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (65.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081919')[0m
+Migrating to CreateLcds (20120601081927)
+  [1m[35m (198.7ms)[0m  CREATE TABLE `lcds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255), `resolution` varchar(255), `size` varchar(255), `inventory_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081927')[0m
+Migrating to CreateLocations (20120601081935)
+  [1m[35m (198.7ms)[0m  CREATE TABLE `locations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `locationname` varchar(255), `description` varchar(255), `locationtype_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081935')[0m
+Migrating to CreateLocationOwnerships (20120601081945)
+  [1m[35m (221.0ms)[0m  CREATE TABLE `location_ownerships` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `startdate` datetime, `enddate` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081945')[0m
+Migrating to CreateLocationTypes (20120601081954)
+  [1m[35m (222.1ms)[0m  CREATE TABLE `location_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `locationtypename` varchar(255), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601081954')[0m
+Migrating to CreateMileStones (20120601082007)
+  [1m[35m (209.4ms)[0m  CREATE TABLE `mile_stones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `supervisorname` varchar(255), `proposalsubmission` date, `firstreport` date, `secondreport` date, `thirdreport` date, `notification` date, `defense` date, `finalsubmission` date, `topic` varchar(255), `supervisorcomments` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082007')[0m
+Migrating to CreatePrinters (20120601082018)
+  [1m[35m (210.0ms)[0m  CREATE TABLE `printers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `technology` varchar(255), `speed` varchar(255), `memory` varchar(255), `mediatype` varchar(255), `inventory_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (64.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082018')[0m
+Migrating to CreatePublications (20120601082029)
+  [1m[35m (198.5ms)[0m  CREATE TABLE `publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `abstract` text, `researcharea` varchar(255), `publicationdate` datetime, `publicationtype_id` int(11), `publicationstatustype_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082029')[0m
+Migrating to CreatePublicationStatusTypes (20120601082047)
+  [1m[35m (210.4ms)[0m  CREATE TABLE `publication_status_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (65.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082047')[0m
+Migrating to CreatePublicationTypes (20120601082100)
+  [1m[35m (221.2ms)[0m  CREATE TABLE `publication_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082100')[0m
+Migrating to CreateResearchGrants (20120601082126)
+  [1m[35m (198.3ms)[0m  CREATE TABLE `research_grants` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `grantnumber` varchar(255), `description` text, `fundingagency` varchar(255), `startdate` datetime, `enddate` datetime, `amount` int(11), `principleinvestigator` int(11), `coprincipleinvestigator` int(11), `partners` text, `team` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082126')[0m
+Migrating to CreateRoomDetails (20120601082207)
+  [1m[35m (232.0ms)[0m  CREATE TABLE `room_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `roomnumber` int(11), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082207')[0m
+Migrating to CreateScanners (20120601082225)
+  [1m[35m (231.9ms)[0m  CREATE TABLE `scanners` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scannertype` varchar(255), `resolution` varchar(255), `scansize` varchar(255), `fileformate` varchar(255), `inventory_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (67.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082225')[0m
+Migrating to CreateSchools (20120601082237)
+  [1m[35m (219.7ms)[0m  CREATE TABLE `schools` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082237')[0m
+Migrating to CreateSemesters (20120601082250)
+  [1m[35m (209.0ms)[0m  CREATE TABLE `semesters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `offering` varchar(255), `year` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082250')[0m
+Migrating to CreateSemesterCourses (20120601082305)
+  [1m[35m (198.5ms)[0m  CREATE TABLE `semester_courses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `semester_id` int(11), `course_id` int(11), `prerequisite` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082305')[0m
+Migrating to CreateStudentSemesters (20120601082325)
+  [1m[35m (221.0ms)[0m  CREATE TABLE `student_semesters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `student_id` int(11), `semester_id` int(11), `semestergpa` float, `status` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082325')[0m
+Migrating to CreateStudents (20120601082342)
+  [1m[35m (198.3ms)[0m  CREATE TABLE `students` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `department_id` int(11), `rollno` varchar(255), `credithrstaken` int(11), `financialaidstatus` varchar(255), `cgpa` float, `degreelevel` varchar(255), `probationstatus` varchar(255), `degreetype` varchar(255), `degreestatus` varchar(255), `currentsemester` int(11), `admissiondate` date, `graduationdate` date, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082342')[0m
+Migrating to CreateStudentCourses (20120601082352)
+  [1m[35m (220.9ms)[0m  CREATE TABLE `student_courses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `coursegpa` float, `coursegrade` varchar(255), `coursestatus` varchar(255), `semester` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082352')[0m
+Migrating to CreateTechnicalReportPublications (20120601082422)
+  [1m[35m (232.1ms)[0m  CREATE TABLE `technical_report_publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `publication_id` int(11), `technicalreportnumber` varchar(255), `department_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082422')[0m
+Migrating to CreateUsers (20120601082431)
+  [1m[35m (198.8ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `typename` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082431')[0m
+Migrating to CreateUserTypes (20120601082440)
+  [1m[35m (366.8ms)[0m  CREATE TABLE `user_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `typename` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (133.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082440')[0m
+Migrating to CreateUserUserTypes (20120601082452)
+  [1m[35m (320.5ms)[0m  CREATE TABLE `user_user_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `usertype_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082452')[0m
+Migrating to CreateWorkshopPublications (20120601082512)
+  [1m[35m (160.8ms)[0m  CREATE TABLE `workshop_publications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `publication_id` int(11), `workshopname` varchar(255), `acceptancedate` datetime, `website` varchar(255), `workshopstartdate` datetime, `workshopenddate` datetime, `city` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (66.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120601082512')[0m
+  [1m[35m (0.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/5301/OMSAD/development/app/views/faculty/facultymembers
+END
+_awards_information.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/5063/OMSAD/development/app/views/faculty/facultymembers/_awards_information.html.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/3047/OMSAD/development/app/views/faculty/facultymembers/new.erb
+END
+_educational_information.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/5062/OMSAD/development/app/views/faculty/facultymembers/_educational_information.html.erb
+END
+_job_experience.erb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/5070/OMSAD/development/app/views/faculty/facultymembers/_job_experience.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/5050/OMSAD/development/app/views/faculty/facultymembers/show.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/5301/OMSAD/development/app/views/faculty/facultymembers/_newedit.html.erb
+END
+_inter_disciplinary_collaborators.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/DSSD_Summer2012/!svn/ver/5066/OMSAD/development/app/views/faculty/facultymembers/_inter_disciplinary_collaborators.html.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/148/OMSAD/development/app/views/faculty/facultymembers/create.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/2847/OMSAD/development/app/views/faculty/facultymembers/edit.erb
+END
+_faculty_service.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/5025/OMSAD/development/app/views/faculty/facultymembers/_faculty_service.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/4618/OMSAD/development/app/views/faculty/facultymembers/index.erb
+END
+show.pdf.prawn
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4719/OMSAD/development/app/views/faculty/facultymembers/show.pdf.prawn
+END

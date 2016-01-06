@@ -1,0 +1,39 @@
+<fieldset>
+  <legend class="dynamicFieldSetLegend">Services</legend>
+  <table style="float:left;">
+    <tr>
+      <td class="labelDefinitionTerm"><label>Year:</label></td>
+      <td><%=fs.select :year, 1947..Time.now.year,{},:class=>"dropdown", :style=>'margin-left:3px;'%></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm"><label>University Services:</label></td>
+      <td class="inputBoxPlacement"><%=fs.text_area :universityservices,
+                                                    :class=>'inputTextbox',
+                                                    :cols =>80,
+                                                    :rows =>5%></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm"><label>Outside LUMS Services:</label></td>
+      <td><%=fs.text_area :outsideservices,
+                          :class=>'inputTextbox',
+                          :cols =>80,
+                          :rows =>5%></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm"><label>Advisory Roles:</label></td>
+      <td><%=fs.text_area :advisoryroles,
+                          :class=>'inputTextbox',
+                          :cols =>80,
+                          :rows =>5%></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm"><label>Statement on Future Plans:</label></td>
+      <td><%=fs.text_area :statement,
+                          :class=>'inputTextbox',
+                          :cols =>80,
+                          :rows =>5%></td>
+    </tr>
+  </table>
+  <%= fs.link_to_remove(image_tag("",:alt=>"",:class=>"iconDeleteButton", :style=>'float:right; margin-right:4%;'))%>
+
+</fieldset><br/>

@@ -1,0 +1,180 @@
+<%#*accompanying javascript code is written in faculty/dynamicPublications.js%>
+
+<div class="expander">
+  <table>
+    <tr><td class="labelDefinitionTerm">Title: <span class="requiredFieldAsterisk">*</span></td>
+      <td class="inputBoxPlacement">
+        <%= p.text_field :title,
+          :id=>"txpublicationtitle",
+          :class=>"inputTextbox",
+          :title=>"Special characters are not allowed",
+          :required => true %>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.errors[:title][0] %>
+      </td>
+    </tr>
+    <tr><td class="labelDefinitionTerm">Abstract:</td>
+      <td><%= p.text_area :abstract,
+          :cols=> 48,
+          :rows=>9%>
+      </td>
+      <td class="fieldErrorPlacement">
+        <%= @publication.errors[:abstract][0] %>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="labelDefinitionTerm">Publication Year: <span class="requiredFieldAsterisk">*</span></td>
+      <td class="inputBoxPlacement">
+        <%=  p.select :publicationyear, 1947..Time.now.year,{},:class=>"dropdown",:required=> :true%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.errors[:publicationyear][0] %>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="labelDefinitionTerm">Publication Status: <span class="requiredFieldAsterisk">*</span></td>
+      <td class="inputBoxPlacement">
+
+        <%if publicationtype == PublicationTypes::BOOK_PUBLICATION%>
+          <%= p.select(:publicationstatus, options_for_select([['Published'],['Unpublished']], @publication.publicationstatus.blank?? 'In progress' : @publication.publicationstatus ),{} ,:class=>'dropdown', :required => true) %>
+        <%elsif publicationtype == PublicationTypes::JOURNAL_PUBLICATION%>
+          <%= p.select(:publicationstatus, options_for_select([['Submitted'],['Accepted'],['Published']], @publication.publicationstatus.blank?? 'In progress' : @publication.publicationstatus ),{} ,:class=>'dropdown',:required => true) %>
+        <%elsif publicationtype == PublicationTypes::CONFERENCE_PUBLICATION%>
+          <%= p.select(:publicationstatus, options_for_select([['Submitted'],['Accepted'],['Published']], @publication.publicationstatus.blank?? 'In progress' : @publication.publicationstatus ),{} ,:class=>'dropdown',:required => true) %>
+        <%elsif publicationtype == PublicationTypes::WORKSHOP_PUBLICATION%>
+          <%= p.select(:publicationstatus, options_for_select([['Submitted'],['Accepted'],['Published']], @publication.publicationstatus.blank?? 'In progress' : @publication.publicationstatus ),{} ,:class=>'dropdown',:required => true) %>
+        <%elsif publicationtype == PublicationTypes::BOOK_CHAPTER_PUBLICATION%>
+          <%= p.select(:publicationstatus, options_for_select([['Submitted'],['Accepted'],['Published'],['Minor Revision'],['Major Revision']], @publication.publicationstatus.blank?? 'In progress' : @publication.publicationstatus ),{} ,:class=>'dropdown',:required => true) %>
+        <%else%>
+          <%= p.text_field :publicationstatus,
+            :id=>"txpublicationstatus",
+            :class=>"inputTextbox"%>
+        <%end%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.errors[:publicationstatus][0] %>
+      </td>
+    </tr>
+    <tr><td class="labelDefinitionTerm">Key Words: </td>
+      <td>
+        <%= p.text_field  :keywords,
+          :id=>"txkeywords",
+          :title => "Enter the keywords of publication e.g robotics,chip",
+          :class=>"inputTextbox"%>
+      </td>
+      <td class="fieldErrorPlacement">
+        <%= @publication.errors[:keywords][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">URL: </td>
+      <td>
+        <%= p.text_field :doi,
+          :id=>"txdoi",
+          :title => "Enter the website url of publication. Example Format: http://www.lums.edu.pk",
+          :class=>"inputTextbox"%>
+      </td>
+      <td class="fieldErrorPlacement">
+        <%= @publication.errors[:doi][0] %>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="labelDefinitionTerm">Pages: </td>
+      <td>
+        <%= p.text_field :pages,
+          :title => "Enter the total number of pages in digits e.g 25",
+          :id=>"txpages",
+          :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.errors[:pages][0] %>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+<div id="authorsExpander" class="expanderHeaderBar">
+  <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+  <%=hidden_field_tag(:moduleType,"Authors")%>
+  <div class="headingDiv">
+    <h2>Authors<span class="requiredFillExpander"> *</span>
+    </h2>
+  </div>
+  <div class="expander">
+    <div id="dynDivAuthorsContainer">
+      <div style="display:none;">
+        <div id="authorData">
+          <%=render :partial=>"faculty/dynamicauthor_popup"%>
+        </div>
+      </div>
+      <a id="addAuthorsLink"
+         href="#authorData">
+        <img alt=""
+             class="iconAddButton"
+             src=""
+             style="margin-left:2px;margin-top: -3px"
+             title="Add an Author"/>
+      </a>
+
+    </div>
+  </div>
+  <%=margin=" "%>
+  <div class="expander">
+    <%=hidden_field_tag(:authorCount,@publication.user_publications.length) %>
+    <table class="flexDynamicAuthors" table_type="nested_flex_table">
+      <%=p.fields_for :user_publications do|user_pub|%>
+        <%=render "faculty/dynamicauthor_fields_for",:upf=>user_pub%>
+      <%end%>
+    </table>
+    <%=p.link_to_add "Add an Author",:user_publications,:hidden=>true,:id=>"author_nested_link",:link_type=>"grid_link"%>
+  </div>
+</div>
+<div id="imageGalleryExpander" class="expanderHeaderBar">
+
+  <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+  <%=hidden_field_tag(:moduleType,"Photos")%>
+  <div class="headingDiv">
+    <h2>Photos <span id="dynPhotoErrorSpan" class="dynamicFieldErrorPlacement"></span>
+    </h2>
+  </div>
+  <div class="expander">
+    <div id="dynDivPhotosContainer">
+      <%=hidden_field_tag(:publicationPhotoCount,@publication.publication_photos.length) %>
+      <table>
+        <%if !p.object.publication_photos.blank? and p.object.publication_photos.length>0%>
+          <tr>
+            <td>
+              <div class="publicationImageGallery">
+                <%= p.fields_for :publication_photos do |pub_photo| %>
+                  <%if !pub_photo.object.new_record?%>
+                    <%=render  "faculty/publicationphotos/photo_old_edit",
+                      :pp=>pub_photo%>
+                  <% end %>
+                <%end%>
+              </div>
+            </td>
+          </tr>
+        <%end%>
+        <tr>
+          <td>
+            <%= p.fields_for :publication_photos do |pub_photo| %>
+              <%if pub_photo.object.new_record?%>
+                <%=render "faculty/publicationphotos/photo_new",:pp=>pub_photo%>
+              <% end %>
+            <%end%>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-top: 15px;">
+        <%=p.link_to_add "Add a Photo",:publication_photos,:style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left'%>
+        <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,34 @@
+<div class="grants">
+  <fieldset>
+    <legend><strong>Grant:</strong></legend>
+    <div class ="rightImageButtons">
+       <%=cos.link_to_remove (image_tag("", :alt => '',:class=>'iconDeleteButton',:title=>'Delete'))%>
+    </div>
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Month: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%=cos.text_field :fundingmonth, :class=>'inputTextbox'  %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Funding Amount:</td>
+        <td class="inputBoxPlacement"><%=cos.text_field :totalamount, :class=>'inputTextbox reportTotalAmountTextBox', :title=>"Enter the amount" %></td>
+        <td class="fieldErrorPlacement"></td>
+    </tr>
+    </table>
+    <div class="externalGrantFields">
+      <table>
+      <tr>
+          <td class="labelDefinitionTerm" style="width: 138px;">Used Amount:</td>
+          <td class="inputBoxPlacement"><%=cos.text_field :usedamount, :class=>'inputTextbox reportUsedAmountTextBox', :title=>"Enter the amount" %></td>
+          <td class="fieldErrorPlacement"></td>
+      </tr>
+      <tr>
+          <td class="labelDefinitionTerm" style="width: 138px;">Remaining Amount:</td>
+          <td class="inputBoxPlacement"><%=cos.text_field :remainingamount, :class=>'inputTextbox reportRemainingAmountTextBox', :title=>"Enter the amount" %></td>
+          <td class="fieldErrorPlacement"></td>
+      </tr>
+      </table>
+    </div>
+  </fieldset><br/>
+</div>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/DSSD_Summer2012/!svn/ver/700/OMSAD/development/app/views/inventory/cpus
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/DSSD_Summer2012/!svn/ver/61/OMSAD/development/app/views/inventory/cpus/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/DSSD_Summer2012/!svn/ver/31/OMSAD/development/app/views/inventory/cpus/show.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/31/OMSAD/development/app/views/inventory/cpus/create.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/700/OMSAD/development/app/views/inventory/cpus/index.erb
+END

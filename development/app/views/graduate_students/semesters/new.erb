@@ -1,0 +1,39 @@
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Add Semester</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash.now[:notice].blank? %>
+    <div class="messages">
+      <p><%=flash.now[:notice]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <% if !flash.now[:error].blank? %>
+    <div class="errors">
+      <p><%=flash.now[:error]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+<%= render 'newedit' %>
+
+<%#*<h1>File Upload</h1>%>
+<%#= form_tag ({:controller => 'semesters', :action => 'uploadfile', :multipart => true}) %>
+
+<%#*<p><label for="upload_file">Select File</label> :%>
+<%#= file_field :upload , 'uploadfile' %>
+<%#*</p>%>
+
+<%#= submit_tag "Upload" %>
+<%#= form_tag %>
+
+<%=  flash[:name] %>
+<%end%>
+

@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/DSSD_Summer2012/!svn/ver/3602/OMSAD/development/test/fixtures
+END
+student_semesters.yml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/student_semesters.yml
+END
+conference_publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/3320/OMSAD/development/test/fixtures/conference_publications.yml
+END
+financial_aids.yml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/financial_aids.yml
+END
+lcds.yml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/DSSD_Summer2012/!svn/ver/2785/OMSAD/development/test/fixtures/lcds.yml
+END
+journal_publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/3322/OMSAD/development/test/fixtures/journal_publications.yml
+END
+cosupervisors.yml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/DSSD_Summer2012/!svn/ver/2983/OMSAD/development/test/fixtures/cosupervisors.yml
+END
+faculty_member_research_grants.yml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/3566/OMSAD/development/test/fixtures/faculty_member_research_grants.yml
+END
+semester_courses.yml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/semester_courses.yml
+END
+user_publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/3501/OMSAD/development/test/fixtures/user_publications.yml
+END
+locations.yml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/2788/OMSAD/development/test/fixtures/locations.yml
+END
+publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/DSSD_Summer2012/!svn/ver/3502/OMSAD/development/test/fixtures/publications.yml
+END
+publication_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/3323/OMSAD/development/test/fixtures/publication_types.yml
+END
+independent_studies.yml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/DSSD_Summer2012/!svn/ver/3173/OMSAD/development/test/fixtures/independent_studies.yml
+END
+user_user_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/test/fixtures/user_user_types.yml
+END
+technical_report_publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/3512/OMSAD/development/test/fixtures/technical_report_publications.yml
+END
+user_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/DSSD_Summer2012/!svn/ver/2791/OMSAD/development/test/fixtures/user_types.yml
+END
+inventories.yml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/DSSD_Summer2012/!svn/ver/2782/OMSAD/development/test/fixtures/inventories.yml
+END
+book_publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/3319/OMSAD/development/test/fixtures/book_publications.yml
+END
+user_research_grants.yml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/3580/OMSAD/development/test/fixtures/user_research_grants.yml
+END
+schools.yml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/3511/OMSAD/development/test/fixtures/schools.yml
+END
+faculty_courses.yml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/2426/OMSAD/development/test/fixtures/faculty_courses.yml
+END
+cpus.yml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/DSSD_Summer2012/!svn/ver/2781/OMSAD/development/test/fixtures/cpus.yml
+END
+research_grants.yml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/3325/OMSAD/development/test/fixtures/research_grants.yml
+END
+book_chapter_publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/3504/OMSAD/development/test/fixtures/book_chapter_publications.yml
+END
+faculty_members.yml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/3602/OMSAD/development/test/fixtures/faculty_members.yml
+END
+inventory_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/2784/OMSAD/development/test/fixtures/inventory_types.yml
+END
+room_details.yml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/DSSD_Summer2012/!svn/ver/2790/OMSAD/development/test/fixtures/room_details.yml
+END
+faculty_member_job_experiences.yml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/3565/OMSAD/development/test/fixtures/faculty_member_job_experiences.yml
+END
+milestones.yml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/milestones.yml
+END
+ms_courses.yml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/DSSD_Summer2012/!svn/ver/3135/OMSAD/development/test/fixtures/ms_courses.yml
+END
+courses.yml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/courses.yml
+END
+departments.yml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/DSSD_Summer2012/!svn/ver/3510/OMSAD/development/test/fixtures/departments.yml
+END
+faculty_member_awards_informations.yml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/3562/OMSAD/development/test/fixtures/faculty_member_awards_informations.yml
+END
+workshop_publications.yml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/3328/OMSAD/development/test/fixtures/workshop_publications.yml
+END
+location_ownerships.yml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/DSSD_Summer2012/!svn/ver/2786/OMSAD/development/test/fixtures/location_ownerships.yml
+END
+student_courses.yml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/student_courses.yml
+END
+location_types.yml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/2787/OMSAD/development/test/fixtures/location_types.yml
+END
+faculty_member_educational_informations.yml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/3564/OMSAD/development/test/fixtures/faculty_member_educational_informations.yml
+END
+users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/DSSD_Summer2012/!svn/ver/3327/OMSAD/development/test/fixtures/users.yml
+END
+printers.yml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/DSSD_Summer2012/!svn/ver/2789/OMSAD/development/test/fixtures/printers.yml
+END
+.gitkeep
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/test/fixtures/.gitkeep
+END
+students.yml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/students.yml
+END
+semesters.yml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/2116/OMSAD/development/test/fixtures/semesters.yml
+END
+scanners.yml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/DSSD_Summer2012/!svn/ver/2051/OMSAD/development/test/fixtures/scanners.yml
+END
+collaborator_research_grants.yml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/3601/OMSAD/development/test/fixtures/collaborator_research_grants.yml
+END
+inventory_ownerships.yml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/2783/OMSAD/development/test/fixtures/inventory_ownerships.yml
+END

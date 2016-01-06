@@ -1,0 +1,819 @@
+img.logo {
+   float:left;
+}
+
+.pageHeadingBar {
+    padding: 18px 2%;
+}
+
+.breadcrumb {
+    border-bottom:1px solid #ccc;
+    line-height: 23px;
+    font-size:13px;
+    font-weight:bold;
+    padding-left:8px;
+}
+
+.breadcrumb a:link, .breadcrumb a:visited { 
+    text-decoration:none;
+    color:#003366;
+}
+
+.breadcrumb a:hover, .breadcrumb a:focus { 
+    text-decoration:underline;
+    color:#0099CC;
+}
+
+.breadcrumb {
+    display: none;
+    color:#FF9900;
+}
+
+.invalidEntry {
+    /*making text box with clien`t side valiation error visible*/
+   background-color: salmon;
+}
+
+
+.inputBoxPlacement {
+    /*where input box is placed*/
+    padding: 3px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+h1, h2, h3, .labelDefinitionTerm, .labelDefinitionDetails {
+    /*making website text non-selectable*/
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
+.fieldErrorPlacement {
+    /*where validation errors are displayed*/
+     padding-left: 5px;
+     color: red;
+     font-weight: normal;
+}
+
+.popupfieldErrorPlacement {
+    /*where validation errors are displayed*/
+     padding-left: 5px;
+     color: red;
+     font-weight: normal;
+     width: 170px;
+}
+
+
+.dynamicFieldErrorPlacement
+{
+    padding-left: 10px;
+    color:red;
+}
+
+h2 .dynamicFieldErrorPlacement
+{
+    padding-left: 10px;
+    color:red;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+
+input[type="submit"], button, .standardButtonSize {
+    width: 110px;
+}
+
+.autoWidth {
+    width:auto;
+}
+
+.dropdown {
+    /*select combo boxes*/
+    width:355px;
+}
+
+
+
+.uidatePicker, .uienddatePicker,.uidayMonthPicker, .inputTextbox, .telephone,.inputTextboxSt,.inputTextboxEd {
+    margin: 0;
+    padding: 0;
+    width:350px;
+}
+
+
+h1 {         /*page heading*/
+    font-size:2.1em;
+    background:transparent;
+    text-transform:capitalize;
+    letter-spacing:0.02em;
+    font-weight: bolder;
+    margin:0;
+    padding:0;
+}
+
+
+h2 {
+    font-size:1.5em;
+    margin: 4px 0 0 2%;
+    padding: 0;
+}
+
+
+h3 {
+    text-transform:capitalize;
+    font-size:1.6em;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+
+h3 a {
+    text-decoration: underline;
+    color: black;
+}
+
+
+h3 a:visited {
+    text-decoration: underline;
+    color: black;
+}
+
+
+h3 a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+h4 {
+    text-transform:capitalize;
+    font-size:1.0em;
+    margin-top: 0;
+    margin-left: 2px;
+    margin-bottom: 2px;   
+}
+hr {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.messages {
+    padding-left: 28px;
+    color: green;
+    font-size: 14px;
+    background-image:url('iconTick.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    float:left;
+    margin-left: 2%;
+    margin-top: -18px;
+}
+
+.errors {
+    padding-left: 28px;
+    color: red;
+    font-size: 14px;
+    background-image: url('Error.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    float:left;
+    margin-left: 2%;
+    margin-top: -18px;
+
+}
+
+
+.headingLineBreak {
+    border-width: 2px;
+    margin-bottom: 20px;
+}
+
+
+.dataBlock {        /*a block of data that may be repeated many times on the page one below the other*/
+    padding: 10px 0%;
+    margin: 1px auto;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    width:99.8%;
+}
+
+
+.dataBlockFaculty {        /*a block of data that may be repeated many times on the page one below the other*/
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    width:99.8%;
+}
+
+
+.groupBox {
+    padding: 10px 2%;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+
+.expanderHeaderBar {
+    padding: 10px 0;
+    margin: 3px 0;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+.expander {
+    display:none;
+    margin: 10px 2%;
+    clear: both;
+}
+
+
+.bottomButtons {        /*buttons at the bottom of the page (default: right-side)*/
+    float:right;
+    margin: 14px 1%;
+}
+
+
+.rightImageButtons {   /*image buttons on the right: usually, edit and delete*/
+    float:right;
+    margin-right: 4%;
+}
+
+
+.firstRadioButton {
+    float: left;
+}
+
+
+.otherRadioButtons {
+    width:auto;
+    margin-left: 6%;
+    float: left;
+}
+
+
+.displayPicWithTextWrap {
+    float:left;
+    width:80%;
+}
+
+
+.moreInfodisplayPicWithTextWrap h1 {
+    float:left;
+    text-transform:capitalize;
+    font-size: 2em;
+    margin-top: 40px;
+}
+
+
+.moreInfodisplayPicWithTextWrap img {
+    margin: 0 2% 10px 2%;
+}
+
+
+.displayPicWithTextWrap img {
+    margin:0 2%;
+}
+
+
+.requiredFieldAsterisk {      /*required field mentioned as a star*/
+    color:red;
+}
+
+.requiredFillExpander {
+    color:red;
+}
+
+.expanderDownButton {
+    background-image:url('dropDownButton.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:28px;
+    float:right;
+    margin-right: 3%;
+}
+
+
+
+.expanderErrorHighlight
+{
+    border-radius: 13px;
+    box-shadow: 0 0 10px 4px red;
+    background-color: red;
+    width:26px;
+    height:26px;
+}
+
+.expanderErrorHighlight2
+{
+    box-shadow: inset 0 0 4px 2px red;
+}
+
+
+
+.labelDefinitionTerm {
+    border: 0 none;
+    background-color: #F5F5F5;
+    color: black;
+    width: 150px;
+    font-weight: bold;
+}
+.labelWorkshop {
+    border: 0 none;
+    background-color: #F5F5F5;
+    color: black;
+    width: 165px;
+    font-weight: bold;
+}
+
+.labelDefNew {
+    border: 0 none;
+    background-color: #F5F5F5;
+    color: black;
+    width: 100px;
+}
+
+.labelDefinitionDetails {
+
+}
+
+
+.reportTypeselection {   /*image buttons on the right: usually, edit and delete*/
+    float:right;
+    margin-right: 20%;
+}
+
+
+.reportComboButton {
+    float:left;
+    padding-left:16px;
+}
+
+
+.reportCombo
+{
+    float: right;
+    margin-left: 20px;
+}
+
+
+.noPicDisplay {
+    height:75px;
+    float:left;
+}
+
+.displayPic {
+    width:128px;
+    height:128px;
+    float:left;
+    display: block;
+}
+
+
+.displayPicMale {
+    background-image:url('user.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+
+
+.iconCpuMapPin {
+    background-image:url('p1.png');
+    background-repeat: no-repeat;
+    width:24px;
+    height:24px;
+    float:left;
+    margin:5px;
+}
+
+
+.displayPicFemale {
+    background-image:url('female_user.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+
+.displayPicGrant{
+
+     background-image:url('penguin.jpg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+
+}
+
+
+.iconEditButton {
+    background-image:url('iconEditPencil.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin-right: 12px;
+}
+
+.iconresumeButton {
+/*    background-image:url('CV-Icon.png');*/
+    background-repeat: no-repeat;
+    width:70px;
+/*    height:60px;*/
+    float:left;
+    margin-right: 12px;
+}
+
+.iconEditButtonFaculty {
+    background-image:url('iconeditpencilfaculty.png');
+    background-repeat: no-repeat;
+    width:24px;
+    height:24px;
+    float:left;
+    margin-right: 12px;
+}
+
+
+.iconDeleteButton {
+    background-image:url('iconDeleteBin.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+}
+
+
+.expanderDownButtonHighlighted {
+    background-image:url('dropDownButton.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:28px;
+    float:right;
+    margin-right: 3%;
+}
+
+
+
+.iconAddButton {
+    background-image:url('iconAdd2.png');
+    background-repeat: no-repeat;
+    width:24px;
+    height:24px;
+    float:left;
+    margin:5px;
+}
+
+.iconAddHistButton {
+/*    background-image:url('msnicon.png');*/
+    background-image:url('user32.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin-right: 12px;
+}
+.iconCrossButton {
+    background-image:url('iconCross2.png');
+    background-repeat: no-repeat;
+    width:23px;
+    height:24px;
+    float:left;
+    margin-left:20px;
+}
+
+
+.iconCrossButtonfaculty {
+    background-image:url('iconcrossfaculty.png');
+    background-repeat: no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+    margin:5px;
+}
+
+
+.iconEditButtonFacultySmall {
+    background-image:url('iconeditpencilfaculty2.png');
+    background-repeat: no-repeat;
+    width:24px;
+    height:24px;
+    float:left;
+    margin-top:-4px;
+
+}
+
+
+.iconDeleteButtonFacultySmall {
+    background-image:url('iconCross.png');
+    background-repeat: no-repeat;
+    width:11px;
+    height:11px;
+    float:left;
+
+}
+
+.iconUp {
+    background-image:url('up.png');
+    background-repeat: no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+
+}
+
+.iconDown {
+    background-image:url('down.png');
+    background-repeat: no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+
+}
+
+.iconMoveUpButton {
+    background-image:url('16x16-up.png');
+    background-repeat: no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+
+}
+
+.iconDeleteAllButton {
+    background-image:url('iconDeleteAll.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:28px;
+    float:left;
+    margin:5px;
+}
+
+
+.iconAddLayoutButton {
+    background-image:url('iconAddLayout.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+}
+
+.iconReportButton {
+    background-image:url('iconReportCheck.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin-right: 12px;
+}
+
+.dataPadder {
+    padding:10px;
+}
+
+
+.dataPadder h3 {
+    margin-left: 10px;
+}
+
+
+.reportsGrid {
+    overflow: auto;
+}
+
+ .tooltip {
+    background-color:#000;
+    border:1px solid #fff;
+    padding:10px 15px;
+    width:200px;
+    display:none;
+    color:#fff;
+    text-align:left;
+    font-size:12px;
+
+    /* outline radius for mozilla/firefox only */
+    -moz-box-shadow:0 0 10px #000;
+    -webkit-box-shadow:0 0 10px #000;
+}
+
+.displayPicCpu {
+    background-image:url('icpu.jpeg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicPrinter {
+    background-image:url('iprinter.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicScanner {
+    background-image:url('iscanner.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicLcd {
+    background-image:url('ilcd.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicInv {
+    background-image:url('iinv3.jpeg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicRoom {
+    background-image:url('loc1.jpeg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+
+.clearFloatingAndStartFromBelow {
+    clear: both;
+}
+
+.submitErrorPlacement {
+    display: none; 
+    padding-right: 5px;
+    padding-left: 5px;
+    color: red;
+}
+
+
+.error_messages{
+
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    
+}
+
+
+.errorMessagesheading{
+
+    color:red;
+
+}
+
+.publicationImageGallery
+{
+    opacity:0;
+    float: left;
+    width:700px;
+}
+.publicationThumbnail
+{
+    margin-left: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    height: 75px;
+    padding: 2px;
+    width: 100px;
+    position: relative;
+    float:left;
+    z-index:0;
+}
+.profilePicture
+{
+    margin-left: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    height: 128px;
+    padding: 2px;
+    width: 128px;
+    position: relative;
+    float:left;
+    z-index:0;
+}
+
+.deleteFromImageGallery{
+    background-image:url('imgDeletePhoto.png');
+    opacity:0;
+    background-repeat: no-repeat;
+    width:30px;
+    height:30px;
+    position:absolute;
+    float:left;
+    margin-left: -15px;
+    margin-top:-15px;
+    z-index: 1;
+}
+
+.deleteFromImageGallery:hover
+{
+    opacity:1;
+}
+
+.dynamicFieldSetLegend
+{
+    font-weight: bold;
+}
+.iconTickBox {
+    background-image:url('Checkmark-32.png');
+    background-repeat: no-repeat;
+    width:21px;
+    height:20px;
+    float:left;
+    margin-left: 24px;
+    display: none;
+}
+
+.iconHyphen {
+    background-image:url('hyphen-32.png');
+    background-repeat: no-repeat;
+    width:21px;
+    height:20px;
+    float:left;
+    margin-left: 24px;
+    display: none;
+}
+
+.iconReport {
+    background-image:url('Report-32.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin-right: 17px;
+}
+
+textarea {
+    resize: none;
+}
+
+
+.dynamicLinksInner {
+    font-weight:bold;
+    margin-left:15px;
+    margin-bottom:10px;
+    float:left;
+}
+
+.teamTable {
+    width: 250px;
+    display: inline-table;
+}
+
+.table-box {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.teamProfilePicture
+{
+    margin-left: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    height: 128px;
+    padding: 2px;
+    /*width: 128px;*/
+    position: relative;
+    z-index:0;
+}
+.iconScholarlyReportButton {
+    background-repeat: no-repeat;
+    float: left;
+    height: 50px;
+    margin-right: 17px;
+    margin-top: -36px;
+    width: 50px;
+}
+
+.reportStudentprofilePicture {
+
+}

@@ -1,0 +1,18 @@
+<%=  grid(@faculty_awards_grid, :show_filters => :always) do |g|
+  g.blank_slate  do
+    "There are no records"
+  end
+
+  g.column :column_name => 'Title',
+           :attribute_name=>"title",
+           :model_class=>"FacultyMemberAwardsInformation" do |faculty_award|
+            faculty_award.title.blank?? 'N/A' :faculty_award.title
+
+  end
+  g.column :column_name => 'Year',
+           :attribute_name=>"year",
+           :model_class=>"FacultyMemberAwardsInformation" do |faculty_award|
+            faculty_award.year.blank?? 'N/A' :faculty_award.year
+
+  end
+end -%>

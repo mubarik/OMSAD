@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag    "navigationMenu" %>
+<%= javascript_include_tag "navigationMenu" %>
+
+
+<div class="page-container">
+    <ul id="treeMenu">
+        <li class="contentContainerLevel1">External RA
+            <ul style="display: none">
+                <li class="contentContainerLevel2"><%= link_to "Add ", :controller => "researchassistants", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "researchassistants", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Reports", :controller => "rareports", :action => "index"%></li>
+            </ul>
+        </li>
+
+           <li class="contentContainerLevel1">External TA
+            <ul style="display: none">
+                <li class="contentContainerLevel2"><%= link_to "Add ", :controller => "tassistants", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "tassistants", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Reports", :controller => "tareports", :action => "index"%></li>
+            </ul>
+        </li>
+
+           <li class="contentContainerLevel1">Undergraduate Student
+            <ul style="display: none">
+                <li class="contentContainerLevel2"><%= link_to "Add ", :controller => "ustudents", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "ustudents", :action => "index"%></li>
+            </ul>
+        </li>
+
+           <li class="contentContainerLevel1">Administrative Staff
+            <ul style="display: none">
+                <li class="contentContainerLevel2"><%= link_to "Add ", :controller => "astaffs", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "astaffs", :action => "index"%></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+

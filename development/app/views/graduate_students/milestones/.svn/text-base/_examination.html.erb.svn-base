@@ -1,0 +1,25 @@
+<div class="cosupervisors">
+  <fieldset>
+    <legend><strong>Examination:</strong></legend>
+    <div class ="rightImageButtons">
+       <%=cos.link_to_remove (image_tag("", :alt => '',:class=>'iconDeleteButton',:title=>'Delete'))%>
+    </div>
+    <table>
+       <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Name:</td>
+        <td class="inputBoxPlacement"><%=cos.select :examinationname, options_for_select([['GRE'],['NTS'],['Qualifier']],cos.object.examinationname.blank?? 'Pending': cos.object.examinationname ),{},:class => 'dropdown', :title=>"Enter an whole number" %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Status:</td>
+        <td class="inputBoxPlacement"><%=cos.select :examinationstatus, options_for_select([['Cleared'],['Failed'],['Pending']],cos.object.examinationstatus.blank?? 'Pending': cos.object.examinationstatus ),{},:class => 'dropdown', :title=>"Enter an whole number" %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Date:</td>
+        <td class="inputBoxPlacement"><%=cos.text_field :examinationdate, :class=>'inputTextbox' %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+    </table>
+  </fieldset><br/>
+</div> 

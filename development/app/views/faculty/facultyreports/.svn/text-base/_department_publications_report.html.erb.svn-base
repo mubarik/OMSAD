@@ -1,0 +1,42 @@
+
+<%= grid(@department_publications_grid,:show_filters=>:always) do |g|
+
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+    g.blank_slate  do
+      "There are no records"
+    end
+
+    g.column :column_name => 'Author'  do |userpublication|
+      userpublication.user.name
+    end
+
+    g.column :column_name => 'Title',:attribute_name=>"title",:in_csv=>false,:model_class=>"Publication"  do |userpublication|
+          link_to userpublication.publication.title,
+                         :controller => userpublication.publication.get_controller,
+                         :action => "show",
+                         :id =>userpublication.publication.id
+    end
+
+    g.column :column_name => 'Title',:attribute_name=>"title",:in_html=>false,:model_class=>"Publication"  do |userpublication|
+          userpublication.publication.title
+    end
+
+    g.column  :column_name => 'Year',:attribute_name=>"publicationyear",:model_class=>"Publication" do |userpublication|
+      userpublication.publication.publicationyear.blank?? 'Not provided' :userpublication.publication.publicationyear
+    end
+
+    g.column  :column_name => 'Status',:attribute_name=>"publicationstatus",:model_class=>"Publication" do |userpublication|
+      userpublication.publication.publicationstatus.blank?? 'Not provided' :userpublication.publication.publicationstatus
+    end
+
+    g.column  :column_name => 'Type' ,
+              :attribute_name=>"name",
+              :auto_reload=>true,
+              :model_class=>"PublicationType",
+              :custom_filter => PublicationType.find(:all).map{|pr| [pr.name, pr.name]} do |userpublication|
+      userpublication.publication.publication_type.name.blank?? 'Not provided' :userpublication.publication.publication_type.name
+    end
+
+  end -%>

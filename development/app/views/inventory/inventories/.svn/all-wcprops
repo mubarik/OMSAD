@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/DSSD_Summer2012/!svn/ver/5334/OMSAD/development/app/views/inventory/inventories
+END
+_invinfo.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/3835/OMSAD/development/app/views/inventory/inventories/_invinfo.html.erb
+END
+popupindexhistory.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/5314/OMSAD/development/app/views/inventory/inventories/popupindexhistory.erb
+END
+test.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/1467/OMSAD/development/app/views/inventory/inventories/test.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/4952/OMSAD/development/app/views/inventory/inventories/show.erb
+END
+_historyrecs.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/4814/OMSAD/development/app/views/inventory/inventories/_historyrecs.html.erb
+END
+old_edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/1467/OMSAD/development/app/views/inventory/inventories/old_edit.erb
+END
+popuphistory.erb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/5324/OMSAD/development/app/views/inventory/inventories/popuphistory.erb
+END
+_printer.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4933/OMSAD/development/app/views/inventory/inventories/_printer.html.erb
+END
+csv_import.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/5334/OMSAD/development/app/views/inventory/inventories/csv_import.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/3841/OMSAD/development/app/views/inventory/inventories/edit.erb
+END
+old_new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/1467/OMSAD/development/app/views/inventory/inventories/old_new.erb
+END
+_invlocation.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/3836/OMSAD/development/app/views/inventory/inventories/_invlocation.html.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/3842/OMSAD/development/app/views/inventory/inventories/new.erb
+END
+_cpu.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/4962/OMSAD/development/app/views/inventory/inventories/_cpu.html.erb
+END
+_scanner.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4934/OMSAD/development/app/views/inventory/inventories/_scanner.html.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/5259/OMSAD/development/app/views/inventory/inventories/_newedit.html.erb
+END
+inventory_allocation.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/5266/OMSAD/development/app/views/inventory/inventories/inventory_allocation.erb
+END
+inventoryAllocation.erb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/4579/OMSAD/development/app/views/inventory/inventories/inventoryAllocation.erb
+END
+data_import.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4189/OMSAD/development/app/views/inventory/inventories/data_import.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/277/OMSAD/development/app/views/inventory/inventories/create.erb
+END
+testt.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/5267/OMSAD/development/app/views/inventory/inventories/testt.erb
+END
+_lcd.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/4931/OMSAD/development/app/views/inventory/inventories/_lcd.html.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/3383/OMSAD/development/app/views/inventory/inventories/index.erb
+END
+configuration.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4587/OMSAD/development/app/views/inventory/inventories/configuration.erb
+END

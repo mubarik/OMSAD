@@ -1,0 +1,87 @@
+<script>
+  $(document).ready(function()
+  {
+    if(document.getElementById('faculty_course_sharedstatus_no').checked)
+    {
+      $("#faculty_course_contribution").attr("disabled", "disabled");
+    }
+
+    $("#faculty_course_sharedstatus_no").change(function()
+    {
+       $("#faculty_course_contribution").attr("disabled", "disabled");
+
+    })
+    $("#faculty_course_sharedstatus_yes").change(function()
+    {
+      $("#faculty_course_contribution").removeAttr("disabled");
+    })
+  });
+</script>
+<%= javascript_include_tag "faculty/facultyclientSideValidations.js" %>
+<div class="pageHeadingBar">
+  <h2>Edit Course</h2>
+</div>
+<hr class="headingLineBreak"/>
+<%= form_for @faculty_course ,:html=>{:id=>"formFacultyCourses"},
+                                :url =>{ :controller => "faculty/facultycourses",
+                                           :action => "update"} do |f| %>
+<%= f.hidden_field :faculty_member_id , :value => @faculty_course.faculty_member_id%>
+
+<div class="groupBox">
+  <div id="coursesCollection" class="coursesCollection">
+    <table>
+      <tr>
+      <td class="labelDefinitionTerm">Course Name:
+      </td>
+      <td>
+        <%= @faculty_course.course.coursename%>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">
+        Number of students: <span class="requiredFieldAsterisk">*</span>
+      </td>
+      <td class="inputBoxPlacement">
+        <%= f.text_field :noofstudents,
+                                     :required=>true,
+                                     :class =>"inputTextbox"%>
+      </td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+
+    <tr>
+      <td class="labelDefinitionTerm">Co-taught:
+      </td>
+      <td class="inputBoxPlacement" id="status_radio_button" >
+        <%=  f.radio_button :sharedstatus, 'Yes',:checked => true%> Yes
+         <%=  f.radio_button :sharedstatus, 'No'%> No
+      </td>
+     <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">Contribution (%):
+      </td>
+      <td>
+        <%= f.text_field :contribution,
+                         :class =>"inputTextbox"%>
+      </td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">Offering:
+      </td>
+      <td class="inputBoxPlacement">
+          <%= f.select(:offering, options_for_select([['First Time'],['Repeat']], @faculty_course.offering.blank?? 'In progress' : @faculty_course.offering ),{} ,:class=>'dropdown') %>
+      </td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    </table>
+
+  </div>
+
+
+</div>
+<div class="bottomButtons">
+  <%=submit_tag("Save")%>
+</div>
+<%end%>

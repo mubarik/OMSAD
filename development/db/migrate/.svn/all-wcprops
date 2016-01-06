@@ -1,0 +1,1031 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/DSSD_Summer2012/!svn/ver/5336/OMSAD/development/db/migrate
+END
+20120715013039_create_student_probation_status_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/4644/OMSAD/development/db/migrate/20120715013039_create_student_probation_status_types.rb
+END
+20120713223609_add_configuration_id_to_book_status.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/4374/OMSAD/development/db/migrate/20120713223609_add_configuration_id_to_book_status.rb
+END
+20120713225405_add_configuration_id_to_book_chapter_status.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/DSSD_Summer2012/!svn/ver/4376/OMSAD/development/db/migrate/20120713225405_add_configuration_id_to_book_chapter_status.rb
+END
+20120712143218_modify_ustudent.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/4076/OMSAD/development/db/migrate/20120712143218_modify_ustudent.rb
+END
+20120712221914_add_join_date_to_faculty_member.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/4190/OMSAD/development/db/migrate/20120712221914_add_join_date_to_faculty_member.rb
+END
+20120619155632_drop_external_user_table.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/1353/OMSAD/development/db/migrate/20120619155632_drop_external_user_table.rb
+END
+20120613172605_modify_book_chapter_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120613172605_modify_book_chapter_publications.rb
+END
+20120705222143_add_paper_clip_to_publication_photo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/3089/OMSAD/development/db/migrate/20120705222143_add_paper_clip_to_publication_photo.rb
+END
+20120613171904_modify_publication_details.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/966/OMSAD/development/db/migrate/20120613171904_modify_publication_details.rb
+END
+20120601082126_create_research_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/509/OMSAD/development/db/migrate/20120601082126_create_research_grants.rb
+END
+20120714081045_modify_inventory_ownership_hist.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/4438/OMSAD/development/db/migrate/20120714081045_modify_inventory_ownership_hist.rb
+END
+20120712202827_create_faculty_member_designation_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/DSSD_Summer2012/!svn/ver/4191/OMSAD/development/db/migrate/20120712202827_create_faculty_member_designation_types.rb
+END
+20120614130055_modify_start_end_date_workshop_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/DSSD_Summer2012/!svn/ver/822/OMSAD/development/db/migrate/20120614130055_modify_start_end_date_workshop_publications.rb
+END
+20120712162150_modify_milestone_research_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/4090/OMSAD/development/db/migrate/20120712162150_modify_milestone_research_grants.rb
+END
+20120601082225_create_scanners.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082225_create_scanners.rb
+END
+20120714034109_create_filestudents.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/4494/OMSAD/development/db/migrate/20120714034109_create_filestudents.rb
+END
+20120721070841_modify_student_grant_amout_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/5336/OMSAD/development/db/migrate/20120721070841_modify_student_grant_amout_type.rb
+END
+20120620221554_create_t_assistants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/1451/OMSAD/development/db/migrate/20120620221554_create_t_assistants.rb
+END
+20120714115259_modify_ta_course.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/4510/OMSAD/development/db/migrate/20120714115259_modify_ta_course.rb
+END
+20120704214441_create_location_ownership_hists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/2891/OMSAD/development/db/migrate/20120704214441_create_location_ownership_hists.rb
+END
+20120715131334_add_course_status_to_student_course.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/4683/OMSAD/development/db/migrate/20120715131334_add_course_status_to_student_course.rb
+END
+20120629221454_create_faculty_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/2408/OMSAD/development/db/migrate/20120629221454_create_faculty_courses.rb
+END
+20120707214939_remove_faculty_image.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/3478/OMSAD/development/db/migrate/20120707214939_remove_faculty_image.rb
+END
+20120628215607_modify_semester_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/2325/OMSAD/development/db/migrate/20120628215607_modify_semester_courses.rb
+END
+20120715041549_modify_inventoryfile.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4535/OMSAD/development/db/migrate/20120715041549_modify_inventoryfile.rb
+END
+20120703204649_create_faculty_member_job_experiences.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/2725/OMSAD/development/db/migrate/20120703204649_create_faculty_member_job_experiences.rb
+END
+20120622001653_modify_publication.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/1794/OMSAD/development/db/migrate/20120622001653_modify_publication.rb
+END
+20120601081927_create_lcds.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/675/OMSAD/development/db/migrate/20120601081927_create_lcds.rb
+END
+20120601081945_create_location_ownerships.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601081945_create_location_ownerships.rb
+END
+20120713093048_modify_journal_publications_reference.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/4421/OMSAD/development/db/migrate/20120713093048_modify_journal_publications_reference.rb
+END
+20120601082452_create_user_user_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/510/OMSAD/development/db/migrate/20120601082452_create_user_user_types.rb
+END
+20120705195109_create_astaffs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/3032/OMSAD/development/db/migrate/20120705195109_create_astaffs.rb
+END
+20120713231039_create_conference_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/4379/OMSAD/development/db/migrate/20120713231039_create_conference_statuses.rb
+END
+20120601082018_create_printers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082018_create_printers.rb
+END
+20120712112432_add_attachment_document_to_t_assistants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/DSSD_Summer2012/!svn/ver/4040/OMSAD/development/db/migrate/20120712112432_add_attachment_document_to_t_assistants.rb
+END
+20120715025733_add_grade_status_to_indepent_studies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/4644/OMSAD/development/db/migrate/20120715025733_add_grade_status_to_indepent_studies.rb
+END
+20120706173956_modify_user_research_grants_date.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/3202/OMSAD/development/db/migrate/20120706173956_modify_user_research_grants_date.rb
+END
+20120713175718_create_project_confs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4369/OMSAD/development/db/migrate/20120713175718_create_project_confs.rb
+END
+20120622195629_modify_user_research_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/1684/OMSAD/development/db/migrate/20120622195629_modify_user_research_grants.rb
+END
+20120714041247_add_configuration_id_to_workshop_status.rb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/DSSD_Summer2012/!svn/ver/4386/OMSAD/development/db/migrate/20120714041247_add_configuration_id_to_workshop_status.rb
+END
+20120714001506_create_filestudentsemesters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/4353/OMSAD/development/db/migrate/20120714001506_create_filestudentsemesters.rb
+END
+20120706144433_modify_cosupervisors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/3172/OMSAD/development/db/migrate/20120706144433_modify_cosupervisors.rb
+END
+20120601082325_create_student_semesters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082325_create_student_semesters.rb
+END
+20120613212544_modify_inventory_ownership.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/757/OMSAD/development/db/migrate/20120613212544_modify_inventory_ownership.rb
+END
+20120622182359_create_inventory_ownership_hists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/2016/OMSAD/development/db/migrate/20120622182359_create_inventory_ownership_hists.rb
+END
+20120628214322_create_collaborator_research_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/2283/OMSAD/development/db/migrate/20120628214322_create_collaborator_research_grants.rb
+END
+20120613173906_modify_journal_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120613173906_modify_journal_publications.rb
+END
+20120630063138_create_course_assets.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/2471/OMSAD/development/db/migrate/20120630063138_create_course_assets.rb
+END
+20120712144007_modify_astaff.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/4081/OMSAD/development/db/migrate/20120712144007_modify_astaff.rb
+END
+20120601082305_create_semester_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082305_create_semester_courses.rb
+END
+20120714041559_create_technical_report_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/4387/OMSAD/development/db/migrate/20120714041559_create_technical_report_statuses.rb
+END
+20120714020722_add_configuration_id_to_faculty_member_status_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/DSSD_Summer2012/!svn/ver/4383/OMSAD/development/db/migrate/20120714020722_add_configuration_id_to_faculty_member_status_type.rb
+END
+20120705213551_add_attachment_photo_to_faculty_members.rb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/DSSD_Summer2012/!svn/ver/3056/OMSAD/development/db/migrate/20120705213551_add_attachment_photo_to_faculty_members.rb
+END
+20120612194825_create_milestones.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/750/OMSAD/development/db/migrate/20120612194825_create_milestones.rb
+END
+20120621015827_modify_faculty_member_research_grant.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/1512/OMSAD/development/db/migrate/20120621015827_modify_faculty_member_research_grant.rb
+END
+20120704001705_modify_user_research_grants_table.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/2759/OMSAD/development/db/migrate/20120704001705_modify_user_research_grants_table.rb
+END
+20120601082440_create_user_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082440_create_user_types.rb
+END
+20120706143613_create_independent_studies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/3172/OMSAD/development/db/migrate/20120706143613_create_independent_studies.rb
+END
+20120712133635_modify_workshop_publications_website.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/4094/OMSAD/development/db/migrate/20120712133635_modify_workshop_publications_website.rb
+END
+20120614125626_modify_start_end_date_research_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/822/OMSAD/development/db/migrate/20120614125626_modify_start_end_date_research_grants.rb
+END
+20120703191837_create_faculty_member_educational_informations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/DSSD_Summer2012/!svn/ver/2714/OMSAD/development/db/migrate/20120703191837_create_faculty_member_educational_informations.rb
+END
+20120601081537_create_book_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120601081537_create_book_publications.rb
+END
+20120622000649_create_user_research_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/1683/OMSAD/development/db/migrate/20120622000649_create_user_research_grants.rb
+END
+20120712205817_add_designation_type_faculty_member.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/4401/OMSAD/development/db/migrate/20120712205817_add_designation_type_faculty_member.rb
+END
+20120719161922_create_upload_checks.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/5238/OMSAD/development/db/migrate/20120719161922_create_upload_checks.rb
+END
+20120601082207_create_room_details.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/3537/OMSAD/development/db/migrate/20120601082207_create_room_details.rb
+END
+20120713024013_add_affiliation_type_external_name_to_research_grant.rb
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/DSSD_Summer2012/!svn/ver/4196/OMSAD/development/db/migrate/20120713024013_add_affiliation_type_external_name_to_research_grant.rb
+END
+20120601082100_create_publication_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082100_create_publication_types.rb
+END
+20120601081807_create_faculty_members.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601081807_create_faculty_members.rb
+END
+20120710160153_create_phd_reports.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/3811/OMSAD/development/db/migrate/20120710160153_create_phd_reports.rb
+END
+20120710155900_create_proposal_committees.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/3811/OMSAD/development/db/migrate/20120710155900_create_proposal_committees.rb
+END
+20120703212609_create_faculty_member_awards_informations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/DSSD_Summer2012/!svn/ver/2732/OMSAD/development/db/migrate/20120703212609_create_faculty_member_awards_informations.rb
+END
+20120713221234_add_configuration_id_to_department.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/DSSD_Summer2012/!svn/ver/4372/OMSAD/development/db/migrate/20120713221234_add_configuration_id_to_department.rb
+END
+20120712182823_create_faculty_member_status_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/DSSD_Summer2012/!svn/ver/4132/OMSAD/development/db/migrate/20120712182823_create_faculty_member_status_types.rb
+END
+20120601082029_create_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120601082029_create_publications.rb
+END
+20120704190743_create_cosupervisors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/2992/OMSAD/development/db/migrate/20120704190743_create_cosupervisors.rb
+END
+20120713020050_create_ta_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/4200/OMSAD/development/db/migrate/20120713020050_create_ta_courses.rb
+END
+20120601082422_create_technical_report_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082422_create_technical_report_publications.rb
+END
+20120707070321_create_examinations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/3627/OMSAD/development/db/migrate/20120707070321_create_examinations.rb
+END
+20120710125723_modify_faculty_services.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/3804/OMSAD/development/db/migrate/20120710125723_modify_faculty_services.rb
+END
+20120721070806_modify_financial_amount_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/5336/OMSAD/development/db/migrate/20120721070806_modify_financial_amount_type.rb
+END
+20120710155809_create_thesis_committees.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/3811/OMSAD/development/db/migrate/20120710155809_create_thesis_committees.rb
+END
+20120716172706_add_attachment_bibtex_to_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/4803/OMSAD/development/db/migrate/20120716172706_add_attachment_bibtex_to_publications.rb
+END
+20120629083307_modify_semester_courses_rollback.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/2339/OMSAD/development/db/migrate/20120629083307_modify_semester_courses_rollback.rb
+END
+20120704221338_create_faculty_member_services.rb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/2905/OMSAD/development/db/migrate/20120704221338_create_faculty_member_services.rb
+END
+20120711153434_create_student_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/3882/OMSAD/development/db/migrate/20120711153434_create_student_grants.rb
+END
+20120714010331_create_ranks.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/4381/OMSAD/development/db/migrate/20120714010331_create_ranks.rb
+END
+20120705221912_create_publication_photos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/3089/OMSAD/development/db/migrate/20120705221912_create_publication_photos.rb
+END
+20120711195655_modify_journal_publications_issue_number.rb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/DSSD_Summer2012/!svn/ver/3901/OMSAD/development/db/migrate/20120711195655_modify_journal_publications_issue_number.rb
+END
+20120623182712_modify_publication_table.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/1912/OMSAD/development/db/migrate/20120623182712_modify_publication_table.rb
+END
+20120613191625_create_external_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/757/OMSAD/development/db/migrate/20120613191625_create_external_users.rb
+END
+20120630132329_modify_financial_aids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/2528/OMSAD/development/db/migrate/20120630132329_modify_financial_aids.rb
+END
+20120713225841_create_journal_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/4377/OMSAD/development/db/migrate/20120713225841_create_journal_statuses.rb
+END
+20120601082237_create_schools.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082237_create_schools.rb
+END
+20120712132710_modify_t_assistant.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4072/OMSAD/development/db/migrate/20120712132710_modify_t_assistant.rb
+END
+20120616154804_modify_roomdetails.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/1147/OMSAD/development/db/migrate/20120616154804_modify_roomdetails.rb
+END
+20120707215730_add_attachment_photo_to_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/3478/OMSAD/development/db/migrate/20120707215730_add_attachment_photo_to_users.rb
+END
+20120601081616_create_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601081616_create_courses.rb
+END
+20120712133730_modify_conference_publications_reference.rb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/DSSD_Summer2012/!svn/ver/4094/OMSAD/development/db/migrate/20120712133730_modify_conference_publications_reference.rb
+END
+20120619164754_create_research_assistants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/1354/OMSAD/development/db/migrate/20120619164754_create_research_assistants.rb
+END
+20120714041956_add_configuration_id_to_technical_report_status.rb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/DSSD_Summer2012/!svn/ver/4388/OMSAD/development/db/migrate/20120714041956_add_configuration_id_to_technical_report_status.rb
+END
+20120711201329_modify_faculty_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/3933/OMSAD/development/db/migrate/20120711201329_modify_faculty_courses.rb
+END
+20120715022844_create_student_degree_status_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/DSSD_Summer2012/!svn/ver/4644/OMSAD/development/db/migrate/20120715022844_create_student_degree_status_types.rb
+END
+20120601081919_create_journal_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120601081919_create_journal_publications.rb
+END
+20120613173039_modify_book_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120613173039_modify_book_publications.rb
+END
+20120713224951_create_book_chapter_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/4375/OMSAD/development/db/migrate/20120713224951_create_book_chapter_statuses.rb
+END
+20120714115043_add_attachment_document_to_ta_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/4511/OMSAD/development/db/migrate/20120714115043_add_attachment_document_to_ta_courses.rb
+END
+20120713230227_add_configuration_id_to_journal_status.rb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/DSSD_Summer2012/!svn/ver/4378/OMSAD/development/db/migrate/20120713230227_add_configuration_id_to_journal_status.rb
+END
+20120706211527_add_attachment_cv_to_faculty_members.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/3234/OMSAD/development/db/migrate/20120706211527_add_attachment_cv_to_faculty_members.rb
+END
+20120613194803_modify_milestones.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/1120/OMSAD/development/db/migrate/20120613194803_modify_milestones.rb
+END
+20120713182444_modify_faculty_member_designation_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/DSSD_Summer2012/!svn/ver/4370/OMSAD/development/db/migrate/20120713182444_modify_faculty_member_designation_type.rb
+END
+20120717201006_add_attachment_uploadfile_to_inventoryfiles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/DSSD_Summer2012/!svn/ver/4889/OMSAD/development/db/migrate/20120717201006_add_attachment_uploadfile_to_inventoryfiles.rb
+END
+20120712123459_modify_research_assistant.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/4071/OMSAD/development/db/migrate/20120712123459_modify_research_assistant.rb
+END
+20120613174442_modify_workshop_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120613174442_modify_workshop_publications.rb
+END
+20120714010732_add_configuration_id_to_rank.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/4382/OMSAD/development/db/migrate/20120714010732_add_configuration_id_to_rank.rb
+END
+20120713220701_modify_department.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/4371/OMSAD/development/db/migrate/20120713220701_modify_department.rb
+END
+20120628230214_modify_collaborator_research_grant_affiliation_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/DSSD_Summer2012/!svn/ver/2329/OMSAD/development/db/migrate/20120628230214_modify_collaborator_research_grant_affiliation_type.rb
+END
+20120715023111_add_degree_status_type_to_student.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/4644/OMSAD/development/db/migrate/20120715023111_add_degree_status_type_to_student.rb
+END
+20120715125019_add_grade_type_to_student_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/4683/OMSAD/development/db/migrate/20120715125019_add_grade_type_to_student_courses.rb
+END
+20120601081849_create_inventory_ownerships.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/1073/OMSAD/development/db/migrate/20120601081849_create_inventory_ownerships.rb
+END
+20120601082352_create_student_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/490/OMSAD/development/db/migrate/20120601082352_create_student_courses.rb
+END
+20120712154709_create_inventoryfiles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/4232/OMSAD/development/db/migrate/20120712154709_create_inventoryfiles.rb
+END
+20120712185130_add_status_to_faculty_member.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/4133/OMSAD/development/db/migrate/20120712185130_add_status_to_faculty_member.rb
+END
+20120623095508_create_roomdetailmaps.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/1829/OMSAD/development/db/migrate/20120623095508_create_roomdetailmaps.rb
+END
+20120714024658_modify_conference_publication.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/4384/OMSAD/development/db/migrate/20120714024658_modify_conference_publication.rb
+END
+20120708070946_modify_cosupervisor_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/3596/OMSAD/development/db/migrate/20120708070946_modify_cosupervisor_type.rb
+END
+20120623084913_modify_user_research_foreign_key.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/1817/OMSAD/development/db/migrate/20120623084913_modify_user_research_foreign_key.rb
+END
+20120711154218_modify_milestone_student_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/4090/OMSAD/development/db/migrate/20120711154218_modify_milestone_student_grants.rb
+END
+20120706172043_create_inventory_locations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/3194/OMSAD/development/db/migrate/20120706172043_create_inventory_locations.rb
+END
+20120601081837_create_inventories.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/645/OMSAD/development/db/migrate/20120601081837_create_inventories.rb
+END
+20120713223022_create_book_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4373/OMSAD/development/db/migrate/20120713223022_create_book_statuses.rb
+END
+20120628224816_add_attachment_semesterexception_to_student_semesters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/DSSD_Summer2012/!svn/ver/2301/OMSAD/development/db/migrate/20120628224816_add_attachment_semesterexception_to_student_semesters.rb
+END
+20120705211930_create_ms_courses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/3049/OMSAD/development/db/migrate/20120705211930_create_ms_courses.rb
+END
+20120601081605_create_conference_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/868/OMSAD/development/db/migrate/20120601081605_create_conference_publications.rb
+END
+20120715013457_add_probation_status_to_students.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/4644/OMSAD/development/db/migrate/20120715013457_add_probation_status_to_students.rb
+END
+20120601081824_create_financial_aids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601081824_create_financial_aids.rb
+END
+20120712204501_modify_semesters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/4164/OMSAD/development/db/migrate/20120712204501_modify_semesters.rb
+END
+20120711173423_modify_conference_publications_year.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/3881/OMSAD/development/db/migrate/20120711173423_modify_conference_publications_year.rb
+END
+20120601081747_create_faculty_member_research_grants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/508/OMSAD/development/db/migrate/20120601081747_create_faculty_member_research_grants.rb
+END
+20120714040312_create_workshop_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/4385/OMSAD/development/db/migrate/20120714040312_create_workshop_statuses.rb
+END
+20120601081954_create_location_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601081954_create_location_types.rb
+END
+20120715154619_create_financial_aid_status_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/4726/OMSAD/development/db/migrate/20120715154619_create_financial_aid_status_types.rb
+END
+20120601082250_create_semesters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082250_create_semesters.rb
+END
+20120601081513_create_book_chapter_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120601081513_create_book_chapter_publications.rb
+END
+20120613173432_modify_conference_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120613173432_modify_conference_publications.rb
+END
+20120629190058_create_assets.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/2471/OMSAD/development/db/migrate/20120629190058_create_assets.rb
+END
+20120601081900_create_inventory_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601081900_create_inventory_types.rb
+END
+20120704000233_create_inventory_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/2769/OMSAD/development/db/migrate/20120704000233_create_inventory_statuses.rb
+END
+20120703230336_modify_inventory.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/3844/OMSAD/development/db/migrate/20120703230336_modify_inventory.rb
+END
+20120620215204_create_user_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/1448/OMSAD/development/db/migrate/20120620215204_create_user_publications.rb
+END
+20120714023019_modify_inventory_ownership_for_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/4350/OMSAD/development/db/migrate/20120714023019_modify_inventory_ownership_for_type.rb
+END
+20120614081352_modify_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/876/OMSAD/development/db/migrate/20120614081352_modify_users.rb
+END
+20120601081635_create_departments.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/2130/OMSAD/development/db/migrate/20120601081635_create_departments.rb
+END
+20120616185705_modify_location_ownerships.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/1187/OMSAD/development/db/migrate/20120616185705_modify_location_ownerships.rb
+END
+20120715131152_create_course_statuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/4683/OMSAD/development/db/migrate/20120715131152_create_course_statuses.rb
+END
+20120628223910_modify_journal_publication.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/2400/OMSAD/development/db/migrate/20120628223910_modify_journal_publication.rb
+END
+20120601082431_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/18/OMSAD/development/db/migrate/20120601082431_create_users.rb
+END
+20120703215509_modify_users_table.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/2743/OMSAD/development/db/migrate/20120703215509_modify_users_table.rb
+END
+20120601081935_create_locations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/3536/OMSAD/development/db/migrate/20120601081935_create_locations.rb
+END
+20120710165939_create_faculty_member_collaborators.rb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/3823/OMSAD/development/db/migrate/20120710165939_create_faculty_member_collaborators.rb
+END
+20120705185601_create_ustudents.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/3019/OMSAD/development/db/migrate/20120705185601_create_ustudents.rb
+END
+20120715151154_add_fianancial_aid_status_to_fianancial_aids.rb
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/DSSD_Summer2012/!svn/ver/4726/OMSAD/development/db/migrate/20120715151154_add_fianancial_aid_status_to_fianancial_aids.rb
+END
+20120614130406_modify_start_end_date_conference_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/DSSD_Summer2012/!svn/ver/822/OMSAD/development/db/migrate/20120614130406_modify_start_end_date_conference_publications.rb
+END
+20120715024702_create_grade_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4644/OMSAD/development/db/migrate/20120715024702_create_grade_types.rb
+END
+20120601082342_create_students.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/db/migrate/20120601082342_create_students.rb
+END
+20120601081625_create_cpus.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/672/OMSAD/development/db/migrate/20120601081625_create_cpus.rb
+END
+20120713231936_add_configuration_id_to_conference_status.rb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/DSSD_Summer2012/!svn/ver/4380/OMSAD/development/db/migrate/20120713231936_add_configuration_id_to_conference_status.rb
+END
+20120715035238_modify_inventory_add_column.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/4534/OMSAD/development/db/migrate/20120715035238_modify_inventory_add_column.rb
+END
+20120703184256_create_financial_assets.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/2879/OMSAD/development/db/migrate/20120703184256_create_financial_assets.rb
+END
+20120601082512_create_workshop_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/727/OMSAD/development/db/migrate/20120601082512_create_workshop_publications.rb
+END
+20120713194947_add_attachment_document_to_research_assistants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/DSSD_Summer2012/!svn/ver/4345/OMSAD/development/db/migrate/20120713194947_add_attachment_document_to_research_assistants.rb
+END

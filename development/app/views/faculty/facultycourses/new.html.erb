@@ -1,0 +1,121 @@
+<script>
+  $(document).ready(function()
+  {
+    $("#faculty_course_sharedstatus_no").change(function()
+    {
+       $("#faculty_course_contribution").attr("disabled", "disabled");
+        
+    })
+    $("#faculty_course_sharedstatus_yes").change(function()
+    {
+      $("#faculty_course_contribution").removeAttr("disabled");
+    })
+
+    //Hide courses collection
+    $('#formFacultyCourses div#coursesCollection').hide();
+
+    $('#formFacultyCourses #faculty_course_semester_id').change(function(){
+        jQuery.ajax({
+          url: "/faculty/facultycourses/populate_courses",
+          async: false,
+          dataType: "json",
+          data:'mode=populate'+'&'+'id='+$('#formFacultyCourses #faculty_course_faculty_member_id').val()+'&'+'semid=' + $('#formFacultyCourses #faculty_course_semester_id').val(),
+          success: function(response)
+          {
+              //alert(response);
+               $("#faculty_course_course_id").get(0).options.length = 0;
+               $("#faculty_course_course_id").get(0).options[0] = new Option("Select course", "");
+                var i = 1;
+               $.each(response, function(index, item) {
+                      $("#faculty_course_course_id").get(0).options[i] = new Option(item, index);
+                      i++;
+                });
+                $('#formFacultyCourses div#coursesCollection').slideDown();
+          }
+          //error: function() { alert("Failed to load courses");}
+
+      });
+  });
+  });
+</script>
+<%= javascript_include_tag "faculty/facultyclientSideValidations.js" %>
+<div class="pageHeadingBar">
+  <h2>Add Course</h2>
+</div>
+<hr class="headingLineBreak"/>
+<%= form_for @faculty_course ,:html=>{:id=>"formFacultyCourses"},
+                                :url =>{ :controller => "faculty/facultycourses",
+                                           :action => "create"} do |f| %>
+<%= f.hidden_field :faculty_member_id , :value => params[:id]%>
+
+<div class="groupBox">
+  <div>
+   <table>
+     <tr>
+       <td class="labelDefinitionTerm">
+         Semester: <span class="requiredFieldAsterisk">*</span>
+       </td>
+       <td><%= f.collection_select(:semester_id,Semester.all,:id,:semester_name, {:prompt=>"Select semester"},:required=> 'true',:class=>'dropdown')%></td>
+       <td class="popupfieldErrorPlacement"></td>
+     </tr>
+   </table>
+  </div>
+  <div id="coursesCollection" class="coursesCollection">
+    <table>
+    <tr>
+      <td class="labelDefinitionTerm">
+        Course Name: <span class="requiredFieldAsterisk">*</span>
+      </td>
+      <td><%=f.collection_select(:course_id,@offeredcourses,:c_id,:c_name,{:prompt=>"Select course"},:required=> 'true',:class=>'dropdown')%></td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">
+        Number of students: <span class="requiredFieldAsterisk">*</span>
+      </td>
+      <td class="inputBoxPlacement">
+        <%= f.text_field :noofstudents,
+                                     :required=>true,
+                                     :class =>"inputTextbox"%>
+      </td>
+     <td class="popupfieldErrorPlacement"></td>
+    </tr>
+
+    <tr>
+      <td class="labelDefinitionTerm">Co-taught:
+      </td>
+      <td class="inputBoxPlacement" id="status_radio_button" >
+        <%=  f.radio_button :sharedstatus, 'Yes',:checked => true%> Yes
+         <%=  f.radio_button :sharedstatus, 'No'%> No
+      </td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">Contribution (%):
+      </td>
+      <td>
+        <%= f.text_field :contribution,
+                         :class =>"inputTextbox"%>
+      </td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">Offering:
+      </td>
+      <td class="inputBoxPlacement">
+          <%= f.select(:offering, options_for_select([['First Time'],['Repeat']], @faculty_course.offering.blank?? 'In progress' : @faculty_course.offering ),{} ,:class=>'dropdown') %>
+      </td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    </table>
+    
+  </div>
+ 
+ 
+</div>
+<div class="bottomButtons">
+  <%=submit_tag("Add")%>
+</div>
+ <br/>
+ <%= link_to "Add a new course", :controller => "GraduateStudents/courses", :action => "new"%>
+<%end%>

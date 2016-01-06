@@ -1,0 +1,72 @@
+<%= javascript_include_tag "graduate_students/ajaxResponders.js" %>
+<div class="pageHeadingBar">
+    <h2>To proceed please enroll this student in semester</h2>
+</div>
+<hr class="headingLineBreak"/>
+
+<div class="messages" style="display: none;">
+  <p></p>
+</div>
+
+<div class="errors" style="display: none;">
+  <p></p>
+</div>
+
+<div class="clearFloatingAndStartFromBelow"></div>
+
+<%unless @semestersoffered.blank?%>
+  <%= nested_form_for [:GraduateStudents, @studentsemester], :html=>{  :id=>''} do |f|%>
+    <%= f.hidden_field :student_id , :value => params[:id]%>
+    <input type="hidden" id="mode" name="mode" value="<%= params[:mode] %>" />
+    <div class="groupBox">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Semester:</td>
+            <td class="inputBoxPlacement"><%= f.collection_select(:semester_id,Semester.all,:id,:semester_name, {}, :class=>'dropdown')%></td>
+            <td class="fieldErrorPlacement"><%#= @studentsemester.errors[:semester_id][0] %></td>
+          </tr>
+          <%#*<tr>%>
+            <%#*<td class="labelDefinitionTerm">Semester GPA:%>
+            <%#*</td>%>
+            <%#*<td class="inputBoxPlacement">%>
+<%#=f.text_field :semestergpa , :class=>'inputTextbox', :title=>"Enter digits only"%>
+            <%#*</td>%>
+            <%#*<td class="fieldErrorPlacement">%>
+<%#= @studentsemester.errors[semestergpa][0] %>
+            <%#*</td>%>
+          <%#*</tr>%>
+          <%#*<tr>%>
+            <%#*<td class="labelDefinitionTerm">%>
+              <%#*Semester status:</td>%>
+            <%#*<td class="inputBoxPlacement">%>
+<%#= f.select(:status, options_for_select([['In progress'],['Completed'],['Semester off'],['Dropped'],['Withdraw'],['Registered but not enrolled']], @studentsemester.status.blank?? 'In progress' : @studentsemester.status ),{} ,:class=>'dropdown') %>
+            <%#*</td>%>
+          <%#*</tr>%>
+          <%#*<tr>%>
+            <%#*<td class="labelDefinitionTerm">Upload Document:%>
+            <%#*</td>%>
+              <%#= f.fields_for :assets do |p| %>
+                 <%#*<td>%>
+<%#=  render "asset",:tm=>p%>
+                 <%#*</td>%>
+              <%# end %>
+          <%#*</tr>%>
+          <%#*<tr>%>
+            <%#*<td>%>
+
+            <%#*</td>%>
+            <%#*<td>%>
+              <%#*<strong>%>
+<%#= f.link_to_add "Add more", :assets %>
+              <%#*</strong>%>
+            <%#*</td>%>
+          <%#*</tr>%>
+        </table>
+     </div>
+     <div class="bottomButtons">
+         <%=f.submit "Enroll"%>
+     </div>
+  <%end%>
+<%else%>
+  No new semester is available right now. To continue, please <%= link_to "add a semester", :controller => "semesters", :action => "new"%>
+<%end%>

@@ -1,0 +1,94 @@
+<%= javascript_include_tag "graduate_students/gradStudentsFlexigrids.js" %>
+<%= stylesheet_link_tag "common" %>
+
+<div class="pageHeadingBar">
+  <h1>Requirements report</h1>
+</div>
+<hr class="headingLineBreak"/>
+
+<% @milestone.examinations.each do |ex| %>
+  <% if ex.examinationname == "NTS" and ex.examinationstatus == "Cleared"%>
+    <% flash[:nts] = "pass" %>
+  <%end%>
+<%end%>
+
+<% @milestone.examinations.each do |e| %>
+  <% if e.examinationname == "GRE" and e.examinationstatus == "Cleared"%>
+    <% flash[:gre] = "pass" %>
+  <%end%>
+<%end%>
+
+<% @milestone.examinations.each do |e| %>
+  <% if e.examinationname == "Qualifier" and e.examinationstatus == "Cleared"%>
+    <%  flash[:qua] = "pass" %>
+  <%end%>
+<%end%>
+
+<div id="phdRequirementsReport" class="groupBox">
+  <table class="flexPhDRequirements">
+     <tr>
+      <td class="tableText">NTS</td>
+      <% if  flash.now[:nts] == "pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <% else %>
+          <td class=""><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+    <tr>
+      <td class="tableText">GRE</td>
+       <% if  flash.now[:gre] == "pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+     <tr>
+       <td class="tableText">Qualifier</td>
+      <% if  flash.now[:qua] == "pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+      <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+    <tr>
+      <td class="tableText">Proposal defense</td>
+      <% if @milestone.qualifierstatus == "Pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+    <tr>
+      <td class="tableText">Publications</td>
+      <% if @student.user.user_publications.count() == 0 %>
+         <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <%end%>
+    </tr>
+    <tr>
+       <td class="tableText">Thesis defense</td>
+       <% if @milestone.thesisdefence == "" %>
+         <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <%end%>
+    </tr>
+  </table>
+</div>
+
+
+<script>
+ $(function() {
+   var imageWidth = $(".iconTickBox:first").width();
+   $(".iconTickBox, .iconHyphen").each(function() {
+     $(this).width(0);
+     $(this).show();
+   });
+
+  $(".iconTickBox, .iconHyphen").each(function(index) {
+    var that = this;
+    setTimeout(function() {$(that).animate({width: imageWidth}, { duration: 500 });},index*500);
+   });
+ });
+</script>

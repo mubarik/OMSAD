@@ -1,0 +1,69 @@
+<%= grid(@ms_thesis_supervisions_grid,:show_filters=>:always) do |g|
+  g.blank_slate  do
+    "There are no records available"
+  end
+
+  g.column :column_name => 'Roll No',
+           :attribute_name=>"rollno",:in_csv=>false,
+           :model_class=>"Student" do |ms_course|
+           link_to ms_course.student.rollno, "/GraduateStudents/students/"+(ms_course.student.user.id).to_s
+           
+  end
+  g.column :column_name => 'Student Name',
+           :attribute_name=>"name",:in_csv=>false,
+           :model_class=>"User" do |ms_course|
+            link_to ms_course.student.user.name, "/GraduateStudents/students/"+(ms_course.student.user.id).to_s
+
+  end
+  g.column :column_name => 'Roll No',
+           :attribute_name=>"rollno",:in_html=>false,
+           :model_class=>"Student" do |ms_course|
+           ms_course.student.rollno
+
+  end
+  g.column :column_name => 'Student Name',
+           :attribute_name=>"name",:in_html=>false,
+           :model_class=>"User" do |ms_course|
+           ms_course.student.user.name
+  end
+  g.column :column_name => 'Title',
+           :attribute_name=> "title",
+           :model_class=>"MsCourse" do |ms_course|
+            ms_course.title.blank?? 'Not provided' :ms_course.title
+
+  end
+
+  g.column :column_name => 'Part 1 Year',
+           :attribute_name=>"year",
+           :model_class=>"Semester" do |ms_course|
+           if ms_course.student_semester_part1.blank?
+            'Not provided'
+           else
+             ms_course.student_semester_part1.semester.year.blank?? 'Not provided' :ms_course.student_semester_part1.semester.year
+           end
+
+  end
+
+  g.column :column_name => 'Part 2 Year',
+           :attribute_name=>"year",
+           :model_class=>"Semester" do |ms_course|
+            if ms_course.student_semester_part2.blank?
+            'Not provided'
+           else
+            ms_course.student_semester_part2.semester.year.blank?? 'Not provided' :ms_course.student_semester_part2.semester.year
+           end
+
+  end
+
+  g.column :column_name => 'Proposal Defence Date',
+           :attribute_name=> "proposaldefencedate",
+           :model_class=>"MsCourse" do |ms_course|
+            ms_course.proposaldefencedate.blank?? 'Not provided' :ms_course.proposaldefencedate
+
+  end
+  g.column :column_name => 'Thesis Defence Date',
+           :attribute_name=>"thesisdefencedate",
+           :model_class=>"MsCourse" do |ms_course|
+            ms_course.thesisdefencedate.blank?? 'Not provided' :ms_course.thesisdefencedate
+  end
+end -%>

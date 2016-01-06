@@ -1,0 +1,811 @@
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Student's Details</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <div class="moreInfodisplayPicWithTextWrap">
+    <%#imagePath=""%>
+    <%#if imagePath != ""%>
+        <%#=image_tag(imagePath, :class=>'displayPic')%>
+    <%#elsif @student.user.gender == 'Male'%>
+        <%#=image_tag("", :alt=>'', :class=>'displayPicMale')%>
+    <%#else%>
+        <%#=image_tag("", :alt=>'', :class=>'displayPicFemale')%>
+    <%#end%>
+
+    <%if @student.user.photo_file_name.nil? %>
+      <%if @student.user.gender == 'Male'%>
+          <%=image_tag("user.png", :class=>'profilePicture')%>
+      <%else%>
+          <%=image_tag("female_user.png", :class=>'profilePicture')%>
+      <%end%>
+    <%else%>
+      <%=link_to(image_tag(@student.user.photo, :class=>'profilePicture'),@student.user.photo.url(:original), {:class => "fancybox" })%>
+    <%end%>
+
+    <h1><%=@student.user.name%></h1>
+  </div>
+
+  <div class="clearFloatingAndStartFromBelow"></div>
+
+
+  <div class="expandingBlock">
+
+
+
+    <%#Basic Information Expander%>
+
+    <div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Basic Information</h2>
+
+      <div class="expander">
+        <table>
+          <tr><td class="labelDefinitionTerm">Roll number:</td><td class="labelDefinitionDetails"><%=@student.rollno.blank?? 'Not provided' : @student.rollno%></td></tr>
+          <tr><td class="labelDefinitionTerm">Date of birth:</td><td class="labelDefinitionDetails"><%=@student.user.dateofbirth.blank?? 'Not provided' : @student.user.dateofbirth%></td></tr>
+          <tr><td class="labelDefinitionTerm">Gender:</td><td class="labelDefinitionDetails"><%=@student.user.gender.blank?? 'Not provided' : @student.user.gender %></td></tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <%#Contact Information Expander%>
+
+    <div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Contact Information</h2>
+
+      <div class="expander">
+        <table>
+            <tr><td class="labelDefinitionTerm">Address:</td><td class="labelDefinitionDetails"><%=@student.user.address.blank?? 'Not provided' : @student.user.address%></td></tr>
+            <tr><td class="labelDefinitionTerm">Contact number:</td><td class="labelDefinitionDetails"><%=@student.user.contactnumber.blank?? 'Not provided' : @student.user.contactnumber%></td></tr>
+            <tr><td class="labelDefinitionTerm">Email address:</td><td class="labelDefinitionDetails"><%=@student.user.email.blank?? 'Not provided' : @student.user.email%></td></tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <%#Academic Information Expander%>
+
+    <div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Academic Information</h2>
+
+      <div class="expander">
+          <table>
+            <tr><td class="labelDefinitionTerm">Department:</td><td class="labelDefinitionDetails"><%=@student.user.department.name rescue 'No department found'%></td></tr>
+            <tr><td class="labelDefinitionTerm">Credit hours taken:</td><td class="labelDefinitionDetails"><%=@student.credithrstaken.blank?? 'Not provided' : @student.credithrstaken%></td></tr>
+            <tr><td class="labelDefinitionTerm">CGPA:</td><td class="labelDefinitionDetails"><%=@student.cgpa.blank?? 'Not provided' : @student.cgpa%></td></tr>
+            <tr><td class="labelDefinitionTerm">Current semester:</td><td class="labelDefinitionDetails"><%=@student.currentsemester.blank?? 'Not provided' : @student.currentsemester %></td></tr>
+            <tr><td class="labelDefinitionTerm">Degree level:</td><td class="labelDefinitionDetails"><%=@student.degreelevel%></td></tr>
+            <tr><td class="labelDefinitionTerm">Probation status:</td><td class="labelDefinitionDetails"><%=@student.probationstatus%></td></tr>
+            <%#*<tr><td class="labelDefinitionTerm">Degree type:</td><td class="labelDefinitionDetails"><%=@student.degreetype%>
+              <%#*</td></tr>%>
+            <tr><td class="labelDefinitionTerm">Degree status:</td><td class="labelDefinitionDetails"><%=@student.degreestatus%></td></tr>
+            <tr><td class="labelDefinitionTerm">Admission date:</td><td class="labelDefinitionDetails"><%=@student.admissiondate.blank?? 'Not provided' : @student.admissiondate%></td></tr>
+            <%#*<tr><td class="labelDefinitionTerm">Graduation date:</td><td class="labelDefinitionDetails"><%=@student.graduationdate.blank?? 'Not provided' : @student.graduationdate%>
+              <%#*</td></tr>%>
+         </table>
+      </div>
+    </div>
+
+
+    
+    <%#Financial Aid Information Expander%>
+
+    <% if @student.degreelevel == 'MS' %>
+      <div class="expanderHeaderBar" id="financialAidExpander">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+        <h2>Financial Aid Information</h2>
+
+        <%if @viewing == "financialaid" %>
+          <script>
+            $(function() {
+              closeFirstExpander();
+              $("#financialAidExpander").children('.expander').slideDown('slow');
+              $("#financialAidExpander").children('img').fadeOut('slow');
+            });
+          </script>
+        <%end%>
+
+        <div class="expander">
+          <% if !flash[:financialerror].blank? %>
+              <div class="errors">
+                <p><%=flash[:financialerror]%></p>
+              </div>
+              <div class="clearFloatingAndStartFromBelow"></div>
+            <%end%>
+
+          <%= link_to(image_tag("", :alt => '', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Add financial aid'), {:controller => :financial_aids, :action => 'new', :id => @student.id}, {:class => "fancybox" }) %>
+          <br/><br/>
+
+          <%@student.StudentSemester.each do |sem| %>
+            <%unless sem.financial_aid.nil? %>
+              <div class="groupBox" style="margin:6px auto;">
+                <div class ="rightImageButtons">
+                  <%= link_to(image_tag("", :alt => '', :class=>'iconEditButton', :title=>'Edit financial aid'), {:controller => :financial_aids, :action => 'edit', :id => sem.id}, {:class => "fancybox" }) %>
+                  <%= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete financial aid'), {:controller => :financial_aids, :action => 'destroy', :id => sem.id}, :method => 'delete') %>
+                </div>
+                <table style="float:left;">
+                  <tr>
+                    <td style="font-size: medium; font-weight: bold;">Semester:</td>
+                    <td style="font-size: medium; font-weight: bold;"><%=sem.semester.offering.to_s+" "+sem.semester.year.to_s rescue 'Semester Not Found' %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Status:</td>
+                    <td class="labelDefinitionDetails"><%=  sem.financial_aid.status.blank?? 'Not provided' : sem.financial_aid.status %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Amount:</td>
+                    <td class="labelDefinitionDetails"><%=  sem.financial_aid.amount %></td>
+                  </tr>
+                  <% unless sem.financial_aid.financial_assets.blank? %>
+                    <tr><td class="labelDefinitionTerm">Document(s):</td>
+                     <% sem.financial_aid.financial_assets.each do |d| %>
+                      <% if !d.asset_file_name.blank? %>
+                       <td class="labelDefinitionDetails"><%= link_to d.asset_file_name.blank?? '' : d.asset_file_name,  d.asset.url(:original, false)  %></td></tr>
+                       <td></td>
+                      <%end%>
+                     <% end %>
+                    </tr>
+                  <%end%>
+                </table>
+                <div class="clearFloatingAndStartFromBelow"></div>
+              </div>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+
+    <%#Regular Courses Information Expander%>
+
+    <div class="expanderHeaderBar" id="semesterWiseAcademicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Regular Courses Information</h2>
+
+      <%if @viewing == "studentsemester" %>
+        <script>
+          $(function() {
+            closeFirstExpander();
+            $("#semesterWiseAcademicInfoExpander").children('.expander').slideDown('slow');
+            $("#semesterWiseAcademicInfoExpander").children('img').fadeOut('slow');
+          });
+        </script>
+      <%end%>
+
+      <div class="expander">
+        
+        <% if !flash[:uploaderror].blank? %>
+            <div class="errors">
+              <p><%=flash[:uploaderror]%></p>
+            </div>
+            <div class="clearFloatingAndStartFromBelow"></div>
+
+          <%end%>
+                 <% if !flash[:uploadSmestererror].blank? %>
+            <div class="errors">
+              <p><%=flash[:uploadSmestererror]%></p>
+            </div>
+            <div class="clearFloatingAndStartFromBelow"></div>
+          <%end%>
+
+        <%= link_to(image_tag("", :alt=>'', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Add student semester and course'), {:controller => :student_courses, :action => 'new', :id => @student.id}, {:class => "fancybox" })%>
+        <%#= link_to(image_tag("", :alt => '', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Add new semester'), {:controller => :student_semesters, :action => 'new', :id => @student.id}, {:class => "fancybox" }) %>
+        <br/><br/>
+           
+        <%@student.StudentSemester.each do |sem| %>
+        <%  unless !courses_exsists(sem.semester_id,@student.id)%>
+        <%#  unless !thesis_or_independentstudies_exsists(sem.id,@student.id)%>
+          <div class="groupBox" style="margin:6px auto;">
+            <div class ="rightImageButtons">
+              <%= link_to(image_tag("", :alt => '', :class=>'iconEditButton', :title=>'Edit semester'), {:controller => :student_semesters, :action => 'edit', :id => sem.id}, {:class => "fancybox" }) %>
+              <%= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete semester'), {:controller => :student_semesters, :action => 'destroy', :id => sem.id}, :method => 'delete') %>
+            </div>
+            <table style="float:left;">
+              <tr>
+                <td style="font-size: medium; font-weight: bold;">Semester:</td>
+                <td style="font-size: medium; font-weight: bold;"><%=sem.semester.offering.to_s+" "+sem.semester.year.to_s rescue 'Semester Not Found' %></td>
+              </tr>
+              <tr>
+                <td class="labelDefinitionTerm">GPA:
+                </td>
+                <td class="labelDefinitionDetails"><%=sem.semestergpa.blank?? 'Not provided' : sem.semestergpa %>
+                </td>
+              </tr>
+              <tr>
+                <td class="labelDefinitionTerm">Status:
+                </td>
+                <td class="labelDefinitionDetails"><%=sem.status.blank?? 'Not provided' :sem.status%>
+                </td>
+              </tr>
+              <% unless sem.assets.blank? %>
+                <tr><td class="labelDefinitionTerm">Document(s):
+                  </td>
+                <% sem.assets.each do |d| %>
+                  <% if !d.asset_file_name.blank? %>
+                    <td class="labelDefinitionDetails"><%= link_to d.asset_file_name.blank?? '' : d.asset_file_name,  d.asset.url(:original, false)  %> 
+                    </td>
+                </tr>
+                <tr> <td> </td>
+                  <%end%>
+                <%end%>
+              <%end%>
+            </table>
+
+            <div class="clearFloatingAndStartFromBelow"></div>
+
+            <%#= link_to(image_tag("", :alt=>'', :class=>'iconAddButton', :style=>'margin-left:10px; margin-top:15px;', :title=>'Add course'), {:controller => :student_courses, :action => 'new', :id => @student.id ,:seid => sem.semester_id}, {:class => "fancybox" })%>
+
+            <div class="clearFloatingAndStartFromBelow"></div>
+            <%unless @student.StudentCourse.blank?%>
+              <table class="flexStudentCourses">
+                <%@student.StudentCourse.each do |studentcourse| %>
+                  <% if studentcourse.semester_id == sem.semester_id %>
+                    <tr>
+                      <td><%=studentcourse.course.coursecode.blank?? 'Code not found' : studentcourse.course.coursecode%></td>
+                      <td><%=studentcourse.course.coursename.blank?? 'Name not found' : studentcourse.course.coursename%></td>
+                      <td><%=studentcourse.coursegrade%></td>
+                      <td><%=studentcourse.coursestatus%></td>
+                      <td>
+                        <% unless studentcourse.course_assets.blank? %>
+                          <% studentcourse.course_assets.each do |d| %>
+                            <% if !d.asset_file_name.blank? %>
+                              <%= link_to d.asset_file_name.blank?? '' : d.asset_file_name,  d.asset.url(:original, false)  %> <br/>
+                            <%end%>
+                          <% end %>
+                        <%end%>
+                      </td>
+                      <td><%= link_to "Edit",{:controller => :student_courses, :action => 'edit', :id => studentcourse.id}, {:class => "fancybox" } %></td>
+                      <td><%= link_to "Delete",{:controller => :student_courses, :action => 'destroy', :id => studentcourse.id},:method => 'delete' %> </td>
+                    </tr>
+                  <%end%>
+                <%end%>
+              </table>
+            <%end%>
+          </div>
+        <%end%>
+        <%end%>
+      </div>
+    </div>
+
+
+
+
+    <%#PhD Details Expander%>
+
+    <% unless @student.degreelevel == 'MS' %>
+     <div class="expanderHeaderBar" id="PhdDetail">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+        <h2>PhD Details</h2>
+
+          <%if @viewing == "PhdDetail" %>
+            <script>
+              $(function() {
+                closeFirstExpander();
+                $("#PhdDetail").children('.expander').slideDown('slow');
+                $("#PhdDetail").children('img').fadeOut('slow');
+              });
+            </script>
+          <%end%>
+        
+         <div class="expander">
+            <% unless !@student.milestone.blank? %>
+                <%= link_to(image_tag("", :alt => '', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Add'), {:controller => :milestones, :action => 'new', :id => @student.id}, {:class => "" }) %>
+            <%else%>
+                <div class ="rightImageButtons" style="margin-top:-6px;">
+                  <table>
+                    <tr>
+                      <td><%= link_to(image_tag("", :alt => '', :class=>'iconEditButton', :title=>'Edit'), {:controller => :milestones, :action => 'edit', :id => @student.milestone.id}, {:class => "" }) %></td>
+                      <td><%= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete'), {:controller => :milestones, :action => 'destroy', :mscid => @student.milestone.id}, :method => 'delete') %></td>
+                    </tr>
+                    <tr>
+                      <td><%= link_to(image_tag("", :alt => '', :class=>'iconReport', :title=>'Generate PhD Report document'), {:controller => :milestones, :action => 'show', :id => @student.id,:mode => "report" }) %></td>
+                      <td><%= link_to(image_tag("", :alt => '', :class=>'iconReportButton', :title=>'View PhD Requirements Report'), {:controller => :milestones, :action => 'show', :id => @student.id}, {:class => "fancybox" }) %></td>
+                    </tr>
+                  </table>
+                </div>
+
+                <table style="float:left;">
+                  <tr>
+                    <td class="labelDefinitionTerm">Title:</td>
+                    <td class="labelDefinitionDetails"><%=@student.milestone.title%></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Abstract:</td>
+                    <td class="labelDefinitionDetails"><%=@student.milestone.supervisorcomments.blank?? 'Not provided' : @student.milestone.supervisorcomments %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Supervisor:</td>
+                    <td class="labelDefinitionDetails"><%=@student.milestone.faculty_member.user.name rescue 'Not provided' %></td>
+                  </tr>
+                </table>
+
+                <div class="clearFloatingAndStartFromBelow"></div><br/>
+
+                <%unless @student.milestone.cosupervisors.blank?%>
+                <table class="flexPhDcosupervisor">
+                  <%(@student.milestone.cosupervisors).each do |supervisor| %>
+                    <% if supervisor.affiliationwithlums%>
+                      <tr>
+                        <td><%=supervisor.faculty_member.user.name.blank?? 'Not provided' : supervisor.faculty_member.user.name%></td>
+                        <td><%=supervisor.faculty_member.designation.blank?? 'Not provided' : supervisor.faculty_member.designation%></td>
+                        <td>LUMS</td>
+                        <td><%=supervisor.faculty_member.user.email.blank?? 'Not provided' : supervisor.faculty_member.user.email%></td>
+                      </tr>
+                     <%elsif %>
+                      <tr>
+                        <td><%=supervisor.cosupervisorname.blank?? 'Not provided' : supervisor.cosupervisorname%></td>
+                        <td><%=supervisor.designation.blank?? 'Not provided' : supervisor.designation%></td>
+                        <td>External</td>
+                        <td><%=supervisor.email.blank?? 'Not provided' : supervisor.email%></td>
+                      </tr>
+                    <%end%>
+                  <%end%>
+                </table><br/>
+                <%else%>
+                <%#=No co-supervisor%>
+                <%end%>
+                
+                <%unless @student.milestone.examinations.blank?%>
+                <table class="flexPhDexam">
+                  <%(@student.milestone.examinations).each do |nts| %>
+                      <tr>
+                        <td><%=nts.examinationname.blank?? 'Not provided' : nts.examinationname%></td>
+                        <td><%=nts.examinationstatus.blank?? 'Not provided' : nts.examinationstatus%></td>
+                        <td><%=nts.examinationdate.blank?? 'Not provided' : nts.examinationdate%></td>
+                      </tr>
+
+                  <%end%>
+                </table><br/>
+                <%else%>
+                  <%#=No examination information available%>
+                <%end%>
+
+
+                <fieldset>
+                  <legend><strong>Proposal:</strong></legend>
+                  <table>
+                    <tr>
+                      <td class="labelDefinitionTerm">Defense Status:</td>
+                      <td class="labelDefinitionDetails"><%=@student.milestone.qualifierstatus %></td>
+                    </tr>
+                    <tr>
+                      <td class="labelDefinitionTerm">Defense Date:</td>
+                      <td class="labelDefinitionDetails"><%=@student.milestone.proposalsubmission.blank?? "Not provided" :@student.milestone.proposalsubmission %></td>
+                    </tr>
+                  </table><br/>
+
+                  <div class="clearFloatingAndStartFromBelow"></div>
+
+                  <%unless @student.milestone.proposal_committees.blank?%>
+                  <table class="flexPhDProposalCommittee">
+                    <%(@student.milestone.proposal_committees).each do |supervisor| %>
+                      <% if supervisor.affiliationwithlums%>
+                        <tr>
+                          <td><%=supervisor.faculty_member.user.name.blank?? 'Not provided' : supervisor.faculty_member.user.name%></td>
+                          <td><%=supervisor.faculty_member.designation.blank?? 'Not provided' : supervisor.faculty_member.designation%></td>
+                          <td>LUMS</td>
+                          <td><%=supervisor.faculty_member.user.email.blank?? 'Not provided' : supervisor.faculty_member.user.email%></td>
+                         </tr>
+                       <%else%>
+                        <tr>
+                          <td><%=supervisor.cosupervisorname.blank?? 'Not provided' : supervisor.cosupervisorname%></td>
+                          <td><%=supervisor.designation.blank?? 'Not provided' : supervisor.designation%></td>
+                          <td>External</td>
+                          <td><%=supervisor.email.blank?? 'Not provided' : supervisor.email%></td>
+                        </tr>
+                      <%end%>
+                    <%end%>
+                  </table>
+                  <%else%>
+                  <%#=No committee members assigned%>
+                  <%end%>
+                  </fieldset><br/>
+                 
+                <fieldset>
+                  <legend><strong>Thesis:</strong></legend>
+                  <table>
+                    <tr>
+                      <td class="labelDefinitionTerm">Submission Date:</td>
+                      <td class="labelDefinitionDetails"><%=@student.milestone.thesisdefence.blank?? "Not provided" :@student.milestone.thesisdefence %></td>
+                    </tr>
+                  </table><br/>
+
+                  <div class="clearFloatingAndStartFromBelow"></div>
+
+                <%unless @student.milestone.thesis_committees.blank?%>
+                  <table class="flexPhDThesisCommittee">
+                    <%(@student.milestone.thesis_committees).each do |supervisor| %>
+                      <% if supervisor.affiliationwithlums%>
+                        <tr>
+                          <td><%=supervisor.faculty_member.user.name.blank?? 'Not provided' : supervisor.faculty_member.user.name%></td>
+                          <td><%=supervisor.faculty_member.designation.blank?? 'Not provided' : supervisor.faculty_member.designation%></td>
+                          <td>LUMS</td>
+                          <td><%=supervisor.faculty_member.user.email.blank?? 'Not provided' : supervisor.faculty_member.user.email%></td>
+                        </tr>
+                       <%else  supervisor.affiliationwithlums%>
+                        <tr>
+                          <td><%=supervisor.cosupervisorname.blank?? 'Not provided' : supervisor.cosupervisorname%></td>
+                          <td><%=supervisor.designation.blank?? 'Not provided' : supervisor.designation%></td>
+                          <td>External</td>
+                          <td><%=supervisor.email.blank?? 'Not provided' : supervisor.email%></td>
+                        </tr>
+                      <%end%>
+                    <%end%>
+                  </table>
+                  <%else%>
+                  <%#=No thesis committee members assigned yet%>
+                  <%end%>
+                </fieldset>
+            <%end%>
+          </div>
+         </div>
+
+
+     <% unless @student.milestone.blank? %>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+        <h2>PhD Reports</h2>
+
+         <div class="expander">        
+           <% unless @student.milestone.phd_reports.blank? %>
+              <table class="flexPhDreport">
+                <%(@student.milestone.phd_reports).each do |nts| %>
+                    <tr>
+                      <td><%=nts.reporttype.blank?? 'Not provided' : nts.reporttype%></td>
+                      <td><%=nts.reportstatus.blank?? 'Not provided' : nts.reportstatus%></td>
+                      <td><%=nts.reportdate.blank?? 'Not provided' : nts.reportdate%></td>
+                    </tr>
+                <%end%>
+              </table>
+            <% else %>
+              <h4>No report added yet</h4>
+            <% end %>
+         </div>
+       </div>
+     <%end%>
+
+     <% unless @student.milestone.blank? %>
+        <div class="expanderHeaderBar">
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+            <h2>PhD Grants</h2>
+
+            <div class="expander">
+              <div class ="rightImageButtons">
+                <%= link_to(image_tag("", :alt => '', :class=>'iconEditButton', :title=>'Edit'), {:controller => :milestones, :action => 'edit', :id => @student.milestone.id}, {:class => "" }) %>
+              </div>
+              <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Grant Type:</td>
+                  <td class="labelDefinitionDetails"><%=@student.milestone.granttype.blank?? 'Not Provided' : @student.milestone.granttype%></td>
+                </tr>
+                 <% if @student.milestone.granttype == 'Internal' %>
+                <td class="labelDefinitionTerm">Grant Provider:</td>
+                <td class="labelDefinitionDetails"><%=@student.milestone.research_grant_id.blank?? 'Not Provided' : @student.milestone.research_grant.title %></td>
+                <%else%>
+
+                <tr>
+                  <td class="labelDefinitionTerm">Grant Name:</td>
+                  <td class="labelDefinitionDetails"><%=@student.milestone.grantname.blank?? 'Not provided' : @student.milestone.grantname %></td>
+                </tr>
+                <%end%>
+                <tr>
+                  <td class="labelDefinitionTerm">Grant Status:</td>
+                  <td class="labelDefinitionDetails"><%=@student.milestone.grantstatus.blank?? 'Not provided' : @student.milestone.grantstatus %></td>
+                </tr>
+              </table><br/>
+                 <% unless @student.milestone.student_grants.blank?  %>
+                  <% if @student.milestone.granttype == 'Internal' %>
+                    <table class="flexPhDInternalGrant">
+                      <%(@student.milestone.student_grants).each do |i| %>
+                          <tr>
+                            <td><%=i.fundingmonth.blank?? 'Not provided' : i.fundingmonth%></td>
+                            <td><%=i.totalamount.blank?? 'Not provided' : i.totalamount%></td>
+                          </tr>
+                      <%end%>
+                     </table>
+                   <%else%>
+                     <table class="flexPhDExternalGrant">
+                       <%(@student.milestone.student_grants).each do |e| %>
+                        <tr>
+                          <td><%=e.fundingmonth.blank?? 'Not provided' : e.fundingmonth%></td>
+                          <td><%=e.totalamount.blank?? 'Not provided' : e.totalamount%></td>
+                          <td><%=e.usedamount.blank?? 'Not provided' : e.usedamount%></td>
+                          <td><%=e.remainingamount.blank?? 'Not provided' : e.remainingamount%></td>
+                        </tr>
+                       <%end%>
+                     </table>
+                   <%end%>
+                <% else %>
+                <p>No grant provided yet</p>
+                <% end %>
+              </div>
+          </div>
+
+        <%end%>
+    <%else%>
+
+
+      <%#Ms Thesis/Project Information Expander%>
+
+        <div class="expanderHeaderBar" id="msInfoExpander">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+          <h2>Thesis / Project Information</h2>
+
+          <%if @viewing == "msthesis" %>
+            <script>
+              $(function() {
+                closeFirstExpander();
+                $("#msInfoExpander").children('.expander').slideDown('slow');
+                $("#msInfoExpander").children('img').fadeOut('slow');
+              });
+            </script>
+          <%end%>
+          <div class="expander">
+            <% unless !@student.ms_course.blank? %>
+              <%unless @student.StudentSemester.blank?%>
+                <%= link_to(image_tag("", :alt => '', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Add'), {:controller => :ms_courses, :action => 'new', :id => @student.id}, {:class => "" }) %>
+              <%else%>
+                <%= link_to(image_tag("", :alt => '', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Enroll student in semester'), {:controller => :student_semesters, :action => 'new', :id => @student.id,:mode=>"mscourses"}, {:class => "fancybox" }) %>
+              <%end%>
+              <br/><br/>
+            <%else%>
+              <div class="groupBox" style="margin:6px auto;">
+                <div class ="rightImageButtons">
+                  <%= link_to(image_tag("", :alt => '', :class=>'iconEditButton', :title=>'Edit'), {:controller => :ms_courses, :action => 'edit', :id => @student.ms_course.id}, {:class => "" }) %>
+                  <%= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete'), {:controller => :ms_courses, :action => 'destroy', :mscid => @student.ms_course.id}, :method => 'delete') %>
+                </div>
+                <table style="float:left;">
+                  <tr>
+                    <td class="labelDefinitionTerm">Title:</td>
+                    <td class="labelDefinitionDetails"><%=@student.ms_course.title%></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Type:</td>
+                    <td class="labelDefinitionDetails"><%=@student.ms_course.coursetype rescue 'Not provided' %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Supervisor:</td>
+                    <td class="labelDefinitionDetails"><%=@student.ms_course.faculty_member.user.name rescue 'Not provided' %></td>
+                  </tr>
+                  <tr>
+                    <%if @student.ms_course.coursetype == 'Project' %>
+                    <td class="labelDefinitionTerm">Semester:</td>
+                    <%else%>
+                    <td class="labelDefinitionTerm">Part1 semester:</td>
+                    <%end%>
+                    <td class="labelDefinitionDetails"><%=@student.ms_course.student_semester_part1.semester.offering.to_s+" "+@student.ms_course.student_semester_part1.semester.year.to_s rescue 'Semester Not Found' %></td>
+                  </tr>
+                  <%unless @student.ms_course.student_semester_part2.blank? %>
+                    <tr>
+                      <td class="labelDefinitionTerm">Part2 semester:</td>
+                      <td class="labelDefinitionDetails"><%=@student.ms_course.student_semester_part2.semester.offering.to_s+" "+@student.ms_course.student_semester_part2.semester.year.to_s rescue 'Semester Not Found' %></td>
+                    </tr>
+                  <%end%>
+                </table>
+                <div class="clearFloatingAndStartFromBelow"></div>
+
+                <%= link_to(image_tag("", :alt=>'', :class=>'iconAddButton', :style=>'margin-left:10px; margin-top:15px;', :title=>'Add supervisor'), {:controller => :ms_courses, :action => 'new',:id => @student.ms_course.id,:mode=>'supervisor'}, {:class => "fancybox" })%>
+
+                <div class="clearFloatingAndStartFromBelow"></div>
+                <%unless @student.ms_course.cosupervisors.blank?%>
+                  <table class="flexMsThesis">
+                    <%(@student.ms_course.cosupervisors).each do |supervisor| %>
+                      <% if supervisor.affiliationwithlums%>
+                         <tr>
+                          <td><%=supervisor.faculty_member.user.name.blank?? 'Not provided' : supervisor.faculty_member.user.name%></td>
+                          <td><%=supervisor.faculty_member.designation.blank?? 'Not provided' : supervisor.faculty_member.designation%></td>
+                          <td>Lums</td>
+                          <td><%=supervisor.faculty_member.user.email.blank?? 'Not provided' : supervisor.faculty_member.user.email%></td>
+                          <td><%= link_to "Delete",{:controller => :ms_courses, :action => 'destroy', :id=>supervisor.id,:mscid=>@student.ms_course.id,:mode=>'supervisor'},:method => 'delete' %> </td>
+                        </tr>
+                       <%else%>
+                        <tr>
+                          <td><%=supervisor.cosupervisorname.blank?? 'Not provided' : supervisor.cosupervisorname%></td>
+                          <td><%=supervisor.designation.blank?? 'Not provided' : supervisor.designation%></td>
+                          <td>External</td>
+                          <td><%=supervisor.email.blank?? 'Not provided' : supervisor.email%></td>
+                          <td><%= link_to "Edit",{:controller => :ms_courses, :action => 'edit', :id=>supervisor.id,:mscid=>@student.ms_course.id,:mode=>'supervisor'}, {:class => "fancybox" } %></td>
+                          <td><%= link_to "Delete",{:controller => :ms_courses, :action => 'destroy',:id=>supervisor.id,:mscid=>@student.ms_course.id,:mode=>'supervisor'},:method => 'delete' %> </td>
+                        </tr>
+                      <%end%>
+                    <%end%>
+                  </table>
+                <%else%>
+                  <%#=No co-supevisor is assigned yet%>
+                <%end%>
+              </div>
+            <%end%>
+          </div>
+        </div>
+
+      <%#Ms Independent Studies Information Expander%>
+
+      <div class="expanderHeaderBar" id="isInfoExpander">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+          <h2>Independent Studies Information</h2>
+
+          <%if @viewing == "indstu" %>
+            <script>
+              $(function() {
+                closeFirstExpander();
+                $("#isInfoExpander").children('.expander').slideDown('slow');
+                $("#isInfoExpander").children('img').fadeOut('slow');
+              });
+            </script>
+          <%end%>
+          <div class="expander">
+            <%unless @student.StudentSemester.blank?%>
+              <%= link_to(image_tag("", :alt => '', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Add'), {:controller => :independent_studies, :action => 'new', :id => @student.id}, {:class => "" }) %>
+            <%else%>
+              <%= link_to(image_tag("", :alt => '', :class=>'iconAddLayoutButton', :style=>'margin-left:10px; margin-top:-3px;', :title=>'Enroll student in semester'), {:controller => :student_semesters, :action => 'new', :id => @student.id,:mode=>"indstu"}, {:class => "fancybox" }) %>
+            <%end%>
+            
+            <br/><br/>
+            <%@student.independent_studies.each do |indstu| %>
+              <div class="groupBox" style="margin:6px auto;">
+                <div class ="rightImageButtons">
+                  <%= link_to(image_tag("", :alt => '', :class=>'iconEditButton', :title=>'Edit'), {:controller => :independent_studies, :action => 'edit', :id => @student.id}, {:class => "" }) %>
+                  <%= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete'), {:controller => :independent_studies, :action => 'destroy', :indstuid => indstu.id}, :method => 'delete') %>
+                </div>
+                <table style="float:left;">
+                  <tr>
+                    <td class="labelDefinitionTerm">Title:</td>
+                    <td class="labelDefinitionDetails"><%=indstu.studytitle%></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Code:</td>
+                    <td class="labelDefinitionDetails"><%=indstu.studycode rescue 'Not provided' %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Credits:</td>
+                    <td class="labelDefinitionDetails"><%=indstu.studycredithrs rescue 'Not provided' %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Grade:</td>
+                    <td class="labelDefinitionDetails"><%=indstu.studygrade rescue 'Not provided' %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Supervisor:</td>
+                    <td class="labelDefinitionDetails"><%=indstu.faculty_member.user.name rescue 'Not provided' %></td>
+                  </tr>
+                  <tr>
+                    <td class="labelDefinitionTerm">Semester:</td>
+                    <td class="labelDefinitionDetails"><%=indstu.student_semester.semester.offering.to_s+" "+indstu.student_semester.semester.year.to_s rescue 'Not provided' %></td>
+                  </tr>
+                </table>
+                <div class="clearFloatingAndStartFromBelow"></div>
+                <%= link_to(image_tag("", :alt=>'', :class=>'iconAddButton', :style=>'margin-left:10px; margin-top:15px;', :title=>'Add supervisor'), {:controller => :independent_studies, :action => 'new',:id => indstu.id,:mode=>'supervisor'}, {:class => "fancybox" })%>
+
+                <div class="clearFloatingAndStartFromBelow"></div>
+                <%unless indstu.cosupervisors.blank?%>
+                <table class="flexMsThesis">
+                  <%(indstu.cosupervisors).each do |supervisor| %>
+                    <% if supervisor.affiliationwithlums%>
+                       <tr>
+                        <td><%=supervisor.faculty_member.user.name.blank?? 'Not provided' : supervisor.faculty_member.user.name%></td>
+                        <td><%=supervisor.faculty_member.designation.blank?? 'Not provided' : supervisor.faculty_member.designation%></td>
+                        <td>Lums</td>
+                        <td><%=supervisor.faculty_member.user.email.blank?? 'Not provided' : supervisor.faculty_member.user.email%></td>
+                        <td><%= link_to "Delete",{:controller => :independent_studies, :action => 'destroy', :id=>supervisor.id,:indstuid=>indstu.id,:mode=>'supervisor'},:method => 'delete' %></td>
+                      </tr>
+                     <%else%>
+                      <tr>
+                        <td><%=supervisor.cosupervisorname.blank?? 'Not provided' : supervisor.cosupervisorname%></td>
+                        <td><%=supervisor.designation.blank?? 'Not provided' : supervisor.designation%></td>
+                        <td>External</td>
+                        <td><%=supervisor.email.blank?? 'Not provided' : supervisor.email%></td>
+                        <td><%= link_to "Edit",{:controller => :independent_studies, :action => 'edit', :id=>supervisor.id,:indstuid=>indstu.id,:mode=>'supervisor'}, {:class => "fancybox" } %></td>
+                        <td><%= link_to "Delete",{:controller => :independent_studies, :action => 'destroy',:id=>supervisor.id,:indstuid=>indstu.id,:mode=>'supervisor'},:method => 'delete' %> </td>
+                      </tr>
+                    <%end%>
+                  <%end%>
+                </table>
+                <%else%>
+                <%#= No co-supervisor%>
+                <%end%>
+              </div>
+            <%end%>
+          </div>
+        </div>
+    <%end%>
+
+
+
+    <%#Publication Information Expander%>
+
+    <div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+      <h2>Publication Information</h2>
+
+            <%=render :partial=>"layouts/show_publications" ,
+                      :locals=>{:user =>@student.user}
+                            %>
+      </div>
+
+
+    <%#TA Courses Expander%>
+    
+    <div class="expanderHeaderBar" id="isTaExpander">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Add TA Courses</h2>
+           <%if @viewing == "tacourse" %>
+            <script>
+              $(function() {
+                closeFirstExpander();
+                $("#isTaExpander").children('.expander').slideDown('slow');
+                $("#isTaExpander").children('img').fadeOut('slow');
+              });
+            </script>
+          <%end%>
+            <div class="expander">
+              <%= link_to(image_tag("", :alt => '', :class=>'iconAddButton',
+                       :style=>'margin-left:10px; margin-top:-3px;',
+                       :title=>'Add Course'), {:controller => "inventory/tacourses", :action => 'new',
+                       :id => @student.user_id}, {:class => "fancybox" }) %>
+             <% unless @student.user.ta_courses.blank? %>
+               <h4>Courses assigned</h4>
+               <hr/>
+               <table class="flexTACoursegrid">
+                 <% for ta_course in @student.user.ta_courses %>
+                 <tr>
+                   <td>
+                     <%= ta_course.course.coursecode %>
+                   </td>
+                   <td>
+                     <%= ta_course.course.coursename%>
+                   </td>
+                   <td>
+                     <%= ta_course.course.credithrs %>
+                   </td>
+                   <td>
+                     <%= ta_course.semester.offering%>
+                   </td>
+                   <td>
+                     <%= ta_course.semester.year%>
+                   </td>
+                   <td>
+                     <%= ta_course.evalgpa%>
+                   </td>
+                   <td class="labelDefinitionDetails">
+                        <%= link_to ta_course.document_file_name.blank?? '' : ta_course.document_file_name,  ta_course.document.url  %>
+                      </td>
+                   <td>
+                      <%= link_to "Edit",{:controller => "inventory/tacourses",
+                                         :action => 'edit', :id => ta_course.id},
+                                         {:class => "fancybox" } %>
+                   </td>
+                   <td>
+                    <%= link_to "Delete",{:controller => "inventory/tacourses",:action =>"destroy",:id =>ta_course.id},:method => 'delete' %>
+                    </td>
+
+               </tr>
+              <%end%>
+             </table>
+            <%else%>
+               No course assigned yet.
+            <%end%>
+           </div>
+         </div>
+
+
+  </div>
+<%end%>

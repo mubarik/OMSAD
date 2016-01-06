@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+type1:
+  id: 1
+  name: Workshop Publication
+
+type2:
+  id: 2
+  name: Journal Publication
+
+type3:
+   id: 3
+   name: Conference Publication
+
+type4:
+   id: 4
+   name: Technical Report Publication
+
+type5:
+   id: 5
+   name: Book Chapter Publication
+
+type6:
+   id: 6
+   name: Book Publication

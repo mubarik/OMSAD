@@ -1,0 +1,26 @@
+<tr>
+<div style="width:650px">
+  <td>
+    <span class="configName">
+      <%=c.object.name%>
+    </span>
+  </td>
+</div>
+<div style="width:50px;">
+  <td>
+    <a class="editConfigLink" href="#configData">
+      <img  class="iconEditButtonFacultySmall "></img>
+    </a>
+  </td>
+</div>
+<%#*<div style="width:50px;">%>
+  <%#*<td>%>
+    <%#= c.link_to_remove(image_tag("", :alt => '', :class=>'iconDeleteButtonFacultySmall'),:link_type=>"grid_link")%>
+  <%#*</td>%>
+<%#*</div>%>
+<div  style="display:none;">
+  <td>
+      <%=c.hidden_field :name%>
+  </td>
+</div>
+</tr>

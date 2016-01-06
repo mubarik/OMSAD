@@ -1,0 +1,310 @@
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+<% content_for :content do %>
+
+<% unless @student.milestone.blank? %>
+<br/>
+   <table>
+    <tr>
+      <td class="labelDefinitionTerm">Major advisor:<%=@student.milestone.faculty_member.user.name rescue 'Not provided' %> ,</td>
+      <td class="labelDefinitionTerm">Co advisor:
+        <%(@student.milestone.cosupervisors).each do |supervisor| %>
+        <% if supervisor.affiliationwithlums%>
+          <%=supervisor.faculty_member.user.name.blank?? 'Not provided' : supervisor.faculty_member.user.name%> (Lums) ,
+        <%elsif %>
+          <%=supervisor.cosupervisorname.blank?? 'Not provided' : supervisor.cosupervisorname%></td>
+        <%end%>
+   </tr>
+  <%end%>
+  </table>
+
+  <%end%>
+
+
+
+
+
+
+
+  <div id="firstColumn" style="float:left;">
+    <%#Academic Information Expander%>
+       <div style="margin:6px auto; height: 250px; display: inline-block;padding: 10px 2%; border: 1px solid #000000;border-radius: 5px 5px 5px 5px;">
+          <h2>Academic Progress</h2>
+          <br/>
+          <table>
+             <tr><td class="labelDefinitionTerm">Admission:</td><td class="labelDefinitionDetails"><%=@student.admissiondate.blank?? 'Not provided' : @student.admissiondate%></td></tr>
+             <% @milestone.examinations.each do |e| %>
+                <% if e.examinationname == "Qualifier" and e.examinationstatus == "Cleared"%>
+                  <%  params[:qua] = e.examinationdate.blank?? 'Not Provided' :e.examinationdate %>
+                <%end%>
+              <%end%>
+             <tr>
+              <td class="labelDefinitionTerm">Qualifier</td>
+                <% if  params[:qua].blank? %>
+                 <td> Pending </td>
+                <% else %>
+                 <td> <%= params[:qua] %> </td>
+                 <%end%>
+             </tr>
+              <tr><td class="labelDefinitionTerm">Proposal defense</td>
+                <% if @milestone.qualifierstatus == "Pass" %>
+                <td>   <%= @milestone.proposalsubmission.blank?? 'Not Provided': @milestone.proposalsubmission   %> </td>
+                 <% else %>
+                <td> Pending </td>
+                 <%end%>
+              </tr>
+            <tr><td class="labelDefinitionTerm">Credit hours:</td>
+                <% if @student.credithrstaken.to_s >= '12' %>
+              <td class="labelDefinitionDetails">  Passed </td>
+              <% else %>
+              <td class="labelDefinitionDetails"> Incomplete </td>
+              <%end%>
+              </tr>
+               <tr><td class="labelDefinitionTerm">CGPA:</td><td class="labelDefinitionDetails"><%=@student.cgpa.blank?? 'Not provided' : @student.cgpa%></td></tr>
+
+         </table>
+         </div>
+    <br/>
+
+<% unless @student.milestone.blank? %>
+       <div style="margin:6px auto; display: inline-block; height: 150px;padding: 10px 2%; border: 1px solid #000000;border-radius: 5px 5px 5px 5px; width:-moz-available;">
+                   <h2>Financial Summary</h2>
+
+      <% unless @student.milestone.student_grants.blank?  %>
+            <table>
+              <tr>
+               <td class="labelDefinitionTerm">Total Payments:</td>
+               <td class="labelDefinitionDetails"><%= @student.milestone.student_grants.count() %></td>
+             </tr>
+            </table>
+         <% if @student.milestone.granttype == 'Internal' %>
+            <table>
+                <td class="labelDefinitionTerm">Grant Provider:</td>
+                <td class="labelDefinitionDetails"><%=@student.milestone.research_grant_id.blank?? 'Not Provided' : @student.milestone.research_grant.title %></td>
+              <tr>
+              <td class="labelDefinitionTerm">Total Amount:</td>
+                <td class="labelDefinitionDetails">
+              <%=  @student.milestone.student_grants.sum(:totalamount).to_s %> </td>
+              </tr>
+              <tr>
+              <td class="labelDefinitionTerm">Monthly Stipend:</td>
+                <td class="labelDefinitionDetails">
+              <%=  @student.milestone.student_grants.maximum("totalamount")  %> </td>
+              </tr>
+          </table>
+
+         <%else%>
+               <table>
+                 <tr>
+                <td class="labelDefinitionTerm">Grant Name:</td>
+                <td class="labelDefinitionDetails"><%=@student.milestone.grantname.blank?? 'Not provided' : @student.milestone.grantname %></td>
+                 </tr>
+
+              <tr>
+              <td class="labelDefinitionTerm">Total Amount:</td>
+                <td class="labelDefinitionDetails">
+              <%=  @student.milestone.student_grants.sum(:totalamount).to_s %> </td>
+              </tr>
+              <tr>
+              <td class="labelDefinitionTerm">Used Amount:</td>
+                <td class="labelDefinitionDetails">
+              <%=  @student.milestone.student_grants.sum(:usedamount).to_s %> </td>
+              </tr>
+              <tr>
+               <td class="labelDefinitionTerm">Remaining Amount:</td>
+                <td class="labelDefinitionDetails">
+              <%=  @student.milestone.student_grants.sum(:remainingamount).to_s %> </td>
+              </tr>
+
+
+          </table>
+        <%end%>
+     <%end%>
+      </div>
+  <%end%>
+
+</div>
+
+
+
+   <div id="column2" style="float:left; margin:6px 0 6px 12px; display: inline-block;padding: 10px 2%; border: 1px solid #000000;border-radius: 5px 5px 5px 5px;height: 434px;width: 33%;">
+      <h2> Publications </h2>
+      <br/>
+
+<table>
+  <tr><td><b> Authorship   </b></td><td></td><td><b>	Year </b></td><td></td><td><b>	Venue</b></td><td></td><td><b>	CORE category</b></td> </tr>
+   <% @student.user.user_publications.each do |au|  %>
+   <tr><td>  <%= au.authorindex %>
+    </td><td></td>
+    <td><%= au.publication.publicationyear  %>  </td><td></td>
+    <% if au.publication.publication_type_id == 1 %>
+         <td> <%=  au.publication.workshop_publication.city %></td><td></td>
+        <% elsif au.publication.publication_type_id == 2 %>
+         <td><%=  au.publication.journal_publication.city %></td><td></td>
+        <td>  <%=  au.publication.journal_publication.impactfactor %></td><td></td>
+
+        <% elsif au.publication.publication_type_id == 3 %>
+          <td><%=  au.publication.conference_publication.city %></td><td></td>
+        <td><%=  au.publication.conference_publication.rank %></td><td></td>
+
+
+    <% end %>
+    </tr>
+  <% end %>
+
+</table>
+
+      </div>
+
+
+
+
+
+
+
+
+<div id="column3" style="float:left; margin:6px 0 6px 6px;text-align: center;">
+  <div style="background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    float: left;
+    height: 150px;
+    margin-right: 30px;
+    padding: 2px;
+    position: relative;
+    width: 150px;
+    z-index: 0;
+    margin-left: 40px;" >
+    <%if @student.user.photo_file_name.nil? %>
+      <%if @student.user.gender == 'Male'%>
+          <%=image_tag("user.png")%>
+      <%else%>
+          <%=image_tag("female_user.png")%>
+      <%end%>
+    <%else%>
+      <%=link_to(image_tag(@student.user.photo),@student.user.photo.url(:original), {:class => "fancybox" })%>
+    <%end%>
+  </div>
+
+
+
+      <br/>
+    <br/>
+    <br/>
+     <h1 style=""><%=@student.user.name%></h1>
+     <br/><br/>
+<div id="phdReport">
+  <table class="phdReport">
+     <tr>
+      <td class="tableText">NTS</td>
+      <% if  flash.now[:nts] == "pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <% else %>
+          <td class=""><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+    <tr>
+      <td class="tableText">GRE</td>
+       <% if  flash.now[:gre] == "pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+     <tr>
+       <td class="tableText">Qualifier</td>
+      <% if  flash.now[:qua] == "pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+      <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+    <tr>
+      <td class="tableText">Proposal defense</td>
+      <% if @milestone.qualifierstatus == "Pass" %>
+      <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <%end%>
+    </tr>
+    <tr>
+      <td class="tableText">Publications</td>
+      <% if @student.user.user_publications.count() == 0 %>
+         <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <%end%>
+    </tr>
+    <tr>
+       <td class="tableText">Thesis defense</td>
+       <% if @milestone.thesisdefence == "" %>
+         <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconHyphen')%></td>
+       <% else %>
+          <td class="tableImage"><%=image_tag("", :alt=>'', :class=>'iconTickBox')%></td>
+       <%end%>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+<% @milestone.examinations.each do |ex| %>
+  <% if ex.examinationname == "NTS" and ex.examinationstatus == "Cleared"%>
+    <% flash[:nts] = "pass" %>
+  <%end%>
+<%end%>
+
+<% @milestone.examinations.each do |e| %>
+  <% if e.examinationname == "GRE" and e.examinationstatus == "Cleared"%>
+    <% flash[:gre] = "pass" %>
+  <%end%>
+<%end%>
+
+<% @milestone.examinations.each do |e| %>
+  <% if e.examinationname == "Qualifier" and e.examinationstatus == "Cleared"%>
+    <%  flash[:qua] = "pass" %>
+  <%end%>
+<%end%>
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+ $(function() {
+   var imageWidth = $(".iconTickBox:first").width();
+   $(".iconTickBox, .iconHyphen").each(function() {
+     $(this).width(0);
+     $(this).show();
+   });
+
+  $(".iconTickBox, .iconHyphen").each(function(index) {
+    var that = this;
+    setTimeout(function() {$(that).animate({width: imageWidth}, { duration: 500 });},index*500);
+   });
+ });
+</script>
+
+
+
+    <%#PhD Details Expander%>
+        
+            
+
+    
+
+     
+
+    
+        <%end%>

@@ -1,0 +1,142 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+  <div class="pageHeadingBar">
+        <h1>Add Inventory </h1>
+  </div>
+  <hr class="headingLineBreak"/>
+   <% if !flash[:msgGreen].blank? %>
+      <div class="messages">
+        <p><%=flash[:msgGreen]%></p>
+      </div>
+    <%end%>
+    <%= form_tag({ :controller => "inventory/inventories", :class=>"my_form" ,:action => "create"  }, :id=>"myform") do %>
+
+      <%#*<div class="mandatory">Fields marked (*) are mandatory</div>%>
+                  <%#*<div class="notifyRed"> <%= flash[:msgRed] %>
+                  <%#*<div class="notifyGreen"> <%= flash[:msgGreen] %>
+      <%#*</div>%>
+
+   <div class="expandingBlock">
+              <div class="expanderHeaderBar">
+                <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>Inventory Information</h2>
+                   <div class="expander">
+                      <table>
+                        <tr><td class="labelDefinitionTerm">Inventory Type: <span class="requiredFieldAsterisk">*</span></td><td><%=collection_select(:inventorytype,:id,@inventorytypes,:id,:inventorytypename,options={:prompt => "Select inventory type"}, {:class=>'dropdown', :id=>'normalSelectid'})%> <%=flash[:msgRed]%></td></tr>
+                        <%#*<tr><td class="labelDefinitionTerm">Inventory Type:<span class="requiredFieldAsterisk">*</span></td><td><%=collection_select(:inventorytype,:id,@inventorytypes,:id,:inventorytypename,options={:prompt => "Select inventory type"},:required=> 'true')%>
+                        <tr><td class="labelDefinitionTerm">Name: <span class="requiredFieldAsterisk">*</span></td><td><%= text_field_tag(:inventoryname,nil, :class=>'inputTextbox',:required=> 'true', :title=>'Enter Name (0-9 ,-, a-z , A-Z)') %> <%=flash[:iname]%></td></tr>
+
+                        <tr><td class="labelDefinitionTerm">Description: </td><td><%= text_field_tag(:description,nil, :class=>"inputTextbox", :title=>'Enter Description') %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Brand: <span class="requiredFieldAsterisk">*</span></td><td><%= text_field_tag(:brand,nil, :class=>"inputTextbox",:required=> 'true', :title=>'Enter Brand(0-9 ,-, a-z , A-Z)') %></td></tr>
+                        <%#=flash[:brand]%>
+                        <tr><td class="labelDefinitionTerm">Model: <span class="requiredFieldAsterisk">*</span></td><td><%= text_field_tag(:model,nil, :class=>"inputTextbox",:required=> 'true', :title=>'Enter Model(0-9 ,-, a-z , A-Z)') %></td></tr>
+                        <%#=flash[:model]%>
+                        </table>
+                        <div id="dynDivContainer">
+                               <h3 ><a id="dynDivAddOwner" style="font-size: small;">Add Owner</a><br/></h3>
+                                  <input id="dynDivFieldCountOwner" name="dynDivFieldCountOwner" type="hidden" value="0"/>
+                                    <hr/>
+                        </div>
+                   </div>
+              </div>
+
+
+              <%#*<div class="expanderHeaderBar" >%>
+             <%#=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <%#*<h2>Ownership Information</h2>%>
+                   <%#*<div class="expander">%>
+                      <%#*<table>%>
+                        <%#*<tr><td class="labelDefinitionTerm">Owner: <span class="requiredFieldAsterisk">*</span></td><td><%=collection_select(:name,:id,@users,:id,:name,options={:prompt => "Please select the owner"}, :class => "dropdown",:required=> 'true')%>
+                        <%#*<tr><td class="labelDefinitionTerm">Ownership Start Date: </td><td><%=text_field_tag(:startdate,nil,:class=>"uidatePicker")%>
+                        <%#*<tr><td class="labelDefinitionTerm">Ownership End Date: </td><td><%=text_field_tag(:enddate,nil,:class=>"uidatePicker")%>
+                      <%#*</table>%>
+                   <%#*</div>%>
+              <%#*</div>%>
+
+               <%#*<div class="expanderHeaderBar">%>
+                   <%#=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                     <%#*<div>%>
+                         <%#*<h2>Owner Information</h2>%>
+                     <%#*</div>%>
+                       <%#*<div class="expander" >%>
+                           <%#*<div id="dynDivContainer">%>
+                               <%#*<h3 ><a id="dynDivAddOwner" style="font-size: small;">Add Owner</a><br/></h3>%>
+                                  <%#*<input id="dynDivFieldCountOwner" name="dynDivFieldCountOwner" type="hidden" value="0"/>%>
+                                    <%#*<hr/>%>
+                           <%#*</div>%>
+
+                       <%#*</div>%>
+               <%#*</div>%>
+
+              <div class="expanderHeaderBar" id="divPrinterDetails" style="display: none;">
+                       <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>Printer Details</h2>
+                   <div class="expander">
+                      <table>
+                        <tr><td class="labelDefinitionTerm">Technology: </td><td><%= text_field_tag(:technology,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Speed: </td><td><%= text_field_tag(:speed,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Memory: </td><td><%= text_field_tag(:memory,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Media Type: </td><td><%= text_field_tag(:mediatype,nil, :class=>"inputTextbox") %></td></tr>
+                        </table>
+                   </div>
+              </div>
+              <div class="expanderHeaderBar" id="divScannerDetails" style="display: none;">
+                        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>Scanner Details</h2>
+                   <div class="expander">
+                      <table>
+                        <tr><td class="labelDefinitionTerm">Scanner Type: </td><td><%= text_field_tag(:scannertype,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Resolution: </td><td><%= text_field_tag(:resolutionscanner,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Scan Size: </td><td><%= text_field_tag(:scansize,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">File Format: </td><td><%= text_field_tag(:fileformate,nil, :class=>"inputTextbox") %></td></tr>
+                        </table>
+                   </div>
+              </div>
+              <div class="expanderHeaderBar" id="divLCDDetails" style="display: none;">
+                     <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>LCD Details</h2>
+                   <div class="expander">
+                      <table>
+                        <tr><td class="labelDefinitionTerm">LCD Type: </td><td><%= text_field_tag(:lcdtype,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Resolution: </td><td><%= text_field_tag(:resolutionlcd,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Screen Size: </td><td><%= text_field_tag(:sizelcd,nil, :class=>"inputTextbox") %></td></tr>
+                      </table>
+                   </div>
+              </div>
+              <div class="expanderHeaderBar" id="divCPUDetails" style="display: none;">
+                         <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>CPU Details</h2>
+                   <div class="expander">
+                      <table>
+                        <tr><td class="labelDefinitionTerm">Processor Name: </td><td><%= text_field_tag(:processorname,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Number Of Cores: </td><td><%= text_field_tag(:numberofcores,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Number Of Threads: </td><td><%= text_field_tag(:numberofthreads,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Memory: </td><td><%= text_field_tag(:cpumemory,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Hard Disk: </td><td><%= text_field_tag(:harddisk,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">DVD ROM: </td><td><%= text_field_tag(:dvdrom,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">CD ROM: </td><td><%= text_field_tag(:cdrom,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Keyboard: </td><td><%= text_field_tag(:keyboard,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Mouse: </td><td><%= text_field_tag(:mouse,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Sound Card: </td><td><%= text_field_tag(:soundcard,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">VGA: </td><td><%= text_field_tag(:vga,nil, :class=>"inputTextbox") %></td></tr>
+                        <tr><td class="labelDefinitionTerm">RAM: </td><td><%= text_field_tag(:ram,nil, :class=>"inputTextbox") %></td></tr>
+                      </table>
+                   </div>
+              </div>
+           <div class="bottomButtons">
+
+                     <%#= button_tag "Cancel", :action => "index" %>
+
+                     <%=submit_tag("Save")%>
+
+           </div>
+
+          </div>
+       <%end%>
+<%end%>
+

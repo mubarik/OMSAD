@@ -1,0 +1,184 @@
+<%#PhD Info Add/Edit Page%>
+
+<div class="expandingBlock">
+
+  <%#PhD Basic Information Expander%>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+    <h2>PhD Basic Information <span class="requiredFillExpander">*</span></h2>
+
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">Title: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement"><%= ms.text_field :title, :class=>'inputTextbox', :title=>"Title of thesis", :required => true%></td>
+          <td class="fieldErrorPlacement"><%= @milestone.errors[:title][0] %></td>
+        </tr>
+         <tr>
+          <td class="labelDefinitionTerm" style="vertical-align:top; padding-top: 7px;">Abstract: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement"><%= ms.text_area :supervisorcomments, :cols=> 48, :rows=>9, :class=>'inputTextbox', :class=>'textAreaDefinition', :title=>"Thesis abstract", :required => true%></td>
+          <td class="fieldErrorPlacement" style="vertical-align:top; padding-top: 7px;"></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Supervisor: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement"><%=ms.collection_select :faculty_member_id,FacultyMember.all,:id,:username,{:selected => @milestone.faculty_member_id},:class => "dropdown" %></td>
+        </tr>
+      </table><br/>
+
+      <%=ms.fields_for :cosupervisors do |cos|%>
+        <%= render "cosupervisor",:cos=>cos%>
+      <%end%>
+      <%= ms.link_to_add "Add co-supervisor", :cosupervisors, :class=>'dynamicLinksInner' %>
+      <span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please add information to the above co-supervisor first</span>
+    </div>
+  </div>
+
+
+
+  <%#Thesis Examination Information Expander%>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+    <h2>Qualifier / NTS / GRE</h2>
+    
+    <div class="expander">
+      <%=ms.fields_for :examinations do |nts|%>
+       <%= render "examination",:cos=>nts%>
+      <%end%>
+      <%= ms.link_to_add "Add examination", :examinations, :class=>'dynamicLinksInner' %>
+      <span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill in the above examination information first</span>
+    </div>
+  </div>
+
+
+
+  <%#Proposal Expander%>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+    <h2>Proposal Defense</h2>
+    <div class="expander">
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm">Proposal Status:</td>
+        <td class="inputBoxPlacement"><%=ms.select :qualifierstatus, options_for_select([['Pass'],['Failed'],['Pending']],ms.object.qualifierstatus.blank?? 'Pending': ms.object.qualifierstatus ),{},:class => 'dropdown' %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Acceptance Date:</td>
+        <td class="inputBoxPlacement"><%=ms.text_field :proposalsubmission, :class=>"uidatePicker" %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+    </table><br/>
+
+    <%=ms.fields_for :proposal_committees do |pc|%>
+      <%= render "proposalcommittee",:cos=>pc%>
+    <%end%>
+    <%= ms.link_to_add "Add committiee member", :proposal_committees, :class=>'dynamicLinksInner' %>
+    <span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill in the above committee information first</span>
+    </div>
+  </div>
+
+
+  <%#Proposal Expander%>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+    <h2>Thesis Submission</h2>
+
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">Submission Date:</td>
+          <td class="inputBoxPlacement"><%=ms.text_field :thesisdefence, :class=>"uidatePicker" %></td>
+          <td class="fieldErrorPlacement"></td>
+        </tr>
+       </table><br/>
+
+        <%=ms.fields_for :thesis_committees do |t|%>
+          <%= render "thesiscommittee",:cos=>t%>
+        <%end%>
+        <%= ms.link_to_add "Add committiee member", :thesis_committees, :class=>'dynamicLinksInner' %>
+       <span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill in the above committee information first</span>
+    </div>
+  </div>
+
+
+
+  <%#PhD Reports%>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+    <h2>PhD Reports</h2>
+
+    <div class="expander">
+      <%=ms.fields_for :phd_reports do |r|%>
+        <%= render "phdreport",:cos=>r%>
+      <%end%>
+      <%= ms.link_to_add "Add PhD report", :phd_reports, :class=>'dynamicLinksInner' %>
+      <span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill in the above report information first</span>
+    </div>
+  </div>
+
+
+
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+    <h2>PhD Grants</h2>
+
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">Type:</td>
+          <td class="inputBoxPlacement"><%=ms.select :granttype, options_for_select([['External'],['Internal']],ms.object.granttype),{}, :class=>'dropdown', :title=>"Enter an whole number" %></td>
+          <td class="fieldErrorPlacement"/>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Agency:</td>
+          <td class="inputBoxPlacement">
+            <%=ms.collection_select :research_grant_id, ResearchGrant.all ,:id,:title,{:selected => (ms.object.research_grant_id)},:class => "dropdown" %>
+            <%= ms.text_field :grantname, :class=>'inputTextbox', :title=>"Agency Name", :required => true%>
+          </td>
+          <td class="fieldErrorPlacement"/>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Status:</td>
+          <td class="inputBoxPlacement"><%=ms.select :grantstatus, options_for_select([['Provided'],['Suspended']],ms.object.grantstatus),{}, :class=>'dropdown affiliationWithLUMSSelector', :title=>"Enter an whole number" %></td>
+          <td class="fieldErrorPlacement"/>
+        </tr>
+      </table><br/>
+
+      <%=ms.fields_for :student_grants do |g|%>
+        <%= render "studentgrant",:cos=>g%>
+      <%end%>
+      <%= ms.link_to_add "Add grant", :student_grants, :class=>'dynamicLinksInner' %>
+      <span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill in the above grant's information first</span>
+    </div>
+  </div>
+
+  <div class="bottomButtons">
+    <table>
+      <tr><td><span class="submitErrorPlacement"></span></td>
+        <%if @saved=="true"%>
+          <%if @savedtonext=="true"%>
+            <td style='padding-right:6px;'><%= button "Finish", {:controller=>'students',:action=>'index'}, :class=>'standardButtonSize'%></td>
+            <td><%=button "Add Independent Studies", {:controller=>'independent_studies',:action=>'new'}, {:id=>@student.id, :saved=>true}, :class=>'autoWidth' %></td>
+          <%else%>
+            <td style='padding-right:6px;'><%= submit_tag "Save"%></td>
+            <td><%=button "Skip & add Independent Studies", {:controller=>'independent_studies',:action=>'new'}, {:id=>@student.id, :saved=>true}, :class=>'autoWidth' %></td>
+          <%end%>
+        <%else%>
+          <td><%= submit_tag "Save"%></td>
+        <%end%>
+      </tr>
+    </table>
+  </div>
+</div>

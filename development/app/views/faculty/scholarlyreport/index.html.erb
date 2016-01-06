@@ -1,0 +1,80 @@
+<%= content_for :content do  %>
+
+  <script type="text/javascript">
+    $(document).ready(function()
+    {
+      $("#pdf").hide();
+      $("#generateReport").bind("click",(function () {
+        var baseurl = $(location).attr('href');
+        baseurl += "/id=" + $("#faculty").val() + "&year =" + $("#year").val() + ".pdf";
+        //alert(baseurl);
+        var image = $("#pdf")
+        image.wrap("<a href='" + baseurl + "'/>");
+        //alert(image.wrap("<a href='" + baseurl + "'/>"))
+        if ($("#faculty").val().length != 0)
+        {
+          image.show();
+        }
+        if ($("#faculty").val().length == 0)
+        {
+         $("#pdf").hide();
+        }
+
+      }))
+
+    $("#pdf").click(function(event)
+    {
+      if ($("#faculty").val().length == 0)
+      {
+        //$("#pdf").hide();
+        event.preventDefault()
+        return false
+      }
+    })
+    })
+  </script>
+
+  <div class="pageHeadingBar">
+    <h1>Scholarly Report</h1>
+    <div class ="rightImageButtons">
+      <%= image_tag("icon_resume.png", :alt=>'',
+                                    :class=>'iconScholarlyReportButton',
+                                    :title=>'Download report',
+                                    :id => "pdf")%>
+   </div>
+  </div>
+  <hr class="headingLineBreak"/>
+
+    <%= form_tag({:controller => "faculty/scholarlyreport", :action => "create"}, :remote => true, :id=>"postform") do %>
+      <div class="groupBox" style="overflow: auto;">
+         <table style="float:left;">
+           <tr>
+             <td class="labelDefinitionTerm" id="nameLabel">
+               Name:
+             </td>
+             <td>
+              <%=  collection_select(:faculty,:id,@faculty_members,:id,:username,options={:prompt=>"Select a Faculty Member"},
+                                   :required=> true,:class=>"dropdown", :id => "faculty")%>
+             </td>
+           </tr>
+           <tr>
+              <td class="labelDefinitionTerm" id="nameLabel">
+               Year:
+             </td>
+             <td>
+                <%=  select_tag :year, options_for_select(1947..Time.now.year),:class=>"dropdown", :id => "year"%>
+             </td>
+           </tr>
+         </table>
+         <%= submit_tag "Show Report" ,:style=>'float:right;', :id => "generateReport"%>
+        </div>
+        <br/>
+       <%end%>
+
+  <div class ="reportsGrid">
+  </div>
+<%end%>
+
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>

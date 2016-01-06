@@ -1,0 +1,63 @@
+<div class="pageHeadingBar">
+  <h2 id="mainHeading">Add an Author</h2>
+</div>
+<hr class="headingLineBreak"/>
+
+<fieldset>
+  <legend class="dynamicFieldSetLegend">
+    Author
+  </legend>
+  <table>
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">Affiliated with LUMS</label>
+    </td>
+    <td>
+        <%=select_tag "author_affiliationtype",options_for_select([['Yes',1],['No',0]],0),:class=>"dropdown"%>
+    </td>
+    <td class="fieldErrorPlacement"/>
+  </tr>
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Name <span class="requiredFieldAsterisk"> *</span>
+      </label>
+    </td>
+    <td>
+      <%=select_tag "authors",options_from_collection_for_select(User.all, :id, :name),
+                             :class=>"dropdown",
+                             :prompt=>"Select an Author",
+                             :hidden=>true,
+                             :required=>true%>
+      <input type="text"
+             class="inputTextbox"
+             id="author_external_entity_name"
+             required="required"
+             title="Only alphabets are allowed e.g Ali"/>
+    </td>
+    <td class="popupfieldErrorPlacement"/>
+  </tr>
+  <tr>
+    <td>
+      <label id="author_affiliationlabel" class="labelDefinitionTerm">Affiliation</label>
+    </td>
+    <td>
+      <input type="text"
+             class="inputTextbox"
+             id="author_affiliationname"
+             title="Only alphabets ,dots and commas are allowed e.g FAST,Lahore"/>
+    </td>
+    <td class="popupfieldErrorPlacement"/>
+  </tr>
+</table>
+</fieldset>
+<div class="bottomButtons">
+  <a onclick="$.fancybox.close();" href="javascript:;">
+    <input type="button"
+         id="invoke_nested_author"
+         class="standardButtonSize"
+         style="margin-right:-2px"
+         value="Ok"/>
+  </a>
+</div>
+

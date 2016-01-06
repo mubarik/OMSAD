@@ -1,0 +1,88 @@
+<% content_for :menu do %>
+       <%= render "inventory/navigationmenuRATA" %>
+<% end %>
+
+<% content_for :content do %>
+ <div class="pageHeadingBar">
+        <h1>Teaching Assistant</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+    <% if !flash.now[:notice].blank? %>
+      <div class="messages">
+        <p><%=flash.now[:notice]%></p>
+      </div>
+       <%#*if end%>
+    <%end%>
+
+    <% if !flash.now[:error].blank? %>
+      <div class="errors">
+        <p><%=flash.now[:error]%></p>
+      </div>
+    <%#*if end%>
+    <%end%>
+
+    <div class="moreInfodisplayPicWithTextWrap">
+        <%if @user.photo_file_name.nil? %>
+        <%if @user.gender == 'Male'%>
+            <%=image_tag("user.png", :class=>'profilePicture')%>
+        <%else%>
+            <%=image_tag("female_user.png", :class=>'profilePicture')%>
+        <%end%>
+      <%else%>
+        <%=image_tag(@user.photo, :class=>'profilePicture')%>
+      <%end%>
+
+        <h1><%=@user.name%></h1>
+    </div>
+
+    <div class="clearFloatingAndStartFromBelow"></div>
+    <div class="expandingBlock">
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Basic Information</h2>
+           <div class="expander">
+              <table>
+                 <tr><td class="labelDefinitionTerm">Date of Birth:</td><td class="labelDefinitionDetails"><%=  @user.dateofbirth %></td></tr>
+              </table>
+
+           </div>
+         </div>
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Contact Information</h2>
+             <div class="expander">
+                <table>
+                      <tr><td class="labelDefinitionTerm">Address:</td><td class="labelDefinitionDetails"><%= @user.address %></td></tr>
+                      <tr><td class="labelDefinitionTerm">Contact Number:</td><td class="labelDefinitionDetails"><%=  @user.contactnumber %></td></tr>
+                      <tr><td class="labelDefinitionTerm">Email:</td><td class="labelDefinitionDetails"><%=  @user.email %></td></tr>
+                </table>
+             </div>
+         </div>
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Teaching Assistant Information</h2>
+             <div class="expander">
+                <table>
+                   <tr><td class="labelDefinitionTerm">Employee ID:</td><td class="labelDefinitionDetails"><%=  @user.t_assistant.employee_id %></td></tr>
+                   <tr><td class="labelDefinitionTerm">Evaluation GPA:</td><td class="labelDefinitionDetails"><%=  @user.t_assistant.evalgpa %></td></tr>
+
+                   <%if !@user.t_assistant.document_file_name.blank?%>
+                    <tr>
+                      <td class="labelDefinitionTerm">Evaluation Report:</td>
+                      <td class="labelDefinitionDetails">
+                        <%= link_to @user.t_assistant.document_file_name.blank?? '' : @user.t_assistant.document_file_name,  @user.t_assistant.document.url  %>
+                      </td>
+                    </tr>
+                   <%end%>
+                     <div class="expander">
+                   <tr><td class="labelDefinitionTerm">Description:</td><td class="labelDefinitionDetails"><%=  @user.t_assistant.description %></td></tr>
+                   </div>
+                </table>
+             </div>
+         </div>
+         <%= render "inventory/taCourse"%>
+
+
+       </div>
+<%end%>

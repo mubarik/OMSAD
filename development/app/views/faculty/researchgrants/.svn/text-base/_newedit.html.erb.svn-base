@@ -1,0 +1,521 @@
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    //bind all the events for the newly added fields
+    // validateForm($("#formGrant"))
+    var select_faculty_member_string = "select[id$=faculty_member_id]"
+    var select_team_member_string = "select[id$=user_id]"
+    var princ_investigator = $("#principleinvestigator_id")
+
+    $("#formGrant").bind("nested:beforeFieldAdded",function(event)
+    {
+      event.link.data("fieldAddtionErrorMessage","Please fill the required fields first")
+      checkInputsForAdditionWithRequiredLogic(event)
+    })
+
+    
+    
+    //check here whether an external pi is set . if it is then ensure that there will
+    //be atleast one internal co-pi
+    
+    $("#pi_affiliation_type").change(function()
+    {
+      //the pi is internal
+      if ($(this).val() == "1")
+      {
+        $("#principleinvestigator_id").show()
+        $("#external_pi_name").hide()
+        $("#external_pi_name").closest('td').prev('td').find('.labelDefinitionTerm').hide()
+        clearError($("#external_pi_name"))
+
+        $("#external_pi_name").val("")
+        $("#external_pi_affiliation").hide()
+        $("#external_pi_affiliation").val("")
+        clearError($("#external_pi_affiliation"))
+        $("#external_pi_affiliation_label").hide()
+        $("#principleinvestigator_id").closest('td').prev('td').find('.labelDefinitionTerm').show()
+
+      }
+      //the pi is external
+      else
+      {
+        $("#principleinvestigator_id").hide()
+        $("#principleinvestigator_id").closest('td').prev('td').find('.labelDefinitionTerm').hide()
+        clearError($("#principleinvestigator_id"))
+        $("#principleinvestigator_id").val("")
+        $("#principleinvestigator_id").trigger('change')
+        $("#external_pi_name").show()
+        $("#external_pi_affiliation").show()        
+        $("#external_pi_affiliation_label").show()
+        $("#external_pi_name").closest('td').prev('td').find('.labelDefinitionTerm').show()
+      }
+    })
+    $("#formGrant").bind("nested:fieldAdded",function(event)
+    {      
+      $("*[id$=affiliationtype]").unbind('change')
+      $("*[id$=faculty_member_id]").unbind('change');
+      $("*[id$=user_id]").unbind('change');
+      $("*[id$=affiliationtype]").bind('change',changeAffiliationType);
+      $("*[id$=faculty_member_id]").bind('change',facultyRuleEnforcer_1);
+      $("*[id$=user_id]").bind('change',studentRuleEnforcer_1);
+      setCurrentVals()
+
+      event.field.find("input[id*=external_entity_name]").each(function()
+      {
+        $(this).rules("add",alphabetRule)
+        $(this).rules("add",
+        {
+          maxlength:30,
+          messages:{maxlength:"Max {0} characters allowed"}
+        })
+      })
+      
+      event.field.find("input[name*=team_members]").each(function()
+      {
+
+        if ($(this).attr("id").indexOf("designation")>-1)
+        {
+          $(this).rules("add",alphabetRule)
+          $(this).rules("add",
+          {
+            required:true,
+            maxlength:50,
+            messages:
+              {
+              required:"Please enter a designation",
+              maxlength:"Max {0} characters allowed"
+            }
+          })
+        }
+        else
+        {  
+          attachDynamicDatePicker($(this))
+          if ($(this).attr("id").indexOf("enddate")>-1)
+          {
+            $(this).rules("add",
+            {
+              greaterThanEndDate:$(this).closest('tr').prev('tr').find('input:first'),
+              messages:
+                {
+                greaterThanEndDate:"cannot be less than start date"
+              }
+            })
+          }
+        }
+      })
+     
+      event.field.find("input[id*=affiliationname]").each(function()
+      {
+        $(this).rules("add",alphabetAndCommonCharacterRule)
+        $(this).rules("add",
+        {
+          maxlength:50,
+          messages:{maxlength:"Max {0} characters allowed"}
+        })
+      })
+
+    });
+
+    $("#formGrant").bind("nested:fieldRemoved",function(event)
+    {
+      event.field.find(select_faculty_member_string).each(function()
+      {
+        var currentVal = $(this).val()
+        toggleOptions(true,currentVal,"#"+princ_investigator.attr("id"), $(this).attr("id"))
+        toggleOptions(true,currentVal,select_faculty_member_string, $(this).attr("id"))
+      })
+
+      event.field.find(select_team_member_string).each(function()
+      {
+        var currentVal = $(this).val()
+        toggleOptions(true,currentVal,select_team_member_string, $(this).attr("id"))
+      })
+
+      event.field.find("input,select").each(function()
+      {
+        $(this).rules("remove")
+        clearError($(this))
+      })
+    });
+
+    //Event binding for the existing fields starts..
+    princ_investigator.bind('change',facultyRuleEnforcer_1);
+    $.data(princ_investigator.get(0),'current',princ_investigator.val())
+    princ_investigator.trigger('change')
+
+    $("*[id$=affiliationtype]").each(function()
+    {
+      $(this).bind('change',changeAffiliationType)
+    })
+    $(select_faculty_member_string).each(function()
+    {
+      $(this).bind('change',facultyRuleEnforcer_1)
+      $.data(this,'current',$(this).val())
+      $(this).trigger('change');
+    })
+    $(select_team_member_string).each(function()
+    {
+      $(this).bind('change',studentRuleEnforcer_1)
+      $.data(this,'current',$(this).val())
+      $(this).trigger('change')
+    })
+    //Event binding for exisiting fields ends..
+    function setCurrentVals()
+    {
+      $(select_faculty_member_string).each(function()
+      {
+        $.data(this,'current',$(this).val())
+      })
+      $(select_team_member_string).each(function()
+      {
+        $.data(this,'current',$(this).val())
+      })
+    }
+    //hides the faculty members and users that have already been selected some where else. In the original
+    //version nothing was hidden but an alert was shown on double selection.
+    function facultyRuleEnforcer_1()
+    {
+      var newVal = $(this).val()
+      var oldVal = $.data(this,'current')
+      var select_generator_id = $(this).attr("id")
+      //unhide the previously selected value from the principle investigator dropdown
+      //and the faculty member dropdowns
+      toggleOptions(true, oldVal, "#"+princ_investigator.attr("id"), select_generator_id)
+      toggleOptions(true,oldVal,select_faculty_member_string,select_generator_id)
+      //first go through all the values in the principle investigator and hide the current value,
+      //then  go through all the collaborators and co-pis and hide the current value from over there as well.
+      toggleOptions(false,newVal, "#"+princ_investigator.attr("id"), select_generator_id)
+      toggleOptions(false,newVal,select_faculty_member_string,select_generator_id)
+      //store the current value so that you can unhide it later from all the other combo-boxes
+      $.data(this,'current',newVal)
+    }
+
+    function studentRuleEnforcer_1()
+    {
+      var newVal = $(this).val()
+      var oldVal = $.data(this,'current')
+      var select_generator_id = $(this).attr("id")
+      //unhide the previously selected value from the principle investigator dropdown
+      //and the faculty member dropdowns
+      toggleOptions(true,oldVal,select_team_member_string,select_generator_id)
+      toggleOptions(false,newVal,select_team_member_string,select_generator_id)
+      //store the current value so that you can unhide it later from all the other combo-boxes
+      $.data(this,'current',newVal)
+    }
+    //hides the selected option from the currently iterated combobox
+    //newVal = the newly selected value from the current tag.
+    //select_rest_id : the other select tags apart from the select tag that generated the current value
+    //select_generator_id : the id of the select tag that generated the event
+    function toggleOptions(toggleValue,newVal,select_rest_id,select_generator_id)
+    {
+      $(select_rest_id).each(function()
+      {
+        //Ignore the elemtnes who have generated the change event. loop through all the options
+        //and hide or show them. Ignore the prompt option as well
+        if ($(this).attr("id") != select_generator_id)
+        {
+          $("#"+$(this).attr("id")+ " option").each(function()
+          {
+            if ($(this).val() == newVal && $(this).val() != "")
+            {
+              if (toggleValue == true)
+                $(this).show()
+              else
+                $(this).hide()
+            }
+          });
+        }
+      })
+    }
+    function changeAffiliationType()
+    {
+      var parent = $(this)
+      var parent_id = parent.attr("id").toString();
+      var splitted  = parent_id.split("_");
+      var identifier = splitted[splitted.length-2]
+
+      $("*[id$=affiliationname]").each(function()
+      {
+        if ($(this).attr("id").toString().indexOf(identifier.toString()) > -1)
+        {
+          if (parent.val().toString() == "1")
+          {
+            $(this).hide()
+            $(this).closest('td').prev('td').find('.labelDefinitionTerm').hide()
+            $(this).val("")
+            clearError($(this))
+          }
+          else
+          {
+            $(this).show()
+            $(this).closest('td').prev('td').find('.labelDefinitionTerm').show()
+          }
+        }
+      });
+      $("*[id$=external_entity_name]").each(function()
+      {
+        if ($(this).attr("id").toString().indexOf(identifier.toString()) > -1)
+        {
+          if (parent.val().toString() == "1")
+          {
+            $(this).hide()
+            $(this).closest('td').prev('td').find('.labelDefinitionTerm').hide()
+            $(this).val("")
+            clearError($(this))
+          }
+          else
+          {
+            $(this).show()
+            $(this).closest('td').prev('td').find('.labelDefinitionTerm').show()
+          }
+        }
+      });
+
+      $(select_faculty_member_string).each(function()
+      {
+        if ($(this).attr("id").toString().indexOf(identifier.toString()) > -1)
+        {
+          if (parent.val().toString() == "1")
+          {
+            $(this).show()
+            $(this).closest('td').prev('td').find('.labelDefinitionTerm').show()
+          }
+          else
+          {
+            $(this).hide()
+            $(this).closest('td').prev('td').find('.labelDefinitionTerm').hide()
+            $(this).val("")
+            $(this).trigger('change')
+            clearError($(this))
+          }
+        }
+      });
+    }
+  });
+</script>
+<div class="expandingBlock">
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>Grant Information <span class="requiredFillExpander"> *</span></h2>
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">Title: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement">
+            <%= r.text_field :title,
+              :id=>"txgranttitle",
+              :required=>true,
+              :title=>"Only numbers and characters are allowed",
+              :class=>"inputTextbox"%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @research_grant.errors[:title][0] %></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Grant Number:<span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement">
+            <%= r.text_field    :grantnumber,
+              :id=>"txgrantnumber",
+              :required=> true,
+              :class=>"inputTextbox",
+              :title=>"Only numbers and characters are allowed"%></td>
+          <td class="fieldErrorPlacement"><%= @research_grant.errors[:grantnumber][0] %></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Funding Agency: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement">
+            <%= r.text_field   :fundingagency,
+              :required=>true,
+              :id=>"txfundingagency",
+              :class=>"inputTextbox",
+              :title=>"Only alphabets are allowed"%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @research_grant.errors[:fundingagency][0] %></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Amount(Rs.):<span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement">
+            <%= r.text_field    :amount,
+              :id=>"txamount",
+              :class=>"inputTextbox",
+              :required=>true,
+              :title=>"Example Format: 20000"%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @research_grant.errors[:amount][0] %></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Starting Date:</td>
+          <td class="inputBoxPlacement">
+            <%= r.text_field    :startdate,
+              :id=>'txstartdate',
+              :class=>"uidatePicker"%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @research_grant.errors[:startdate][0] %></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Ending Date:</td>
+          <td class="inputBoxPlacement">
+            <%= r.text_field    :enddate,
+              :id=>"txenddate",
+              :class=>"uienddatePicker"%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @research_grant.errors[:enddate][0] %></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Description:</td>
+          <td class="inputBoxPlacement">
+            <%= r.text_field    :description,
+              :title =>"Enter description about research Grant. ",
+              :class=>"inputTextbox"
+          %>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>PI <span class="requiredFillExpander"> *</span></h2>
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Affiliated with LUMS <span class="requiredFieldAsterisk"> *</span>
+          </td>
+          <td>
+            <%if r.object.pi_affiliation_type == true%>
+              <%=r.select :pi_affiliation_type,options_for_select([['Yes',1],['No',0]],1),{},:class=>"dropdown",:id=>"pi_affiliation_type"%>
+            <%else%>
+              <%=r.select :pi_affiliation_type,options_for_select([['Yes',1],['No',0]],0),{},:class=>"dropdown",:id=>"pi_affiliation_type"%>
+            <%end%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            <%= r.label :faculty_member_id,
+              "Name<span class='requiredFieldAsterisk'> *</span>".html_safe,
+              :class=>"labelDefinitionTerm",
+              :hidden=>!r.object.pi_affiliation_type%>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=r.collection_select  :faculty_member_id,FacultyMember.all,:id,:username,
+              options={
+              :selected=>@research_grant.faculty_member_id,
+              :include_blank=>"Select a Faculty Member"},
+              :id =>"principleinvestigator_id",
+              :required=> 'true',
+              :title=>"Please select a faculty member",
+              :hidden=>!r.object.pi_affiliation_type,
+              :class=>"dropdown"%>
+          </td>
+          <td class="fieldErrorPlacement">
+            <%=r.object.errors[:faculty_member_id][0]%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= r.label :external_pi_name,
+              "Name<span class='requiredFieldAsterisk'> *</span>".html_safe,
+              :class=>"labelDefinitionTerm",
+              :hidden=>r.object.pi_affiliation_type%>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=r.text_field :external_pi_name,
+              :hidden=>r.object.pi_affiliation_type,
+              :id=>"external_pi_name",
+              :class=>"inputTextbox",
+              :required=>true,
+              :title=>"Only alphabets are allowed"%>
+          </td>
+          <td class="fieldErrorPlacement">
+            <%=r.object.errors[:external_pi_name][0]%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            <%=r.label "Affiliation",:hidden=>r.object.pi_affiliation_type,:id=>"external_pi_affiliation_label"%>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=r.text_field :external_pi_affiliation,
+              :id=>"external_pi_affiliation",
+              :hidden=>r.object.pi_affiliation_type,
+              :class=>"inputTextbox",
+              :title=>"E.M.E Colleg , Rawalpindi"%>
+          </td>
+          <td class="fieldErrorPlacement"/>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="coPiExpander" class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <div class="headingDiv">
+      <h2>Co-PIs <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>
+    </div>
+    <div class="expander">
+      <div id="dynDivCoPiContainer">
+        <%@legend_text_copi="Co-PI"%>
+        <%= r.fields_for :faculty_member_research_grants do |co_pi_form| %>
+          <%=render :partial=>"dynamicentities",
+            :locals=>{:legend_text=>@legend_text_copi,:cb=>co_pi_form}%>
+        <% end %>
+
+
+        <%= r.link_to_add "Add a Co-PI", :faculty_member_research_grants,:style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left'%>
+        <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+      </div>
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <div class="headingDiv">
+      <h2>Collaborators <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>      
+    </div>
+    <div class="expander">
+      <div id="dynDivCollaboratorContainer">
+        <%@legend_text_collab="Collaborator"%>
+        <%= r.fields_for :collaborations do |collaboration_form| %>
+          <%=render :partial=>"dynamicentities",
+            :locals=>{:legend_text=>@legend_text_collab,:cb=>collaboration_form}%>
+        <% end %>
+
+        <%= r.link_to_add "Add a Collaboration", :collaborations,
+          :id=>:add_nested_collaboration,
+          :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left' %>
+          <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+      </div>
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <div class="headingDiv">
+      <h2>Team <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>
+    </div>
+    <div class="expander">
+      <div id="dynDivTeamContainer">
+        <%= r.fields_for :team_members do |team_form| %>
+          <%=render "teammembers",:tm=>team_form%>
+        <% end %>
+
+        <%= r.link_to_add "Add a Team Member",
+          :team_members,
+          :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left'%>
+        <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+        
+      </div>
+    </div>
+  </div>
+  <div class="bottomButtons">
+    <table>
+      <tr>
+        <td><span class="submitErrorPlacement"></span></td>
+        <td>
+          <%=r.submit "Save" , :id=>"saveButton"%>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

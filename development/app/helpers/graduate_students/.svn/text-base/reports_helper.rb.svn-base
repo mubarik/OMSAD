@@ -1,0 +1,2 @@
+module GraduateStudents::ReportsHelper
+end

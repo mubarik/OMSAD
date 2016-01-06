@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/5275/OMSAD/development/app/views/graduate_students/student_semesters
+END
+destroy.erb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/2342/OMSAD/development/app/views/graduate_students/student_semesters/destroy.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/5254/OMSAD/development/app/views/graduate_students/student_semesters/new.erb
+END
+_asset.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/2550/OMSAD/development/app/views/graduate_students/student_semesters/_asset.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/2342/OMSAD/development/app/views/graduate_students/student_semesters/show.erb
+END
+update.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/2342/OMSAD/development/app/views/graduate_students/student_semesters/update.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/2342/OMSAD/development/app/views/graduate_students/student_semesters/create.erb
+END
+_popupErrorMessage.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/DSSD_Summer2012/!svn/ver/2165/OMSAD/development/app/views/graduate_students/student_semesters/_popupErrorMessage.html.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/5275/OMSAD/development/app/views/graduate_students/student_semesters/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/2342/OMSAD/development/app/views/graduate_students/student_semesters/index.erb
+END

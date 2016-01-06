@@ -1,0 +1,5 @@
+<%if pp.object.new_record?%>
+  <%=render "faculty/publicationphotos/photo_new",:pp=>pp%>
+<%else%>
+  <%=render "faculty/publicationphotos/photo_old",:pp=>pp%>
+<%end%>

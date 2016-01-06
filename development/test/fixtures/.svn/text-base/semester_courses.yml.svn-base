@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+#one: {}
+# column: value
+#
+#two: {}
+#  column: value
+
+
+data1:
+  id: 1
+  semester_id: 1
+  course_id: 1
+  prerequisite: NA
+
+data2:
+  id: 2
+  semester_id: 2
+  course_id: 2
+  prerequisite: nil

@@ -1,0 +1,40 @@
+<%= content_for :content do  %>
+     <div class="pageHeadingBar">
+        <h1>Department Publication Report</h1>
+    </div>
+    <hr></hr>
+<%=flash[:notice]%>
+<%= grid(@faculty_publications_grid,:show_filters=>:always) do |g|
+
+    g.blank_slate  do
+      "There are no records"
+    end
+    g.column :column_name => 'Author' ,:attribute_name=>"name" ,:model_class=>"User" do |publication|
+      publication.faculty_member.user.name
+    end
+
+    g.column :column_name => 'Designation' do |publication|
+      publication.faculty_member.designation
+    end
+
+    g.column :column_name => 'Title',:attribute_name=>"title",:model_class=>"Publication"  do |publication|
+      publication.title
+    end
+
+    g.column  :column_name => 'Year',:attribute_name=>"publicationyear",:model_class=>"Publication" do |publication|
+      publication.publicationyear
+    end
+
+    g.column  :column_name => 'Status',:attribute_name=>"publicationstatus",:model_class=>"Publication" do |publication|
+      publication.publicationstatus
+    end
+
+    g.column  :column_name => 'Type' ,:attribute_name=>"name",:model_class=>"PublicationType" do |publication|
+      publication.publication_type.name
+    end
+
+  end -%>
+<%end%>
+<% content_for :menu do %>
+ <%= render "faculty/navigationmenu" %>
+<%end%>

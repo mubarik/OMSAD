@@ -1,0 +1,30 @@
+<%= form_for [:GraduateStudents, @courses], :html=>{:id=>'formCourse', :class=>'clientSideValidatedForm'} do |f| %>
+  <div class="groupBox">
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm">Code: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%= f.text_field :coursecode, :required =>true, :class=>'inputTextbox', :title=>"Example format: CS560"%></td>
+        <td class="fieldErrorPlacement"><%= @courses.errors[:coursecode][0] %></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Name: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%=f.text_field :coursename, :required =>true, :class=>'inputTextbox', :title=>"Enter alphabets only"%></td>
+        <td class="fieldErrorPlacement"><%= @courses.errors[:coursename][0] %></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Type: </td>
+        <td class="inputBoxPlacement"><%= f.select(:coursetype, options_for_select([['Regular Course','Regular Course']]),{} ,:class=>'dropdown')%></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Credit hours: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%=f.text_field :credithrs, :required =>true, :class=>'inputTextbox', :title=>"Enter an whole number"%></td>
+        <td class="fieldErrorPlacement"><%= @courses.errors[:credithrs][0] %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="bottomButtons">
+    <table>
+      <tr><td><span class="submitErrorPlacement"></span></td><td><%= f.submit "Save"%></td></tr>
+    </table>
+  </div>
+<% end %>

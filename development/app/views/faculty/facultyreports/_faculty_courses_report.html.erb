@@ -1,0 +1,69 @@
+<%=  grid(@faculty_courses_grid, :show_filters => :always) do |g|
+  g.blank_slate  do
+    "There are no records"
+  end
+
+  g.column :column_name => 'Course Code',
+           :attribute_name=>"coursecode",
+           :model_class=>"Course" do |faculty_course|
+           if faculty_course.course.blank?
+             'Not provided'
+           else
+            faculty_course.course.coursecode.blank?? 'Not provided' :faculty_course.course.coursecode
+           end
+
+  end
+  g.column :column_name => 'Course Name',
+           :attribute_name=>"coursename",
+           :model_class=>"Course" do |faculty_course|
+            if faculty_course.course.blank?
+             'Not provided'
+           else
+            faculty_course.course.coursename.blank?? 'Not provided' :faculty_course.course.coursename
+            end
+
+  end
+  g.column :column_name => 'Credit Hours',
+           :attribute_name=>"credithrs",
+           :model_class=>"Course" do |faculty_course|
+            if faculty_course.course.blank?
+             'Not provided'
+           else
+             faculty_course.course.credithrs.blank?? 'Not provided' :faculty_course.course.credithrs
+           end
+
+
+  end
+  g.column :column_name => 'Semester',
+           :attribute_name=>"offering",
+           :model_class=>"Semester" do |faculty_course|
+           if faculty_course.semester.blank?
+             'Not provided'
+           else
+            faculty_course.semester.offering.blank?? 'Not provided' :faculty_course.semester.offering
+           end
+
+  end
+  g.column :column_name => 'Year',
+           :attribute_name=>"year",
+           :model_class=>"Semester" do |faculty_course|
+            if faculty_course.semester.blank?
+             'Not provided'
+           else
+            faculty_course.semester.year.blank?? 'Not provided' :faculty_course.semester.year
+            end
+
+  end
+  g.column :column_name => 'Number of Students',
+           :attribute_name=>"noofstudents",
+           :model_class=>"FacultyCourse" do |faculty_course|
+            faculty_course.noofstudents.blank?? 'Not provided' :faculty_course.noofstudents
+
+  end
+  g.column :column_name => 'Offering',
+           :attribute_name=>"offering",
+           :model_class=>"FacultyCourse" do |faculty_course|
+            faculty_course.offering.blank?? 'Not provided' :faculty_course.offering
+
+  end
+end -%>

@@ -1,0 +1,17 @@
+<tr>
+   <td >
+     <%=collaborators.name%>
+   </td>
+   <td>
+      <%= collaborators.affiliation%>
+   </td>
+   <td>
+      <%= label_tag(nil,collaborators.startdate,:id=>"lbstartdate")%>
+   </td>
+   <td id="lbenddate">
+     <%= label_tag(nil,collaborators.enddate,:id=>"lbstartdate")%>
+   </td>
+   <td>
+      <%= collaborators.description%>
+   </td>   
+</tr>

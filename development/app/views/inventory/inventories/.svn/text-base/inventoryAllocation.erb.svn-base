@@ -1,0 +1,21 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+  <div class="pageHeadingBar">
+        <h1>Inventory Allocation/De-Allocation</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash[:msgRed].blank? %>
+    <div class="errors">
+      <p><%=flash[:msgRed]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+   
+<%end%>

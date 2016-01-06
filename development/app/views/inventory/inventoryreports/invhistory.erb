@@ -1,0 +1,45 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+   <head>  </head>
+    <div class="pageHeadingBar">
+          <h1>Inventory History Report</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+  <%= grid(@invhists_grid, :show_filters => :always) do |g|
+
+    g.column :column_name => 'Sr. No', :attribute_name => 'inventory_id', :no_filter => true   do |invhist|
+      invhist.inventory_id
+    end
+
+    g.column :column_name => 'Owner', :attribute_name => 'user_id', :no_filter => true   do |invhist|
+      invhist.user.name
+    end
+
+    g.column :column_name => 'Brand', :attribute_name => 'inventory_id',:no_filter => true  do |invhist|
+      invhist.inventory.brand
+    end
+
+    g.column :column_name => 'Model', :attribute_name => 'inventory_id', :no_filter => true   do |invhist|
+      invhist.inventory.model
+    end
+
+     g.column :column_name => 'Start Date', :attribute_name => 'startdate', :no_filter => true   do |invhist|
+      invhist.startdate
+    end
+
+    g.column :column_name => 'End Date', :attribute_name => 'enddate', :no_filter => true   do |invhist|
+      invhist.enddate
+    end
+
+  end %>
+
+<% end %>
+
+
+

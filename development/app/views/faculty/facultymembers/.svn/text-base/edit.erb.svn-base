@@ -1,0 +1,25 @@
+<%= content_for :content do  %>
+    <div class="pageHeadingBar">
+        <h1>Edit Faculty Member</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+     <% if !flash[:error].blank? %>
+    <div class="errors">
+      <p><%=flash[:error]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+     <%= nested_form_for @faculty_member ,:html=>{:id=>"formFacultyMember", :class=>'clientSideValidatedForm'},
+                                 :url =>{ :controller => "faculty/facultymembers",
+                                 :action => "update",
+                                 :id=>@faculty_member.user_id} do |faculty_member_edit| %>
+      <%= render "newedit",
+                      :fm =>faculty_member_edit %>
+    <%end%>
+<%end%>
+
+<% content_for :menu do %>
+   <%= render "faculty/navigationmenu" %>
+<%end%>

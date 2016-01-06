@@ -1,0 +1,57 @@
+  <%= grid(@faculty_publications_grid,:show_filters=>:always) do |g|
+
+    g.blank_slate  do
+      "There are no records"
+    end
+
+    g.column :column_name => 'Designation',:auto_reload=>true,:attribute_name=>"name",:model_class=>"FacultyMemberDesignationType",
+             :custom_filter => FacultyMemberDesignationType.find(:all).map{|pr| [pr.name, pr.name]} do |userpublication|
+      userpublication.user.faculty_member.designation.blank?? 'N/A' :userpublication.user.faculty_member.designation
+    end
+
+    g.column :column_name => 'Department',
+             :attribute_name=>"name",
+             :auto_reload=>true,
+             :model_class=>"Department",
+             :custom_filter => Department.find(:all).map{|pr| [pr.name, pr.name]} do |userpublication|
+          userpublication.user.department.name.blank?? 'N/A' :userpublication.user.department.name
+    end
+
+
+
+    g.column :column_name => 'Publication Title' ,
+             :attribute_name=>"title" ,:in_csv=>false,
+             :model_class=>"Publication" do |userpublication|
+             link_to userpublication.publication.title,
+                         :controller => userpublication.publication.get_controller,
+                         :action => "show",
+                         :id =>userpublication.publication.id       
+    end
+
+        g.column :column_name => 'Publication Title' ,
+             :attribute_name=>"title" ,:in_html=>false ,
+             :model_class=>"Publication" do |userpublication|
+             userpublication.publication.title
+    end
+
+    g.column :column_name => 'Publication Year' ,
+             :attribute_name=>"publicationyear" ,
+             :model_class=>"Publication" do |userpublication|
+            userpublication.publication.publicationyear.blank?? 'N/A' :userpublication.publication.publicationyear
+    end
+
+    g.column  :column_name => 'Publication Status',
+              :attribute_name=>"publicationstatus",
+              :model_class=>"Publication" do |userpublication|
+      userpublication.publication.publicationstatus.blank?? 'N/A' :userpublication.publication.publicationstatus
+    end
+
+    g.column  :column_name => 'Publication Type',
+              :attribute_name=>"name",
+              :auto_reload=>true,
+              :model_class=>"PublicationType",
+              :custom_filter => PublicationType.find(:all).map{|pr| [pr.name, pr.name]} do |userpublication|
+      userpublication.publication.publication_type.name.blank?? 'N/A' :userpublication.publication.publication_type.name
+    end
+
+  end -%>

@@ -1,0 +1,36 @@
+<%unless @students_report_grid.blank? %>
+<%= grid(@students_report_grid, :show_filters => :always) do |g|
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+  g.blank_slate  do
+    "No record found"
+  end
+  g.column :column_name => 'Roll No', :attribute_name => 'rollno', :in_csv => false , :model_class => Student do |st|
+     link_to st.student.rollno, "/GraduateStudents/students/"+(st.student.user.id).to_s
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_csv => false, :model_class => User do |st|
+    link_to st.student.user.name, "/GraduateStudents/students/"+(st.student.user.id).to_s
+  end
+  g.column :column_name => 'Roll No', :attribute_name => 'rollno', :in_html => false , :model_class => Student do |st|
+    st.student.rollno
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_html => false, :model_class => User do |st|
+    st.student.user.name
+  end
+  g.column :column_name => 'Semester', :attribute_name => 'offering' , :custom_filter => [['Fall', 'fall'],['Spring', 'spring'], ['Summer', 'summer']],:model_class => Semester do |studentsem|
+    studentsem.semester.offering.blank?? 'Not provided' : studentsem.semester.offering
+  end
+  g.column :column_name => 'Year', :attribute_name => 'year' , :model_class => Semester do |studentsem|
+    studentsem.semester.year.blank?? 'Not provided' : studentsem.semester.year
+  end
+  g.column :column_name => 'GPA', :attribute_name => 'semestergpa' do |studentsem|
+    studentsem.semestergpa.blank?? 'Not provided' : studentsem.semestergpa
+  end
+  g.column :column_name => 'Status', :attribute_name => 'status', :custom_filter => [['Freezed', 'freezed'],['Dropped', 'dropped'], ['Complete', 'complete'], ['In-Progress', 'in-progress']] do |studentsem|
+    studentsem.status.blank?? 'Not provided' : studentsem.status
+  end
+end -%>
+<%else%>
+No record found
+<%end%>

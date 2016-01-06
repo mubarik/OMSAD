@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag    "navigationMenu" %>
+<%= javascript_include_tag "jquery-1.7.2" %>
+<%= javascript_include_tag "navigationMenu" %>
+
+
+<div class="page-container">
+    <ul id="treeMenu">
+        <li class="contentContainerLevel1">Students
+            <ul style="display: none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "students", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "students", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Reports", :controller => "reports", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import Data", :controller => "students", :action => "csv_import"%></li>
+            </ul>
+        </li> 
+
+        <li class="contentContainerLevel1">Courses
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "courses", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "courses", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import Data", :controller => "courses", :action => "csv_import"%></li>
+            </ul>
+        </li>
+
+        <li class="contentContainerLevel1">Semesters
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "semesters", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "semesters", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import Data", :controller => "semesters", :action => "csv_import"%></li>
+            </ul>
+        </li>
+        <li class="contentContainerLevel2"><%= link_to "Configurations", :controller => "GraduateStudents/projectconfs", :action => "new"%></li>
+    </ul> 
+</div> 
+

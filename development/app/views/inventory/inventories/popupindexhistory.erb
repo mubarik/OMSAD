@@ -1,0 +1,372 @@
+<%= javascript_include_tag "inventory/roomLocations.js" %>
+<%= javascript_include_tag "datePicker.js" %>
+<%= javascript_include_tag "inventory/invclientSideValidations.js" %>
+
+<script type="text/javascript">
+  function checkEndDates()
+   {
+
+      var startDt2= $("#invstartdate2").attr("value");
+      var endDt=$("#invenddate").attr("value");
+      var allowNewStart = compareDates(endDt,startDt2,1)
+
+
+
+          if(allowNewStart==0)
+            {
+              setErrorMessage("dtErrorStart2","Should be greater than existing end date");
+              return false;
+            }
+          else
+           {
+              setErrorMessage("dtErrorStart2","");
+              return true;
+           }
+
+  }
+  
+  $(document).ready(function()
+  {
+
+    try{
+          $("#ui-datepicker-div").css('z-index','1201')
+
+     }catch(err){}
+
+  
+  
+    function setDateFormat(controlid)
+    {
+      
+        
+      datevalue=$("#"+controlid).attr("value")
+      <%#*alert(datevalue)%>
+             if($("#"+controlid).attr("value")!="")
+                {
+
+                    var stSplit = datevalue.split('-');
+
+                    if(stSplit[2].length < 4)
+                    {
+                        stDate=stSplit[2].toString()+'-'+months[stSplit[1]-1] + '-' + stSplit[0]
+
+                    }
+                    else
+                    {
+                            stDate=getDayStr(stSplit[0].toString()) +'-'+stSplit[1] + '-' + stSplit[2]
+                    }
+                     $("#"+controlid).attr("value", stDate.toString());
+
+                }
+    }
+
+                    setDateFormat("invstartdate");
+
+                    $("#invenddate").change(function(i,obj)
+                     {
+                        var startDt= $("#invstartdate").attr("value");
+                        var endDt=$("#invenddate").attr("value");
+                        if(compareDates(startDt,endDt,1)==0)
+                          {
+                           
+                             setErrorMessage("dtErorr","Should be less than end date");
+                             $("#invenddate").attr("value","");
+                          }
+                          else
+                          {
+                         
+                             setErrorMessage("dtErorr","");
+
+                          }
+                     });
+
+
+
+                    $("#invstartdate2").change(function(i,obj)
+                     {
+                       
+                        var startDt2= $("#invstartdate2").attr("value");
+  
+                          var endDt=$("#invenddate").attr("value");
+                          var allowNewStart = compareDates(endDt,startDt2,1)
+                          var allowTomorrowCheck=0;
+                      
+                          if(getDateObj(startDt2)<= getTomorrow())
+                           {
+                       
+                             allowTomorrowCheck=1;
+                           }
+                          
+                           <%#*if((allowNewStart==0)||(allowTomorrowCheck==0))%>
+                             <%#*{%>
+                              <%#*if(allowNewStart==0)%>
+                                <%#*{%>
+                                  <%#*setErrorMessage("dtErrorStart2","Should be greater than existing end date");%>
+                                  <%#*$("#invstartdate2").attr("value","")%>
+                                  <%#*return false;%>
+                                <%#*}%>
+
+                              <%#*if(allowTomorrowCheck==0)%>
+                                <%#*{%>
+                                  <%#*setErrorMessage("dtErrorStart2","should be less than Tomorrows date");%>
+                                  <%#*$("#invstartdate2").attr("value","")%>
+                                  <%#*return false;%>
+                                <%#*}%>
+
+                             <%#*}%>
+                             <%#*else%>
+                               <%#*{%>
+                                  <%#*setErrorMessage("dtErrorStart2","");%>
+                                  <%#*return true;%>
+                               <%#*}%>
+                      
+                        var startDt2= $("#invstartdate2").attr("value");
+                        var endDt=$("#invenddate").attr("value");
+                        
+                        
+                        var allowNewStart = compareDates(endDt,startDt2,1)
+                        var allowTomorrowCheck=0;
+                        if(getDateObj(startDt2)<= getTomorrow())
+                         {
+                           allowTomorrowCheck=1;
+                         }
+                         
+                      
+                     
+                          if(allowNewStart==0)
+                            {
+                              setErrorMessage("dtErrorStart2","should be greater than or equal to existing end date");
+                            }
+                          <%#*else if(allowTomorrowCheck==0)%>
+                            <%#*{%>
+                              <%#*setErrorMessage("dtErrorStart2","should be less than Tomorrows date");%>
+                            <%#*}%>
+                          else
+                            {
+                          
+                             setErrorMessage("dtErrorStart2","");
+
+                            }
+                     });
+
+                   $('input[type="submit"]').bind("click", function (e) {
+                  
+                    if( checkEndDates()==true)
+                      {
+                          
+                           var startDt= $("#invstartdate").attr("value");
+                           var endDt=$("#invenddate").attr("value");
+                           var startDt2= $("#invstartdate2").attr("value");
+                           if(startDt =="" )
+                             {
+                                   setErrorMessage("dtError","Field required");
+
+                             }
+                             else
+                                {
+
+                                   setErrorMessage("dtErorr","");
+
+                                }
+                            if(startDt2 =="" )
+                             {
+                                   setErrorMessage("dtErrorStart2","Field required");
+
+                             }
+                             else
+                                {
+
+                                   setErrorMessage("dtErrorStart2","");
+
+                                }
+
+
+                             if(endDt =="" )
+                             {
+                                   setErrorMessage("dtErrorEnd","Field required");
+                             }
+                             else
+                                {
+
+                                   setErrorMessage("dtErrorEnd","");
+
+                                }
+
+
+                           if(startDt!="" && startDt2!="" && endDt != "")
+                           {
+                              var allowed=compareDates(endDt,startDt2,1 );
+
+                                              if( allowed==1)
+                                                  {
+                                                     setErrorMessage("dtErorr2","");
+                                                     return true;
+
+                                                  }
+                                                  else
+                                                   {
+                                                    setErrorMessage("dtErorr2","Should be greater than existing end date");
+                                                    $("#invstartdate2").attr("value","");
+                                                    return false;
+                                                   }
+                            // new start date < tomorrows date
+                           }
+                           else
+                             {
+
+                               return false;
+                             }
+                      }
+                      else
+                             {
+
+                               return false;
+                             }
+                   });
+
+                     $("#invstartdate").attr("disabled",true);
+                    
+                     $("#user_id").attr("disabled",true);
+
+
+  })
+</script>
+
+
+<%= form_tag({ :controller => "inventory/inventories",:action => "add_indexownership_history",:id => @inventory.id},{:id=>"formIndexPopup", :class=>"my_form" } ) do %>
+<%#= form_for @inventory ,:url =>{ :controller => "inventory/inventories", :action => "add_ownership_history",:id => @inventory.id},:method=>"post" do |f| %>
+<table>
+    <tr><td colspan="3" class="labelDefinitionTerm">Current Ownership: </td>
+        
+     </tr>
+     <tr><td colspan="3" ><hr></hr></td>
+
+     </tr>
+     <tr><td class="labelDefinitionTerm">Existing Owner: </td>
+        <td>
+          <% for invhistrec in @invhist%>
+          <div class="inputBoxPlacement"><%= collection_select(:user,:id,@users,:id,:name,
+                    options={ :selected=>invhistrec.user_id},
+                    :required=> 'true', 
+                    :class=>"dropdown")%></div>
+          <td hidden="true"><%=text_field_tag( :invuserid,params[:id])%>
+          </td>
+          <%break%>
+          <%end%>
+        </td>
+        <td><span class='error error-keyup-1' style='color:red;' id="macqerror"></span> </td>
+     </tr>
+      <% for invhistrec in @invhist%>
+     <tr>
+       <td class="labelDefinitionTerm">Ownership Start Date: </td>
+       <td class="inputBoxPlacement"><%=text_field_tag(:invstartdate,invhistrec.startdate, :class=>"inputTextbox", :title=>'Enter Start Date' ) %></td>
+
+       <td><span id='dtErorr' class='error error-keyup-1' style='color:red ;'></span></td>
+       <td hidden="true"><%=text_field_tag( :invid, params[:id])%></td>
+       
+       <td><span class='error error-keyup-1' style='color:red;' id="dtErrorStart"></span></td>
+         
+     </tr>
+      <%break%>
+     <%end%>
+
+      <% for invhistrec in @invhist%>
+     <tr>
+         <td class="labelDefinitionTerm">Ownership End Date: </td>
+         <td class="inputBoxPlacement">
+            <%=text_field_tag(:invenddate,invhistrec.enddate, :class=>"uidatePicker", :title=>'Enter End Date')%>
+         </td>
+         <td class="popupfieldErrorPlacement"><span class='error error-keyup-1' style='color:red; ' id="dtErrorEnd"></span></td>
+         <td></td>
+     </tr>
+      <%break%>
+     <%end%>
+
+      
+
+     <tr><td colspan="3" class="labelDefinitionTerm">New Ownership: </td>
+
+     </tr>
+     <tr><td colspan="3" ><hr></hr></td>
+
+     </tr>
+     <tr><td class="labelDefinitionTerm">New Owner: </td>
+        <td>
+          <% for invhistrec in @invhist%>
+          <div class="inputBoxPlacement" ><%= collection_select(:newuser,:id,@users,:id,:name,
+                    options={:prompt=>"Select an Owner"},
+                    :required=> 'true', 
+                    :class=>"dropdown")%></div>
+          <td hidden="true"><%=text_field_tag( :invhid2,invhistrec.id)%>
+          </td>
+          <%break%>
+          <%end%>
+        </td>
+        <td><span class='error error-keyup-1' style='color:red; ' id="macqerror0"></span> </td>
+     </tr>
+      <% for invhistrec in @invhist%>
+     <tr>
+       <td class="labelDefinitionTerm">New Start Date: </td>
+       <td><%=text_field_tag(:invstartdate2,nil, :class=>"uidatePicker", :title=>'Enter Start Date' ) %></td>
+       <td><span id='dtErrorStart2' class='error error-keyup-1' style='color:red ;'></span></td>
+       <td >
+
+       </td>
+       <td hidden="true"><%=text_field_tag( :invid, params[:id])%></td>
+
+       <td><span class='error error-keyup-1' style='color:red;' id="macqerror"></span></td>
+     </tr>
+      <%break%>
+     <%end%>
+
+      <% for invhistrec in @invhist%>
+     <tr>
+         <td hidden="true" class="labelDefinitionTerm">New End Date: </td>
+         <td hidden="true">
+            <%=text_field_tag(:invenddate2,nil, :class=>"uidatePicker", :title=>'Enter End Date')%>
+         </td>
+     </tr>
+      <%break%>
+     <%end%>
+
+     <tr><td colspan="3"> <div>
+
+                       <table>
+                      <tr>
+                          <td class="labelDefinitionTerm">Room Number: </td>
+                          <td class="inputBoxPlacement">
+                            <%=collection_select :room_detail_id,:id,@allrooms,:r_id,:r_roomnumber,options={:prompt => "Select Room Number"}, {:class=>'dropdown'}%>
+
+                          </td>
+                          <%#*<td class="fieldErrorPlacement"><%= @inventory.errors[:inventory_type_id][0]%>
+                          <%#*</td>%>
+                      </tr>
+                      </table>
+                        </div>
+
+                          <div id="roomLocations" name="roomLocations">
+                          <table>
+                            <tr>
+                              <td class="labelDefinitionTerm">Location Number: </td>
+                                <td class="inputBoxPlacement">
+                                  <%=collection_select :location_id,:id,@locations,:l_id,:l_locationname,options={:prompt => "Select Location Number"}, {:class=>'dropdown'}%>
+                                </td>
+
+                            </tr>
+
+                          </table>
+
+
+                          </div>
+
+                       </td></tr>
+    
+      <tr><td>
+
+        </td>
+        <td>  <%=submit_tag("Save")%></td>
+        <td></td>
+      </tr>
+</table>
+
+<%end%>

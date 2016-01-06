@@ -1,0 +1,58 @@
+<div class="expanderHeaderBar">
+  <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+  <h2>Independent Study <span class="requiredFillExpander">*</span></h2>
+  
+  <div class="expander">
+      <%#unless ins.object.id.nil?%>
+        <%#*<div class ="rightImageButtons">%>
+          <%#= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete independent study'), {:controller => :independent_studies, :action => 'destroy',:path=>'self' ,:indstuid => ins.object.id}, :method => 'delete') %>
+        <%#*</div>%>
+      <%#end%>
+    <div class ="rightImageButtons">
+       <%=ins.link_to_remove (image_tag("", :alt => '',:class=>'iconDeleteButton',:title=>'Delete'))%>
+    </div>
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm">Title: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%= ins.text_field :studytitle, :required => true, :class=>'inputTextbox independentStudyTitleTextBox', :title=>"Title of thesis"%></td>
+        <td class="fieldErrorPlacement"/>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Code: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%= ins.text_field :studycode, :required => true, :class=>'inputTextbox independentStudyCodeTextBox', :title=>"Code of thesis"%></td>
+        <td class="fieldErrorPlacement"/>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Credit hours: </td>
+        <td class="inputBoxPlacement"><%= ins.text_field :studycredithrs, :class=>'inputTextbox independentStudyCreditHoursTextBox', :title=>"Credit Hours of thesis"%></td>
+        <td class="fieldErrorPlacement"/>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm" id="lblSemester">Semester: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%=ins.collection_select :student_semester_id, @semesters,:id,:semester_name,{:prompt=>"Please Select", :selected =>ins.object.student_semester_id}, :class => "dropdown",:required=>true%></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Grade: </td>
+        <td>
+                <%=ins.collection_select  :grade_type_id,GradeType.all,:id,:name,
+                        options={:prompt=>"Select a Grade",
+                                         :selected=>ins.object.grade_type_id},
+                                         :title   => "Please specify a grade",
+                                         :class=>"dropdown"%>
+              </td>
+        <td class="fieldErrorPlacement"/>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Supervisor: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%=ins.collection_select :faculty_member_id,FacultyMember.all,:id,:username,{:selected => ins.object.faculty_member_id},:class => "dropdown" %></td>
+      </tr>
+    </table><br/>
+
+    <%=ins.fields_for :cosupervisors do |cos|%>
+      <%= render "cosupervisor",:cos=>cos%>
+    <%end%>
+    <%= ins.link_to_add "Add co-supervisor", :cosupervisors, :style=>'font-weight:bold; margin-left:15px;float:left;margin-bottom:10px;' %>
+    <span class="dynamicFieldErrorPlacement" style="display: none;">Please fill in the above co-supervisor's information first</span>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<%= content_for :content do  %>
+
+   <div class="pageHeadingBar">
+         <h1>Upload BibTex</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+    <% if !flash[:error].blank? %>
+      <div class="errors">
+        <p><%=flash[:error]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+
+
+<%= nested_form_for @publication ,:html=>{  :multipart=>true ,:id=>"formbibtex",:class=>'clientSideValidatedForm'},
+                                            :url =>{ :controller => "faculty/journalpublications",
+                                            :action => "importbibtex" } do |publication_new| %>
+
+  <div class="groupBox">
+  <table>
+    <tr><td><label for="upload_file">Select File</label> : </td>
+  <td><%= publication_new.file_field :bibtex , :required => true %> </td> <td class="fieldErrorPlacement"></td></tr>
+  </table>
+    <table>
+  <tr>
+      <td><%= publication_new.submit "Upload" %></td>
+    </tr>
+    </table>
+  </div>
+  <%end%>
+<%end%>
+
+<% content_for :menu do %>
+        <%= render "faculty/navigationmenu" %>
+<% end %>

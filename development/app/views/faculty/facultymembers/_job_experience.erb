@@ -1,0 +1,60 @@
+<fieldset>
+  <legend class="dynamicFieldSetLegend">
+    Job Experience
+  </legend>
+  <table style="float:left;">
+  <tr>
+    <td class="labelDefinitionTerm">
+      <label>
+        Organization Name<span class="requiredFieldAsterisk"> *</span>
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=je.text_field :organizationname,
+                               :title=>"Enter the name of organization e.g Techlogix",
+                               :class=>"inputTextbox",
+                               :required=>true%>
+    </td>
+    <td class="fieldErrorPlacement"/>
+  </tr>
+  <tr>
+    <td class="labelDefinitionTerm">
+      <label>
+        Designation
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=je.text_field :designation,
+                               :title=>"Enter the title of designation e.g Senior Design Engineer",
+                               :class=>"inputTextbox"%>
+    </td>
+    <td class="fieldErrorPlacement">
+    </td>
+  </tr>
+  <tr>
+    <td class="labelDefinitionTerm">
+      <label>
+        From
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=je.select :from_year, 1947..Time.now.year,{},:class=>"dropdown"%>
+    </td>
+  </tr>
+  <tr>
+    <td class="labelDefinitionTerm">
+      <label>
+        To
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=je.select :to_year, 1947..Time.now.year,{},:class=>"dropdown"%>
+    </td>
+    <td class="fieldErrorPlacement">
+
+    </td>
+  </tr>
+</table>
+      <%= je.link_to_remove(image_tag("",:alt=>"",:class=>"iconDeleteButton",:style=>'float:right; margin-right:1%;'))%>
+</fieldset><br/>
+

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/5250/OMSAD/development/app/views/graduate_students/courses
+END
+destory.erb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/90/OMSAD/development/app/views/graduate_students/courses/destory.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/4473/OMSAD/development/app/views/graduate_students/courses/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/90/OMSAD/development/app/views/graduate_students/courses/show.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/3552/OMSAD/development/app/views/graduate_students/courses/_newedit.html.erb
+END
+update.erb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/90/OMSAD/development/app/views/graduate_students/courses/update.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/90/OMSAD/development/app/views/graduate_students/courses/create.erb
+END
+csv_import.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/5250/OMSAD/development/app/views/graduate_students/courses/csv_import.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/2376/OMSAD/development/app/views/graduate_students/courses/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/3381/OMSAD/development/app/views/graduate_students/courses/index.erb
+END

@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+#one: {}
+# column: value
+#
+#two: {}
+#  column: value
+
+data1:
+  id: 1
+  faculty_member_id: 1
+  student_id: 1
+  cosupervisor: Asim Karim
+  proposalsubmission: 2013-01-01
+  firstqualifier: 2012-06-01
+  secondqualifier: 2012-12-01
+  thesisdefence: 2013-06-01
+  supervisorcomments: good Work
+  title: OMSAD
+  qualifierstatus: Clear
+  gre: clear
+  panelone: external1
+  paneltwo: external2
+  panelthree: external3
+  
+data2:
+  id: 2
+  faculty_member_id: 2
+  student_id: 2
+  cosupervisor: Asim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim Karim
+  proposalsubmission: nil
+  firstqualifier: nil
+  secondqualifier: nil
+  thesisdefence: nil
+  supervisorcomments: nil
+  title: Adil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil NazirAdil Nazir
+  qualifierstatus: nil
+  gre: nil
+  panelone: Asim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim Karim
+  paneltwo: Asim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim Karim
+  panelthree: Asim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim KarimAsim Karim

@@ -1,0 +1,42 @@
+<% content_for :menu do %>
+  <%= render "graduate_students/navigationmenu" %>
+<% end %>
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Add PhD Information</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <script type="text/javascript">
+      $(document).ready(function()
+      {
+        $("#formMSSpecialCourses").bind("nested:fieldAdded",function(event)
+      {
+
+          event.field.find("*[id*=examinationdate]").each(function()
+          {
+
+              attachDynamicDatePicker($(this))
+
+          })
+       })
+      })
+    </script>
+  <% if !flash.now[:notice].blank? %>
+    <div class="messages">
+      <p><%=flash.now[:notice]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <% if !flash.now[:error].blank? %>
+    <div class="errors">
+      <p><%=flash.now[:error]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+  <%= nested_form_for @milestone,:url => { :controller => "GraduateStudents/milestones",:action => "create",:saved=>@saved,:id=>@student.id}, :html=>{:id=>'formMSSpecialCourses', :class=>'clientSideValidatedForm'}  do |phd|%>
+    <%= phd.hidden_field :student_id , :value => params[:id]%>
+    <%= render "newedit",:ms =>phd %>
+  <%end%>
+<%end%>

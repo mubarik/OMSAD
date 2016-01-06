@@ -1,0 +1,78 @@
+<% content_for :menu do %>
+       <%= render "inventory/navigationmenuRATA" %>
+<% end %>
+
+<% content_for :content do %>
+ <div class="pageHeadingBar">
+        <h1>Administrative Staff</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+    <% if !flash.now[:notice].blank? %>
+      <div class="messages">
+        <p><%=flash.now[:notice]%></p>
+      </div>
+       <%#*if end%>
+    <%end%>
+
+    <% if !flash.now[:error].blank? %>
+      <div class="errors">
+        <p><%=flash.now[:error]%></p>
+      </div>
+    <%#*if end%>
+    <%end%>
+
+    <div class="moreInfodisplayPicWithTextWrap">
+        <%if @astaff.photo_file_name.nil? %>
+        <%if @astaff.gender == 'Male'%>
+            <%=image_tag("user.png", :class=>'profilePicture')%>
+        <%else%>
+            <%=image_tag("female_user.png", :class=>'profilePicture')%>
+        <%end%>
+      <%else%>
+        <%=image_tag(@astaff.photo, :class=>'profilePicture')%>
+      <%end%>
+
+        <h1><%=@astaff.name%></h1>
+    </div>
+
+    <div class="clearFloatingAndStartFromBelow"></div>
+    <div class="expandingBlock">
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Basic Information</h2>
+           <div class="expander">
+              <table>
+                 <tr><td class="labelDefinitionTerm">Date of Birth:</td><td class="labelDefinitionDetails"><%= @astaff.dateofbirth %></td></tr>
+              </table>
+
+           </div>
+         </div>
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Contact Information</h2>
+             <div class="expander">
+                <table>
+                      <tr><td class="labelDefinitionTerm">Address:</td><td class="labelDefinitionDetails"><%= @astaff.address %></td></tr>
+                      <tr><td class="labelDefinitionTerm">Contact Number:</td><td class="labelDefinitionDetails"><%= @astaff.contactnumber %></td></tr>
+                      <tr><td class="labelDefinitionTerm">Email:</td><td class="labelDefinitionDetails"><%=  @astaff.email %></td></tr>
+                </table>
+             </div>
+         </div>
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Administrative Staff Information</h2>
+             <div class="expander">
+                <table>
+                   <tr><td class="labelDefinitionTerm">Employee ID:</td><td class="labelDefinitionDetails"><%=  @astaff.astaff.employee_id %></td></tr>
+                   <div class="expander">
+                   <tr><td class="labelDefinitionTerm">Description:</td><td class="labelDefinitionDetails"><%=  @astaff.astaff.description %></td></tr>
+                   </div>
+                </table>
+             </div>
+         </div>
+
+
+
+       </div>
+<%end%>

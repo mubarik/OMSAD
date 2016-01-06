@@ -1,0 +1,45 @@
+      <%= grid(@inv_grid, :show_filters => :always) do |g|
+        g.row_attributes do |version|
+          {:style => 'text-align:left;'}
+        end
+        g.blank_slate  do
+          "No record found"
+        end
+
+        g.column :column_name => 'Sr. No', :attribute_name => 'id',  :model_class=>"Inventory",:no_filter => true   do |invhist|
+          invhist.inventory.id
+        end
+
+        g.column :column_name => 'Name', :auto_reload => true, :in_csv => false, :attribute_name => 'inventoryname',  :model_class=>"Inventory",
+                 :custom_filter => Inventory.find(:all).map{|pr| [pr.inventoryname, pr.inventoryname]}   do |invhist|
+                 link_to invhist.inventory.inventoryname, "/inventory/inventories/"+(invhist.inventory.id).to_s
+
+          #invhist.inventory.inventoryname
+        end
+        g.column :column_name => 'Name', :auto_reload => true, :in_html => false, :attribute_name => 'inventoryname',  :model_class=>"Inventory",
+                 :custom_filter => Inventory.find(:all).map{|pr| [pr.inventoryname, pr.inventoryname]}   do |invhist|
+                 invhist.inventory.inventoryname
+        end
+        g.column :column_name => 'Owner', :attribute_name => 'name', :model_class=>'User'  do |invhist|
+          invhist.user.blank?? 'N/A' :invhist.user.name
+        end
+
+         g.column :column_name => 'Start Date', :attribute_name => 'startdate',:no_filter => true   do |invhist|
+          invhist.startdate.blank?? 'N/A' :invhist.startdate
+        end
+
+        g.column :column_name => 'End Date', :attribute_name => 'enddate', :no_filter => true   do |invhist|
+          invhist.enddate.blank?? 'N/A' :invhist.enddate
+        end
+
+
+        g.column :column_name => 'Brand', :attribute_name => 'brand', :model_class=>"Inventory" do |invhist|
+          invhist.inventory.brand.blank?? 'N/A' :invhist.inventory.brand
+        end
+
+        g.column :column_name => 'Model', :attribute_name => 'model', :model_class=>"Inventory"   do |invhist|
+          invhist.inventory.model.blank?? 'N/A' :invhist.inventory.model
+        end
+
+
+      end %>

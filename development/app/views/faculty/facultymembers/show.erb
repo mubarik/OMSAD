@@ -1,0 +1,308 @@
+<% content_for :menu do %>
+ <%= render "faculty/navigationmenu" %>
+<%end%>
+
+
+<% content_for :content do %>
+
+    <div class="pageHeadingBar">
+        <h1>Faculty Details </h1>
+    </div>
+    <hr class="headingLineBreak"/>
+    <% if !flash[:notice].blank? %>
+        <div class="messages">
+          <p><%=flash[:notice]%></p>
+        </div>
+    <%end%>
+
+    <div class="moreInfodisplayPicWithTextWrap">
+      <%if @facultymember.user.photo_file_name.nil? %>
+        <%if @facultymember.user.gender == 'Male'%>
+            <%=image_tag("user.png", :class=>'profilePicture')%>
+        <%else%>
+            <%=image_tag("female_user.png", :class=>'profilePicture')%>
+        <%end%>
+      <%else%>
+        <%=image_tag(@facultymember.user.photo, :class=>'profilePicture')%>
+      <%end%>
+
+        <h1><%=@facultymember.user.name%></h1>
+    </div>
+
+    <%#= link_to "Download CV", :action=> "show", :format => 'pdf' %>
+    <div class ="rightImageButtons">
+          <%= link_to(image_tag("icon_resume.png", :alt=>'',
+                                    :class=>'iconresumeButton',
+                                    :title=>'Download resume'),
+                                   {:action=> "show", :format => 'pdf' }) %>
+     </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+
+
+    <div class="expandingBlock">
+        
+       <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Basic and Contact Information</h2>
+           <div class="expander">
+              <table>
+                <tr><td class="labelDefinitionTerm">Designation:</td><td class="labelDefinitionDetails"><%=  @facultymember.designation %></td></tr>
+                <tr><td class="labelDefinitionTerm">Status:</td><td class="labelDefinitionDetails"><%=  @facultymember.status %></td></tr>
+                <tr>
+                  <td class="labelDefinitionTerm">
+                    Joining Date:
+                  </td>
+                  <td class="labelDefinitionDetails">
+                    <%if !@facultymember.joiningdate.blank?%>
+                      <%= label_tag(nil,@facultymember.joiningdate,:id=>"lbjoiningdate")%>
+                    <%else%>
+                     Not provided
+                    <%end%>
+                  </td>
+                </tr>
+                
+                <tr><td class="labelDefinitionTerm">Home Address:</td><td class="labelDefinitionDetails"><%=  @facultymember.user.address %></td></tr>
+                <tr><td class="labelDefinitionTerm">Primary Email:</td><td class="labelDefinitionDetails"><%=  @facultymember.user.email %></td></tr>
+                <%if !@facultymember.user.secondaryemail.blank?%>
+                  <tr><td class="labelDefinitionTerm">Secondary Email:</td><td class="labelDefinitionDetails"><%=  @facultymember.user.secondaryemail %></td></tr>
+                <%end%>
+                <%if !@facultymember.user.officenumber.blank?%>
+                <tr><td class="labelDefinitionTerm">Office Number:</td><td class="labelDefinitionDetails"><%=  @facultymember.user.officenumber %></td></tr>
+                <%end%>
+                  <tr><td class="labelDefinitionTerm">Mobile Number:</td><td class="labelDefinitionDetails"><%=  @facultymember.user.contactnumber %></td></tr>
+                <%if !@facultymember.cv_file_name.blank?%>
+                <tr>
+                  <td class="labelDefinitionTerm">CV:</td>
+                  <td class="labelDefinitionDetails">
+                    <%= link_to @facultymember.cv_file_name.blank?? '' : @facultymember.cv_file_name,  @facultymember.cv.url  %>
+                  </td>
+                </tr>
+                <%end%>
+              </table>
+           </div>
+       </div>
+
+      <%if !@facultymember.educational_information.blank? %>
+        <div class="expanderHeaderBar">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+            <h2>Education</h2>
+            <div class="expander">
+              <table class="flexEducation">
+                <%=render :partial=>"faculty/facultymembers/show/educational_information",
+                                   :collection=>@facultymember.educational_information,
+                                   :as =>:educational_info%>
+              </table>
+            </div>
+        </div>
+      <%end%>
+
+        <%if !@facultymember.inter_disciplinary_collaborators.blank? %>
+        <div class="expanderHeaderBar">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+            <h2>Inter-disciplinary Collaborators</h2>
+            <div class="expander">
+              <table class="flexInterDisciplinaryCollaborator">
+                <%=render :partial=>"faculty/facultymembers/show/inter_disciplinary_collaborators",
+                                    :collection=>@facultymember.inter_disciplinary_collaborators,
+                                    :as =>:collaborators%>
+              </table>
+            </div>
+        </div>
+      <%end%>
+
+        <%if !@facultymember.awards_information.blank? %>
+          <div class="expanderHeaderBar">
+              <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+              <h2>Honors, Awards and Fellowships</h2>
+              <div class="expander">
+                <table class="flexAwardsInfo">
+                   <%=render :partial=>"faculty/facultymembers/show/awards_information",
+                                     :collection=>@facultymember.awards_information,
+                                     :as =>:awards_info%>
+                 </table>
+              </div>
+          </div>
+        <%end%>
+
+        <%if !@facultymember.job_experiences.blank? %>
+         <div class="expanderHeaderBar">
+             <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Job Experiences</h2>
+             <div class="expander">
+               <table class="flexJobExperience">
+                 <%=render :partial=>"faculty/facultymembers/show/job_experience",
+                                   :collection=>@facultymember.job_experiences,
+                                   :as =>:job_experience%>
+               </table>
+             </div>
+         </div>
+         <%end%>
+
+      <%if @facultymember.research_grant_count > 0 %>
+      <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Research Grants</h2>             
+           <div class="expander">
+             <h4>As Principal Investigator</h4>
+             <hr/>
+             <table class="flexGrantAsPI">
+               <% for research_grant in @facultymember.principle_research_grants %>
+                 <tr>
+                   <td>
+                     <%=link_to research_grant.title,:controller => "faculty/researchgrants",
+                                                                                          :action => "show",
+                                                                                          :id =>research_grant.id%>
+                   </td>
+                   <td>
+                      <%= research_grant.grantnumber%>
+                   </td>
+                   <td>
+                      <%= research_grant.fundingagency%>
+                   </td>
+                 </tr>
+               <%end%>
+             </table>
+             <h4>As Co-Principal Investigator</h4>
+             <br/>
+             <table class="flexGrantAsCoPI">
+               <% for co_principle_research_grant in @facultymember.faculty_member_research_grants %>
+                 
+                 <tr>
+                   <td>
+                     <%=link_to co_principle_research_grant.research_grant.title,:controller => "faculty/researchgrants",
+                                                                                          :action => "show",
+                                                                                          :id =>co_principle_research_grant.research_grant.id%>
+                   </td>
+                   <td>
+                     <%= co_principle_research_grant.research_grant.grantnumber%>
+                   </td>
+                   <td>
+                     <%if co_principle_research_grant.research_grant.pi_affiliation_type and !co_principle_research_grant.research_grant.faculty_member.blank?%>
+                     <%=link_to co_principle_research_grant.research_grant.pi_name,
+                                                                     :controller => "faculty/facultymembers",
+                                                                     :action => "show",
+                                                                     :id =>co_principle_research_grant.research_grant.faculty_member.user.id%>
+                     <%else%>
+                       <%=co_principle_research_grant.research_grant.pi_name%>
+                     <%end%>
+                   </td>
+                   <td>
+                     <%= co_principle_research_grant.research_grant.fundingagency%>
+                   </td>
+                 </tr>
+                  <%end%>
+                </table>
+           </div>
+        </div>
+      <%end%>
+
+        <div class="expanderHeaderBar" id="facultyCoursesExpander">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+          <h2>Courses</h2>
+
+          <%if @viewing == "facultyCourses" %>
+          <script>
+            $(function() {
+              closeFirstExpander();
+              $("#facultyCoursesExpander").children('.expander').slideDown('slow');
+              $("#facultyCoursesExpander").children('img').fadeOut('slow');
+            });
+          </script>
+        <%end%>
+
+           <div class="expander">
+             <%= link_to(image_tag("", :alt => '', :class=>'iconAddButton',
+                                   :style=>'margin-left:10px; margin-top:-3px;',
+                                   :title=>'Add Course'), {:controller => :facultycourses, :action => 'new',
+                                   :id => @facultymember.id}, {:class => "fancybox" }) %>
+           </div>
+           <div class="expander">
+             <% unless @facultymember.faculty_courses.blank? %>
+               <h4>Courses assigned</h4>
+               <hr/>
+               <table class="flexCoursegrid">
+                 <% for faculty_course in @facultymember.faculty_courses %>
+                 <tr>
+                   <% unless faculty_course.course.blank? %>
+                     <td>
+                       <%= faculty_course.course.coursecode %>
+                     </td>
+                     <td>
+                       <%= faculty_course.course.coursename%>
+                     </td>
+                     <td>
+                       <%= faculty_course.course.credithrs %>
+                     </td>
+                    <%end%>
+                   <td>
+                     <%= faculty_course.noofstudents %>
+                   </td>
+                   <td>
+                     <%= faculty_course.offering %>
+                   </td>
+                   <td>
+                     <%= faculty_course.semester1 %>
+                   </td>
+                   <td>
+                      <%= link_to "Edit",{:controller => :facultycourses,
+                                         :action => 'edit', :id => faculty_course.id},
+                                         {:class => "fancybox" } %>
+                   </td>              
+                   <td>
+                    <%= link_to "Delete",{:controller => :facultycourses,:action =>"destroy",:id =>faculty_course.id},:method => 'delete' %>
+                    </td>
+                                 
+               </tr>
+              <%end%>
+             </table>
+            <%end%>
+           </div>
+         
+        </div>
+      <%if !(@facultymember.user.publications.count == 0)  %>
+         <%if !@facultymember.user.blank? %>
+           <div class="expanderHeaderBar">
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+            <h2>Publications</h2>
+
+                  <%=render :partial=>"layouts/show_publications" ,
+                            :locals=>{:user =>@facultymember.user}%>
+            </div>
+         <%end%>
+      <%end%>
+
+         <%if !@facultymember.biography.blank? %>
+           <div class="expanderHeaderBar">
+             <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Biography</h2>
+             <div class="expander">
+             <%=@facultymember.biography%>
+             </div>
+           </div>
+        <%end%>
+
+         <%if !@facultymember.researchinterests.blank? %>
+           <div class="expanderHeaderBar">
+              <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+              <h2>Research Interests</h2>
+              <div class="expander">
+                  <%=@facultymember.researchinterests%>
+              </div>
+           </div>
+         <%end%>
+
+         <%if !@facultymember.services.blank? %>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+          <h2>Services</h2>
+          <% for fs in @facultymember.services%>
+              <div class="expander">
+                        <%=  render 'faculty/facultymembers/show/services',
+                                                   :fs => fs %>
+              </div>
+           <%end%>
+       </div>        
+      <%end%>
+    </div>
+<%end%>
+

@@ -1,0 +1,74 @@
+<fieldset>
+  <legend class="dynamicFieldSetLegend">
+    <%=legend_text%>
+  </legend>
+  <table style="float:left;">
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">Affiliated with LUMS</label>
+    </td>
+    <td>
+      <%if cb.object.affiliationtype == true%>
+        <%=cb.select :affiliationtype,options_for_select([['Yes',1],['No',0]],1),{},:class=>"dropdown"%>
+      <%else%>
+        <%=cb.select :affiliationtype,options_for_select([['Yes',1],['No',0]],0),{},:class=>"dropdown"%>
+      <%end%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= cb.label :faculty_member_id,
+                   "Name<span class='requiredFieldAsterisk'> *</span>".html_safe,
+                   :class=>"labelDefinitionTerm",
+                   :hidden=>!cb.object.affiliationtype%>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=cb.collection_select  :faculty_member_id,FacultyMember.all,
+        :id,
+        :username,
+        options={:include_blank=>"Select a Faculty Member",:selected=>cb.object.faculty_member_id},
+        :class=>"dropdown",
+        :required=>true,
+        :title=>"Please select a faculty member",
+        :hidden=>!cb.object.affiliationtype%>
+    </td>
+    <td class="fieldErrorPlacement">
+      <%=cb.object.errors[:faculty_member_id][0]%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= cb.label :external_entity_name,
+                   "Name<span class='requiredFieldAsterisk'> *</span>".html_safe,
+                   :class=>"labelDefinitionTerm",
+                   :hidden=>cb.object.affiliationtype%>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=cb.text_field :external_entity_name,
+                        :class=>"inputTextbox",
+                        :hidden=>cb.object.affiliationtype,
+                        :required=>true,
+                        :title =>"Only alphabets are allowed"%>
+    </td>
+    <td class="fieldErrorPlacement">
+      <%=cb.object.errors[:external_entity_name][0]%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%=cb.label "Affiliation", :class=>"labelDefinitionTerm",:id=>"affiliationnamelabel",:hidden=>cb.object.affiliationtype%>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=cb.text_field :affiliationname,
+                       :class =>"inputTextbox",
+                       :hidden =>cb.object.affiliationtype,
+                       :title =>"Required Format: E.M.E College ,Rawalpindi"%>
+    </td>
+    <td class="fieldErrorPlacement">
+      <%=cb.object.errors[:affiliationname][0]%>
+    </td>
+  </tr>
+</table>
+  <%= cb.link_to_remove(image_tag("",:alt=>"",:class=>"iconDeleteButton",:style=>'float:right; margin-right:1%;'))%>
+</fieldset>
+<br/>

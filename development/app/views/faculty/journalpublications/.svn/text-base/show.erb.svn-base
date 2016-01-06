@@ -1,0 +1,137 @@
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Journal Paper</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <div class="moreInfodisplayPicWithTextWrap">
+
+        <%=image_tag("", :alt=>'', :class=>'displayPicGrant')%>
+        <h1><%=@journal_publication.publication.title%></h1>
+    </div>
+
+    <div class="clearFloatingAndStartFromBelow"></div>
+    <div class="expandingBlock">
+       <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Paper Details</h2>
+           <div class="expander">
+              <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Abstract:</td>
+                  <td class="labelDefinitionDetails"><%=  @journal_publication.publication.abstract %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Year:</td>
+                  <td class="labelDefinitionDetails"><%=  @journal_publication.publication.publicationyear %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Status:</td>
+                  <td class="labelDefinitionDetails"><%=  @journal_publication.publication.publicationstatus %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">URL:</td>
+                  <td class="labelDefinitionDetails">
+                    <% if( ! @journal_publication.publication.doi.blank?) %>
+                     <%=  @journal_publication.publication.doi %>
+                    <%else%>
+                     Not provided
+                    <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Pages:</td>
+                  <td class="labelDefinitionDetails">
+                    <% if( ! @journal_publication.publication.pages.blank?) %>
+                    <%=  @journal_publication.publication.pages %>
+                    <%else%>
+                      Not provided
+                    <%end%>
+                  </td>
+                </tr>
+              </table>
+           </div>
+       </div>
+
+      <%if !@journal_publication.publication.user_publications.blank?%>
+   <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Authors</h2>
+         <%= render :partial=>"faculty/displayAuthors",
+                    :object=>@journal_publication.publication.user_publications,
+                    :as => :authors%>
+      </div>
+      <%end%>
+      <%if !@journal_publication.publication.publication_photos.blank? or
+               @journal_publication.publication.publication_photos.length > 0%>
+        <div id="imageGalleryExpander" class="expanderHeaderBar">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Photos</h2>
+           <div class="expander">
+             <div class="publicationImageGallery">
+               <%= render :partial=>"faculty/publicationphotos/photo_old",
+                                  :collection=>@journal_publication.publication.publication_photos,
+                                  :as => :pub_object%>
+             </div>
+           </div>
+        </div>
+      <%end%>
+      <%if !@journal_publication.nil?%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Journal Details</h2>
+         <div class="expander">
+           <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Journal Name:</td>
+                  <td class="labelDefinitionDetails">
+                   <% if( ! @journal_publication.journalname.blank?) %>
+                     <%=  @journal_publication.journalname %>
+                    <%else%>
+                       Not provided
+                    <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Volume:</td>
+                  <td class="labelDefinitionDetails">
+                   <% if( ! @journal_publication.volume.blank?) %>
+                    <%=  @journal_publication.volume %>
+                   <%else%>
+                      Not provided
+                    <%end%>
+                   </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Impact Factor:</td>
+                  <td class="labelDefinitionDetails">
+                     <% if( ! @journal_publication.impactfactor.blank?) %>  
+                        <%=  @journal_publication.impactfactor %>
+                      <%else%>
+                       Not provided
+                       <%end%>
+                  </td>
+                </tr>
+                 <tr>
+                  <td class="labelDefinitionTerm">Year:</td>
+                  <td class="labelDefinitionDetails"><%=  @journal_publication.year %></td>
+                </tr>
+                 <tr>
+                  <td class="labelDefinitionTerm">Reference:</td>
+                  <td class="labelDefinitionDetails"><%=  @journal_publication.reference %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Reference Website:</td>
+                  <td class="labelDefinitionDetails"><%=  @journal_publication.referenceweb %></td>
+                </tr>
+           </table>
+         </div>
+      </div>
+      <%end%>
+    </div>
+<%end%>
+

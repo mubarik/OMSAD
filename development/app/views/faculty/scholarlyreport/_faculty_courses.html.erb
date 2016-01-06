@@ -1,0 +1,70 @@
+<script text="text/javascript">
+  $('.flexFacultyCourses').flexigrid({
+        height:'auto',
+        colModel : [
+                {display: 'Course Code', name : 'code', width : 120, align: 'center'},
+                {display: 'Course Name', name : 'name', width : 120, align: 'center'},
+                {display: 'Credit Hours', name : 'credithrs', width : 120, align: 'center'},
+                {display: 'Semester', name : 'semester', width : 120, align: 'center'},
+                {display: 'Year', name : 'year', width : 120, align: 'center'},
+                {display: 'Number of students', name : 'noofstudents', width : 120, align: 'center'},
+                {display: 'Offering', name : 'offering', width : 120, align: 'center'},
+           ]
+        });
+</script>
+
+<table class="flexFacultyCourses">
+  <%for faculty_course in facultycourses %>
+    <tr>
+    <td>
+      <%if !faculty_course.course.blank?%>
+        <%=  faculty_course.course.coursecode%>
+      <%else%>
+          Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !faculty_course.course.blank?%>
+        <%=  faculty_course.course.coursename%>
+      <%else%>
+          Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !faculty_course.course.blank?%>
+        <%=  faculty_course.course.credithrs%>
+      <%else%>
+          Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !faculty_course.semester.blank?%>
+        <%= faculty_course.semester.offering %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !faculty_course.semester.blank?%>
+        <%=  faculty_course.semester.year%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !faculty_course.noofstudents.blank?%>
+       <%=  faculty_course.noofstudents%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !faculty_course.offering.blank?%>
+       <%=  faculty_course.offering%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    </tr>
+  <%end%>
+</table>

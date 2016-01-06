@@ -1,0 +1,44 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+   <head>  </head>
+    <div class="pageHeadingBar">
+          <h1>Inventory Type Report</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+  <%= grid(@invtypes_grid, :show_filters => :always) do |g|
+
+    g.column :column_name => 'Sr. No', :attribute_name => 'inventory_id', :no_filter => true   do |invtype|
+      invtype.inventory_id
+    end
+
+    g.column :column_name => 'Inventory Name', :attribute_name => 'inventory_id', :no_filter => true   do |invtype|
+      invtype.inventory.inventoryname
+    end
+
+    g.column :column_name => 'Type', :attribute_name => 'inventory_id', :no_filter => true   do |invtype|
+      invtype.inventory.inventory_type.inventorytypename
+    end
+
+    g.column :column_name => 'Brand', :attribute_name => 'inventory_id', :no_filter => true  do |invtype|
+      invtype.inventory.brand
+    end
+
+    g.column :column_name => 'Model', :attribute_name => 'inventory_id', :no_filter => true   do |invtype|
+      invtype.inventory.model
+    end
+
+    g.column :column_name => 'Owner', :attribute_name => 'user_id', :no_filter => true   do |invtype|
+      invtype.user.name
+    end
+
+  end %>
+
+<% end %>
+
+

@@ -1,0 +1,59 @@
+<tr>
+  <div  style="text-align:center;width:190px">
+    <td>
+      <span class="authorIndex"><%="Author #{upf.object.authorindex}"%></span>
+    </td>
+  </div>
+  <div style="text-align:center;width:198px;">
+    <td>
+      <span class="authorName" ><%=upf.object.authorname%></span>
+    </td>
+  </div>
+  <div style="text-align:center;width:197px;">
+    <td>
+      <span class="affiliationName" ><%=upf.object.affiliationname%></span>
+    </td>
+  </div>
+<div style="text-align:center;width:25px">
+  <td>
+    <a class="increaseAuthorIndexLink" href="#authorData">
+      <img  class=" iconUp"></img>
+    </a>
+</td>
+</div>
+
+<div style="text-align:center;width:25px">
+  <td>
+    <a class="decreaseAuthorIndexLink" href="#authorData">
+      <img  class="iconDown "></img>
+    </a>
+</td>
+</div>
+
+  <div style="text-align:center;width:25px;">
+    <td>
+      <a class="editAuthorsLink" href="#authorData">
+        <img  class="iconEditButtonFacultySmall "></img>
+      
+      </a>
+    </td>
+  </div>
+  <div style="text-align:center;width:11px;">
+    <td>
+      
+      <%= upf.link_to_remove(image_tag("", :alt => '', :class=>'iconDeleteButtonFacultySmall'),:link_type=>"grid_link")%>
+    </td>
+  </div>
+  <div  style="display:none;">
+    <td>
+        <%=upf.hidden_field :user_id%>
+        <%=upf.hidden_field :affiliationtype%>
+        <%=upf.hidden_field :authorindex%>
+        <%=upf.hidden_field :external_entity_name%>
+        <%=upf.hidden_field :affiliationname%>
+    </td>
+  </div>
+</tr>
+
+
+

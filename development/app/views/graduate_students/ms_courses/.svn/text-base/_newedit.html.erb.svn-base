@@ -1,0 +1,80 @@
+<%#MsCourse Add/Edit Expander%>
+<div class="expandingBlock">
+
+<%#Thesis/Project Expander%>
+
+    <div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Thesis / Project <span class="requiredFillExpander">*</span></h2>
+      
+      <div class="expander">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Type: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%=ms.select :coursetype, options_for_select([['Thesis'],['Project']],ms.object.coursetype.blank?? '' :ms.object.coursetype), {} ,:class=>'dropdown'%></td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">Title: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%= ms.text_field :title, :required => true, :class=>'inputTextbox', :title=>"Title of thesis"%></td>
+            <td class="fieldErrorPlacement"><%= @mscourse.errors[:title][0] %></td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm" id="lblSemester">Thesis Part 1:</td>
+            <td class="inputBoxPlacement"><%=ms.collection_select :student_semester1_id, @semesters,:id,:semester_name,{:selected =>ms.object.student_semester1_id}, :class => "dropdown"%></td>
+            <td class="fieldErrorPlacement"><%= @mscourse.errors[:student_semester1_id][0] %></td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm" id="lblDate">Proposal Defense Date:</td>
+            <td class="inputBoxPlacement"><%=ms.text_field :proposaldefencedate,:class=>"uidatePicker"%></td>
+            <td class="fieldErrorPlacement"><%= @mscourse.errors[:proposaldefencedate][0] %></td>
+          </tr>
+        </table>
+        <div id="thesisSpecialFields">
+          <table>
+            <tr>
+              <td class="labelDefinitionTerm">Thesis Part 2:</td>
+              <td class="inputBoxPlacement"><%=ms.collection_select :student_semester2_id, @semesters,:id,:semester_name,{:include_blank=>"Please select",:selected =>ms.object.student_semester2_id}, :class => "dropdown"%></td>
+              <td class="fieldErrorPlacement"><%= @mscourse.errors[:student_semester2_id][0] %></td>
+            </tr>
+            <tr>
+              <td class="labelDefinitionTerm">Thesis Defense Date:</td>
+              <td class="inputBoxPlacement"><%=ms.text_field :thesisdefencedate,:class=>"uidatePicker"%></td>
+              <td class="fieldErrorPlacement"><%= @mscourse.errors[:thesisdefencedate][0] %></td>
+            </tr>
+          </table>
+        </div>
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Supervisor: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%=ms.collection_select :faculty_member_id,FacultyMember.all,:id,:username,{:selected => ms.object.faculty_member_id},:class => "dropdown", :required=>true %></td>
+            <td class="fieldErrorPlacement"><%= @mscourse.errors[:faculty_member_id][0] %></td>
+          </tr>
+        </table><br/>
+
+        <%=ms.fields_for :cosupervisors do |cos|%>
+          <%= render "cosupervisor",:cos=>cos%>
+        <%end%>
+        <%= ms.link_to_add "Add co-supervisor", :cosupervisors, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left' %>
+        <span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill in the above co-supervisor's information first</span>
+      </div>
+    </div>
+
+    <div class="bottomButtons">
+      <table>
+        <tr><td><span class="submitErrorPlacement"></span></td>
+          <%if @saved=="true"%>
+            <%if @savedtonext=="true"%>
+              <td style='padding-right:6px;'><%= button "Finish", {:controller=>'students',:action=>'index'}, :class=>'standardButtonSize'%></td>
+              <td><%=button "Add Independent Studies", {:controller=>'independent_studies',:action=>'new'}, {:id=>@student.id, :saved=>true}, :class=>'autoWidth' %></td>
+            <%else%>
+              <td style='padding-right:6px;'><%= submit_tag "Save"%></td>
+              <td><%=button "Skip step & add Independent Studies", {:controller=>'independent_studies',:action=>'new'}, {:id=>@student.id, :saved=>true}, :class=>'autoWidth' %></td>
+            <%end%>
+          <%else%>
+            <td><%= submit_tag "Save"%></td>
+          <%end%>
+        </tr>
+      </table>
+    </div>
+</div>

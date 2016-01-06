@@ -1,0 +1,52 @@
+ <div class="expander">
+  <% if !authors.blank? and authors.length>0 %>
+   <table class="flexAuthors">
+        <% for author in authors %>
+          <tr>
+            <td>
+                Author <%=author.authorindex%>
+            </td>
+            <td>
+              <%if !author.affiliationtype == true%>
+                <%=author.authorname%>
+              <%else%>
+                <%if author.user.blank?%>
+                  <%="Not Available"%>
+                <%else%>
+                    <%@controller_name%>            
+                    <%if !author.user.faculty_member.blank?%>
+                      <%@controller_name = "faculty/facultymembers"%>
+                    <%elsif !author.user.student.blank?%>
+                      <%@controller_name = "GraduateStudents/students"%>                      
+                    <%elsif !author.user.t_assistant.blank?%>
+                      <%@controller_name= "inventory/tassistants"%>                      
+                    <%elsif !author.user.ustudent.blank? %>
+                      <%@controller_name= "inventory/ustudents"%>                      
+                    <%elsif !author.user.research_assistant.blank? %>
+                      <%@controller_name= "inventory/researchassistants"%>
+                    <%else%>
+                      <%@controller_name= "inventory/astaffs"%>
+                    <%end%>
+                    <%if !@controller_name.empty?%>
+                      <%= link_to author.user.name,
+                        {:controller => @controller_name,
+                        :action => 'show',
+                        :id => author.user.id}%>
+                    <%else%>
+                      <%=author.user.name%>
+                    <%end%>
+                <%end%>
+              <%end%>
+            </td>
+            <td>
+              <% if !author.affiliation.blank?%>
+                <%=author.affiliation%>
+              <%else%>
+                LUMS
+                <%end%>
+            </td>
+          </tr>
+        <%end%>
+       </table>
+   <%end%>
+ </div>

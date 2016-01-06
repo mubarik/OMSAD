@@ -1,0 +1,8 @@
+  <div class="publicationThumbnail">
+    <%= link_to( image_tag(pp.object.image.url(:thumb)),
+                                         pp.object.image.url(:original), {:class => "fancybox" }) %>
+    <%= pp.link_to_remove(image_tag("",:alt=>"",:class=>"deleteFromImageGallery"))%>
+  </div>
+
+
+

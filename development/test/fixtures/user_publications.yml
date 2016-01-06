@@ -1,0 +1,60 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+databook:
+  id: 1
+  user_id : 1
+  publication_id: 1
+  authorname: Mubarik Ahmed
+  authorindex: 1
+  lumsaffiliation: 1
+  affiliation: LUMS
+
+
+databookchapter:
+  id: 2
+  user_id : 1
+  publication_id: 2
+  authorname: Mubarik Ahmed
+  authorindex: 1
+  lumsaffiliation: 1
+  affiliation: LUMS
+
+dataTR:
+  id: 3
+  user_id : 1
+  publication_id: 3
+  authorname: Mubarik Ahmed
+  authorindex: 1
+  lumsaffiliation: 1
+  affiliation: LUMS
+
+dataConference:
+  id: 4
+  user_id : 1
+  publication_id: 4
+  authorname: Mubarik Ahmed
+  authorindex: 1
+  lumsaffiliation: 1
+  affiliation: LUMS
+
+dataJournal:
+  id: 5
+  user_id : 1
+  publication_id: 5
+  authorname: Mubarik Ahmed
+  authorindex: 1
+  lumsaffiliation: 1
+  affiliation: LUMS
+
+dataworkshop:
+  id: 6
+  user_id : 1
+  publication_id: 6
+  authorname: Mubarik Ahmed
+  authorindex: 1
+  lumsaffiliation: 1
+  affiliation: LUMS

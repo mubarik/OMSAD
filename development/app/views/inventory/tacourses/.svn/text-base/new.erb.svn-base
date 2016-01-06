@@ -1,0 +1,79 @@
+ <%= javascript_include_tag "inventory/invclientSideValidations.js" %>
+<script>
+  $(document).ready(function()
+  { 
+    //Hide courses collection
+    $('#formTACourses div#coursesCollection').hide();
+
+    $('#formTACourses #ta_course_semester_id').change(function(){
+        jQuery.ajax({
+          url: "/inventory/tacourses/populate_courses",
+          async: false,
+          dataType: "json",
+          data:'mode=populate'+'&'+'id='+$('#formTACourses #ta_course_user_id').val()+'&'+'semid=' + $('#formTACourses #ta_course_semester_id').val(),
+          success: function(response)
+          {
+              //alert(response);
+               $("#ta_course_course_id").get(0).options.length = 0;
+               $("#ta_course_course_id").get(0).options[0] = new Option("Select course", "");
+                var i = 1;
+               $.each(response, function(index, item) {
+                      $("#ta_course_course_id").get(0).options[i] = new Option(item, index);
+                      i++;
+                });
+                $('#formTACourses div#coursesCollection').slideDown();
+          }
+          //error: function() { alert("Failed to load courses");}
+
+      });
+  });
+  });
+</script>
+<div class="pageHeadingBar">
+  <h2>Add Course</h2>
+</div>
+<hr class="headingLineBreak"/>
+<%= form_for @ta_course ,:html=>{:id=>"formTACourses",:class=>'clientSideValidatedForm'},
+                                :url =>{ :controller => "inventory/tacourses",
+                                           :action => "create",:id=>params[:id]} do |f| %>
+<%= f.hidden_field :user_id , :value => params[:id]%>
+
+<div class="groupBox">
+  <div>
+   <table>
+     <tr>
+       <td class="labelDefinitionTerm">Semester:</td>
+       <td class="inputBoxPlacement"><%= f.collection_select(:semester_id,Semester.all,:id,:semester_name, {:prompt=>"Select semester"}, :class=>'dropdown')%></td>
+       <td class="popupfieldErrorPlacement"></td>
+     </tr>
+   </table>
+  </div>
+  <div id="coursesCollection" class="coursesCollection">
+    <table>
+    <tr>
+      <td class="labelDefinitionTerm">Course Name:</td>
+      <td class="inputBoxPlacement"><%=f.collection_select(:course_id,@offeredcourses,:c_id,:c_name,{:prompt=>"Select course"}, :class=>'dropdown', :required=>'true')%></td>
+      <td class="popupfieldErrorPlacement"></td>
+    </tr>
+    </table>
+  </div>
+  <table>
+      <tr>
+          <td class="labelDefinitionTerm">Evaluation GPA: </td>
+          <td class="inputBoxPlacement"><%=f.text_field :evalgpa, :class=>'inputTextbox', :title=>'Special characters not allowed'%></td>
+          <td class="popupfieldErrorPlacement"></td>
+      </tr>
+      <tr>
+          <td class="labelDefinitionTerm">Upload Document:</td>
+          <td class="inputBoxPlacement"><%= f.file_field :document,:class=>"inputTextbox"%></td>
+      </tr>
+  </table>
+
+
+
+
+</div>
+<div class="bottomButtons">
+  <%=submit_tag("Add")%>
+</div>
+ <%end%>

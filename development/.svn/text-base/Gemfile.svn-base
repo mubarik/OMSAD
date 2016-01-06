@@ -1,0 +1,67 @@
+source 'http://rubygems.org'
+
+gem 'rails', '3.1.0'
+#gem "wice_grid", '3.0.4'
+#gem 'will_paginate'
+gem "paperclip"
+
+# Bundle edge Rails instead:
+# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+
+gem 'mysql2'
+gem 'bibtex-ruby'
+
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+
+gem 'therubyracer', require: "v8"
+gem 'jquery-rails'
+gem 'fancybox-rails'
+gem "wice_grid", '3.0.4'
+gem 'will_paginate'
+gem 'breadcrumbs_on_rails'
+gem 'prawn'
+gem 'prawnto'
+
+# Use unicorn as the web server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+ gem 'capistrano'
+ gem 'capistrano-ext'
+
+#nested_from gem for dynamically added fields
+gem 'nested_form'
+gem 'bibtex-ruby'
+gem 'citeproc-ruby'
+
+# To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'
+#group :cucumber do
+#  gem 'capybara'
+#  gem 'database_cleaner'
+#  gem 'cucumber-rails'
+#  gem 'cucumber'
+#  gem 'spork'
+#  gem 'launchy'    # So you can do Then show me the page
+#end
+
+#group :development do
+#gem 'rspec-rails', '2.6.1.beta1'
+#gem 'annotate-models', '1.0.4'
+#end
+
+#group :test do
+#    gem 'rspec', '2.6'
+#    gem 'rspec-rails', '2.6.1.beta1'
+#    gem 'webrat', '0.7.2'
+#    gem 'factory_girl_rails', '1.0'
+#    gem 'email_spec'
+#    gem 'cover_me', '>= 1.0.0.rc2'
+#end

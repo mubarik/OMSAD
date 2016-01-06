@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/5075/OMSAD/development/app/views/inventory/locationreports
+END
+_locHistoryReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/5074/OMSAD/development/app/views/inventory/locationreports/_locHistoryReport.html.erb
+END
+_locTypeReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/5073/OMSAD/development/app/views/inventory/locationreports/_locTypeReport.html.erb
+END
+Test.erb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/1200/OMSAD/development/app/views/inventory/locationreports/Test.erb
+END
+_locAllocationReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/5075/OMSAD/development/app/views/inventory/locationreports/_locAllocationReport.html.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/4711/OMSAD/development/app/views/inventory/locationreports/index.erb
+END

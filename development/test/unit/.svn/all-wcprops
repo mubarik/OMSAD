@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/DSSD_Summer2012/!svn/ver/3173/OMSAD/development/test/unit
+END
+technical_report_publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/2557/OMSAD/development/test/unit/technical_report_publication_test.rb
+END
+printer_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/2133/OMSAD/development/test/unit/printer_test.rb
+END
+semester_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/DSSD_Summer2012/!svn/ver/2117/OMSAD/development/test/unit/semester_test.rb
+END
+scanner_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/2139/OMSAD/development/test/unit/scanner_test.rb
+END
+inventory_ownership_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/test/unit/inventory_ownership_test.rb
+END
+student_semester_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/2117/OMSAD/development/test/unit/student_semester_test.rb
+END
+inventory_type_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/test/unit/inventory_type_test.rb
+END
+faculty_member_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/2593/OMSAD/development/test/unit/faculty_member_test.rb
+END
+room_detail_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/test/unit/room_detail_test.rb
+END
+course_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/DSSD_Summer2012/!svn/ver/2254/OMSAD/development/test/unit/course_test.rb
+END
+financial_aid_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/DSSD_Summer2012/!svn/ver/2117/OMSAD/development/test/unit/financial_aid_test.rb
+END
+journal_publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/DSSD_Summer2012/!svn/ver/2554/OMSAD/development/test/unit/journal_publication_test.rb
+END
+cosupervisor_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/DSSD_Summer2012/!svn/ver/2983/OMSAD/development/test/unit/cosupervisor_test.rb
+END
+faculty_member_awards_information_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/2741/OMSAD/development/test/unit/faculty_member_awards_information_test.rb
+END
+faculty_member_research_grant_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/2182/OMSAD/development/test/unit/faculty_member_research_grant_test.rb
+END
+student_course_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/2117/OMSAD/development/test/unit/student_course_test.rb
+END
+location_ownership_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/test/unit/location_ownership_test.rb
+END
+user_publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/2169/OMSAD/development/test/unit/user_publication_test.rb
+END
+semester_course_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/2117/OMSAD/development/test/unit/semester_course_test.rb
+END
+publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/DSSD_Summer2012/!svn/ver/2547/OMSAD/development/test/unit/publication_test.rb
+END
+user_user_type_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/2185/OMSAD/development/test/unit/user_user_type_test.rb
+END
+user_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/DSSD_Summer2012/!svn/ver/2588/OMSAD/development/test/unit/user_test.rb
+END
+user_type_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/2184/OMSAD/development/test/unit/user_type_test.rb
+END
+book_publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/2543/OMSAD/development/test/unit/book_publication_test.rb
+END
+user_research_grant_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/DSSD_Summer2012/!svn/ver/2187/OMSAD/development/test/unit/user_research_grant_test.rb
+END
+independent_study_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/3173/OMSAD/development/test/unit/independent_study_test.rb
+END
+student_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/2117/OMSAD/development/test/unit/student_test.rb
+END
+school_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/test/unit/school_test.rb
+END
+faculty_course_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/2503/OMSAD/development/test/unit/faculty_course_test.rb
+END
+cpu_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/DSSD_Summer2012/!svn/ver/2134/OMSAD/development/test/unit/cpu_test.rb
+END
+research_grant_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/2600/OMSAD/development/test/unit/research_grant_test.rb
+END
+book_chapter_publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/2160/OMSAD/development/test/unit/book_chapter_publication_test.rb
+END
+collaborator_research_grant_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/2316/OMSAD/development/test/unit/collaborator_research_grant_test.rb
+END
+inventory_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/2251/OMSAD/development/test/unit/inventory_test.rb
+END
+ms_course_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/3135/OMSAD/development/test/unit/ms_course_test.rb
+END
+milestone_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/2117/OMSAD/development/test/unit/milestone_test.rb
+END
+faculty_member_job_experience_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/2739/OMSAD/development/test/unit/faculty_member_job_experience_test.rb
+END
+conference_publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/2559/OMSAD/development/test/unit/conference_publication_test.rb
+END
+lcd_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/DSSD_Summer2012/!svn/ver/2135/OMSAD/development/test/unit/lcd_test.rb
+END
+department_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/DSSD_Summer2012/!svn/ver/2181/OMSAD/development/test/unit/department_test.rb
+END
+.gitkeep
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/test/unit/.gitkeep
+END
+workshop_publication_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/2583/OMSAD/development/test/unit/workshop_publication_test.rb
+END
+thesis_semester_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/2993/OMSAD/development/test/unit/thesis_semester_test.rb
+END
+location_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/DSSD_Summer2012/!svn/ver/2252/OMSAD/development/test/unit/location_test.rb
+END
+location_type_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/DSSD_Summer2012/!svn/ver/17/OMSAD/development/test/unit/location_type_test.rb
+END
+publication_type_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/2183/OMSAD/development/test/unit/publication_type_test.rb
+END
+faculty_member_educational_information_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/2733/OMSAD/development/test/unit/faculty_member_educational_information_test.rb
+END

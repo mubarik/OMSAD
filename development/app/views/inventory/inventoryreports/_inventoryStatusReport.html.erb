@@ -1,0 +1,41 @@
+      <%= grid(@inv_grid, :show_filters => :always) do |g|
+        g.row_attributes do |version|
+          {:style => 'text-align:left;'}
+        end
+        g.blank_slate  do
+          "No record found"
+        end
+        g.column :column_name => 'Sr. No', :attribute_name => 'id', :no_filter => true   do |invstatus|
+          invstatus.id
+        end
+
+        g.column :column_name => 'Type',  :attribute_name => 'inventorytypename', :model_class=>"InventoryType",:auto_reload => true,
+                 :custom_filter => InventoryType.find(:all).map{|pr| [pr.inventorytypename, pr.inventorytypename]}  do |invstatus|
+          invstatus.inventory_type.blank?? 'N/A' :invstatus.inventory_type.inventorytypename
+        end
+
+        g.column :column_name => 'Inventory Name',:in_csv=>false, :attribute_name => 'inventoryname'  do |invstatus|
+          link_to invstatus.inventoryname, "/inventory/inventories/"+(invstatus.id).to_s
+          #invstatus.inventoryname
+        end
+
+        g.column :column_name => 'Inventory Name',:in_html=>false, :attribute_name => 'inventoryname'  do |invstatus|
+          invstatus.inventoryname.blank?? 'N/A' :invstatus.inventoryname
+        end
+        g.column :column_name => 'Brand', :attribute_name => 'brand' do |invstatus|
+          invstatus.brand.blank?? 'N/A' :invstatus.brand
+        end
+
+        g.column :column_name => 'Model', :attribute_name => 'model'  do |invstatus|
+          invstatus.model.blank?? 'N/A' :invstatus.model
+        end
+
+        g.column :column_name => 'BarCode', :attribute_name => 'barcode', :no_filter => true  do |invstatus|
+          invstatus.barcode.blank?? 'N/A' :invstatus.barcode
+        end
+
+        g.column :column_name => 'Acquisition Date', :attribute_name => 'acqdate', :no_filter => true  do |invstatus|
+          invstatus.acqdate.blank?? 'N/A' :invstatus.acqdate
+        end
+
+      end %>

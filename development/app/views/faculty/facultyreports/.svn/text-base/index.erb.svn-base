@@ -1,0 +1,46 @@
+<%= javascript_include_tag "facultyreports" %>
+<%= content_for :content do  %>
+  <div class="pageHeadingBar">
+    <h1>Reports</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+    <%= form_tag({:controller => "faculty/facultyreports", :action => "create"}, :remote => true, :id=>"postform") do %>
+      <div class="groupBox" style="overflow: auto;">
+         <table style="float:left;">
+           <tr>
+             <td class="labelDefinitionTerm">
+               Report type:
+             </td>
+             <td class="inputBoxPlacement">
+                <%= select_tag :streporttype,options_for_select([['Professional Information',1],['Research Grants',2],
+                                                         ['Faculty Publication',3],['Department Publication',4],
+                                                         ['PhD Thesis Supervision',5],['Faculty Courses',6],
+                                                         ['Faculty Awards Information',7],
+                                                         ['MS Thesis Supervision',8],
+                                                         ['MS Project Supervision',9]]),:prompt =>"Select report type",:required=> 'true',
+                                                         :class=>"dropdown" %>
+             </td>
+           </tr>
+           <tr>
+             <td class="labelDefinitionTerm" id="nameLabel">
+               Name:
+             </td>
+             <td>
+              <%=collection_select(:csfaculty,:id,@faculty_members,:id,:username,options={:prompt=>"Select a Faculty Member"},
+                                   :required=> 'true',:class=>"dropdown")%>
+             </td>
+           </tr>
+         </table>
+         <%= submit_tag "Show Report" ,:style=>'float:right;'%>
+        </div>
+        <br/>
+       <%end%>
+
+  <div class ="reportsGrid">
+  </div>
+<%end%>
+
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>

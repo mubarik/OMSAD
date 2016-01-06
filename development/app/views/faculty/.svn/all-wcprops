@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/DSSD_Summer2012/!svn/ver/5348/OMSAD/development/app/views/faculty
+END
+_publication.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/5308/OMSAD/development/app/views/faculty/_publication.html.erb
+END
+_dynamicauthor_popup.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4804/OMSAD/development/app/views/faculty/_dynamicauthor_popup.html.erb
+END
+_displayAuthors.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/4910/OMSAD/development/app/views/faculty/_displayAuthors.html.erb
+END
+_dynamicauthor_fields_for.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/4560/OMSAD/development/app/views/faculty/_dynamicauthor_fields_for.html.erb
+END
+_navigationmenu.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/4708/OMSAD/development/app/views/faculty/_navigationmenu.html.erb
+END

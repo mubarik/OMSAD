@@ -1,0 +1,222 @@
+
+<div class="expander">
+  <% if !user.book_publications.blank? and user.book_publications.length>0 %>
+  <div class="dataBlockFaculty">
+    <div class ="dataPadder">
+      <h4> Books </h4>
+        <table class ="flexBookpublicationsgrid">
+          <% for bookpublication in user.book_publications %>
+            <tr>
+              <td>
+                <%= link_to bookpublication.title,
+                  {:controller => "faculty/bookpublications",
+                  :action => 'show',
+                  :id => bookpublication.id}%>
+
+              </td>
+              <td>
+                <%=bookpublication.publicationyear%>
+              </td>
+              <td>
+                <%=bookpublication.publicationstatus%>
+              </td>
+              <td>
+                <%=bookpublication.pages%>
+              </td>
+              <td>
+                <%=bookpublication.book_publication.publishername%>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+ <%end%>
+</div>
+
+
+<div class="expander">
+ <% if !user.book_chapter_publications.blank? and user.book_chapter_publications.length>0 %>
+  <div class="dataBlockFaculty">
+      <h4> Book chapters </h4>
+    <div class="dataPadder">
+        <table class ="flexBCpublicationsgrid">
+          <% for bookchapterpublication in user.book_chapter_publications %>
+            <tr>
+              <td>
+                <%= link_to bookchapterpublication.title,
+                  {:controller => "faculty/bookchapterpublications",
+                  :action => 'show',
+                  :id => bookchapterpublication.id}%>
+              </td>
+              <td>
+                <%=bookchapterpublication.publicationyear%>
+              </td>
+              <td>
+                <%=bookchapterpublication.publicationstatus%>
+              </td>
+              <td>
+                <%=bookchapterpublication.book_chapter_publication.bookname%>
+              </td>
+              <td>
+                <%=bookchapterpublication.book_chapter_publication.publishername%>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+ <%end%>
+</div>
+
+
+
+<div class="expander">
+ <% if !user.journal_publications.blank? and user.journal_publications.length>0 %>
+  <div class="dataBlockFaculty">
+    <div class ="dataPadder">
+      <h4> Journal Papers </h4>
+
+        <table class ="flexJournalpublicationsgrid">
+          <% for journalpublication in user.journal_publications %>
+            <tr>
+              <td>
+                <%= link_to journalpublication.title,
+                  {:controller => "faculty/journalpublications",
+                  :action => 'show',
+                  :id => journalpublication.id}%>
+              </td>
+              <td>
+                <%=journalpublication.publicationyear%>
+              </td>
+              <td>
+                <%=journalpublication.publicationstatus%>
+              </td>
+              <td>
+                <%=journalpublication.journal_publication.journalname%>
+              </td>
+              <td>
+                <%=journalpublication.journal_publication.volume%>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+ <%end%>
+</div>
+
+
+
+<div class="expander">
+ <% if !user.conference_publications.blank? and user.conference_publications.length>0 %>
+  <div class="dataBlockFaculty">
+    <div class ="dataPadder">
+      <h4> Conference Papers </h4>
+        <table class ="flexConferencepublicationsgrid">
+          <% for conferencepublication in user.conference_publications %>
+            <tr>
+              <td>
+                <%= link_to conferencepublication.title,
+                  {:controller => "faculty/conferencepublications",
+                  :action => 'show',
+                  :id => conferencepublication.id}%>
+              </td>
+              <td>
+                <%=conferencepublication.publicationyear%>
+              </td>
+              <td>
+                <%=conferencepublication.publicationstatus%>
+              </td>
+              <td>
+                <%=conferencepublication.pages%>
+              </td>
+              <td>
+                <%=conferencepublication.conference_publication.conferencename%>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+  <%end%>
+</div>
+
+
+
+<div class="expander">
+ <% if !user.workshop_publications.blank? and user.workshop_publications.length>0 %>
+  <div class="dataBlockFaculty">
+    <div class ="dataPadder">
+      <h4> Workshop Papers </h4>
+
+        <table class ="flexWSpublicationgrid">
+          <% for workshoppublication in user.workshop_publications %>
+            <tr>
+              <td>
+                <%= link_to workshoppublication.title,
+                  {:controller => "faculty/workshoppublications",
+                  :action => 'show',
+                  :id => workshoppublication.id}%>
+              </td>
+              <td>
+                <%=workshoppublication.publicationyear%>
+              </td>
+              <td>
+                <%=workshoppublication.publicationstatus%>
+              </td>
+              <td>
+                <%=workshoppublication.workshop_publication.workshopname%>
+              </td>
+              <td>
+                <%=workshoppublication.workshop_publication.conferencename%>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+ <%end%>
+</div>
+
+
+
+<div class="expander">
+ <% if !user.technicalreport_publications.blank? and user.technicalreport_publications.length>0 %>
+  <div class="dataBlockFaculty">
+    <div class ="dataPadder">
+      <h4> Technical Reports </h4>
+        <table class ="flexTRpublicationgrid">
+          <% for technicalreportpublication in user.technicalreport_publications %>
+            <tr>
+              <td>
+                <%= link_to technicalreportpublication.title,
+                  {:controller => "faculty/technicalreportpublications",
+                  :action => 'show',
+                  :id => technicalreportpublication.id}%>
+              </td>
+              <td>
+                <%=technicalreportpublication.publicationyear%>
+              </td>
+              <td>
+                <%=technicalreportpublication.publicationstatus%>
+              </td>
+              <td>
+                <%=technicalreportpublication.pages%>
+              </td>
+              <td>
+                <%=technicalreportpublication.technical_report_publication.technicalreportnumber%>
+              </td>
+              <td>
+                <%=technicalreportpublication.doi%>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+    </div>
+  </div>
+ <%end%>
+</div>
+
+
+

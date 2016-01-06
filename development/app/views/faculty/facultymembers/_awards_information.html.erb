@@ -1,0 +1,34 @@
+<fieldset>
+  <legend class="dynamicFieldSetLegend">
+    Award
+  </legend>
+  <table style="float:left;">
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Title<span class="requiredFieldAsterisk"> *</span>
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=ai.text_field :title,
+                       :title=>"Enter the title of award or honor or fellowship e.g ACM programmer of the year 2010",
+                       :class=>"inputTextbox",
+                       :required=>true%>
+    </td>
+    <td class="fieldErrorPlacement"></td>
+
+  </tr>
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Year
+      </label>
+    </td>
+    <td>
+      <%=ai.select :year,1947..Time.now.year,{},:class=>"dropdown"%>
+    </td>
+  </tr>
+</table>
+      <%= ai.link_to_remove(image_tag("",:alt=>"",:class=>"iconDeleteButton",:style=>'float:right; margin-right:1%;'))%>
+</fieldset><br/>
+

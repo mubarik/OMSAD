@@ -1,0 +1,302 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require fancybox
+ *= require_tree .
+*/
+
+
+.headerWrap, #leftNavigationMenu, #headerTab, #footer {
+    /*making website text non-selectable*/
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
+ul#list-nav {
+list-style:none;
+margin:-1px;
+padding: 5px 0 0;
+width:100%;
+}
+
+ul#list-nav li {
+display:inline
+
+}
+
+ul#list-nav li a {
+    text-decoration:none;
+    padding:5px 0;
+    width:197px;
+    background-color:#A64C10;
+    color:#eee;
+    float:left;
+    text-align:center;
+    border-left:1px solid #fff;
+}
+
+ul#list-nav li a:hover {
+    color:#000000;
+}
+
+#pagewrap {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#header {
+
+    height:130px;
+
+}
+
+
+#header_left{
+
+
+}
+
+#header_right {
+    overflow:auto;
+}
+
+#headerRight_panel{
+    float:right;
+    font-size: 12px;
+    display: inline-block;
+    margin:3px;
+
+}
+
+.headerWrap {
+    margin: 20px 0 0 0;
+    overflow: auto;
+    padding: 0 5px;
+}
+
+.pageHeading {
+    font-size: 3.6em;
+    font-weight: normal;
+    letter-spacing: -0.001em;
+    margin-left: 6px;
+    margin-top: 6px;
+    color:#2D3192;
+    display: inline-block;
+    float: left;
+}
+
+p.l1 {
+    margin:15px 0 0 0;
+    text-align: justify;
+}
+
+p.l2 {
+    margin:1px 0 0;
+}
+
+  .appDescriptionFont {
+    color: #3B3FBF;
+    font-size:small;
+    display: inline-block;
+    margin-left: 7px;
+    margin-top: 18px;
+    width:165px;
+    height: 30px;
+    overflow: hidden;
+  }
+
+
+#completeLogo {
+    float:left;
+}
+
+
+#headerRight_panel a {
+    color:#999999;
+  
+}
+
+
+#mainContent{
+
+
+}
+
+
+
+
+#leftNavigationMenu {
+    float:left;
+    width: 19.7%;
+}
+
+#content {
+    float:right;
+    width:80.3%;
+    background: #F5F5F5;
+    overflow: hidden;
+}
+
+#leftNavigationMenu, #content {
+    min-height:750px;
+}
+
+
+#headerTab {
+    background-color:#A64C10;
+    height:35px;
+    font-size:13px;
+    border-radius:3px;
+}
+
+.headerFooterLinks {
+   color:#999999;
+}
+
+#footer{
+     clear:both;
+     padding-top: 25px;
+}
+
+#footer_left{
+
+    color:#999999;
+    float:left;
+
+}
+
+#footer_right {
+
+    float:right
+
+}
+
+
+body {
+    font-size: small;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+}
+
+
+
+
+
+
+
+
+
+#main {
+    height: 1350px;
+    margin: 0 auto;
+    position: relative;
+    width: 980px;
+}
+
+a {
+    outline: 0 none;
+}
+#treeMenunew {
+    font: 14px 'Segoe UI',Helvetica,Arial,sans-serif;
+    left: 15px;
+    position: absolute;
+    right: auto;
+    top: 23px;
+    width: 559px;
+}
+#treeMenunew h2 {
+    color: #454545;
+    font: bold 20px 'Segoe UI',Helvetica,Arial,sans-serif;
+    margin-bottom: 12px;
+}
+#treeMenunew ul {
+    list-style: none outside none;
+}
+#treeMenunew ul li {
+    background: url("../images/treeTabBg.gif") repeat-x scroll 0 0 #F5F5F5;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px 3px 3px 3px;
+    margin: 4px 0;
+    overflow: hidden;
+
+}
+#treeMenunew ul li span {
+    background: url("expander.gif") no-repeat scroll 100% 0 transparent;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    height: 30px;
+    width: 30px;
+    margin-top:10px;
+    margin-right:4px;
+}
+#treeMenunew ul li a {
+    color: #4D5F6B;
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    padding: 5px 10px;
+    text-decoration: none;
+    width: 234px;
+}
+#treeMenunew ul li span.opened {
+    background-position: 100% -61px;
+}
+#treeMenunew ul li div {
+    clear: both;
+    height: auto;
+}
+#treeMenunew ul li li {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 transparent;
+    border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+    border-left: 0 none;
+    border-right: 0 none;
+    border-style: solid none;
+    border-width: 1px 0;
+    clear: both;
+    margin: 0;
+    padding-left: 10px;
+
+
+}
+#treeMenunew ul li li a {
+    color: #626262;
+    float: left;
+    font-size: 12px;
+    padding: 5px 0;
+    width: auto;
+}
+#treeMenunew ul li li a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+#treeMenunew ul li li span {
+    background-position: -10px -263px;
+    cursor: default;
+    display: inline;
+    float: left;
+    height: 20px;
+    width: 15px;
+}
+#treeMenunew ul li li span.closed {
+    background-position: -10px -131px;
+    cursor: pointer;
+}
+#treeMenunew ul li li span.closed.opened {
+    background-position: -7px -197px;
+}
+#treeMenunew ul li li li {
+    border: 0 none;
+}

@@ -1,0 +1,44 @@
+<script type="text/javascript">
+   $("#formLocation").bind("nested:beforeFieldAdded",function(event)
+    {
+      event.link.data("fieldAddtionErrorMessage","Please fill the empty fields first")
+      checkInputsForAddition(event)
+    })
+</script>
+<div class="expanderHeaderBar">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+      <div class="headingDiv">
+        <h2>Desk Information <span class="dynamicFieldErrorPlacement">*</span></h2>
+    </div>
+    <div class="expander">
+      <table>
+          
+          <tr>
+              <td class="labelDefinitionTerm">Desk ID: <span class="requiredFieldAsterisk">*</span></td>
+              <td class="inputBoxPlacement"><%= f.text_field :locationname, :class=>"inputTextbox", :title=>'Special Charachters are not allowed'%></td>
+              <td class="fieldErrorPlacement"><%=flash[:locationname]%></td>
+              <td class="inputBoxPlacement">
+                    <%#=f.link_to_remove "Remove location"%>
+                               <%=f.link_to_remove (image_tag("", :alt => '',
+                                 :class=>'iconDeleteButton',
+                                 :title=>'Delete'))%>
+                             </td>
+          </tr>
+          <tr><td class="labelDefinitionTerm">Description: </td><td>
+              <%= f.text_field :description, :class=>"inputTextbox", :title=>'Enter description'%></td>
+           </tr>
+      </table>
+             <%=f.fields_for :location_ownership do|builder|%>
+                 <%=render 'locationowner', :f=>builder %>
+              <%end%>
+          <%= f.link_to_add "Add ownership", :location_ownership, :style=>'font-weight:bold; margin-left:15px;',:link_hierarchy=>"child_link" %>
+
+             <%=f.fields_for :location_ownership_hists do|builder|%>
+                 <%=render 'histlocationowner', :f=>builder %>
+              <%end%>
+          <%= f.link_to_add "Add Ownership history", :location_ownership_hists, :style=>'font-weight:bold; margin-left:15px;' %>
+        </div>
+</div>
+
+
+     

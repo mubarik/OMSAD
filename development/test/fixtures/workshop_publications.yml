@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+dataCorrectEntry:
+  publication_id: 6
+  workshopname: Iphonedevelopment 25th
+  conferencename: Data mining Conference
+  website: http://lums.edu.pk/
+  workshopstartdate: 2012-01-02
+  workshopenddate: 2012-05-09
+  city: Paris

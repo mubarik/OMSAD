@@ -1,0 +1,11 @@
+<tr>
+   <td >
+     <%=educational_info.university%>
+   </td>
+   <td>
+      <%= educational_info.degree%>
+   </td>
+   <td>
+      <%= educational_info.year%>
+   </td>
+</tr>

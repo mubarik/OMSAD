@@ -1,0 +1,63 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+    <%= form_tag({:controller => "locations", :action => "update"},:id => @location.id,:method=>"put") do%>
+
+<div class ="ContentWraper">
+
+      <div class= "contentHeading">
+
+
+      <h3 style="margin-top: 10px;"> Edit Location Item</h3>
+
+    </div>
+    </div>
+    <div class ="contentHeadingLine">
+
+           <hr/>
+
+     </div>
+ <div class="mandatory">Fields marked (*) are mandatory</div>
+<p class="notifyRed"><%= flash[:msgRed] %></p>
+<p class="notifyGreen"><%= flash[:msgGreen] %></p>
+
+    <div style="margin-left: 5%;margin-top:5%; ">
+
+      <div class="formfield">
+          <div class ="Label_Tag_Setting">
+      
+            <%= label_tag(:lblname, "Location Name: *") %>
+          </div>
+          <div style="width:70%;float:left;">
+            <%=text_field_tag(:locationname,@location.locationname, :required => true)%>
+          </div>
+        </div>
+      <br/><br/><br/>
+
+      <div class="formfield">
+          <div class ="Label_Tag_Setting">
+
+            <%= label_tag(:lblname, "Description:") %>
+          </div>
+        <div style="width:70%;float:left;">
+          <%=text_field_tag(:description,@location.description)%>
+        </div>
+     </div>
+      <br/><br/>
+
+     <br/>
+     <div style="width:50%;float:left;"></div>
+     <div style="width:70%;float:right;">
+        <%=submit_tag("Update")%>
+     </div>
+
+
+    </div>
+
+  <%end%>
+<%end%>
+

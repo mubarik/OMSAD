@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/DSSD_Summer2012/!svn/ver/5280/OMSAD/development/app/controllers/faculty
+END
+configurations_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/4225/OMSAD/development/app/controllers/faculty/configurations_controller.rb
+END
+facultycourses_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/5051/OMSAD/development/app/controllers/faculty/facultycourses_controller.rb
+END
+researchgrants_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/4999/OMSAD/development/app/controllers/faculty/researchgrants_controller.rb
+END
+publications_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/1336/OMSAD/development/app/controllers/faculty/publications_controller.rb
+END
+scholarlyreport_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/5003/OMSAD/development/app/controllers/faculty/scholarlyreport_controller.rb
+END
+bookchapterpublications_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/5212/OMSAD/development/app/controllers/faculty/bookchapterpublications_controller.rb
+END
+projectconfs_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/4495/OMSAD/development/app/controllers/faculty/projectconfs_controller.rb
+END
+facultymembers_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/5280/OMSAD/development/app/controllers/faculty/facultymembers_controller.rb
+END
+technicalreportpublications_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/5212/OMSAD/development/app/controllers/faculty/technicalreportpublications_controller.rb
+END
+conferencepublications_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/DSSD_Summer2012/!svn/ver/5212/OMSAD/development/app/controllers/faculty/conferencepublications_controller.rb
+END
+facultyreports_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/5122/OMSAD/development/app/controllers/faculty/facultyreports_controller.rb
+END
+bookpublications_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/5212/OMSAD/development/app/controllers/faculty/bookpublications_controller.rb
+END
+journalpublications_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/5212/OMSAD/development/app/controllers/faculty/journalpublications_controller.rb
+END
+workshoppublications_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/5212/OMSAD/development/app/controllers/faculty/workshoppublications_controller.rb
+END

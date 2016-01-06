@@ -1,0 +1,37 @@
+      <%= grid(@locs_grid, :show_filters => :always) do |g|
+        g.row_attributes do |version|
+          {:style => 'text-align:left;'}
+        end
+        g.blank_slate  do
+          "No record found"
+        end
+        g.column :column_name => 'Sr. No', :attribute_name => 'id', :no_filter => true do |loc|
+          loc.id
+        end
+
+        g.column :column_name => 'Owner', :auto_reload => true, :attribute_name => 'name', :model_class=>"User",
+                 :custom_filter => User.find(:all).map{|pr| [pr.name, pr.name]}do |loc|
+         loc.user.blank?? 'N/A' :loc.user.name
+        end
+
+        g.column :column_name => 'Room Nbr.', :attribute_name => 'roomnumber', :in_csv => false, :model_class=>"RoomDetail"  do |loc|
+          link_to loc.room_detail.roomnumber, "/inventory/roomdetails/"+(loc.room_detail.id).to_s
+        end
+
+        g.column :column_name => 'Room Nbr.', :attribute_name => 'roomnumber',:in_html => false, :model_class=>"RoomDetail"  do |loc|
+          loc.room_detail.roomnumber
+        end
+
+        g.column :column_name => 'Type', :attribute_name => 'locationtypename', :model_class=>"LocationType"  do |loc|
+          loc.room_detail.location_type.locationtypename
+        end
+
+        g.column :column_name => 'Desk Name', :attribute_name => 'locationname' do |loc|
+          loc.blank?? 'N/A' :loc.locationname
+        end
+
+
+        g.column :column_name => 'Start Date', :attribute_name => 'startdate', :model_class=>"LocationOwnership", :no_filter => true do |loc|
+          loc.location_ownership.blank?? 'N/A' :loc.location_ownership.startdate
+        end
+      end %>

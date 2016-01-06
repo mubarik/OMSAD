@@ -1,0 +1,2 @@
+module GraduateStudents::SemesterCoursesHelper
+end

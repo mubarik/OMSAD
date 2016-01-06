@@ -1,0 +1,2 @@
+module Faculty::JournalpublicationsHelper
+end

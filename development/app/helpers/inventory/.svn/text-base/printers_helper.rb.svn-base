@@ -1,0 +1,2 @@
+module Inventory::PrintersHelper
+end

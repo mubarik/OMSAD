@@ -1,0 +1,6 @@
+,,,,Generalized Attributes,,,,,,,,,,,,CPU Attributes,,,,,,,Printer Attributes,,,Scanner Attributes,,,LCD Attributes,
+Inventory_type,InventoryId/Sr#,BarCode,Inventory_Status,Brand,Model,Department,SN,GRN,RAM,ROM,Processor,Cores,Threads,Memory,Harddisk,DVDRom,CDRom,KeyBoard,Mouse,SoundCard,VGA,speed,Mediatype,Technology,Resolution,ScanSize,Fileformat,ScannerType,LcdType,ScreenSize
+Printer,PR-098,1234567,Allocated,HP,2012,,,,,,,,,,,,,,,,,two pages per min,paper envelope,duplex,,,,,,
+Scanner,SC-102,7654321,Faulty,Hawlett,2006,,,,,,,,,,,,,,,,,,,,1024 x 768,A4,jpeg bitmap,Flatbed,,
+Cpu,CPU-203,1231231,Allocated,Intel,2004,,,,,,Intel,4,2,200 MB,250 GB,sony 4x,accer   2x,A4,hp,Sony,samsung,,,,,,,,,
+Lcd,LCD-190,6546547,Faulty,Samsung,2012,,,,,,,,,,,,,,,,,,,,,,,,High resolution,17 inches

@@ -1,0 +1,24 @@
+.addNewSemesterLinkButton {
+    font-size:medium;
+}
+
+.tableText {
+  font-size: medium;
+  padding-top: 2px;
+}
+
+#phdRequirementsReport .flexigrid {
+  font-size: medium;
+}
+
+.tableImage {
+    margin-left:20px;
+}
+
+.flexigrid div.mDiv div {
+    font-size:13px;
+}
+
+.flexigrid div.hDiv th div {
+    font-weight:bold;
+}

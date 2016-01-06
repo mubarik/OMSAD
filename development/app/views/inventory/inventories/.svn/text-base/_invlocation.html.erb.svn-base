@@ -1,0 +1,12 @@
+<table>
+    <tr>
+      <td class="labelDefinitionTerm">Room Number: </td>
+      <td class="inputBoxPlacement"><%=invloc.collection_select :room_detail_id,@rooms,:id,:roomnumber,options={:prompt => "Select Room Number"}, {:class=>'dropdown'}%></td>
+      <td class="fieldErrorPlacement"><%= @inventory.errors[:inventory_type_id][0]%></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">Location Number: </td>
+      <td class="inputBoxPlacement"><%=invloc.collection_select :location_id,@locations,:id,:locationname,options={:prompt => "Select Location Number"}, {:class=>'dropdown'}%></td>
+    </tr>
+</table>
+

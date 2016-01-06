@@ -1,0 +1,14 @@
+<tr>
+   <td >
+     <%=job_experience.organizationname%>
+   </td>
+   <td>
+      <%= job_experience.designation%>
+   </td>
+   <td>
+      <%= job_experience.from_year%>
+   </td>
+   <td>
+     <%= job_experience.to_year%>
+   </td>
+</tr>

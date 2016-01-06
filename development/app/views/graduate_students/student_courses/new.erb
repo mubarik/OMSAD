@@ -1,0 +1,98 @@
+<%= javascript_include_tag "graduate_students/studentCourses.js" %>
+<%= javascript_include_tag "graduate_students/gradStudentsClientSideValidations.js" %>
+
+<div class="pageHeadingBar">
+  <h1>Enroll Student in Course</h1>
+</div>
+<hr class="headingLineBreak"/>
+
+<% if !flash[:notice].blank? %>
+  <div class="messages">
+    <p><%=flash[:notice]%></p>
+  </div>
+  <div class="clearFloatingAndStartFromBelow"></div>
+<%end%>
+
+<% if !flash.now[:error].blank? %>
+  <div class="errors">
+    <p><%=flash.now[:error]%></p>
+  </div>
+  <div class="clearFloatingAndStartFromBelow"></div>
+<%end%>
+
+<%#unless @offeredcourses.blank?%>
+<%#unless @semestersoffered.blank?%>
+  <%= nested_form_for [:GraduateStudents, @studentcourses], :html=>{ :id=>'formstudentCourses',:class=>'formstudentCourses'} do |f|%>
+  <%= f.hidden_field :student_id, :value => params[:id] %>
+  <%#= f.hidden_field :semester_id, :value => params[:seid] %>
+  <%= f.hidden_field :coursegpa %>
+  <input type="hidden" id="mode" name="mode" value="<%= params[:mode] %>" />
+
+    <div class="groupBox">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Semester: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%= f.collection_select(:semester_id,Semester.all,:id,:semester_name, {:prompt=>"Select Semester"}, :class=>'dropdown', :required=>true)%></td>
+            <td class="popupfieldErrorPlacement"></td>
+          </tr>
+        </table>
+        <div id="coursesCollection" class="coursesCollection">
+          <table>
+            <tr>
+              <td class="labelDefinitionTerm">Course name: <span class="requiredFieldAsterisk">*</span></td>
+              <td class="inputBoxPlacement"><%=f.collection_select(:course_id,@offeredcourses,:c_id,:c_name,{:prompt=>true,:include_blank=>"Select course"}, :class=>'dropdown',:required=>true)%></td>
+              <td class="popupfieldErrorPlacement"></td>
+            </tr>
+          </table>
+        </div>
+        <div id="coursesFields" class="coursesFields">
+          <table>
+            <tr>
+              <td class="labelDefinitionTerm">Course grade:</td>
+              <td>
+                  <%=f.collection_select  :grade_type_id,GradeType.all,:id,:name,
+                          options={:prompt=>"Select a Grade",
+                                           :selected=>f.object.grade_type_id},
+                                           :title   => "Please specify a grade",
+                                           :class=>"dropdown"%>
+                </td>
+
+            </tr>
+          <tr>
+            <td class="labelDefinitionTerm">Course status:</td>
+            <td class="inputBoxPlacement">
+              <%=f.collection_select  :course_status_id,CourseStatus.all,:id,:name,
+                          options={:prompt=>"Select a Course Status",
+                                           :selected=>f.object.course_status_id},
+                                           :title   => "Please specify a course status",
+                                           :class=>"dropdown"%>
+            </td>
+          </tr>
+        </table>
+        <table class="uploadNewAttachmentsFields">
+          <tr>
+            <td class="labelDefinitionTerm">Upload Document:</td>
+              <%= f.fields_for :course_assets do |p| %>
+                 <td><%=render "asset",:tm=>p%></td>
+              <% end %>
+          </tr>
+          <tr>
+            <td></td><td><%= f.link_to_add "Add more", :course_assets, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left' %></td>
+            <td><span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill empty field first</span></td>
+          </tr>
+          </table>
+        </div>
+    </div>
+     <div class="bottomButtons">
+       <table>
+        <tr>
+          <td><span class="submitErrorPlacement"></span></td>
+          <td><%=f.submit "Enroll"%></td>
+        </tr>
+      </table>
+     </div>
+    <%end%>
+  <%#else%>
+    <%#No new course is being offered in this semester. To continue, please <%= link_to "add a course", :controller => "semesters", :action => "index"%>
+<%#end%>
+  

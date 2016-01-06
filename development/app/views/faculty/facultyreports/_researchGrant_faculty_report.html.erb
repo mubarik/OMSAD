@@ -1,0 +1,62 @@
+<%= grid(@research_grants_grid,:show_filters=>:always) do |g|
+
+    g.blank_slate  do
+      "There are no records"
+    end
+
+    g.column :column_name => 'Principle Investigator',:attribute_name=>"name" ,:in_csv=>false,:model_class=>"User"  do |research_grant|
+
+      if research_grant.pi_affiliation_type and !research_grant.faculty_member.blank?
+        link_to research_grant.pi_name,
+                              :controller => "faculty/facultymembers",
+                              :action => "show",
+                              :id =>research_grant.faculty_member.user.id
+
+      else
+        research_grant.pi_name
+
+      end
+    end
+    g.column :column_name => 'Principle Investigator',:attribute_name=>"name" ,:in_html=>false,:model_class=>"User"  do |research_grant|
+        research_grant.pi_name
+    end
+    g.column :column_name => 'Department',:attribute_name=>"name",:auto_reload=>true,:model_class=>"Department",
+             :custom_filter => Department.find(:all).map{|pr| [pr.name, pr.name]} do |research_grant|
+      
+      if research_grant.faculty_member.blank? or research_grant.faculty_member.user.blank?
+        'Not provided'
+      else
+        research_grant.faculty_member.user.department.name.blank?? 'Not provided' :research_grant.faculty_member.user.department.name
+      end
+      
+    end
+
+    g.column :column_name => 'Grant Number'  do |research_grant|
+      research_grant.grantnumber
+    end
+
+    g.column :column_name => 'Title' ,:attribute_name=>"title",:in_csv=>false ,:model_class=>"ResearchGrant" do |research_grant|
+       link_to research_grant.title,
+                         :controller => "faculty/researchgrants",
+                         :action => "show",
+                         :id =>research_grant.id
+    end
+    g.column :column_name => 'Title' ,:attribute_name=>"title",:in_html=>false ,:model_class=>"ResearchGrant" do |research_grant|
+       research_grant.title
+    end
+    g.column :column_name => 'Amount'  do |research_grant|
+      research_grant.amount.blank?? 'Not provided' :research_grant.amount
+    end
+
+    g.column  :column_name => 'Funding Agency',:attribute_name=>"fundingagency",:model_class=>"ResearchGrant" do |research_grant|
+      research_grant.fundingagency.blank?? 'Not provided' :research_grant.fundingagency
+    end
+
+    g.column  :column_name => 'Start Date',:attribute_name=>"startdate" ,:model_class=>"ResearchGrant" do |research_grant|
+      research_grant.startdate.blank?? 'Not provided' :research_grant.startdate
+    end
+
+    g.column :column_name =>'End Date',:attribute_name=>"enddate" ,:model_class=>"ResearchGrant" do |research_grant|
+      research_grant.enddate.blank?? 'Not provided' :research_grant.enddate
+    end
+  end -%>

@@ -1,0 +1,418 @@
+/*input[type="submit"], button {
+    width: 110px;
+}
+
+
+.dropdown {
+    width:355px;
+}
+
+
+.uidatePicker, .uienddatePicker,.uidayMonthPicker, .inputTextbox, .telephone {
+    margin: 0;
+    padding: 0;
+    width:350px;
+}
+
+
+h1 {         page heading
+    font-size:2.30em;
+    background:transparent;
+    text-transform:capitalize;
+    letter-spacing:0.02em;
+    font-weight: bolder;
+    margin:0;
+    padding:0;
+}
+
+
+h2 {
+    font-size:1.5em;
+    margin: 4px 0 0 2%;
+    padding: 0;
+}
+
+
+h3 {
+    text-transform:capitalize;
+    font-size:1.6em;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+
+h3 a {
+    text-decoration: underline;
+    color: black;
+}
+
+
+h3 a:visited {
+    text-decoration: underline;
+    color: black;
+}
+
+
+h3 a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+
+hr {
+    margin: 0;
+    padding: 0;
+}
+
+
+.pageHeadingBar {
+    padding:16px 2%;
+}
+
+
+.messages {
+    padding-left: 5.3%;
+    padding-top: 21px;
+    margin-left: 2%;
+    margin-top: -10px;
+    color: green;
+    font-size: medium;
+    background-image:url('iconTick.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    width:94%;
+    height:36px;
+}
+
+
+.messages p {
+    margin-top: 2px;
+}
+
+.errors {
+    padding-left: 5.3%;
+    padding-top: 21px;
+    margin-left: 2%;
+    margin-top: -10px;
+    color: red;
+    font-size: medium;
+    background-image:url('Error.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    width:94%;
+    height:36px;
+}
+
+
+.errors p {
+    margin-top: 2px;
+}
+
+
+.headingLineBreak {
+    border-width: 2px;
+    margin-bottom: 20px;
+}
+
+
+.dataBlock {        a block of data that may be repeated many times on the page one below the other
+    padding: 10px 0%;
+    margin: 1px auto;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    width:99.8%;
+}
+
+
+.groupBox {
+    padding: 10px 2%;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+}
+
+
+.expanderHeaderBar {
+    padding: 10px 0;
+    margin: 3px 0;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+.expander {
+    display:none;
+    margin: 10px 2%;
+    clear: both;
+}
+
+
+.expandingBlock {
+    margin: 14px 0;
+}
+
+
+.bottomButtons {        buttons at the bottom of the page (default: right-side)
+    float:right;
+    margin: 14px 1%;
+}
+
+
+.rightImageButtons {   image buttons on the right: usually, edit and delete
+    float:right;
+    margin-right: 4%;
+}
+
+
+.firstRadioButton {
+    float: left;
+}
+
+
+.otherRadioButtons {
+    width:auto;
+    margin-left: 6%;
+    float: left;
+}
+
+
+.displayPicWithTextWrap {
+    float:left;
+    width:80%;
+}
+
+
+.moreInfodisplayPicWithTextWrap h1 {
+    float:left;
+    text-transform:capitalize;
+    font-size: 2em;
+    margin-top: 40px;
+}
+
+
+.moreInfodisplayPicWithTextWrap img {
+    margin: 0 2% 10px 2%;
+}
+
+
+.displayPicWithTextWrap img {
+    margin:0 2%;
+}
+
+
+.requiredFieldAsterisk {      required field mentioned as a star
+    color:red;
+}
+
+
+.expanderHeading {         toggling header of the expander
+
+}
+
+
+.labelDefinitionTerm {
+    border: 0 none;
+    background-color: #F5F5F5;
+    color: black;
+    width: 150px;
+    font-weight: bold;
+}
+
+
+.labelDefinitionDetails {
+
+}
+
+
+.reportTypeselection {   image buttons on the right: usually, edit and delete
+    float:right;
+    margin-right: 20%;
+}
+
+
+.reportComboButton {
+    float:left;
+    padding-left:16px;
+}
+
+
+.reportCombo
+{
+    float: right;
+    margin-left: 20px;
+}
+
+
+.displayPic {
+    height:75px;
+    float:left;
+}
+
+
+.displayPicMale {
+    background-image:url('user.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+
+.displayPicFemale {
+    background-image:url('female_user.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+
+.displayPicGrant{
+
+     background-image:url('penguin.jpg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+
+}
+
+
+.iconEditButton {
+    background-image:url('iconEditPencil.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin-right: 12px;
+}
+
+
+.iconDeleteButton {
+    background-image:url('iconDeleteBin.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+}
+
+
+.expanderDownButton {
+    background-image:url('dropDownButton.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:30px;
+    float:right;
+    margin-right: 3%;
+}
+
+
+.iconAddButton {
+    background-image:url('iconAdd.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin:5px;
+}
+
+
+.iconCrossButton {
+    background-image:url('iconCross.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:left;
+    margin:5px;
+}
+
+.iconDeleteAllButton {
+    background-image:url('iconDeleteAll.png');
+    background-repeat: no-repeat;
+    width:31px;
+    height:34px;
+    float:left;
+    margin:5px;
+}
+
+
+.dataPadder {
+    padding:10px;
+}
+
+
+.dataPadder h3 {
+    margin-left: 15px;
+}
+
+
+.reportsGrid {
+    overflow: auto;
+}
+
+ .tooltip {
+    background-color:#000;
+    border:1px solid #fff;
+    padding:10px 15px;
+    width:200px;
+    display:none;
+    color:#fff;
+    text-align:left;
+    font-size:12px;
+
+     outline radius for mozilla/firefox only 
+    -moz-box-shadow:0 0 10px #000;
+    -webkit-box-shadow:0 0 10px #000;
+}
+
+.displayPicCpu {
+    background-image:url('icpu.jpeg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicPrinter {
+    background-image:url('iprinter.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicScanner {
+    background-image:url('iscanner.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicLcd {
+    background-image:url('ilcd.png');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicInv {
+    background-image:url('iinv3.jpeg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}
+
+.displayPicRoom {
+    background-image:url('loc1.jpeg');
+    background-repeat: no-repeat;
+    width:128px;
+    height:128px;
+    float:left;
+}*/

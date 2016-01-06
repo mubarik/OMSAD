@@ -1,0 +1,54 @@
+<script text="text/javascript">
+  $('.flexFacultyPublications').flexigrid({
+        height:'auto',
+        colModel : [
+                {display: 'Title', name : 'title', width : 150, align: 'center'},
+                {display: 'URL', name : 'doi', width : 150, align: 'center'},
+                {display: 'Publication Status', name : 'publicationstatus', width : 150, align: 'center'},
+                {display: 'Publication Type', name : 'publicationtype', width : 150, align: 'center'},
+                {display: 'Pages', name : 'page', width : 150, align: 'center'},
+           ]
+        });
+</script>
+
+<table class="flexFacultyPublications">
+  <%for publication in faculty_publications %>
+    <tr>
+    <td>
+      <%if !publication.publication.title.blank?%>
+        <%=  publication.publication.title%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !publication.publication.doi.blank?%>
+        <%=  publication.publication.doi%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !publication.publication.publicationstatus.blank?%>
+        <%=  publication.publication.publicationstatus%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !publication.publication.publication_type.name.blank?%>
+        <%= publication.publication.publication_type.name %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !publication.publication.pages.blank?%>
+       <%= publication.publication.pages%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    </tr>
+  <%end%>
+</table>

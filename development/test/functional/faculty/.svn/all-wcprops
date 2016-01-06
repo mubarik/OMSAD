@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/DSSD_Summer2012/!svn/ver/3649/OMSAD/development/test/functional/faculty
+END
+researchgrants_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/3633/OMSAD/development/test/functional/faculty/researchgrants_controller_test.rb
+END
+bookchapterpublications_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/3638/OMSAD/development/test/functional/faculty/bookchapterpublications_controller_test.rb
+END
+facultymembers_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/3632/OMSAD/development/test/functional/faculty/facultymembers_controller_test.rb
+END
+technicalreportpublications_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/DSSD_Summer2012/!svn/ver/3649/OMSAD/development/test/functional/faculty/technicalreportpublications_controller_test.rb
+END
+conferencepublications_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/3642/OMSAD/development/test/functional/faculty/conferencepublications_controller_test.rb
+END
+bookpublications_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/3637/OMSAD/development/test/functional/faculty/bookpublications_controller_test.rb
+END
+journalpublications_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/3644/OMSAD/development/test/functional/faculty/journalpublications_controller_test.rb
+END
+workshoppublications_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/DSSD_Summer2012/!svn/ver/3645/OMSAD/development/test/functional/faculty/workshoppublications_controller_test.rb
+END

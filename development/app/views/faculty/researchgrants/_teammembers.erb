@@ -1,0 +1,63 @@
+<fieldset>
+  <legend class="dynamicFieldSetLegend">Team Member</legend>
+  <table style="float:left;"">
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Name<span class="requiredFieldAsterisk"> *</span>
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=tm.collection_select(:user_id,@user,
+        :id,
+        :name,options={:include_blank=>"Select a Team Member",:selected=>tm.object.user_id},
+        :title=>"Please select a member",
+        :required=>true,
+        :title=>"Please select a member",
+        :class=>"dropdown")%>
+    </td>
+    <td class="fieldErrorPlacement"></td>
+  </tr>
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm">
+        Designation<span class="requiredFieldAsterisk"> *</span>
+      </label>
+    </td>
+    <td class="inputBoxPlacement">
+      <%=tm.text_field :designation,
+                       :class=>"inputTextbox",
+                       :required=>true,
+                       :title=>"Enter the title of designation e.g Senior Design Engineer"%>
+    </td>
+    <td class="fieldErrorPlacement">
+      <%=tm.object.errors[:designation][0]%>
+    </td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">
+        Start Date:
+      </td>
+      <td class="inputBoxPlacement">
+          <%= tm.text_field :teamstartdate,:class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+      </td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">
+        End Date:
+      </td>
+      <td class="inputBoxPlacement">
+          <%= tm.text_field    :teamenddate,:class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+
+      </td>
+    </tr>
+</table>
+  <%= tm.link_to_remove(image_tag("",:alt=>"",:class=>"iconDeleteButton",:style=>'float:right; margin-right:1%;'))%>
+</fieldset>
+<br/>
+
+

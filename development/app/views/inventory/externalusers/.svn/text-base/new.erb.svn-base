@@ -1,0 +1,32 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenuRATA" %>
+<% end %>
+
+<% content_for :content do %>
+   <div class="pageHeadingBar">
+          <h1>Add RA/TA</h1>
+   </div>
+    <hr class="headingLineBreak"/>
+     <%# if flash[:msgGreen] != "" %>
+        <%#*<div class="messages">%>
+          <%#*<p><%=flash[:msgGreen]%>
+        <%#*</div>%>
+      <%#end%>
+  
+   <%= form_tag({:controller => "externalusers", :action => "create"}) do%>
+     <div class="groupBox">
+        <table>
+          <tr><td class="labelDefinitionTerm">Employee ID: <span class="requiredFieldAsterisk">*</span></td><td><%= text_field_tag(:employee_id,nil, :class=>'inputTextbox',:required=> 'true') %></td></tr>
+          <%#*<tr><td class="labelDefinitionTerm">Inventory Type:<span class="requiredFieldAsterisk">*</span></td><td><%=collection_select(:inventorytype,:id,@inventorytypes,:id,:inventorytypename,options={:prompt => "Select inventory type"},:required=> 'true')%>
+          <tr><td class="labelDefinitionTerm">Designation: <span class="requiredFieldAsterisk">*</span></td><td><%= text_field_tag(:designation,nil, :class=>'inputTextbox',:required=> 'true') %></td></tr>
+          <%#=flash[:iname]%>
+          <tr><td class="labelDefinitionTerm">Description: </td><td><%= text_field_tag(:description,nil, :class=>"inputTextbox") %></td></tr>
+          </table>
+     </div>
+     <div class="bottomButtons">
+         <%=submit_tag("Save")%>
+     </div>
+  <%end%>
+<%end%>
+
+

@@ -1,0 +1,33 @@
+<div id="cosupervisors">
+  <fieldset>
+    <legend><strong>Ownership History:</strong></legend>
+
+<table>
+      <tr>
+          <td class="labelDefinitionTerm">Owner: </td>
+          <td><%=f.collection_select(:user_id,@users,:id,:name,options={:prompt => "Please select the owner"}, :class => "dropdown", :title=>'Select Owner')%></td>
+          
+                <td class="inputBoxPlacement">
+                    <%#=f.link_to_remove "Remove location"%>
+                               <%=f.link_to_remove (image_tag("", :alt => '',
+                                 :class=>'iconDeleteButton',
+                                 :title=>'Delete'))%>
+                             </td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Ownership Start Date: </td>
+        <td> <%=f.text_field :startdate, :class=>"inputTextbox", :title=>'Select History Start Date'%> </td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Ownership End Date: </td>
+        <td> <%=f.text_field :enddate, :class=>"inputTextbox", :title=>'Select History End Date'%> </td>
+        <td class="fieldErrorPlacement"/>
+      </tr>
+
+  </table>
+
+</fieldset>
+  <br/>
+</div>
+
+

@@ -1,0 +1,59 @@
+/* 
+    Document   : dynamicDivs
+    Created on : Jun 15, 2012, 12:45:19 PM
+    Author     : umar
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+
+.dynHiddenFields
+{
+    display:none
+}
+
+#dynDivAddCoPi
+{
+    float:left;
+    font-weight: bolder;
+}
+
+#dynDivAddCoAuthors
+{
+    float:left;
+    font-weight: bolder;
+}
+
+.dynDivTable
+{
+    float:left
+}
+
+.dynDivField
+{
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+.dynDivDeleteButton
+{
+    background-image:url('iconDeleteBin.png');
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    float:right;
+    margin-right: 3px;
+    float:left;
+}
+
+
+

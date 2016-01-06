@@ -1,0 +1,40 @@
+<%= grid(@students_report_grid, :show_filters => :always) do |g|
+    g.row_attributes do |version|
+      {:style => 'text-align:left;'}
+    end
+    g.blank_slate  do
+      "No record found"
+    end
+    g.column :column_name => 'Roll No', :attribute_name => 'rollno', :in_csv => false , :model_class => Student do |st|
+      link_to st.student.rollno, "/GraduateStudents/students/"+(st.student.user.id).to_s
+    end
+    g.column :column_name => 'Name', :attribute_name => 'name', :in_csv => false , :model_class => User do |st|
+      link_to st.student.user.name, "/GraduateStudents/students/"+(st.student.user.id).to_s
+    end
+
+    g.column :column_name => 'Roll No', :attribute_name => 'rollno',:in_html => false , :model_class => Student do |st|
+      st.student.rollno
+    end
+    
+    g.column :column_name => 'Name', :attribute_name => 'name', :in_html => false, :model_class => User do |st|
+      st.student.user.name
+    end
+    
+    g.column :column_name => 'Qualifier Status' do |mile|
+      mile.qualifierstatus.blank?? 'Not provided' : mile.qualifierstatus
+    end
+    g.column :column_name => 'GRE' do |mile|
+      mile.gre.blank?? 'Not provided' : mile.gre
+    end
+    g.column :column_name => 'Thesis Defence' do |mile|
+      mile.thesisdefence.blank?? '0-0-0' : mile.thesisdefence
+    end
+    g.column :column_name => 'Publications As 1st Author', :attribute_name => 'authorindex', :model_class => UserPublication do |up|
+      if up.student.user.user_publications.count() == 0
+        'N/A'
+      else
+        up.student.user.user_publications.count()
+      end
+    end
+    
+end -%>

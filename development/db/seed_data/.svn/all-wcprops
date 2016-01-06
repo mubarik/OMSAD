@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/DSSD_Summer2012/!svn/ver/4620/OMSAD/development/db/seed_data
+END
+seed_inventory.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/DSSD_Summer2012/!svn/ver/4509/OMSAD/development/db/seed_data/seed_inventory.rb
+END
+seed_publicationtypes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/DSSD_Summer2012/!svn/ver/4143/OMSAD/development/db/seed_data/seed_publicationtypes.rb
+END
+seed_faculty_member_status_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4145/OMSAD/development/db/seed_data/seed_faculty_member_status_type.rb
+END
+seed_faculty_member_designation_type.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/4193/OMSAD/development/db/seed_data/seed_faculty_member_designation_type.rb
+END
+seed_usertypes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/DSSD_Summer2012/!svn/ver/254/OMSAD/development/db/seed_data/seed_usertypes.rb
+END
+seed_school.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/4620/OMSAD/development/db/seed_data/seed_school.rb
+END
+seed_project_conf.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/4617/OMSAD/development/db/seed_data/seed_project_conf.rb
+END
+seed_publications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/4144/OMSAD/development/db/seed_data/seed_publications.rb
+END

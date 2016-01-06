@@ -1,0 +1,58 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+            <h1>Inventory</h1>
+  </div>
+   <hr class="headingLineBreak"/>
+   <%#=flash[:notice]%>
+    <% if !flash[:msgGreen].blank? %>
+      <div class="messages">
+        <p><%=flash[:msgGreen]%></p>
+      </div>
+    <%end%>
+       <%unless @inventories.blank?%>
+              <% for inventory in @inventories%>
+
+              <div class="dataBlock">
+                  <div class="displayPicWithTextWrap">
+                        <%if inventory.inventory_type.inventorytypename == 'Printer'%>
+                          <%=image_tag("iprinter.png", :class=>'displayPic')%>
+                        <%elsif inventory.inventory_type.inventorytypename == 'Scanner'%>
+                              <%=image_tag("iscanner.png", :class=>'displayPic')%>
+                        <%elsif inventory.inventory_type.inventorytypename == 'LCD'%>
+                              <%=image_tag("ilcd.png", :class=>'displayPic')%>
+                         <%elsif inventory.inventory_type.inventorytypename == 'CPU'%>
+                              <%=image_tag("icpu.jpeg", :class=>'displayPic')%>
+                         <%else%>
+                              <%=image_tag("iinv3.jpeg", :class=>'displayPic')%>
+
+                        <%end%>
+                      <div class="displayPicAlignedText">
+                              <%#*<h3><%= inventory.inventoryname%>
+                               <h3><%=link_to inventory.inventoryname,:controller => "inventory/inventories",:action => "show",:id =>inventory.id%></h3>
+
+                                  <table>
+                                     <tr><td class="labelDefinitionTerm">Description:</td><td><%=label_tag(:lblInvType,inventory.description,:class=>"labelDefinitionDetails") %></td></tr>
+                                     <tr><td class="labelDefinitionTerm">Brand:</td><td><%=label_tag(:lblBrand,inventory.brand,:class=>"labelDefinitionDetails") %></td></tr>
+                                     <tr><td class="labelDefinitionTerm">Model:</td><td><%=label_tag(:lblModel,inventory.model,:class=>"labelDefinitionDetails") %></td></tr>
+                                     <tr><td class="labelDefinitionTerm">Type:</td><td><%=label_tag(:lblInvTypeid,inventory.inventory_type.inventorytypename,:class=>"labelDefinitionDetails") %></td></tr>
+                                  </table>
+                       </div>
+                   </div>
+                  <div class ="rightImageButtons">
+                       <%#= link_to(image_tag("/assets/Edit_32.png", {:alt => 'edit', :class=>"rollover"}), {:controller => "inventory/inventories", :action => 'edit', :id => inventory.id  },:method => :get) %>
+                       <%#= link_to(image_tag("/assets/Delete-32_2.png", {:alt => 'delete', :class=>"rollover"}), {:controller => "inventory/inventories", :action => 'destroy', :id => inventory.id},:method => :delete) %>
+                         <%= link_to(image_tag("", :alt=>'', :class=>'iconEditButton', :title=>'Edit Inventory'), {:controller => "inventory/inventories", :action => 'edit', :id => inventory.id},:method => :get) %>
+                         <%= link_to(image_tag("", :alt => '', :class=>'iconDeleteButton', :title=>'Delete Inventory'), {:controller => "inventory/inventories", :action => 'destroy', :id => inventory.id},:method => :delete) %>
+
+                  </div>
+                </div>
+
+              <%end%>
+       <%end%>
+    <%#end%>
+<%end%>
+ 

@@ -1,0 +1,291 @@
+<div class="expandingBlock">
+              <div class="expanderHeaderBar">
+                <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>Inventory Information <span class="requiredFillExpander">*</span></h2>
+                   <div class="expander">
+
+                  <table>
+                  <tr>
+                      <td class="labelDefinitionTerm">Inventory Type: <span class="requiredFieldAsterisk">*</span></td>
+                    <%if (@inventory.inventory_type_id.blank?) or (@new_flag == "true")%>
+                       <td class="inputBoxPlacement"><%=new_inventory.collection_select :inventory_type_id,@inventorytypes,:id,:inventorytypename,options={:prompt => "Select inventory type"}, {:class=>'dropdown', :id=>'normalSelectid',:required=> 'true'}%></td>
+                    
+                    <%else%>
+                      <td class="inputBoxPlacement"><%=new_inventory.collection_select :inventory_type_id,@inventorytypes,:id,:inventorytypename,options={:prompt => "Select inventory type"}, {:class=>'dropdown', :disabled=>'true',:id=>'normalSelectid',:required=> 'true'}%></td>
+
+                      <%end%>
+                      <td class="fieldErrorPlacement"><%=@inventory.errors[:inventory_type_id][0] %></td>
+                  </tr>
+                 
+                  <tr>
+                      <td class="labelDefinitionTerm">Inventory Status: <span class="requiredFieldAsterisk">*</span></td>
+                      <td class="inputBoxPlacement"><%=new_inventory.collection_select :inventory_status_id,@invstatus,:id,:inventorystatus,options={:prompt => "Select inventory status"}, {:class=>'dropdown',:required=> 'true'}%></td>
+                      <td class="fieldErrorPlacement"><%= @inventory.errors[:inventory_status_id][0] %></td>
+                  </tr>
+
+                  <tr>
+                      <td class="labelDefinitionTerm">Research Grant: </td>
+                      <td class="inputBoxPlacement"><%=new_inventory.collection_select :research_grant_id,@researchgrants,:id,:title,options={:include_blank=>"Select Research Grant"}, {:class=>'dropdown'}%></td>
+                      <td class="fieldErrorPlacement"><%= @inventory.errors[:research_grant_id][0] %></td>
+                  </tr>
+                  
+
+                   <tr>
+                       <td class="labelDefinitionTerm">Inventory ID: <span class="requiredFieldAsterisk">*</span></td>
+                       <td class="inputBoxPlacement"><%= new_inventory.text_field :inventoryname, :class=>'inputTextbox', :title=>'Special Characters are not allowed',:required=> 'true'%></td>
+                       <td class="fieldErrorPlacement"><%= @inventory.errors[:inventoryname][0] %></td>
+                   </tr>
+
+                   <tr>
+                       <td class="labelDefinitionTerm">Barcode:</td>
+                       <td class="inputBoxPlacement"><%= new_inventory.text_field :barcode, :class=>'inputTextbox', :title=>'Special Characters are not allowed'%></td>
+                       <td class="fieldErrorPlacement"><%= @inventory.errors[:barcode][0] %></td>
+                   </tr>
+
+
+                  <tr>
+                        <td class="labelDefinitionTerm">Description: </td>
+                        <td class="inputBoxPlacement"><%= new_inventory.text_field :description, :class=>"inputTextbox", :title=>'Enter Description'%></td>
+                  </tr>
+                  <tr>
+                        <td class="labelDefinitionTerm">Brand: <span class="requiredFieldAsterisk">*</span></td>
+                        <td class="inputBoxPlacement"><%= new_inventory.text_field :brand,:class=>"inputTextbox", :title=>'Special Characters are not allowed',:required=> 'true'%></td>
+                        <td class="fieldErrorPlacement"><%= @inventory.errors[:brand][0] %></td>
+                  </tr>
+                  <tr>
+                        <td class="labelDefinitionTerm">Model: <span class="requiredFieldAsterisk">*</span></td>
+                        <td class="inputBoxPlacement"><%= new_inventory.text_field :model,:class=>"inputTextbox", :title=>'Special Characters are not allowed',:required=> 'true'%></td>
+                        <td class="fieldErrorPlacement"><%= @inventory.errors[:model][0] %></td>
+                  </tr>
+
+                  <%#*<tr>%>
+                      <%#*<td class="labelDefinitionTerm">Acquisition Date: </td>%>
+                      <%#*<td class="inputBoxPlacement"><%=text_field_tag(:acqdate,nil,:class=>"uidatePicker",:required=>'true')%>
+                      <%#*<td class="fieldErrorPlacement"><%= @inventory.errors[:acqdate][0] %>
+                  <%#*</tr>%>
+                  <%#*<tr>%>
+                      <%#*<td class="labelDefinitionTerm">Owner: <span class="requiredFieldAsterisk">*</span></td>%>
+                      <%#*<td class="inputBoxPlacement"><%=collection_select(:name,:id,@users,:id,:name,options={:prompt => "Please select the owner"}, :class => "dropdown",:required=> 'true')%>
+                  <%#*</tr>%>
+                  <%#*<tr>%>
+                      <%#*<td class="labelDefinitionTerm">Ownership Start Date: </td>%>
+                      <%#*<td class="inputBoxPlacement"><%=text_field_tag(:startdate,nil,:class=>"uidatePicker",:required=>'true')%>
+                  <%#*</tr>%>
+                  </table>
+
+
+                  <%#= render "invinfo", :f =>new_inventory %>
+                     <fieldset>
+                    <legend><strong>Room details</strong></legend>
+                     <div>
+                     <%=new_inventory.fields_for :inventory_location do |invloc|%>
+                       <table>
+                      <tr>
+                          <td class="labelDefinitionTerm">Room Number: </td>
+                          <td class="inputBoxPlacement"><%=invloc.collection_select :room_detail_id,@rooms,:id,:roomnumber,options={:prompt => "Select Room Number"}, {:class=>'dropdown'}%></td>
+                          <td class="fieldErrorPlacement"><%= @inventory.errors[:inventory_type_id][0]%></td>
+                      </tr>
+                      </table>
+                        </div>
+
+                          <div id="roomLocations" name="roomLocations">
+                          <table>
+                            <tr>
+                              <td class="labelDefinitionTerm">Location Number: </td>
+                                <td class="inputBoxPlacement"><%=invloc.collection_select :location_id,@locations,:id,:locationname,options={:prompt => "Select Location Number"}, {:class=>'dropdown'}%></td>
+
+                            </tr>
+
+                          </table>
+
+                          </div>
+  
+                      
+                     <%end%>
+                    </fieldset>
+
+                     <table>
+                   <%unless @inventory.inventory_type_id.blank?%>
+                      <tr>
+                        <td class="labelDefinitionTerm">Created At:</td>
+                        <td class="labelDefinitionDetails"><%= @inventory.created_at %></td>
+                      </tr>
+
+                      <tr>
+                        <td class="labelDefinitionTerm">Last Updated:</td>
+                        <td class="labelDefinitionDetails"><%= @inventory.updated_at %></td>
+                      </tr>
+                     <%end%>
+                      </table>
+                   </div>
+              </div>
+
+              <%unless @printer.blank?%>
+                    <div class="expanderHeaderBar" id="divPrinterDetails" >
+                             <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                         <h2>Printer Details <span class="requiredFillExpander">*</span></h2>
+                         <div class="expander">
+                            <%=  new_inventory.fields_for :printer do |pr|%>
+                              <%= render "printer", :pf=> pr %>
+                           <%end%>
+                         </div>
+                    </div>
+              <%else%>
+                    <div class="expanderHeaderBar" id="divPrinterDetails" style="display:none">
+                       <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>Printer Details <span class="requiredFillExpander">*</span></h2>
+                   <div class="expander">
+                      <%=  new_inventory.fields_for :printer do |pr|%>
+                        <%= render "printer", :pf=> pr %>
+                     <%end%>
+                    </div>
+                    </div>
+              <%end%>
+
+
+              <%unless @scanner.blank?%>
+                  <div class="expanderHeaderBar" id="divScannerDetails" >
+                            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                       <h2>Scanner Details <span class="requiredFillExpander">*</span></h2>
+                       <div class="expander">
+                          <%=new_inventory.fields_for :scanner do |scanner|%>
+                            <%= render "scanner", :f=>scanner %>
+                          <%end%>
+                       </div>
+                  </div>
+              <%else%>
+                    <div class="expanderHeaderBar" id="divScannerDetails" style="display: none;">
+                            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                       <h2>Scanner Details <span class="requiredFillExpander">*</span></h2>
+                       <div class="expander">
+                          <%=new_inventory.fields_for :scanner do |scanner|%>
+                            <%= render "scanner", :f=>scanner %>
+                          <%end%>
+                       </div>
+                  </div>
+
+              <%end%>
+
+
+              <%unless @lcd.blank?%>
+                <div class="expanderHeaderBar" id="divLCDDetails">
+                       <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                     <h2>LCD Details <span class="requiredFillExpander">*</span></h2>
+                     <div class="expander">
+                       <%=new_inventory.fields_for :lcd do |lcd|%>
+                        <%= render "lcd", :f=>lcd %>
+                      <%end%>
+                     </div>
+                </div>
+              <%else%>
+                <div class="expanderHeaderBar" id="divLCDDetails" style="display: none;">
+                       <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                     <h2>LCD Details <span class="requiredFillExpander">*</span></h2>
+                     <div class="expander">
+                       <%=new_inventory.fields_for :lcd do |lcd|%>
+                        <%= render "lcd", :f=>lcd %>
+                      <%end%>
+                     </div>
+                </div>
+              <%end%>
+
+
+              <%unless @cpu.blank?%>
+                  <div class="expanderHeaderBar" id="divCPUDetails">
+                             <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                       <h2>CPU Details <span class="requiredFillExpander">*</span></h2>
+                       <div class="expander">
+                         <%=new_inventory.fields_for :cpu do |cpu|%>
+                          <%= render "cpu", :f=>cpu %>
+                         <%end%>
+                       </div>
+                  </div>
+              <%else%>
+                  <div class="expanderHeaderBar" id="divCPUDetails" style="display: none;">
+                             <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                       <h2>CPU Details <span class="requiredFillExpander">*</span></h2>
+                       <div class="expander">
+                         <%=new_inventory.fields_for :cpu do |cpu|%>
+                          <%= render "cpu", :f=>cpu %>
+                         <%end%>
+                       </div>
+                  </div>
+              <%end%>
+
+
+          <div class="expanderHeaderBar">
+                <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                   <h2>Inventory Ownership <span class="requiredFillExpander">*</span></h2>
+                   <div class="expander">
+                    <table>
+                     <tr>
+                        <td class="labelDefinitionTerm">Acquisition Date: <span class="requiredFieldAsterisk">*</span></td>
+                        <td class="inputBoxPlacement"><%= new_inventory.text_field :acqdate, :class=>"uidatePicker" ,:required=> 'true'%></td>
+                        <td class="fieldErrorPlacement"><%= @inventory.errors[:acqdate][0] %></td>
+                        <td class="fieldErrorPlacement"><span class='error error-keyup-1' style='color:red; margin-left: 15px ; ' id="macqerror"></span></td>
+                     </tr>
+
+                   </table>
+
+        <%if !(@invownhists.nil?)%>
+                  <table>
+                         <tr>
+                           <td> </td>
+                           <td>
+                              <div><%= link_to(image_tag("", :alt => '', :class=>'iconAddButton',
+                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                       :title=>'Add Ownership History'), {:controller => :inventories, :action => 'popuphistory',
+                                       :id => @inventory.id}, {:class => "fancybox"}) %></div>
+                           </td>
+                           <td class="labelDefinitionTerm">Add Ownership </td>
+                         </tr>
+                 </table>
+          <br/>
+                <table class="clsInvHistory">
+                    <% for invownhist in @invownhists %>
+                       <tr> <td><%= invownhist.user.name%>  </td>
+                            <td><%=  invownhist.startdate %></td>
+                            <td><%=  invownhist.enddate %>  </td>
+                       </tr>
+                     <%end%>
+               </table>
+          <%end%>
+                   </div>
+              </div>
+
+   
+
+       <div class="bottomButtons" id="saveButton">
+          <table>
+            <tr>
+              <td><span class="submitErrorPlacement"></span></td>
+              <td><%=submit_tag("Save")%></td>
+            </tr>
+          </table>
+        </div>
+
+         <%#*<div class="bottomButtons" > <%#=submit_tag("Save")%></div>
+
+
+                          <%#=  new_inventory.fields_for :user do |f|%>
+               <%#*<tr>%>
+                  <%#*<td class="labelDefinitionTerm">Owner: <span class="requiredFieldAsterisk">*</span></td>%>
+                  <%#*<td class="inputBoxPlacement"><%= f. collection_select :user_id,@users,:id,:name,options={:prompt => "Please select the owner",:selected=>@inventory.inventory_ownership.user_id}, :class => "dropdown",:required=> 'true'%>
+               <%#*</tr>%>
+               <%#*<tr>%>
+                  <%#*<td class="labelDefinitionTerm">Ownership Start Date: </td>%>
+                  <%#*<td class="inputBoxPlacement"><%=text_field_tag(:ostartdate,@inventory.inventory_ownership.startdate,:class=>"uidatePicker")%>
+               <%#*</tr>%>
+               <%#end%>
+               <%#*<tr><td class="labelDefinitionTerm">Ownership End Date: </td><td><%=text_field_tag(:enddate,@inventory.inventory_ownership.enddate,:class=>"uidatePicker")%>
+
+                    <%#*<div id="dynDivContainer1">%>
+                           <%#*<table><tr>%>
+                                    <%#*<td><h3 ><a id="dynDivAddOwner" style="font-size: small;">Add Ownership History</a></h3></td><td><span class='error error-keyup-1' style='color:red; margin-left: 15px ; ' id="merror"></span></td>%>
+                                  <%#*</tr>%>
+                           <%#*</table>%>
+                               <%#*<h3 ><a id="dynDivAddOwner" style="font-size: small;">Add Ownership History</a><br/></h3>%>
+                                  <%#*<input id="dynDivFieldCountOwner" name="dynDivFieldCountOwner" type="hidden" value="0"/>%>
+                                  <%#*<input id="divCheck" name="divCheck" type="hidden" value="0"/>%>
+                                    <%#*<hr/>%>
+                        <%#*</div>%>

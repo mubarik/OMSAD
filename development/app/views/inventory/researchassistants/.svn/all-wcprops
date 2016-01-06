@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/5270/OMSAD/development/app/views/inventory/researchassistants
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/5183/OMSAD/development/app/views/inventory/researchassistants/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4299/OMSAD/development/app/views/inventory/researchassistants/show.erb
+END
+update.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/1427/OMSAD/development/app/views/inventory/researchassistants/update.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/1346/OMSAD/development/app/views/inventory/researchassistants/create.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/5270/OMSAD/development/app/views/inventory/researchassistants/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/3387/OMSAD/development/app/views/inventory/researchassistants/index.erb
+END

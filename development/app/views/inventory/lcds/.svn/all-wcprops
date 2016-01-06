@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/DSSD_Summer2012/!svn/ver/685/OMSAD/development/app/views/inventory/lcds
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/DSSD_Summer2012/!svn/ver/58/OMSAD/development/app/views/inventory/lcds/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/DSSD_Summer2012/!svn/ver/31/OMSAD/development/app/views/inventory/lcds/show.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/31/OMSAD/development/app/views/inventory/lcds/create.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/685/OMSAD/development/app/views/inventory/lcds/index.erb
+END

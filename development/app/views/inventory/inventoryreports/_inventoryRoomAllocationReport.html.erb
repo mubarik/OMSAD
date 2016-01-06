@@ -1,0 +1,38 @@
+      <%= grid(@inv_grid, :show_filters => :always) do |g|
+        g.row_attributes do |version|
+          {:style => 'text-align:left;'}
+        end
+        g.blank_slate  do
+          "No record found"
+        end
+        g.column :column_name => 'Sr. No', :attribute_name => 'id', :no_filter => true   do |allocated_room|
+          allocated_room.id
+        end
+
+        g.column :column_name => 'Room Nbr.', :attribute_name => 'roomnumber', :model_class=> "RoomDetail", :no_filter => true do |allocated_room|
+          allocated_room.room_detail.roomnumber
+        end
+
+        g.column :column_name => 'Type', :auto_reload => true,:attribute_name => 'inventorytypename', :model_class=>"InventoryType",
+                 :custom_filter => InventoryType.find(:all).map{|pr| [pr.inventorytypename, pr.inventorytypename]}  do |allocated_room|
+          allocated_room.inventory.inventory_type.blank?? 'N/A' :allocated_room.inventory.inventory_type.inventorytypename
+        end
+
+        g.column :column_name => 'Inventory Name',:in_csv=>false, :attribute_name => 'inventoryname', :model_class=>"Inventory" do |allocated_room|
+          link_to allocated_room.inventory.inventoryname, "/inventory/inventories/"+(allocated_room.inventory.id).to_s
+
+        end
+        g.column :column_name => 'Inventory Name',:in_html=>false, :attribute_name => 'inventoryname', :model_class=>"Inventory" do |allocated_room|
+          allocated_room.inventory.blank?? 'N/A' :allocated_room.inventory.inventoryname
+        end
+
+        g.column :column_name => 'Inventory Status', :attribute_name => 'inventorystatus', :model_class=>"InventoryStatus",
+                  :custom_filter => InventoryStatus.find(:all).map{|pr| [pr.inventorystatus, pr.inventorystatus]}  do |allocated_room|
+          allocated_room.inventory.inventory_status.blank?? 'N/A' :allocated_room.inventory.inventory_status.inventorystatus
+        end
+
+        g.column :column_name => 'Model', :attribute_name => 'model', :model_class=>"Inventory"  do |allocated_room|
+          allocated_room.inventory.model.blank?? 'N/A' :allocated_room.inventory.model
+        end
+
+      end %>

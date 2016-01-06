@@ -1,0 +1,45 @@
+<%= grid(@students_report_grid, :show_filters => :always) do |g|
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+    g.blank_slate  do
+    "No record found"
+  end
+  g.column :column_name => 'Roll No', :attribute_name => 'rollno', :in_csv => false , :model_class => Student do |studentcou|
+     link_to studentcou.student.rollno, "/GraduateStudents/students/"+(studentcou.student.user.id).to_s
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_csv => false, :model_class => User do |st|
+    link_to st.student.user.name, "/GraduateStudents/students/"+(st.student.user.id).to_s
+  end
+  g.column :column_name => 'Roll No', :attribute_name => 'rollno', :in_html => false , :model_class => Student do |studentcou|
+     studentcou.student.rollno
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_html => false, :model_class => User do |st|
+    st.student.user.name
+  end
+  g.column :column_name => 'Degree Level', :attribute_name => 'degreelevel', :custom_filter => [['MS', 'ms'],['PhD', 'phd']] ,:model_class => Student do |studentcou|
+    studentcou.student.degreelevel
+  end
+  g.column :column_name => 'Course Code', :attribute_name => 'coursecode' , :model_class => Course do |studentcou|
+    studentcou.course.coursecode.blank?? 'Not provided' : studentcou.course.coursecode
+  end
+  g.column :column_name => 'Course Name', :attribute_name => 'coursename' , :model_class => Course do |studentcou|
+    studentcou.course.coursename.blank?? 'Not provided' : studentcou.course.coursename
+  end
+  g.column :column_name => 'Course GPA', :attribute_name => 'coursegpa' do |studentcou|
+    studentcou.coursegpa.blank?? 'Not provided' : studentcou.coursegpa
+  end
+  g.column :column_name => 'Course Grade', :attribute_name => 'name',:model_class=>GradeType do |studentcou|
+    studentcou.coursegrade.blank?? 'Not provided' : studentcou.coursegrade
+  end
+  g.column :column_name => 'Course Status', :attribute_name => 'name',:model_class=>CourseStatus,:auto_reload=>true,
+           :custom_filter => CourseStatus.find(:all).map{|pr| [pr.name, pr.name]} do |studentcou|
+    studentcou.coursestatus.blank?? 'Not provided' : studentcou.coursestatus
+  end
+  g.column :column_name => 'Semester', :attribute_name => 'offering',:custom_filter => [['Fall', 'fall'],['Spring', 'spring'], ['Summer', 'summer']], :model_class => Semester do |studentcou|
+    studentcou.semester.offering.blank?? 'Not provided' : studentcou.semester.offering
+  end
+  g.column :column_name => 'Year', :attribute_name => 'year' , :model_class => Semester do |studentcou|
+    studentcou.semester.year.blank?? 'Not provided' : studentcou.semester.year
+  end
+end -%>

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/5348/OMSAD/development/app/views/faculty/scholarlyreport
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/5348/OMSAD/development/app/views/faculty/scholarlyreport/index.html.erb
+END
+_faculty_courses.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/5158/OMSAD/development/app/views/faculty/scholarlyreport/_faculty_courses.html.erb
+END
+_ms_project_supervision.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/5158/OMSAD/development/app/views/faculty/scholarlyreport/_ms_project_supervision.html.erb
+END
+_faculty_research_grant.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/5127/OMSAD/development/app/views/faculty/scholarlyreport/_faculty_research_grant.html.erb
+END
+_phd_supervision.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/5158/OMSAD/development/app/views/faculty/scholarlyreport/_phd_supervision.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/4633/OMSAD/development/app/views/faculty/scholarlyreport/show.html.erb
+END
+_faculty_scholarly_report.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/DSSD_Summer2012/!svn/ver/5158/OMSAD/development/app/views/faculty/scholarlyreport/_faculty_scholarly_report.html.erb
+END
+_faculty_publications.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/DSSD_Summer2012/!svn/ver/5158/OMSAD/development/app/views/faculty/scholarlyreport/_faculty_publications.html.erb
+END
+_ms_thesis_supervision.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/5158/OMSAD/development/app/views/faculty/scholarlyreport/_ms_thesis_supervision.html.erb
+END
+show.pdf.prawn
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/5164/OMSAD/development/app/views/faculty/scholarlyreport/show.pdf.prawn
+END

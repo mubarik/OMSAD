@@ -1,0 +1,120 @@
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Book Chapter</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <div class="moreInfodisplayPicWithTextWrap">
+         <%=image_tag("", :alt=>'', :class=>'displayPicGrant')%>
+        <h1><%=@bookchapter_publication.publication.title%></h1>
+    </div>
+
+      <div class="clearFloatingAndStartFromBelow"></div>
+      
+      <div class="expandingBlock">
+       <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Chapter Details</h2>
+           <div class="expander">
+              <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Abstract:</td>
+                  <td class="labelDefinitionDetails"><%=  @bookchapter_publication.publication.abstract %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Year:</td>
+                  <td class="labelDefinitionDetails"><%=  @bookchapter_publication.publication.publicationyear %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Status:</td>
+                  <td class="labelDefinitionDetails"><%=  @bookchapter_publication.publication.publicationstatus %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">URL:</td>
+                  <td class="labelDefinitionDetails">
+                   <%if !@bookchapter_publication.publication.doi.blank?%>
+                      <%=  @bookchapter_publication.publication.doi %>
+                    <%else%>
+                        Not provided
+                    <%end%>
+                  </td>
+                </tr>
+               <tr>
+                  <td class="labelDefinitionTerm">Pages:</td>
+                  <td class="labelDefinitionDetails">
+                   <%if !@bookchapter_publication.publication.pages.blank?%>
+                      <%=  @bookchapter_publication.publication.pages %></td>
+                   <%else%>
+                        Not provided
+                    <%end%>
+                </tr>
+              </table>
+           </div>
+       </div>
+
+        <%if !@bookchapter_publication.publication.user_publications.blank?%>
+       <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Authors</h2>
+         <%= render :partial=>"faculty/displayAuthors",
+                    :object=>@bookchapter_publication.publication.user_publications,
+                    :as => :authors%>
+      </div>
+        <%end%>
+      <%if !@bookchapter_publication.publication.publication_photos.blank? or
+             @bookchapter_publication.publication.publication_photos.length > 0%>
+      <div id="imageGalleryExpander" class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Photos</h2>
+         <div class="expander">
+           <div class="publicationImageGallery">
+             <%= render :partial=>"faculty/publicationphotos/photo_old",
+                                :collection=>@bookchapter_publication.publication.publication_photos,
+                                :as => :pub_object%>
+           </div>
+         </div>
+      </div>
+     <%end%>
+
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Book Details</h2>
+         <div class="expander">
+           <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Book Name: </td>
+                    <td><%= label_tag(:txbookchaptername,@bookchapter_publication.bookname,:class=>"inputTextbox") %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Editors: </td>
+                    <td>
+                     <%if !@bookchapter_publication.editors.blank?%>
+                        <%= label_tag(:txbookchaptereditors,@bookchapter_publication.editors,:class=>"inputTextbox") %>
+                      <%else%>
+                         Not provided
+                         <%end%>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Publisher Name: </td>
+                    <td>
+                       <%if !@bookchapter_publication.publishername.blank?%>
+                          <%= label_tag(:txbookchapterpublisher,@bookchapter_publication.publishername,:class=>"inputTextbox") %>
+                      <%else%>
+                         Not provided
+                         <%end%>
+                    </td>
+                  </tr>
+
+                </table>
+         </div>
+      </div>
+    </div>
+<%end%>
+

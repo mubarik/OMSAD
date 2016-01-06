@@ -1,0 +1,207 @@
+<script text="text/javascript">
+  $('.flexInterDisciplinaryCollaborator').flexigrid({
+        height:'auto',
+        colModel : [
+                {display: 'Name', name : 'name', width : 120, align: 'center'},
+                {display: 'Affiliation', name : 'affiliation', width : 120, align: 'center'},
+                {display: 'Start Date', name : 'startdate', width : 120, align: 'center'},
+                {display: 'End Date', name : 'enddate', width : 120, align: 'center'},
+                {display: 'Description', name : 'description', width : 400, align: 'center'},
+           ]
+        });
+</script>
+<div class="groupBox" style="overflow: auto;">
+  <% if(!faculty_yearly_courses.blank?)%>
+    <h2>Course Information</h2>
+    <%= render "faculty_courses",:facultycourses => faculty_yearly_courses %>
+  <%end%>
+
+  <% if(!faculty_inter_disciplinary_collaboration.blank?)%>
+    <br/><br/>
+    <h2>Inter-disciplinary Collaboration</h2>
+ 
+    <table class="flexInterDisciplinaryCollaborator">
+      <%for collaborator in faculty_inter_disciplinary_collaboration %>
+        <tr>
+        <td>
+          <%if !collaborator.name.blank? %>
+            <%=  collaborator.name%>
+          <%else%>
+             Not provided
+          <%end%>
+        </td>
+        <td>
+          <%if !collaborator.affiliation.blank? %>
+            <%= collaborator.affiliation%>
+          <%else%>
+            Not provided
+          <%end%>
+        </td>
+        <td>
+          <%if !collaborator.startdate.blank? %>
+            <%= label_tag(nil,collaborator.startdate,:id=>"lbstartdate")%>
+          <%else%>
+            Not provided
+          <%end%>
+        </td>
+        <td>
+          <%if !collaborator.enddate.blank? %>
+            <%= label_tag(nil,collaborator.enddate,:id=>"lbstartdate")%>
+          <%else%>
+            Not provided
+          <%end%>
+        </td>
+        <td>
+          <%if !collaborator.description.blank? %>
+            <%= collaborator.description%>
+          <%else%>
+            Not provided
+          <%end%>
+        </td>
+      </tr>
+
+      <%end%>
+    </table>
+  <%end%>
+
+ <% if(!faculty_publications_report .blank?)%>
+    <br/><br/>
+    <h2>Publications</h2>
+    <%= render "faculty_publications", :faculty_publications => faculty_publications_report %>
+ <%end%>
+
+ <% if(!faculty_awards.blank?)%>
+  <br/><br/>
+  <h2>Honors, Awards and Fellowships </h2>
+  <fieldset>
+    
+      <%for award in faculty_awards %>
+       <table>
+        <tr>
+          <td class="labelDefinitionTerm" >
+           Award Title:
+          </td>
+          <td>
+            <%if !award.title.blank?%>
+              <%=  award.title %>
+            <%else%>
+              Not provided
+            <%end%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm" >
+           Year:
+          </td>
+          <td>
+            <%if !award.year.blank?%>
+              <%= award.year %>
+            <%else%>
+              Not provided
+            <%end%>
+          </td>
+        </tr>
+       </table>
+      <hr/>
+      <%end%>
+  </fieldset>
+  <%end%>
+
+  <% if(!faculty_research_grants.blank?)%>
+    <br/><br/>
+    <h2>Research Grants</h2>
+    <%= render "faculty_research_grant", :faculty_grants => faculty_research_grants %>
+  <%end%>
+
+  <% if(!phd_supervision.blank?)%>
+    <br/><br/>
+    <h2>PhD Supervision</h2>
+    <%= render "phd_supervision", :phd_supervision => phd_supervision %>
+  <%end%>
+
+  <% if(!ms_thesis_supervision.blank?)%>
+    <br/><br/>
+    <h2>MS Thesis Supervision</h2>
+    <%= render "ms_thesis_supervision", :ms_thesis_supervision => ms_thesis_supervision %>
+ <%end%>
+
+ <% if(!ms_project_supervision.blank?)%>
+  <br/><br/>
+  <h2>MS Project Supervision</h2>
+  <%= render "ms_project_supervision", :ms_project_supervision => ms_project_supervision %>
+<%end%>
+
+  <% if(!services.blank?) %>
+  <br/><br/>
+  <h2>Services</h2>
+  <fieldset>
+
+      <%for service in services %>
+       <table>
+         <tr>
+          <td class="labelDefinitionTerm" >
+           Year
+          </td>
+          <td>
+            <%if !service.year.blank?%>
+              <%= service.year %>
+            <%else%>
+              Not provided
+            <%end%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm" >
+           University Services:
+          </td>
+          <td>
+            <%if !service.universityservices.blank?%>
+              <%=  service.universityservices %>
+            <%else%>
+              Not provided
+            <%end%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm" >
+           Outside LUMS Services
+          </td>
+          <td>
+            <%if !service.outsideservices.blank?%>
+              <%= service.outsideservices %>
+            <%else%>
+              Not provided
+            <%end%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm" >
+           Advisory Roles
+          </td>
+          <td>
+            <%if !service.advisoryroles.blank?%>
+              <%= service.advisoryroles %>
+            <%else%>
+              Not provided
+            <%end%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm" >
+           Statement
+          </td>
+          <td>
+            <%if !service.statement.blank?%>
+              <%= service.statement %>
+            <%else%>
+              Not provided
+            <%end%>
+          </td>
+        </tr>
+       </table>
+      <hr/>
+      <%end%>
+  </fieldset>
+  <%end%>
+  
+</div>

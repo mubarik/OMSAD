@@ -1,0 +1,42 @@
+<div class="expander">
+  <%=p.fields_for :book_chapter_publication do |c|%>
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm">Book Name: </td>
+        <td class="inputBoxPlacement">
+          <%= c.text_field :bookname,
+                                    :id=>"txbookname",
+                                    :title=>'Enter the name of book for which chapter is written e.g  Calculus',                                    
+                                    :class=>"inputTextbox"%>
+        </td>
+        <td class ="fieldErrorPlacement">
+           <%= @publication.book_chapter_publication.errors[:bookname][0] %>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Editors: </td>
+        <td class="inputBoxPlacement">
+          <%= c.text_field :editors,
+                                    :id=>"txbookchaptereditors",
+                                    :title=>'Enter the name of editor of book e.g Dr. Hamid Abdul Basit',
+                                    :class=>"inputTextbox"%>
+        </td>
+        <td class ="fieldErrorPlacement">
+          <%= @publication.book_chapter_publication.errors[:editors][0] %>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Publisher Name: </td>
+        <td class="inputBoxPlacement">
+          <%= c.text_field :publishername,
+                                    :id=>"txbookchapterpublisher",
+                                    :title=>'Enter the name of publisher e.g Lahore press',
+                                    :class=>"inputTextbox"%>
+        </td>
+        <td class ="fieldErrorPlacement">
+          <%= @publication.book_chapter_publication.errors[:publishername][0] %>
+        </td>
+      </tr>
+    </table>
+  <%end%>
+</div>

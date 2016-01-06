@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/DSSD_Summer2012/!svn/ver/549/OMSAD/development/app/views/inventory/printers
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/DSSD_Summer2012/!svn/ver/469/OMSAD/development/app/views/inventory/printers/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/DSSD_Summer2012/!svn/ver/275/OMSAD/development/app/views/inventory/printers/show.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/275/OMSAD/development/app/views/inventory/printers/create.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/DSSD_Summer2012/!svn/ver/549/OMSAD/development/app/views/inventory/printers/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/DSSD_Summer2012/!svn/ver/275/OMSAD/development/app/views/inventory/printers/index.erb
+END

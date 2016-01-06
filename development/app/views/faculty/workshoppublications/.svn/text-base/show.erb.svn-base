@@ -1,0 +1,137 @@
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Workshop Paper</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <div class="moreInfodisplayPicWithTextWrap">
+         <%=image_tag("", :alt=>'', :class=>'displayPicGrant')%>
+        <h1><%=@workshop_publication.publication.title%></h1>
+    </div>
+
+    <div class="clearFloatingAndStartFromBelow"></div>
+    <div class="expandingBlock">
+       <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Paper Details</h2>
+           <div class="expander">
+              <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Abstract:</td>
+                  <td class="labelDefinitionDetails"><%=  @workshop_publication.publication.abstract %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Year:</td>
+                  <td class="labelDefinitionDetails"><%=  @workshop_publication.publication.publicationyear %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Status:</td>
+                  <td class="labelDefinitionDetails"><%=  @workshop_publication.publication.publicationstatus %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">URL:</td>
+                  <td class="labelDefinitionDetails">
+                      <% if( ! @workshop_publication.publication.doi.blank?) %>
+                          <%=  @workshop_publication.publication.doi %>
+                     <%else%>
+                       Not provided
+                       <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Pages:</td>
+                  <td class="labelDefinitionDetails">
+                      <% if( ! @workshop_publication.publication.pages.blank?) %>
+                        <%=  @workshop_publication.publication.pages %>
+                     <%else%>
+                        Not provided
+                      <%end%>
+                  </td>
+                </tr>
+              </table>
+           </div>
+       </div>
+
+     <%if !@workshop_publication.publication.user_publications.blank?%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Authors</h2>
+         <%= render :partial=>"faculty/displayAuthors",
+                    :object=>@workshop_publication.publication.user_publications,
+                    :as => :authors%>
+      </div>
+      <%end%>
+      <%if !@workshop_publication.publication.publication_photos.blank? or
+              @workshop_publication.publication.publication_photos.length > 0%>
+        <div id="imageGalleryExpander" class="expanderHeaderBar">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Photos</h2>
+           <div class="expander">
+             <div class="publicationImageGallery">
+               <%= render :partial=>"faculty/publicationphotos/photo_old",
+                                  :collection=>@workshop_publication.publication.publication_photos,
+                                  :as => :pub_object%>
+             </div>
+           </div>
+        </div>
+      <%end%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Workshop Details</h2>
+         <div class="expander">
+           <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Workshop Name:</td>
+                  <td class="labelDefinitionDetails"><%=  @workshop_publication.workshopname %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Conference Name:</td>
+                  <td class="labelDefinitionDetails"><%=  @workshop_publication.conferencename %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Workshop Website:</td>
+                  <td class="labelDefinitionDetails" ><%=  @workshop_publication.website %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Conference Website:</td>
+                  <td class="labelDefinitionDetails" ><%=  @workshop_publication.conferencewebsite %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Start Date:</td>
+                  <td class="labelDefinitionDetails">
+                    <% if( ! @workshop_publication.workshopstartdate.blank?) %>
+                      <%= label_tag(nil,@workshop_publication.workshopstartdate,:id=>"lbstartdate")%>
+                    <%else%>
+                      Not provided
+                      <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">End Date:</td>
+                  <td class="labelDefinitionDetails">
+                    <% if( ! @workshop_publication.workshopenddate.blank?) %>
+                      <%= label_tag(nil,@workshop_publication.workshopenddate,:id=>"lbenddate")%>
+                    <%else%>
+                      Not provided
+                      <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">City:</td>
+                  <td class="labelDefinitionDetails">
+                    <% if( ! @workshop_publication.city.blank?) %>
+                       <%=  @workshop_publication.city%>
+                    <%else%>
+                       Not provided
+                     <%end%>
+                  </td>
+                </tr>
+           </table>
+         </div>
+      </div>
+    </div>
+<%end%>

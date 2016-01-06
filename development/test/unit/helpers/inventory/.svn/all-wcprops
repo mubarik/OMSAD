@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/36/OMSAD/development/test/unit/helpers/inventory
+END
+inventories_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/36/OMSAD/development/test/unit/helpers/inventory/inventories_helper_test.rb
+END
+lcds_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/36/OMSAD/development/test/unit/helpers/inventory/lcds_helper_test.rb
+END
+printers_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/36/OMSAD/development/test/unit/helpers/inventory/printers_helper_test.rb
+END
+cpus_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/36/OMSAD/development/test/unit/helpers/inventory/cpus_helper_test.rb
+END
+scanners_helper_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/36/OMSAD/development/test/unit/helpers/inventory/scanners_helper_test.rb
+END

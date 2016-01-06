@@ -1,0 +1,106 @@
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Technical Report</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <div class="moreInfodisplayPicWithTextWrap">
+        <%=image_tag("", :alt=>'', :class=>'displayPicGrant')%>
+        <h1><%=@technical_report_publication.publication.title%></h1>
+    </div>
+
+    <div class="clearFloatingAndStartFromBelow"></div>
+    <div class="expandingBlock">
+       <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Paper Details </h2>
+           <div class="expander">
+              <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Abstract:</td>
+                  <td class="labelDefinitionDetails"><%= @technical_report_publication.publication.abstract %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Year:</td>
+                  <td class="labelDefinitionDetails"><%= @technical_report_publication.publication.publicationyear %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Status:</td>
+                  <td class="labelDefinitionDetails"><%=  @technical_report_publication.publication.publicationstatus %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">URL:</td>
+                  <td class="labelDefinitionDetails">
+                   <% if( ! @technical_report_publication.publication.doi.blank?) %>
+                  <%=  @technical_report_publication.publication.doi %>
+                    <%else%>
+                      Not provided
+                    <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Pages:</td>
+                  <td class="labelDefinitionDetails">
+                    <% if( ! @technical_report_publication.publication.pages.blank?) %>
+                     <%=  @technical_report_publication.publication.pages %>
+                    <%else%>
+                      Not provided
+                      <%end%>
+                  </td>
+                </tr>
+              </table>
+           </div>
+       </div>
+<%if !@technical_report_publication.publication.user_publications.blank?%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Authors</h2>
+         <%= render :partial=>"faculty/displayAuthors",
+                    :object=>@technical_report_publication.publication.user_publications,
+                    :as => :authors%>
+      </div>
+<%end%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Report Details</h2>
+         <div class="expander">
+           <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Technical Report Number:</td>
+                  <td class="labelDefinitionDetails"><%=  @technical_report_publication.technicalreportnumber %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Department:</td>
+                  <td class="labelDefinitionDetails">
+                    <%if !@technical_report_publication.department.blank?%>
+                      <%=@technical_report_publication.department.name %>
+                    <%else%>
+                      Not provided
+                    <%end%>
+                  </td>
+                </tr>
+           </table>
+         </div>
+      </div>
+
+      <%if !@technical_report_publication.publication.publication_photos.blank? or
+              @technical_report_publication.publication.publication_photos.length > 0%>
+        <div id="imageGalleryExpander" class="expanderHeaderBar">
+          <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Photos</h2>
+           <div class="expander">
+             <div class="publicationImageGallery">
+               <%= render :partial=>"faculty/publicationphotos/photo_old",
+                                  :collection=>@technical_report_publication.publication.publication_photos,
+                                  :as => :pub_object%>
+             </div>
+           </div>
+        </div>
+      <%end%>
+    </div>
+<%end%>
+

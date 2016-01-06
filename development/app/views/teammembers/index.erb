@@ -1,0 +1,159 @@
+<% content_for :menu do %>
+   <%= render "navigationmenu" %>
+<%end%>
+
+<% content_for :content do %>
+<div class="pageHeadingBar">
+  <h1>Development Team</h1>
+</div>
+<hr class="headingLineBreak"/>
+
+ <div class="table-box">
+   
+   <%@image_name="adil.jpg"%>
+   <%@name="Adil Nazir Kamboh"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="adil.nazir@gmail.com"%>
+   
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+   <%@image_name="adnan.jpg"%>
+   <%@name="Adnan Ashraf"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="adnankhawaja@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+   <%@image_name="afia.jpg"%>
+   <%@name="Afia Zafar"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="afeazafar13@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+  </div>
+<br/><br/><br/>
+
+<div class="table-box">
+
+   <%@image_name="aneeqa.jpg"%>
+   <%@name="Aneeqa Baber"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="aneeqa.baber@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+  
+   <%@image_name="mubarik.jpg"%>
+   <%@name="Mubarik Ahmed"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="mubarik.shad@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+   <%@image_name="nauman.jpg"%>
+   <%@name="Muhammad Nauman Sajid"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="mn.nauman@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+  </div>
+<br/><br/><br/>
+<div class="table-box">
+
+   <%@image_name="naushervan.jpg"%>
+   <%@name="Muhammad Naushervan Aziz Esker"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="muhammad.naushervan@gmail.com."%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+   <%@image_name="sehrish.jpg"%>
+   <%@name="Sehrish Abdul Malik"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="sehrish.abdul@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+   <%@image_name="shahzad.jpg"%>
+   <%@name="Shahzad Shakoor"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="11030017@lums.edu.pk"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+  </div>
+
+<br/><br/><br/>
+
+<div class="table-box">
+
+   <%@image_name="umar.jpg"%>
+   <%@name="Umar Muneer"%>
+   <%@designation="MS Computer Science 2011"%>
+   <%@email="umarmuneer@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+   <%@image_name="saima.jpg"%>
+   <%@name="Saima Mushtaq"%>
+   <%@designation="Instructor"%>
+   <%@email="saima.mushtaq@gmail.com"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+
+   <%@image_name="hamid.jpg"%>
+   <%@name="Hamid Abdul Basit"%>
+   <%@designation="Instructor"%>
+   <%@email="hamidb@lums.edu.pk"%>
+
+   <%=render :partial => "single_member",
+             :locals =>{:image_name => @image_name,
+             :name => @name,
+             :designation => @designation ,
+             :email => @email}%>
+  </div>
+<%end%>

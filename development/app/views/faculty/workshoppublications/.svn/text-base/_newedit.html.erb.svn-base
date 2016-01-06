@@ -1,0 +1,90 @@
+<div class="expander">
+  <%=p.fields_for :workshop_publication do |c|%>
+  <table>
+    <tr>
+      <td class="labelWorkshop">Workshop Name: <span class="requiredFieldAsterisk">*</span></td>
+      <td class="inputBoxPlacement">
+           <%= c.text_field      :workshopname,
+                                           :id=>"txworkshopname",
+                                           :title => 'Special characters are not allowed i.e. International Workshop on Smart Appliances and Wearable Computing' ,
+                                           :required =>true,
+                                           :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.workshop_publication.errors[:workshopname][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelWorkshop">Workshop Website:<span class="requiredFieldAsterisk">*</span></td>
+      <td class ="inputBoxPlacement">
+          <%= c.text_field    :website,
+                                       :id=>"txworkshopwebsite",
+                                       :required =>true,
+                                       :title =>'Enter the website url of workshop e.g www.lums.edu.pk',
+                                       :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.workshop_publication.errors[:website][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelWorkshop">Conference Name:</td>
+      <td class="inputBoxPlacement">
+        <%= c.text_field      :conferencename,
+                               :id=>"txworkshopconference",
+                               :title => 'Special characters are not allowed i.e. International Conference on Smart Appliances and Wearable Computing' ,
+                               :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.workshop_publication.errors[:conferencename][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelWorkshop">Conference Website:</td>
+      <td class ="inputBoxPlacement">
+          <%= c.text_field    :conferencewebsite,
+                                       :id=>"txconferencewebsite",
+                                       :title =>'Enter the website url of workshop e.g www.lums.edu.pk',
+                                       :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.workshop_publication.errors[:website][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelWorkshop">Start Date:</td>
+      <td class="inputBoxPlacement">
+          <%= c.text_field    :workshopstartdate,
+                                       :id=>"txstartdate",
+                                       :class=>"uidatePicker"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+        <%= @publication.workshop_publication.errors[:workshopstartdate][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelWorkshop">End Date:</td>
+      <td class="inputBoxPlacement">
+          <%= c.text_field    :workshopenddate,
+                                       :id=>"txenddate",
+                                       :class=>"uidatePicker"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+         <%= @publication.workshop_publication.errors[:workshopenddate][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelWorkshop">City: </td>
+      <td class ="inputBoxPlacement">
+         <%= c.text_field     :city,
+                                       :id=>"txworkshopcity",
+                                       :title =>"Only alphabets are allowed e.g Rawalpindi",
+                                       :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+         <%= @publication.workshop_publication.errors[:city][0] %>
+      </td>
+    </tr>
+  </table>
+  <%end%>
+   </div>

@@ -1,0 +1,19 @@
+<% content_for :menu do %>
+        <%= render "faculty/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+
+    <div class="pageHeadingBar">
+        <h1>Import BibTex</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+
+      <% if !flash[:ss].blank? %>
+        <div class="messages">
+          <p><%=flash[:ss]%></p>
+        </div>
+       <%end%>
+
+<%end%>

@@ -1,0 +1,1663 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<%= content_for :content do  %>
+
+  <div class="pageHeadingBar">
+        <h1>Assign Map Location </h1> 
+  </div>
+  <hr class="headingLineBreak"/>
+   <% if !flash[:msgGreen].blank? %>
+      <div class="messages">
+        <p><%=flash[:msgGreen]%></p>
+      </div>
+    <%end%>
+
+  <div>
+    <br></br>
+
+<%= form_tag({:controller => "inventory/roomdetails" ,:class=>"my_form",:action => "maploc"},:id => @roomdetail.id,:method=>"post") do %>
+
+
+<input id="hidID" name="hidID" type="hidden" value="100"/>
+<input id="hidcRID" name="hidcRID" type="hidden" value="100"/>
+<%= text_field_tag(:roomid,@roomdetail.id,:type=>"hidden", :class=>"inputTextbox")  %>
+
+<table width="95%"  style="border:2px;" align="center" bordercolor="#000000" cellspacing="0">
+
+    <tr>
+    <td width="45%">
+      <table width="100%" style="border:0px solid black;" align="center" cellspacing="0" cellpadding="0">
+		<tr>
+		  <td id="af" height="100" colspan="3" align="center" style="border:3px solid black;" bgcolor="#C4C4C4">PhD Lab
+                   <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 1 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc1", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId1" name="hidRId1" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected1"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av1", :title=>"Room is available")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 1}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                  </td>
+		</tr>
+                <tr>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                    <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 2 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc2", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId2" name="hidRId2" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected2"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av2", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 2}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+
+                  </td>
+                  <td rowspan="8" width="10%">&nbsp;</td>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                    <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 3 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc3", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId3" name="hidRId3" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected3"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av3", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 3}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                  </td>
+                </tr>
+ 
+                <tr>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                   <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 4 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc4", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId4" name="hidRId4" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected4"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av4", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 4}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                  </td>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                    <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 5 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc5", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId5" name="hidRId5" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected5"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av5", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 5}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                     <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 6 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc6", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId6" name="hidRId6" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected6"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av6", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 6}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                    </td>
+                    <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                     <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 7 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc7", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId7" name="hidRId7" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected7"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av7", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 7}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                     <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 8 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc8", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId8" name="hidRId8" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected8"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av8", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 8}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                      </td>
+                      <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#CDCDCD">Faculty Discussion
+                     <%flag=0%>
+                    <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                    <% if map_roomdetail.map_location_id == 9 %>
+                          <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc9", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId9" name="hidRId9" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected9"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av9", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 9}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                            <%flag=0%>
+                            <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                            <% if map_roomdetail.map_location_id == 10 %>
+                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc10", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId10" name="hidRId10" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected10"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av10", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 10}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                            <%end%><%#*end if%>
+                       <%end%><%#*end if%>
+                   <%end%><%#*end for%>
+                          </td>
+                        </tr>
+                        <tr> <%flag=0%>
+                          <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                            <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                            <% if map_roomdetail.map_location_id == 11 %>
+                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc11", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId11" name="hidRId11" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected11"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av11", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 11}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                                      <%end%><%#*end if%>
+                                 <%end%><%#*end if%>
+                             <%end%><%#*end for%>
+                            </td> <%flag=0%>
+                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                              <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                            <% if map_roomdetail.map_location_id == 12 %>
+                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc12", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId12" name="hidRId12" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected12"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av12", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 12}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                                      <%end%><%#*end if%>
+                                 <%end%><%#*end if%>
+                             <%end%><%#*end for%>
+                              </td>
+                            </tr>
+                            <tr> <%flag=0%>
+                              <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                 <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                  <% if map_roomdetail.map_location_id == 13 %>
+                                   <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc13", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId13" name="hidRId13" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected13"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av13", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 13}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                                      <%end%><%#*end if%>
+                                 <%end%><%#*end if%>
+                             <%end%><%#*end for%>
+                                </td> <%flag=0%>
+                                <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">S/w Engineering Lab
+                                  <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                            <% if map_roomdetail.map_location_id == 14 %>
+                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc14", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId14" name="hidRId14" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected14"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av14", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 14}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                                      <%end%><%#*end if%>
+                                 <%end%><%#*end if%>
+                             <%end%><%#*end for%>
+                                  </td>
+                                </tr>
+                                <tr> <%flag=0%>
+                                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                     <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                      <% if map_roomdetail.map_location_id == 15 %>
+                                       <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc15", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId15" name="hidRId15" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected15"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av15", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 15}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                                      <%end%><%#*end if%>
+                                 <%end%><%#*end if%>
+                             <%end%><%#*end for%>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td height="75" colspan="3" width="45%" style="border:2px solid black;" cellpadding="0">&nbsp;</td>
+                                      </tr>
+                                      <tr> <%flag=0%>
+                                        <td height="75" colspan="3" align="center" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">
+                                          <p align="center">KADE
+                                          <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                      <% if map_roomdetail.map_location_id == 16 %>
+                                       <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                            <%unless (map_roomdetail.room_detail.blank?)%>
+                                                  <% for allrooms in @allallocatedrooms%>
+                                                        <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                          <table>
+                                                                <tr>
+                                                                    <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc16", :title=>"Room is occupied")%></span></td>
+                                                                    <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                    <td style="display:none">
+                                                                      <input id="hidRId16" name="hidRId16" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td colspan="3">
+                                                                    <div id="lselected16"  style="display:none">
+                                                                   selected. click save to deallocate</div>
+                                                                  </td>
+                                                                </tr>
+                                                          </table>
+                                                             
+                                                              <%flag=1%>
+                                                           <%break%>
+
+                                                        <%end%><%#*end if%>
+                                                  <%end%> <%#*end for%>
+                                               <%end%> <%#*end unless%>
+                            <%else%>
+
+                                              <%if flag==0%>
+                                                    <table>
+                                                        <tr>
+                                                           <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av16", :title=>"Room is occupied")%></span></td>
+                                                            <td><span class="labelDefinitionDetails"></span></td>
+
+                                                        </tr>
+                                                    </table>
+                                                                 <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                 :style=>'margin-left:10px; margin-top:-3px;',
+                                                                 :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                 :id => 16}, {:class => "fancybox" }) %> Assign Map Location
+                                               <%end%>
+                                      <%end%><%#*end if%>
+                                 <%end%><%#*end if%>
+                             <%end%><%#*end for%>
+                                            </p>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                    <td  width="10%">&nbsp</td>
+                                    <td width="45%">
+                                      <table width="100%" style="border:0px solid black;" align="center" cellspacing="0" cellpadding="0">
+                                        <tr> <%flag=0%>
+                                          <td height="100" colspan="3" align="center" width="45%" style="border:3px solid black;" cellpadding="0" bgcolor="#C4C4C4">Smart Lab
+                                            <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 17 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc17", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId17" name="hidRId17" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected17"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av17", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 17}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                      <tr> <%flag=0%>
+                                        <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                          <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 18 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc18", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId18" name="hidRId18" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected18"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av18", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 18}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                          </td> <%flag=0%>
+                                          <td rowspan="8" width="10%">&nbsp;</td>
+                                          <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                            <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 19 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc19", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId19" name="hidRId19" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected19"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av19", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 19}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 20 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc20", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId20" name="hidRId20" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected20"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av20", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 20}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 21 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc21", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId21" name="hidRId21" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected21"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av21", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 21}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 22 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc22", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId22" name="hidRId22" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected22"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av22", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 22}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 23 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc23", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId23" name="hidRId23" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected23"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av23", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 23}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#CDCDCD">Conference Room
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 24 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc24", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId24" name="hidRId24" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected24"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av24", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 24}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 25 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc25", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId25" name="hidRId25" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected25"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av25", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 25}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                              </td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 26 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc26", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId26" name="hidRId26" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected26"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av26", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 26}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 27 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc27", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId27" name="hidRId27" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected27"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                  
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av27", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 27}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 28 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc28", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId28" name="hidRId28" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected28"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                  
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av28", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 28}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">Computer Vision Lab
+                                              <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 29 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc29", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId29" name="hidRId29" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected29"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                  
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av29", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 29}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                               <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 30 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc30", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId30" name="hidRId30" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected30"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                   
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av30", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 30}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                            <% if map_roomdetail.map_location_id == 31 %>
+                                             <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                  <%unless (map_roomdetail.room_detail.blank?)%>
+                                                        <% for allrooms in @allallocatedrooms%>
+                                                              <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                <table>
+                                                                      <tr>
+                                                                          <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc31", :title=>"Room is occupied")%></span></td>
+                                                                          <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                          <td style="display:none">
+                                                                            <input id="hidRId31" name="hidRId31" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                          </td>
+                                                                      </tr>
+                                                                      <tr><td colspan="3">
+                                                                          <div id="lselected31"  style="display:none">
+                                                                         selected. click save to deallocate</div>
+                                                                        </td>
+                                                                      </tr>
+                                                                </table>
+                                                                  
+                                                                    <%flag=1%>
+                                                                 <%break%>
+
+                                                              <%end%><%#*end if%>
+                                                        <%end%> <%#*end for%>
+                                                     <%end%> <%#*end unless%>
+                                        <%else%>
+
+                                                    <%if flag==0%>
+                                                          <table>
+                                                              <tr>
+                                                                 <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av31", :title=>"Room is occupied")%></span></td>
+                                                                  <td><span class="labelDefinitionDetails"></span></td>
+
+                                                              </tr>
+                                                          </table>
+                                                                       <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                       :style=>'margin-left:10px; margin-top:-3px;',
+                                                                       :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                       :id => 31}, {:class => "fancybox" }) %> Assign Map Location
+                                                     <%end%>
+                                            <%end%><%#*end if%>
+                                       <%end%><%#*end if%>
+                                   <%end%><%#*end for%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td height="75" colspan="3" width="45%" style="border:2px solid black;" cellpadding="0">&nbsp;</td>
+                                          </tr>
+                                          <tr> <%flag=0%>
+                                            <td height="75" colspan="3" width="45%" align="center" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">
+                                              <p align="center">NEWT
+                                                <% for map_roomdetail in @map_roomdetails%>  <%#*for 1%>
+                                                  <% if map_roomdetail.map_location_id == 32 %>
+                                                   <% if map_roomdetail.room_detail_id != 0 and map_roomdetail.room_detail != nil  %>
+
+                                                        <%unless (map_roomdetail.room_detail.blank?)%>
+                                                              <% for allrooms in @allallocatedrooms%>
+                                                                    <% if allrooms.room_detail_id ==  map_roomdetail.room_detail_id  %>
+                                                                      <table>
+                                                                            <tr>
+                                                                                <td><span><%=image_tag("reds.png",:class=>"locavailable", :id=>"oc32", :title=>"Room is occupied")%></span></td>
+                                                                                <td><span class="labelDefinitionDetails">Assigned To Room No. <%=map_roomdetail.room_detail.roomnumber%></span></td>
+                                                                                <td style="display:none">
+                                                                                  <input id="hidRId32" name="hidRId32" type="hidden" value=<%=map_roomdetail.id%> ></input>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr><td colspan="3">
+                                                                                <div id="lselected32"  style="display:none">
+                                                                               selected. click save to deallocate</div>
+                                                                              </td>
+                                                                            </tr>
+                                                                      </table>
+                                                                       
+                                                                          <%flag=1%>
+                                                                       <%break%>
+
+                                                                    <%end%><%#*end if%>
+                                                              <%end%> <%#*end for%>
+                                                           <%end%> <%#*end unless%>
+                                              <%else%>
+
+                                                          <%if flag==0%>
+                                                                <table>
+                                                                    <tr>
+                                                                       <td><span><%=image_tag("green2s.png",:class=>"locavailable", :id=>"av32", :title=>"Room is occupied")%></span></td>
+                                                                        <td><span class="labelDefinitionDetails"></span></td>
+
+                                                                    </tr>
+                                                                </table>
+                                                                             <%= link_to(image_tag("", :alt => '', :class=>'iconCpuMapPin',
+                                                                             :style=>'margin-left:10px; margin-top:-3px;',
+                                                                             :title=>''), {:controller => :roomdetails, :action => 'popupassignloc',
+                                                                             :id => 32}, {:class => "fancybox" }) %> Assign Map Location
+                                                           <%end%>
+                                                  <%end%><%#*end if%>
+                                             <%end%><%#*end if%>
+                                         <%end%><%#*end for%>
+                                              </p>
+                                            </td>
+                                          </tr>
+                                      </table>
+                                    </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+       <div class="bottomButtons">
+        <%=submit_tag("Save")%>
+       </div>
+      </td>
+      <td align="center"> <div class="bottomButtons">
+      
+       </div></td>
+    </tr>
+</table>
+
+        <%#end%> <%#*end for 1%>
+
+    <%end%>
+ <table><tr><td><%=image_tag("p1.png",:class=>"locavailable", :id=>"h")%></td>
+           <td>Click to allocate</td>
+           <td><%=image_tag("reds.png",:class=>"locavailable", :id=>"hh")%></td>
+           <td>Click to de-allocate</td>
+       </tr></table>
+  </div>
+<%end%>
+  

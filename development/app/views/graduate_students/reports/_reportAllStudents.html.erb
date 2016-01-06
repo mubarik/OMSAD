@@ -1,0 +1,32 @@
+<%= grid(@students_report_grid, :show_filters => :always) do |g|
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+  g.blank_slate do
+    "No record found"
+  end
+  g.column :column_name => 'RollNo', :attribute_name => 'rollno', :in_csv => false do |student|
+    link_to student.rollno, "/GraduateStudents/students/"+(student.user.id).to_s
+  end
+  g.column :column_name => 'RollNo', :attribute_name => 'rollno', :in_html => false do |student|
+    student.rollno
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_csv => false, :model_class => User do |student|
+    link_to student.user.name, "/GraduateStudents/students/"+(student.user.id).to_s
+  end
+
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_html => false, :model_class => User do |student|
+    student.user.name
+  end
+  g.column :column_name => 'CGPA' do |student|
+    student.cgpa.blank?? 'Not provided' : student.cgpa
+  end
+  g.column :column_name => 'Current Status', :attribute_name => 'name' ,:model_class=>StudentDegreeStatusType,:auto_reload=>true,
+           :custom_filter => StudentDegreeStatusType.find(:all).map{|pr| [pr.name, pr.name]} do |student|
+    student.degreestatus.blank?? 'Not provided' : student.degreestatus
+    
+  end
+  g.column :column_name => 'Admission Date', :attribute_name => 'admissiondate' do |student|
+    student.admissiondate.blank?? '0-0-0' : student.admissiondate
+  end
+end -%>

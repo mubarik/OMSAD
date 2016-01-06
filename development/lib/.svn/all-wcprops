@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/DSSD_Summer2012/!svn/ver/5272/OMSAD/development/lib
+END
+globalconstants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/DSSD_Summer2012/!svn/ver/5272/OMSAD/development/lib/globalconstants.rb
+END
+reporttypes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/DSSD_Summer2012/!svn/ver/829/OMSAD/development/lib/reporttypes.rb
+END
+publicationstatustypes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/DSSD_Summer2012/!svn/ver/833/OMSAD/development/lib/publicationstatustypes.rb
+END
+dynamicdivconstants.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/DSSD_Summer2012/!svn/ver/3486/OMSAD/development/lib/dynamicdivconstants.rb
+END
+index_wrapper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/DSSD_Summer2012/!svn/ver/4397/OMSAD/development/lib/index_wrapper.rb
+END
+facultyreporttypes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/3354/OMSAD/development/lib/facultyreporttypes.rb
+END
+publicationshelper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/1911/OMSAD/development/lib/publicationshelper.rb
+END

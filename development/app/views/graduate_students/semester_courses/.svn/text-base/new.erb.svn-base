@@ -1,0 +1,24 @@
+<div class="pageHeadingBar">
+  <h1>Course List</h1>
+</div>
+<hr class="headingLineBreak"/>
+<%if !@courses.blank?%>
+  <%= form_tag({:controller => "semester_courses", :action => "create", :method => "post", :id => @semesterid}) do%>
+    <div class="groupBox">
+      <table>
+      <% @courses.each do |course| %>
+        <p class="formfield">
+          <tr><td><%=check_box_tag("courseid[]" ,course.id)%></td><td style="background-color: gainsboro;border-radius:5px;"><label style="line-height: 25px;color:black;font-size: 15px;"><%=course.coursecode.to_s+" "+course.coursename.to_s %></label></td></tr>
+        </p>
+      <%end%>
+      </table>
+    </div>
+    <div class="bottomButtons">
+      <%=submit_tag("Add")%>
+    </div>
+  <%end%>
+<%else%>
+    No new course is available right now. To continue, please <%= link_to "add a course", :controller => "courses", :action => "new"%>
+<%end%>
+
+

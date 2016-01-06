@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/5204/OMSAD/development/app/views/graduate_students/independent_studies
+END
+_independentStudy.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/DSSD_Summer2012/!svn/ver/5204/OMSAD/development/app/views/graduate_students/independent_studies/_independentStudy.html.erb
+END
+cosupervisoredit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/DSSD_Summer2012/!svn/ver/5204/OMSAD/development/app/views/graduate_students/independent_studies/cosupervisoredit.erb
+END
+destroy.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/3177/OMSAD/development/app/views/graduate_students/independent_studies/destroy.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/3373/OMSAD/development/app/views/graduate_students/independent_studies/new.erb
+END
+cosupervisornew.erb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/DSSD_Summer2012/!svn/ver/5204/OMSAD/development/app/views/graduate_students/independent_studies/cosupervisornew.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/4943/OMSAD/development/app/views/graduate_students/independent_studies/show.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/DSSD_Summer2012/!svn/ver/4020/OMSAD/development/app/views/graduate_students/independent_studies/_newedit.html.erb
+END
+update.erb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/3177/OMSAD/development/app/views/graduate_students/independent_studies/update.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/3177/OMSAD/development/app/views/graduate_students/independent_studies/create.erb
+END
+_cosupervisor.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/DSSD_Summer2012/!svn/ver/5204/OMSAD/development/app/views/graduate_students/independent_studies/_cosupervisor.html.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/4832/OMSAD/development/app/views/graduate_students/independent_studies/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/4943/OMSAD/development/app/views/graduate_students/independent_studies/index.erb
+END

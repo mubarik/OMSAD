@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <td class="labelDefinitionTerm">Technology: <span class="requiredFieldAsterisk">*</span></td>
+    <td class="inputBoxPlacement"><%= pf.text_field :technology, :class=>"inputTextbox" ,:title=>'e.g. Singlex' %></td>
+    <td class="fieldErrorPlacement"><%=pf.object.errors[:technology][0] %></td>
+  </tr>
+
+  <tr>
+    <td class="labelDefinitionTerm">Speed: </td>
+    <td class="inputBoxPlacement"><%= pf.text_field :speed, :class=>"inputTextbox", :title=>'e.g. pages per minute' %></td>
+    <td class="fieldErrorPlacement"><%=pf.object.errors[:speed][0] %></td>
+  </tr>
+  <tr>
+    <td class="labelDefinitionTerm">Memory: </td>
+    <td class="inputBoxPlacement"><%= pf.text_field :memory, :class=>"inputTextbox", :title=>'e.g. 128MB' %></td>
+    <td class="fieldErrorPlacement"><%=pf.object.errors[:memory][0] %></td>
+  </tr>
+  
+  <tr>
+    <td class="labelDefinitionTerm">Media Type: </td>
+    <td class="inputBoxPlacement"><%= pf.text_field :mediatype, :class=>"inputTextbox", :title=>'e.g. paper' %></td>
+    <td class="fieldErrorPlacement"><%=pf.object.errors[:mediatype][0] %></td>
+  </tr>
+</table>

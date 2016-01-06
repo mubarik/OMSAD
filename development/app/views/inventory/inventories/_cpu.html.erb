@@ -1,0 +1,62 @@
+<table>
+  <tr>
+      <td class="labelDefinitionTerm">Processor Name: <span class="requiredFieldAsterisk">*</span></td>
+      <td class="inputBoxPlacement"><%= f.text_field :processorname, :class=>"inputTextbox", :title=>'e.g. intel core' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:processorname][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">Number Of Cores: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :numberofcores, :class=>"inputTextbox", :title=>'e.g. 2' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:numberofcores][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">Number Of Threads: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :numberofthreads, :class=>"inputTextbox", :title=>'e.g. 4' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:numberofthreads][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">Memory: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :cpumemory, :class=>"inputTextbox", :title=>'e.g. 64 GB' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:cpumemory][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">Hard Disk: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :hard_disk, :class=>"inputTextbox", :title=>'e.g. 128 GB' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:hard_disk][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">DVD ROM: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :dvdrom, :class=>"inputTextbox", :title=>'e.g. read write' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:dvdrom][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">CD ROM: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :cdrom, :class=>"inputTextbox", :title=>'e.g. read' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:cdrom][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">Keyboard: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :keyboard, :class=>"inputTextbox", :title=>'e.g. dell' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:keyboard][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">Mouse: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :mouse, :class=>"inputTextbox", :title=>'e.g. dell' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:mouse][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">Sound Card: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :sound_card, :class=>"inputTextbox", :title=>'e.g. available ' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:sound_card][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">VGA: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :vga, :class=>"inputTextbox", :title=>'e.g. 640×350 in 16 colors' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:vga][0] %></td>
+  </tr>
+  <tr>
+      <td class="labelDefinitionTerm">RAM: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :ram, :class=>"inputTextbox", :title=>'e.g. 2 GB' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:ram][0] %></td>
+  </tr>
+</table>

@@ -1,0 +1,38 @@
+<%= javascript_include_tag "inventoryreports" %>
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+
+      <div class="pageHeadingBar">
+          <h1>Inventory Reports</h1>
+      </div>
+
+     <div class="dataBlock">
+      <%= form_tag({:controller => 'inventory/inventoryreports', :action => 'create'},:remote => true, :id=>"postform") do%>
+        <div class="reportComboButton">
+          <%= select_tag :selectreport ,
+                                        options_for_select([['Inventory Allocation Report',1],
+                                                             ['Inventory History Report',2],
+                                                             ['Inventory Type Report',3],
+                                                             ['Inventory Status Report',4],
+                                                             ['Inventory Allocation By Room Report',5]]),:prompt=>'Please select report', :required=> 'true'%>
+            <div class ="reportCombo">
+                <%=collection_select(:invtype,   :id,@inv_types,:id,:inventorytypename,options={:prompt=>"Select Inventory Type"})%>
+                <%=collection_select(:invprinter,:id,@inv_All,:id,:inventoryname,options={:prompt=>"Select Inventory name"})%>
+                <%=collection_select(:invstatus, :id,@inv_status,:id,:inventorystatus,options={:prompt=>"Select Inventory name"})%>
+                 <%=collection_select(:room, :id,@rooms,:id,:roomnumber,options={:prompt=>"Select Room number"})%>
+            </div>
+                
+        </div>
+
+         <div class="reportTypeselection">
+          <%= button_tag "View Report" %>
+         </div>
+       <%end%>
+    </div>
+      <div class ="reportsGrid">
+
+      </div>
+<%end%>

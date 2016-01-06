@@ -1,0 +1,28 @@
+
+<%= grid(department_PublicationReport,:show_filters=>:always) do |g|
+
+    g.blank_slate  do
+      "There are no records"
+    end
+
+    g.column :column_name => 'Name'  do |userpublication|
+      userpublication.user.name
+    end
+
+    g.column :column_name => 'Title',:attribute_name=>"title",:model_class=>"Publication"  do |userpublication|
+      userpublication.publication.title
+    end
+
+    g.column  :column_name => 'Year',:attribute_name=>"publicationyear",:model_class=>"Publication" do |userpublication|
+      userpublication.publication.publicationyear
+    end
+
+    g.column  :column_name => 'Status',:attribute_name=>"publicationstatus",:model_class=>"Publication" do |userpublication|
+      userpublication.publication.publicationstatus
+    end
+
+    g.column  :column_name => 'Type' ,:attribute_name=>"name",:model_class=>"PublicationType" do |userpublication|
+      userpublication.publication.publication_type.name
+    end
+
+  end -%>

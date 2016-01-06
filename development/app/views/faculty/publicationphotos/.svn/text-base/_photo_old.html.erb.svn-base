@@ -1,0 +1,6 @@
+
+<div class="publicationThumbnail">
+  <%= link_to( image_tag(pub_object.image.url(:thumb)),
+    pub_object.image.url(:original), {:class => "fancybox"}) %>
+</div>
+

@@ -1,0 +1,8 @@
+,,,,Generalized Attributes,,,,,,,,,,,,CPU Attributes,,,,,,,Printer Attributes,,,Scanner Attributes,,,LCD Attributes,,,,Other Attributes,,
+Inventory_type,InventoryId/Sr#,BarCode,Inventory_Status,Brand,Model,Department,SN,GRN,RAM,ROM,Processor,Cores,Threads,Memory,Harddisk,DVDRom,CDRom,KeyBoard,Mouse,SoundCard,VGA,speed,Mediatype,Technology,Resolution,ScanSize,Fileformat,ScannerType,LcdType,ScreenSize,Attribute1,Attribute2,Attribute3,Attribute4,Attribute5
+Printer,PR-098,1234567,Allocated,HP,2012,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Scanner,SC-102,7654321,Faulty,Hawlett,2006,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Cpu,CPU-203,1231231,Allocated,Intel,2004,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Lcd,LCD-190,6546547,Faulty,Samsung,2012,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Mouse,Mo-101,7654321,Allocated,A4-Tech,2010,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Keyboard,Key-201,1234567,Faulty,Accer,2012,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

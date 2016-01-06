@@ -1,0 +1,82 @@
+<%= javascript_include_tag "graduate_students/ajaxResponders.js" %>
+<%= javascript_include_tag "graduate_students/gradStudentsClientSideValidations.js" %>
+
+<div class="pageHeadingBar">
+    <h1>Edit Student's Semester</h1>
+</div>
+<hr class="headingLineBreak"/>
+
+<div class="messages" style="display: none;">
+  <p></p>
+</div>
+
+<div class="errors" style="display: none;">
+  <p></p>
+</div>
+
+<div class="clearFloatingAndStartFromBelow"></div>
+
+<%= nested_form_for @studentsemester, :url=>{:action=>"update"},:html=>{:id=>'formEditStudentSemesters'} do |f|%>
+    <%= f.hidden_field :student_id %>
+    <input type="hidden" id="mode" name="mode" value="<%= params[:mode] %>" />
+    <div class="groupBox">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Semester:</td>
+            <td class="inputBoxPlacement"><%= f.collection_select(:semester_id,@semestersoffered,:id,:semester_name, {}, :class=>'dropdown')%></td>
+            <td class="popupfieldErrorPlacement"><%= flash[:noticeduplicate].blank?? '' : flash[:noticeduplicate][0] %></td>
+          </tr>
+          <tr>
+             <td class="labelDefinitionTerm">Semester GPA: </td>
+             <td class="inputBoxPlacement"><%=f.text_field :semestergpa , :class=>'inputTextbox', :title=>"Enter digits only"%></td>
+             <td class="popupfieldErrorPlacement"><%= flash[:gpa].blank?? '' : flash[:noticegpa][0] %></td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">Semester status:</td>
+            <td class="inputBoxPlacement"><%= f.select(:status, options_for_select([['In progress'],['Completed'],['Semester off'],['Dropped'],['Withdraw'],['Registered but not enrolled']], @studentsemester.status.blank?? 'In progress' : @studentsemester.status ),{} ,:class=>'dropdown') %></td>
+            <td class="popupfieldErrorPlacement"></td>
+          </tr>
+        </table>
+
+        <table class="uploadedAttachmentsFields">
+          <tr>
+            <%= f.fields_for :assets do |p| %>
+              <% if !p.object.new_record? %>
+                <% if !p.object.asset_file_name.blank? %>
+               <tr>
+                 <td class="labelDefinitionTerm">Uploaded Document:</td>
+                 <td class="inputBoxPlacement" style="width:350px;"><%= link_to p.object.asset_file_name, p.object.asset.url(:original, false)%></td>
+                 <td><%= p.check_box :_destroy%>Select to delete</td>
+               </tr>
+              <%end%>
+            <% end %>
+          <% end %>
+         </tr>
+        </table>
+       <%  if @studentsemester.assets.count() < 5 %>
+       <table class="uploadNewAttachmentsFields">
+         <tr>
+            <td class="labelDefinitionTerm">Upload Document:</td>
+              <%= f.fields_for :assets do |p| %>
+                <% if p.object.new_record? %>
+                 <td><%= render "asset",:tm=>p %></td>
+                 <%end%>
+              <% end %>
+          </tr>
+          <tr>
+            <td></td><td><%= f.link_to_add "Add Attachement", :assets, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left' %></td>
+            <td><span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill empty field first</span></td>
+          </tr>
+        </table>
+      <%end%>
+    </div>
+
+    <div class="bottomButtons">
+       <table>
+        <tr>
+          <td><span class="submitErrorPlacement"></span></td>
+          <td><%=f.submit "Save"%></td>
+        </tr>
+      </table>
+    </div>
+<%end%>

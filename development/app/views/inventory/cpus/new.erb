@@ -1,0 +1,69 @@
+<% content_for :menu do %>
+<%= link_to "Add new Inventory", :controller => "inventory/inventories", :action => "new"%><br/>
+<%= link_to "Show All ", :controller => "inventory/cpus", :action => "new"%>
+
+<%end%>
+
+<% content_for :content do %>
+
+
+
+<%= form_tag({:controller => "inventory/cpus", :action => "create"}) do%>
+ <div style="margin-left: 10%;margin-top:10%; ">
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblname, "Processor name:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:processorname,nil)%>
+      </div>
+      <br/>
+
+       
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblcore, "No. of Cores:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:numberofcores,nil)%>
+      </div>
+      <br/>
+       
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblnumberofthreads, "No. of Threads:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:numberofthreads,nil)%>
+      </div>
+      <br/>
+       
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblmemorytype, "Memory type:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:memorytype,nil)%>
+      </div>
+      <br/>
+       
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblprocessorgraphics, "Processor Graphics:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:processorgraphics,nil)%>
+      </div>
+      <br/>
+      
+      <div style="width:30%;float:left;">
+        <%= label_tag(:lblinventory_id, "Inventory Id:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:inventory_id,nil)%>
+      </div>
+      <br/>
+      
+        <br/>
+     <div style="width:50%;float:left;"></div>
+     <div style="width:70%;float:left;"> <%=submit_tag("Create")%></div>
+       </div>
+
+ 
+<%end%>
+<%end%>

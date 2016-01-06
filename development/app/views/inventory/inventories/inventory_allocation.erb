@@ -1,0 +1,84 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+  <div class="pageHeadingBar">
+        <h1>Inventory Allocation/De-Allocation</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash[:msgRed].blank? %>
+    <div class="errors">
+      <p><%=flash[:msgRed]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+ <%#=form_for(@inventory, :url => {:controller => "inventory/inventories",:action=>"inventoryAllocation"},:html=>{:id=>"forminventory",:class=>'clientSideValidatedForm'}) do |new_inventory| %>
+
+   <%= form_tag({:controller => 'inventory/inventories', :action => 'testt'},:remote => false, :id=>"forminventory") do%>
+
+        <div class="expandingBlock">
+            <div class="expanderHeaderBar">
+              <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                 <h2>Inventory Information <span class="requiredFillExpander">*</span></h2>
+                    <div class="expander">
+                      <table>
+                        <tr><td> <div>
+
+                        <table>
+                          <tr>
+                              <td class="labelDefinitionTerm">Inventory Type: <span class="requiredFieldAsterisk">*</span></td>
+                               <td class="inputBoxPlacement"><%=collection_select(:inventory_type, :id,@inventorytypes,:id,:inventorytypename,options={:prompt => "Select inventory type"}, :class=>'dropdown',:required=> 'true')%></td>
+                               <td></td> 
+                          </tr>
+                        </table>
+                      </div></td>
+                        </tr>
+                        <tr><td> <div id="inventoryAllocation" name="inventoryAllocation">
+                        <table>
+                          <tr>
+                              <td class="labelDefinitionTerm">Inventory Name: <span class="requiredFieldAsterisk">*</span></td>
+                              <td class="inputBoxPlacement"><%=collection_select(:inventory, :id,@inventories,:id,:inventoryname,options={:prompt => "Select inventory name"}, :class=>'dropdown',:required=> 'true')%></td>
+
+                          </tr>
+                        </table>
+                      </div></td></tr>
+                            <tr><td> <div id="inventoryAllocation" name="inventoryAllocation">
+                        <table>
+                          <tr>
+                              <td class="labelDefinitionTerm"></td>
+                              <td class="inputBoxPlacement"> <%= submit_tag "View" %></td>
+
+                          </tr>
+                        </table>
+                      </div></td></tr>
+                        <tr><td></td><td></td><td><div class="reportTypeselection">
+                        <%#= submit_tag "View" %>
+                       </div></td></tr>
+                      </table>
+
+
+                    </div>
+            </div>
+        </div>
+
+       <%#*<table class="clsInvHistory">%>
+
+              <%# for invownhist in @invownhists %>
+                 <%#*<tr>%>
+                   <%#*<td><%=invownhist.user.name%>
+                   <%#*<td><%=invownhist.startdate %>
+                   <%#*<td><%=invownhist.enddate %>
+                   <%#*<td>%>
+                    <%#= link_to "Change Ownership",{:controller => :inventories, :action => 'popupindexhistory',:id => invownhist.inventory_id} ,{:class => "fancybox"}%>
+                   <%#*</td>%>
+                 <%#*</tr>%>
+               <%#end%>
+         <%#*</table>%>
+
+   <%end%>
+<%end%>

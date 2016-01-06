@@ -1,0 +1,340 @@
+<%#Student Add/Edit Expander%>
+<div class="expandingBlock">
+
+    <%#Basic Information Expander%>
+
+    <div class="expanderHeaderBar" id="basicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Basic Information <span class="requiredFillExpander">*</span></h2>
+
+      <div class="expander">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Name: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%= u.text_field :name,:required => true,:title=>"Enter alphabets only", :class=>'inputTextbox' %>
+              <%=u.fields_for :user_user_types do |uut|%>
+                 <%=uut.hidden_field :user_type_id%>
+              <%end%></td>
+            <td class="fieldErrorPlacement"><%= @user.errors[:name][0] %></td>
+          </tr>
+          <%=u.fields_for :student do |st|%>
+            <tr>
+              <td class="labelDefinitionTerm">Roll number: <span class="requiredFieldAsterisk">*</span></td>
+              <td class="inputBoxPlacement"><%=st.text_field :rollno, :required => true, :class=>'inputTextbox', :title=>"Enter an 8-digit number, e.g 11030038" %></td>
+              <td class="fieldErrorPlacement"><%= @user.student.errors[:rollno][0] %></td>
+            </tr>
+          <%end%>
+          <tr>
+              <td class="labelDefinitionTerm">Upload Image:</td>
+              <td class="inputBoxPlacement"><%= u.file_field :photo, :style=>'margin-left:1px;'%></td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">Date of birth:</td>
+            <td class="inputBoxPlacement"><%=u.text_field :dateofbirth,:class=>"uidatePicker"%></td>
+          </tr>
+        </table>
+        <fieldset>
+          <legend><strong>Gender</strong></legend>
+          <div class="firstRadioButton"><%= u.radio_button :gender, 'Male', :checked=>true%> Male</div>
+          <div class="otherRadioButtons"><%= u.radio_button :gender, 'Female'%> Female</div>
+        </fieldset>
+      </div>
+    </div>
+
+
+    <%#Contact Information Expander%>
+
+    <div class="expanderHeaderBar" id="contactInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Contact Information <span class="requiredFillExpander">*</span></h2>
+
+      <div class="expander">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Address: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%=u.text_field :address, :required => true, :title=>"Permanent address is required", :class=>'inputTextbox'%></td>
+            <td class="fieldErrorPlacement"><%= @user.errors[:address][0] %></td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">Contact number: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%=u.telephone_field :contactnumber, :required => true, :class=>'inputTextbox', :title=>"Example format: +923332233445"%></td>
+            <td class="fieldErrorPlacement"><%= @user.errors[:contactnumber][0] %></td>
+          </tr>
+          <tr>
+            <td class="labelDefinitionTerm">Email address: <span class="requiredFieldAsterisk">*</span></td>
+            <td class="inputBoxPlacement"><%=u.email_field :email, :required => true, :title=>"Example format: abc.def@lums.edu.pk", :class=>'inputTextbox'%></td>
+            <td class="fieldErrorPlacement"><%= @user.errors[:email][0] %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+    <%#Academic Information Expander%>
+
+    <div class="expanderHeaderBar" id="academicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Academic Information</h2>
+
+      <div class="expander">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Department:</td>
+            <td class="inputBoxPlacement"><%=u.collection_select :department_id,Department.all,:id,:name,{:selected => @user.department_id},:required=> 'true',:class => "dropdown" %></td>
+          </tr>
+          <%=u.fields_for :student do |st|%>
+            <tr>
+              <td class="labelDefinitionTerm">Credit hours taken: </td>
+              <td class="inputBoxPlacement"> <%=st.text_field :credithrstaken, :class=>'inputTextbox', :title=>"Enter an whole number" %></td>
+              <td class="fieldErrorPlacement"><%= @user.student.errors[:credithrstaken][0] %></td>
+            </tr>
+            <tr>
+              <td class="labelDefinitionTerm">CGPA: </td>
+              <td class="inputBoxPlacement"> <%=st.text_field :cgpa, :title=>"Must lie between 0-4.", :class=>'inputTextbox' %></td>
+              <td class="fieldErrorPlacement"><%= @user.student.errors[:cgpa][0] %></td>
+            </tr>
+            <tr>
+              <td class="labelDefinitionTerm">Current semester: </td>
+              <td class="inputBoxPlacement"> <%=st.text_field :currentsemester, :class=>'inputTextbox', :title=>"The current semester student is enrolled in" %></td>
+              <td class="fieldErrorPlacement"><%= @user.student.errors[:currentsemester][0] %></td>
+            </tr>
+       
+              <tr>
+              <td class="labelDefinitionTerm">Degree level: </td>
+              <td class="inputBoxPlacement"><%=st.select :degreelevel, options_for_select([['MS','MS'], ['PhD','PhD']],@user.student.degreelevel),{} ,:class => "dropdown" %></td>
+            </tr>
+           
+            <tr>
+              <td class="labelDefinitionTerm">Probation status: </td>
+              <td>
+                <%=st.collection_select  :student_probation_status_type_id,StudentProbationStatusType.all,:id,:name,
+                        options={:prompt=>"Select a Probation Status",
+                                         :selected=>st.object.student_probation_status_type_id},
+                                         :title   => "Please specify a probation status",
+                                         :class=>"dropdown"%>
+              </td>
+            </tr>
+            <%#*<tr>%>
+              <%#*<td class="labelDefinitionTerm">Degree type: </td>%>
+              <%#*<td class="inputBoxPlacement"><%=st.select :degreetype, options_for_select([['Full-time','Full-time'], ['Part-time','Part-time']]),{} ,:class => "dropdown" %>
+              <%#*</td>%>
+            <%#*</tr>%>
+            <tr>
+              <td class="labelDefinitionTerm">Degree status: </td>
+              <td>
+                <%=st.collection_select  :student_degree_status_type_id,StudentDegreeStatusType.all,:id,:name,
+                        options={:prompt=>"Select a Degree Status",
+                                         :selected=>st.object.student_degree_status_type_id},
+                                         :title   => "Please specify a degree status",
+                                         :class=>"dropdown"%>
+
+              </td>
+            </tr>
+          </table>
+        <div id="financialAidField">
+          <table>
+            <tr>
+              <td class="labelDefinitionTerm">Financial aid status: </td>
+              <td class="inputBoxPlacement"><%=st.select :financialaidstatus, ['Not Provided','Provided'],{:prompt=>'Please Select', :selected=> @user.student.financialaidstatus} ,:class => "dropdown" %></td>
+            </tr>
+          </table>
+        </div>
+          <table>
+            <tr>
+              <td class="labelDefinitionTerm">Admission date: </td>
+              <td class="inputBoxPlacement"> <%=st.text_field :admissiondate,:class=>"uidatePicker" %></td>
+            </tr>
+            <%#*<tr>%>
+              <%#*<td class="labelDefinitionTerm">Graduation date: </td>%>
+              <%#*<td class="inputBoxPlacement"> <%=st.text_field :graduationdate,:class=>"uienddatePicker" %>
+              <%#*</td>%>
+            <%#*</tr>%>
+          <%end%>
+        </table>
+      </div>
+    </div>
+
+
+    <%#Financial Aid Information Expander%>
+
+    <%#*<div class="expanderHeaderBar" id="financialAidExpander">%>
+      <%#=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <%#*<h2>Financial Aid Information</h2>%>
+
+      <%#*<div class="expander">%>
+       <%#=u.fields_for :student do |st|%>
+        <%#*<table>%>
+          <%#*<tr>%>
+            <%#*<td class="labelDefinitionTerm">Status: </td>%>
+            <%#*<td class="inputBoxPlacement"><%=st.select :financialaidstatus, ['Not Provided','Provided'],{:selected=> @user.student.financialaidstatus} ,:class => "dropdown" %>
+            <%#*</td>%>
+          <%#*</tr>%>
+        <%#*</table>%>
+        <%#*<div id="financialAidFields">%>
+          <%#=st.fields_for :FinancialAid do |fa|%>
+            <%#*<table>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Amount: </td>%>
+                <%#*<td class="inputBoxPlacement"><%=fa.number_field :amount, :class=>'inputTextbox', :title=>"Amount is in PKR" %>
+                <%#*</td>%>
+                <%#*<td class="fieldErrorPlacement"><%=@user.student.FinancialAid.errors[:amount][0]%>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Start date: </td>%>
+                <%#*<td class="inputBoxPlacement"><%=fa.text_field :startdate, :class=>"uidatePicker" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">End date: </td>%>
+                <%#*<td class="inputBoxPlacement"><%=fa.text_field :enddate, :class=>"uidatePicker" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+            <%#*</table>%>
+          <%#end%>
+        <%#*</div>%>
+       <%#end%>
+      <%#*</div>%>
+
+      <%#if @user.student.FinancialAid %>
+        <%# unless @user.student.FinancialAid.errors[:amount].blank? %>
+          <%#*<script type="text/javascript">%>
+            <%#*$('#financialAidExpander').addClass('expanderErrorHighlight');%>
+          <%#*</script>%>
+        <%#end%>
+      <%#end%>
+    <%#*</div>%>
+
+    <%#PhD Details Expander%>
+    <%#*<div class="expanderHeaderBar" id="phdDetailsExpander">%>
+      <%#=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <%#*<h2>PhD Details</h2>%>
+
+      <%#*<div class="expander">%>
+        <%#=u.fields_for :student do |st|%>
+          <%#=st.fields_for :milestone do |ms|%>
+            <%#*<table>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Title:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :title, :class=>'inputTextbox',:title=>'The title of research thesis' %>
+                <%#*</td>%>
+                <%#*<td class="fieldErrorPlacement"><%= @user.student.milestone.errors[:title][0] %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Supervisor:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.collection_select :faculty_member_id,FacultyMember.all,:id,:username,{:selected => @user.student.milestone.faculty_member_id},:class => "dropdown" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Co-supervisor:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :cosupervisor, :class=>'inputTextbox', :title=>'The co-supervisor can be internal or external' %>
+                <%#*</td>%>
+                <%#*<td class="fieldErrorPlacement"><%= @user.student.milestone.errors[:cosupervisor][0] %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Qualifier 1 date:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :firstqualifier,:class=>"uidatePicker" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Qualifier 2 date:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :secondqualifier, :class=>"uidatePicker" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Qualifier status:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.select :qualifierstatus, options_for_select([['Pending','Pending'],['Passed','Passed'], ['Failed','Failed'], ['Qualifier 1 Failed','Qualifier 1 Failed'],  ['Qualifier 2 Failed','Qualifier 2 Failed']]),{} ,:class => "dropdown" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">GRE status:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.select :gre, options_for_select([['Pending','Pending'],['Passed','Passed'],['Failed','Failed']]),{} ,:class => "dropdown" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Proposal defense date:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :proposalsubmission,:class=>"uidatePicker" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Thesis acceptance date:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :thesisdefence,:class=>"uidatePicker" %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Thesis committee 1:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :panelone, :class=>'inputTextbox', :title=>"Thesis comittee's first member's name"%>
+                <%#*</td>%>
+                <%#*<td class="fieldErrorPlacement"><%= @user.student.milestone.errors[:panelone][0] %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Thesis committee 2:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :paneltwo, :class=>'inputTextbox', :title=>"Thesis comittee's second member's name"%>
+                <%#*</td>%>
+                <%#*<td class="fieldErrorPlacement"><%= @user.student.milestone.errors[:paneltwo][0] %>
+                <%#*</td>%>
+              <%#*</tr>%>
+              <%#*<tr>%>
+                <%#*<td class="labelDefinitionTerm">Thesis committee 3:%>
+                <%#*</td>%>
+                <%#*<td class="inputBoxPlacement"><%=ms.text_field :panelthree, :class=>'inputTextbox', :title=>"Thesis comittee's third member's name"%>
+                <%#*</td>%>
+                <%#*<td class="fieldErrorPlacement"><%= @user.student.milestone.errors[:panelthree][0] %>
+                <%#*</td>%>
+              <%#*</tr>%>
+            <%#*</table>%>
+          <%#end%>
+        <%#end%>
+      <%#*</div>%>
+    <%#*</div>%>
+    <div class="bottomButtons">
+      <table>
+        <tr>
+          <td><span class="submitErrorPlacement"></span></td>
+          <%if @saved==true%>
+            <td style="padding-right: 6px;"><%=button "Finish", {:controller=>'students',:action=>'index'}, :class=>'standardButtonSize'%></td>
+            <%if @user.student.degreelevel=='MS' %>
+              <td><%= button "Add MS Courses", {:controller=>'ms_courses',:action=>'new'}, {:id=>@user.student.id, :saved=>true}, :class=>'autoWidth'%></td>
+            <%else%>
+              <td><%= button "Add PhD Information", {:controller => :milestones, :action => 'new', :id => @user.student.id, :saved=>true}, :class=>'autoWidth'%></td>
+            <%end%>
+          <%else%>
+            <td><%= submit_tag "Save"%></td>
+          <%end%>
+        </tr>
+      </table>
+    </div>
+  
+  <%#Divs for sliding page from step 1 to 4 and back%>
+
+  <%#*<div class="step2" style="display:none;">%>
+    <%#*<h1>Step 2</h1>%>
+  <%#*</div>%>
+
+  <%#*<div class="step3" style="display:none;">%>
+    <%#*<h1>Step 3</h1>%>
+  <%#*</div>%>
+
+  <%#*<div class="step4" style="display:none;">%>
+    <%#*<h1>Step 4</h1>%>
+  <%#*</div>%>
+</div>

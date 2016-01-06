@@ -1,0 +1,52 @@
+
+  <table class="mainTable">
+    <tr>
+      <td>
+       <label class="labelDefinitionTerm">Owner</label>
+      </td>
+      <td>
+       <%=collection_select(:name,:id,@users,:id,:name,
+                                options={:prompt => "Please select the owner",:selected=>invList.user_id},
+                                :class => "histdropdown")%>
+
+      </td>
+      <td><%=image_tag("", :alt=>'',
+                       :class=>'dynDivDeleteButton')%></td>
+    </tr>
+   
+    <tr>
+    
+    
+         <td>
+       <label class="labelDefinitionTerm">Start Date</label>
+      </td>
+     
+        <td>
+          <%=text_field_tag(:ostartdate,invList.startdate,:class=>"inputTextboxSt")%>
+          
+        </td>
+        <td></td>
+      
+    </tr>
+        <tr>
+      <td>
+          <label class="labelDefinitionTerm">End Date</label>
+      </td>
+      <td >
+        <%=text_field_tag(:oenddate,invList.enddate,:class=>"inputTextboxEd")%>
+      </td>
+     
+    <td ><input class='chkValS' id='ChkS' name='ChkS' style='display: none;' type='hidden' value=1 /></td>
+     <td ><input class='chkValE' id='ChkE' name='ChkE' style='display: none;' type='hidden' value=1 /></td>
+     <td ><span id="dtErorr" class="errorkeyup1" style="color:red; margin-left: 15px; "> </span></td>
+     <td ><span id="dt0Erorr" class="errorkeyup01" style="color:red; margin-left: 15px; "> </span></td>
+    </tr>
+    
+    <tr>
+      <td colspan="2">
+        <hr/>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+            

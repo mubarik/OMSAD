@@ -1,0 +1,4 @@
+<div style="overflow: auto; margin: -4px 0;">
+  <%= tm.file_field :asset, :style=>'float:left; margin-top:4px;' %>
+  <%= tm.link_to_remove(image_tag("",:alt=>"", :class=>"dynDivDeleteButton"))%>
+</div>

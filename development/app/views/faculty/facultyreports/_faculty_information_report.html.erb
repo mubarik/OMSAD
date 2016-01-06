@@ -1,0 +1,44 @@
+<%= grid(@faculty_members_grid,:show_filters=>:always) do |g|
+
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+  g.blank_slate  do
+    "There are no records"
+    end
+    g.column :column_name => 'Name' ,:attribute_name=>"name", :in_csv=>false ,:model_class=>"User" do |faculty_member|
+          link_to faculty_member.user.name,
+                         :controller => "faculty/facultymembers",
+                         :action => "show",
+                         :id =>faculty_member.user.id
+    end
+    g.column :column_name => 'Name' ,:attribute_name=>"name", :in_html=>false ,:model_class=>"User" do |faculty_member|
+          faculty_member.user.name
+    end
+    g.column :column_name => 'Department' ,:auto_reload=>true,:attribute_name =>"name" ,:model_class=>"Department",
+             :custom_filter => Department.find(:all).map{|pr| [pr.name, pr.name]} do |faculty_member|
+      faculty_member.user.department.name.blank?? 'Not provided' :faculty_member.user.department.name
+    end
+
+    g.column :column_name => 'Designation',:auto_reload=>true,:attribute_name=>"name",:model_class=>"FacultyMemberDesignationType",
+      :custom_filter => FacultyMemberDesignationType.find(:all).map{|pr| [pr.name, pr.name]} do |faculty_member|
+      faculty_member.designation.blank?? 'Not provided' :faculty_member.designation
+    end
+
+    g.column :column_name => 'Status',:auto_reload=>true,:attribute_name=>"name",:model_class=>"FacultyMemberStatusType",
+             :custom_filter => FacultyMemberStatusType.find(:all).map{|pr| [pr.name, pr.name]} do |faculty_member|
+      faculty_member.status.blank?? 'Not provided' :faculty_member.status
+    end
+
+    g.column  :column_name => 'Address' do |faculty_member|
+      faculty_member.user.address.blank?? 'Not provided' :faculty_member.user.address
+    end
+
+    g.column  :column_name => 'Contact Number' do |faculty_member|
+      faculty_member.user.contactnumber.blank?? 'Not provided' :faculty_member.user.contactnumber
+    end
+
+    g.column :column_name =>'Email' do |faculty_member|
+      faculty_member.user.email.blank?? 'Not provided' :faculty_member.user.email
+    end
+  end -%>

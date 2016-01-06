@@ -1,0 +1,56 @@
+
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+ <% content_for :content do %>
+
+
+  <div class ="ContentWraper">
+    
+      <div class= "contentHeading"> <h3 style="margin-top: 10px;"> LCD CRUD page</h3>   </div>
+      <div class ="contentHeadingLine"> <hr/> </div>
+       <%=flash[:notice]%>
+
+      <div class ="contentinfowraper">
+   <% if @lcds.empty? %>
+   <p class="notifyRed"> * No Record Found</p>
+   <% else %>
+       <%unless @lcds.blank?%>
+           <% for lcd in @lcds%>
+
+              <div class="contentinfo">
+                <div class="contentinfoimagewrap" >
+                  <div class="contentinfoImage"> <%=image_tag("inv.png")%> </div>
+
+                       <div class="contentinfo_desc_left">
+                            <strong class="contentinfo_desc_left_name">
+
+                                              <%=lcd.id%></strong><br/>
+                                              <br/><br/>
+                                              <strong>  <%= label_tag(:lbllcdType,"Type:") %> </strong><%= lcd.lcdtype%>
+                                              <br/><br/>
+                                              <strong><%= label_tag(:lblresolution,"Resolution:") %> </strong><%=lcd.resolution%>
+                                              <br/><br/>
+                                              <strong><%= label_tag(:lblsize,"size:") %> </strong><%=lcd.size%>
+                                              <br/><br/>
+
+                       </div>
+
+                 </div>
+                    <div style="float:right; padding-right:1%">
+                         <%= link_to(image_tag("/assets/Edit_32.png",      {:alt => 'edit',   :class=>"rollover"}), {:controller => "inventory/lcds", :action => 'edit',    :id => lcd.id},:method => :get) %>
+                         <%= link_to(image_tag("/assets/Delete-32_1.png",  {:alt => 'delete', :class=>"rollover"}), {:controller => "inventory/lcds", :action => 'destroy', :id => lcd.id},:method => :delete) %>
+                         <%= link_to(image_tag("/assets/view_Details.png"), {:controller => :lcds, :action => 'new'}) %>
+                    </div>
+
+           </div> <div style ="width: 95%;" class ="contentLine">   <hr/>    </div>
+            <%end%>
+       <%end%>
+       <%end%>
+      </div>
+
+
+
+    
+<%end%>

@@ -1,0 +1,78 @@
+<%= javascript_include_tag "graduate_students/ajaxResponders.js" %>
+<%= javascript_include_tag "graduate_students/gradStudentsClientSideValidations.js" %>
+
+<div class="pageHeadingBar">
+  <h1>Edit Financial Aid</h1>
+</div>
+<hr class="headingLineBreak"/>
+
+
+<%= nested_form_for [:GraduateStudents, @financialaid], :url=>{:action=>"update"},:html=>{ :id=>'formAddFinancialAid'} do |f|%>
+  <%= f.hidden_field :student_id %>
+  <div class="groupBox">
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm">Semester:</td>
+        <td class="inputBoxPlacement"><%= f.collection_select(:student_semester_id,@semestersoffered,:id,:semester_name,{},:class=>'dropdown')%></td>
+        <td class="popupfieldErrorPlacement"><%#= @studentsemester.errors[:semester_id][0] %></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Status: </td>
+        <td>
+          <%=f.collection_select  :financial_aid_status_type_id,FinancialAidStatusType.all,:id,:name,
+            options={:prompt=>"Select a Status",
+            :selected=>f.object.financial_aid_status_type_id},
+            :title   => "Please specify a status",
+            :class=>"dropdown"%>
+        </td>
+        <td class="popupfieldErrorPlacement"></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Amount:</td>
+        <td class="inputBoxPlacement"><%=f.text_field :amount , :class=>'inputTextbox', :title=>"Enter digits only"%></td>
+        <td class="popupfieldErrorPlacement"><%#= @studentsemester.errors[semestergpa][0] %></td>
+      </tr>
+    </table>
+
+    <table class="uploadedAttachmentsFields">
+      <tr>
+         <%= f.fields_for :financial_assets do |p| %>
+            <% if !p.object.new_record? %>
+                 <% if !p.object.asset_file_name.blank? %>
+                    <tr>
+                      <td class="labelDefinitionTerm">Uploaded Document:</td>
+                      <td class="inputBoxPlacement" style="width:350px;"><%= link_to p.object.asset_file_name,  p.object.asset.url(:original, false)  %></td>
+                      <td><%= p.check_box :_destroy  %>Select to delete</td>
+                    </tr>
+                <%end%>
+            <% end %>
+        <% end %>
+      </tr>
+    </table>
+    <%  if @financialaid.financial_assets.count() < 5 %>
+    <table class="uploadNewAttachmentsFields">
+      <tr>
+        <td class="labelDefinitionTerm">Upload Document:</td>
+          <%= f.fields_for :financial_assets do |p| %>
+            <% if p.object.new_record? %>
+             <td><%=render "asset",:tm=>p%></td>
+             <%end%>
+          <% end %>
+      </tr>
+      <tr>
+        <td></td><td><%= f.link_to_add "Add more", :financial_assets, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left' %></td>
+        <td><span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill empty field first</span></td>
+      </tr>
+    </table>
+    <%end%>
+   </div>
+
+  <div class="bottomButtons">
+    <table>
+      <tr>
+        <td><span class="submitErrorPlacement"></span></td>
+        <td><%=f.submit "Save"%></td>
+      </tr>
+    </table>
+  </div>
+<%end%>

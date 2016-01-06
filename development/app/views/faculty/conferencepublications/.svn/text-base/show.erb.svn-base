@@ -1,0 +1,167 @@
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Conference Paper</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+  <%= flash[:date] %>
+    <br/>
+    <%=flash[:date_new]%>
+  <div class="moreInfodisplayPicWithTextWrap">
+       <%=image_tag("", :alt=>'', :class=>'displayPicGrant')%>
+        <h1><%=@conference_publication.publication.title%></h1>
+    </div>
+
+    <div class="clearFloatingAndStartFromBelow"></div>
+    <div class="expandingBlock">
+       <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Paper Details</h2>
+           <div class="expander">
+              <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Abstract:</td>
+                  <td class="labelDefinitionDetails"><%=  @conference_publication.publication.abstract %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Year:</td>
+                  <td class="labelDefinitionDetails"><%=  @conference_publication.publication.publicationyear %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Status:</td>
+                  <td class="labelDefinitionDetails"><%=  @conference_publication.publication.publicationstatus %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">URL:</td>
+                  <td class="labelDefinitionDetails">
+                   <%if !@conference_publication.publication.doi.blank?%>
+                    <%=  @conference_publication.publication.doi %>
+                    <%else%>
+                      Not provided
+                    <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Pages:</td>
+                  <td class="labelDefinitionDetails">
+                    <%if !@conference_publication.publication.pages.blank?%>
+                      <%=  @conference_publication.publication.pages %>
+                    <%else%>
+                      Not provided
+                    <%end%>
+                  </td>
+                </tr>
+              </table>
+           </div>
+       </div>
+<%if !@conference_publication.publication.user_publications.blank?%>
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Authors</h2>
+         <%= render :partial=>"faculty/displayAuthors",
+                    :object=>@conference_publication.publication.user_publications,
+                    :as => :authors%>
+      </div>
+<%end%>
+      <%if !@conference_publication.publication.publication_photos.blank? or
+                    @conference_publication.publication.publication_photos.length > 0%>
+          <div id="imageGalleryExpander" class="expanderHeaderBar">
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Photos</h2>
+             <div class="expander">
+               <div class="publicationImageGallery">
+               <%= render :partial=>"faculty/publicationphotos/photo_old",
+                                  :collection=>@conference_publication.publication.publication_photos,
+                                  :as => :pub_object%>
+             </div>
+             </div>
+          </div>
+      <%end%>
+      
+      <div class="expanderHeaderBar">
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+         <h2>Conference Details </h2>
+         <div class="expander">
+           <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Conference Name:</td>
+                  <td class="labelDefinitionDetails"><%=  @conference_publication.conferencename %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Website:</td>
+                  <td class="labelDefinitionDetails"><%=  @conference_publication.website %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Start Date:</td>
+                  
+                    <td class="labelDefinitionDetails" id="lbstartdate">
+                      <% if( ! @conference_publication.conferencestartdate.blank?) %>
+                       <%= label_tag(nil,@conference_publication.conferencestartdate,:id=>"lbstartdate")%>
+                  <%else%>
+                    Not provided
+                  <%end%>
+                    </td>
+
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm"> End Date:</td>
+
+                    <td class="labelDefinitionDetails">
+                    <% if( ! @conference_publication.conferenceenddate.blank?) %>
+                      <%= label_tag(nil,@conference_publication.conferenceenddate,:id=>"lbenddate")%>
+                   <%else%>
+                    Not provided
+                  <%end%>
+                    </td>
+
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Year:</td>
+                  <td class="labelDefinitionDetails"><%=  @conference_publication.year %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Rank:</td>
+                  <td class="labelDefinitionDetails"><%=  @conference_publication.rank %></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Reference:</td>
+                    <td class="labelDefinitionDetails">
+                    <% if( ! @conference_publication.reference.blank?) %>
+                      <%=  @conference_publication.reference %>
+                    <%else%>
+                      Not provided
+                    <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Reference Website:</td>
+                  <td class="labelDefinitionDetails">
+                    <% if( ! @conference_publication.referenceweb.blank?) %>
+                      <%=  @conference_publication.referenceweb %>
+                    <%else%>
+                      Not provided
+                    <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">City:</td>
+                  <td class="labelDefinitionDetails">
+                      <% if( ! @conference_publication.city.blank?) %>
+                         <%=  @conference_publication.city%>
+                   <%else%>
+                    Not provided
+
+                       <%end%>
+
+                  </td>
+                </tr>
+           </table>
+         </div>
+      </div>
+
+      
+    </div>
+<%end%>

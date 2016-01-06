@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/5206/OMSAD/development/app/views/graduate_students/ms_courses
+END
+cosupervisoredit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/5206/OMSAD/development/app/views/graduate_students/ms_courses/cosupervisoredit.erb
+END
+destroy.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/2979/OMSAD/development/app/views/graduate_students/ms_courses/destroy.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/3731/OMSAD/development/app/views/graduate_students/ms_courses/new.erb
+END
+cosupervisornew.erb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/5206/OMSAD/development/app/views/graduate_students/ms_courses/cosupervisornew.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/2979/OMSAD/development/app/views/graduate_students/ms_courses/show.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/5206/OMSAD/development/app/views/graduate_students/ms_courses/_newedit.html.erb
+END
+update.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/2979/OMSAD/development/app/views/graduate_students/ms_courses/update.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/2979/OMSAD/development/app/views/graduate_students/ms_courses/create.erb
+END
+_cosupervisor.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/5206/OMSAD/development/app/views/graduate_students/ms_courses/_cosupervisor.html.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/3012/OMSAD/development/app/views/graduate_students/ms_courses/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/DSSD_Summer2012/!svn/ver/2979/OMSAD/development/app/views/graduate_students/ms_courses/index.erb
+END

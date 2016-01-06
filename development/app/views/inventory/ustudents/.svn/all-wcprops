@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/DSSD_Summer2012/!svn/ver/5180/OMSAD/development/app/views/inventory/ustudents
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/DSSD_Summer2012/!svn/ver/5179/OMSAD/development/app/views/inventory/ustudents/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/4529/OMSAD/development/app/views/inventory/ustudents/show.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/5180/OMSAD/development/app/views/inventory/ustudents/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/3385/OMSAD/development/app/views/inventory/ustudents/index.erb
+END

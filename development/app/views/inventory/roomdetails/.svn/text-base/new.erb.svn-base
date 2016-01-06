@@ -1,0 +1,26 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+
+
+   <div class="pageHeadingBar">
+        <h1>Add Room </h1>
+  </div>
+
+  <hr class="headingLineBreak"/>
+  
+  <% if !flash[:msgRed].blank? %>
+    <div class="errors">
+      <p><%=flash[:msgRed]%></p>
+    </div>
+   <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+    
+    <%= nested_form_for([:inventory,@roomdetail], :url => {:controller => "inventory/roomdetails",:action=>"create"},:html => {:id=>"formLocation", :class=>'clientSideValidatedForm'}) do |room_detail_new| %>
+
+          <%= render "newedit",:f =>room_detail_new %>
+        
+    <%end%>
+<%end%>

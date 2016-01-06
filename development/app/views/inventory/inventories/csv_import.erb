@@ -1,0 +1,38 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+
+<%# form_for :dump, :url=>{:controller=>"inventory/inventories", :action=>"data_import"}, :html => { :multipart => true } do |f| -%>
+<%= form_for @inventoryfile, :url=>{:controller => "inventory/inventories",:class=>"my_form" ,:action => "data_import"},:html => {:id => "formCSV", :multipart => true },:method=>"post" do|f| %>
+
+    <div class="pageHeadingBar">
+        <h1>Import Inventories</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+  <% if !flash[:msgRed].blank? %>
+    <div class="errors">
+      <p><%=flash[:msgRed]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+         
+     <div class="groupBox">
+       <table>
+         <tr>
+            <td class="labelDefinitionTerm"><label for="dump_file"> Select a CSV File :</label></td>
+            <td class="inputBoxPlacement"><%= f.file_field :uploadfile , :required => true %></td>
+            <td class="fieldErrorPlacement"></td>
+         </tr>
+         <tr>
+           <td colspan='2'>
+             <%= f.submit 'Upload' -%>
+           </td>
+         </tr>
+       </table>
+     </div>
+    <% end %>
+<% end %>

@@ -1,0 +1,75 @@
+<%= javascript_include_tag "graduate_students/ajaxResponders.js" %>
+<%= javascript_include_tag "graduate_students/gradStudentsClientSideValidations.js" %>
+
+<div class="pageHeadingBar">
+  <h1>Add Financial Aid</h1>
+</div>
+<hr class="headingLineBreak"/>
+
+<% if !flash[:notice].blank? %>
+  <div class="messages">
+    <p><%=flash[:notice]%></p>
+  </div>
+  <div class="clearFloatingAndStartFromBelow"></div>
+<%end%>
+
+<% if !flash.now[:error].blank? %>
+  <div class="errors">
+    <p><%=flash.now[:error]%></p>
+  </div>
+  <div class="clearFloatingAndStartFromBelow"></div>
+<%end%>
+
+<%unless @semestersoffered.blank?%>
+  <%= nested_form_for [:GraduateStudents, @financialaid], :html=>{ :id=>'formAddFinancialAid'} do |f|%>
+    <%= f.hidden_field :student_id , :value => params[:id]%>
+    <div class="groupBox">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">Semester:</td>
+          <td class="inputBoxPlacement"><%= f.collection_select(:student_semester_id,@semestersoffered,:semester_financial_id,:semester_financial_name,{},:class=>'dropdown')%></td>
+          <td class="popupfieldErrorPlacement"><%#= @studentsemester.errors[:semester_id][0] %></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Status: </td>
+          <td class="inputBoxPlacement"><%=f.collection_select  :financial_aid_status_type_id,FinancialAidStatusType.all,:id,:name,
+                                                                options={:prompt=>"Select a Status",
+                                                                :selected=>f.object.financial_aid_status_type_id},
+                                                                :title   => "Please specify a status",
+                                                                :class=>"dropdown"%>
+          </td>
+          <td class="popupfieldErrorPlacement"></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Amount:</td>
+          <td class="inputBoxPlacement"><%=f.text_field :amount , :class=>'inputTextbox', :title=>"Enter digits only"%></td>
+          <td class="popupfieldErrorPlacement"><%#= @studentsemester.errors[semestergpa][0] %></td>
+        </tr>
+      </table>
+
+      <table class="uploadNewAttachmentsFields">
+        <tr>
+          <td class="labelDefinitionTerm">Upload Document:</td>
+          <%= f.fields_for :financial_assets do |p| %>
+            <td><%=render "asset",:tm=>p%></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td></td><td><%= f.link_to_add "Add more", :financial_assets, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left' %></td>
+          <td><span class="dynamicFieldErrorPlacement" style="display: none; float:left;">Please fill empty field first</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="bottomButtons">
+       <table>
+        <tr>
+          <td><span class="submitErrorPlacement"></span></td>
+          <td><%=f.submit "Add"%></td>
+        </tr>
+      </table>
+    </div>
+  <%end%>
+<%else%>
+  The student has not yet been enrolled in any semester yet. To continue, please <%= link_to "add a semester for student", :controller => "/GraduateStudents/students", :action => "show", :id => (Student.find_by_id(@studentid)).user_id,:viewing=>"studentsemester"%>
+<%end%>

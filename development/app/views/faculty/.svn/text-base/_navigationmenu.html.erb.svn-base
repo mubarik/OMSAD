@@ -1,0 +1,86 @@
+<%= stylesheet_link_tag    "navigationMenu" %>
+<%= javascript_include_tag "navigationMenu" %>
+
+
+<div class="page-container">
+    <ul id="treeMenu">
+        <li class="contentContainerLevel1">Faculty
+            <ul style="display: none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/facultymembers", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/facultymembers", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Reports", :controller => "faculty/facultyreports", :action => "index"%></li>
+            </ul>
+        </li>
+
+        <li class="contentContainerLevel1">Research Grants
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/researchgrants", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/researchgrants", :action => "index"%></li>
+            </ul>
+        </li>
+        <li class="contentContainerLevel1">Books
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/bookpublications", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/bookpublications", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import", :controller => "faculty/bookpublications", :action => "import_data"%></li>
+            </ul>
+        </li>
+        
+        <li class="contentContainerLevel1">Book Chapters
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/bookchapterpublications", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/bookchapterpublications", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import", :controller => "faculty/bookchapterpublications", :action => "import_data"%></li>
+            </ul>
+        </li>
+
+        <li class="contentContainerLevel1">Journal Papers
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/journalpublications", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/journalpublications", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import", :controller => "faculty/journalpublications", :action => "import_data"%></li>
+          </ul>
+        </li>
+
+        <li class="contentContainerLevel1">Conference Papers
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/conferencepublications", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/conferencepublications", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import", :controller => "faculty/conferencepublications", :action => "import_data"%></li>
+                
+
+            </ul>
+        </li>
+         <li class="contentContainerLevel1">Workshop Papers
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/workshoppublications", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/workshoppublications", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import", :controller => "faculty/workshoppublications", :action => "import_data"%></li>
+
+
+            </ul>
+        </li>
+
+        <li class="contentContainerLevel1">Technical Reports
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "faculty/technicalreportpublications", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/technicalreportpublications", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Import", :controller => "faculty/technicalreportpublications", :action => "import_data"%></li>
+            </ul>
+        </li>
+
+        
+        <li class="contentContainerLevel2"><%= link_to "Configurations", :controller => "faculty/projectconfs", :action => "new"%></li>
+        
+            
+        <li class="contentContainerLevel1">Scholarly Report
+        <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "faculty/scholarlyreport", :action => "index"%></li>
+            </ul>
+        </li>
+       
+        
+
+    </ul>
+</div>
+

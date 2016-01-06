@@ -1,0 +1,38 @@
+<div class="pageHeadingBar">
+  <h2 id="mainHeading">Add a Configuration</h2>
+</div>
+<hr class="headingLineBreak"/>
+
+<fieldset>
+  <legend style="font-weight: bold">
+    Configuration
+  </legend>
+  <table>
+  <tr>
+    <td>
+      <label class="labelDefinitionTerm" style="margin-right: 5px">
+        Name:
+      </label>
+    </td>
+    <td>
+        <input type="text"
+               class="inputTextbox"
+               id="configNamePopUp"
+               title="Only alphabets are allowed"/>
+    </td>
+    <td class="popupfieldErrorPlacement">
+      <span id="errorMessage"/>
+    </td>
+  </tr>
+</table>
+</fieldset>
+<div class="bottomButtons">
+  <a onclick="$.fancybox.close();" href="javascript:;">
+    <input type="button"
+           id="invoke_nested_configuration"
+           class="standardButtonSize"
+           style="margin-right:-2px"
+           value="Ok"/>
+  </a>
+</div>
+

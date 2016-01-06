@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag    "navigationMenu" %>
+<%= javascript_include_tag "navigationMenu" %>
+
+
+<div class="page-container">
+    <ul id="treeMenu">
+        <li class="contentContainerLevel1">Inventory 
+            <ul style="display: none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "inventories", :action => "new"%></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "inventories", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Reports", :controller => "inventory/inventoryreports", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Inventory Allocation", :controller => "inventories", :action => "inventory_allocation"%></li>
+                <%#*<li class="contentContainerLevel2"><%= link_to "Configurations", :controller => "inventories", :action => "configuration"%>
+                <li class="contentContainerLevel2"><%= link_to "Import Data", :controller => "inventories", :action => "csv_import"%></li>
+            </ul>
+        </li> 
+
+        <li class="contentContainerLevel1">Room 
+            <ul style="display:none">
+                <li class="contentContainerLevel2"><%= link_to "Add", :controller => "roomdetails", :action => "new" %></li>
+                <li class="contentContainerLevel2"><%= link_to "View", :controller => "roomdetails", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Report", :controller => "inventory/locationreports", :action => "index"%></li>
+                <li class="contentContainerLevel2"><%= link_to "Assign Map", :controller => "roomdetails", :action => "newmap"%></li>
+           
+            </ul>
+        </li>
+        
+         <%#*<li class="contentContainerLevel1">Location%>
+            <%#*<ul style="display:none">%>
+                <%#*<li class="contentContainerLevel2"><%= link_to "Add", :controller => "locations", :action => "new"%>
+    <%#*</li>%>
+                <%#*<li class="contentContainerLevel2"><%= link_to "View", :controller => "locations", :action => "index"%>
+    <%#*</li>%>
+            <%#*</ul>%>
+        <%#*</li>%>
+    </ul> 
+</div> 
+

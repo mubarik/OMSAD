@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/5349/OMSAD/development/app/controllers/inventory
+END
+cpus_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/737/OMSAD/development/app/controllers/inventory/cpus_controller.rb
+END
+inventoryreports_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/5343/OMSAD/development/app/controllers/inventory/inventoryreports_controller.rb
+END
+scanners_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/741/OMSAD/development/app/controllers/inventory/scanners_controller.rb
+END
+tassistants_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/5333/OMSAD/development/app/controllers/inventory/tassistants_controller.rb
+END
+rareports_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4613/OMSAD/development/app/controllers/inventory/rareports_controller.rb
+END
+roomdetails_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/4875/OMSAD/development/app/controllers/inventory/roomdetails_controller.rb
+END
+tareports_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4749/OMSAD/development/app/controllers/inventory/tareports_controller.rb
+END
+lcds_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/739/OMSAD/development/app/controllers/inventory/lcds_controller.rb
+END
+astaffs_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/3695/OMSAD/development/app/controllers/inventory/astaffs_controller.rb
+END
+locationreports_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/4600/OMSAD/development/app/controllers/inventory/locationreports_controller.rb
+END
+teacherassistants_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/DSSD_Summer2012/!svn/ver/1351/OMSAD/development/app/controllers/inventory/teacherassistants_controller.rb
+END
+locations_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/3376/OMSAD/development/app/controllers/inventory/locations_controller.rb
+END
+ustudents_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4893/OMSAD/development/app/controllers/inventory/ustudents_controller.rb
+END
+externalusers_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/DSSD_Summer2012/!svn/ver/757/OMSAD/development/app/controllers/inventory/externalusers_controller.rb
+END
+inventories_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/DSSD_Summer2012/!svn/ver/5349/OMSAD/development/app/controllers/inventory/inventories_controller.rb
+END
+printers_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/740/OMSAD/development/app/controllers/inventory/printers_controller.rb
+END
+tacourses_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/4904/OMSAD/development/app/controllers/inventory/tacourses_controller.rb
+END
+researchassistants_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/5269/OMSAD/development/app/controllers/inventory/researchassistants_controller.rb
+END

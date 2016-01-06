@@ -1,0 +1,121 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenuRATA" %>
+<% end %>
+
+<% content_for :content do %>
+
+
+    <%#= form_tag({:controller => "inventory/researchassistants", :class=>"my_form", :action => "create"}, :id=>"formRA") do%>
+    <%=form_for(@user, :url => {:controller => "inventory/tassistants",:action=>"create"},:html=>{:id=>"formTA",:class=>'clientSideValidatedForm'}) do |f| %>
+    <div class="pageHeadingBar">
+        <h1>Add Teaching Assistant</h1>
+    </div>
+        <hr class="headingLineBreak"/>
+
+  <% if !flash[:msgRed].blank? %>
+    <div class="errors">
+      <p><%=flash[:msgRed]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+    <div class="expandingBlock">
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Basic Information <span class="requiredFillExpander"> *</span></h2>
+           <div class="expander">
+              <table>
+                <tr><td class="labelDefinitionTerm">Name: <span class="requiredFieldAsterisk">*</span></td>
+                    <td class="inputBoxPlacement"><%=f.text_field :name,:required => true,:title=>'Special characters not allowed.', :class=>'inputTextbox'%></td>
+                    <td class="fieldErrorPlacement"><%= @user.errors[:name][0] %></td>
+                </tr>
+                <tr>
+                    <td class="labelDefinitionTerm">Date of Birth:</td>
+                    <td class="inputBoxPlacement"><%=f.text_field :dateofbirth,:class=>"uidatePicker"%></td>
+                    <td class="fieldErrorPlacement"><%= @user.errors[:dateofbirth][0] %></td>
+                </tr>
+              </table>
+                <fieldset>
+                    <legend><strong>Gender</strong></legend>
+                      <div class="firstRadioButton"><%=  f.radio_button :gender, 'Male',:checked => true%> Male</div>
+                      <div class="otherRadioButtons"><%= f.radio_button :gender, 'Female'%> Female</div>
+                </fieldset>
+              <table>
+                <tr>
+                    <td class="labelDefinitionTerm">Upload Image:</td>
+                    <td class="inputBoxPlacement"><%= f.file_field :photo,:class=>"inputTextbox"%></td>
+                    <td class="fieldErrorPlacement"><%= @user.errors[:photo_content_type][0] %></td>
+                </tr>
+              </table>
+
+           </div>
+         </div>
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Contact Information <span class="requiredFillExpander"> *</span></h2>
+             <div class="expander">
+                <table>
+                    <tr><td class="labelDefinitionTerm">Address: <span class="requiredFieldAsterisk">*</span></td>
+                        <td class="inputBoxPlacement"><%=f.text_field :address,:required => true, :class=>'inputTextbox'%></td>
+                        <td class="fieldErrorPlacement"><%= @user.errors[:address][0] %></td>
+                    </tr>
+                    <tr>
+                      <td class="labelDefinitionTerm">Contact Number: <span class="requiredFieldAsterisk">*</span></td>
+                      <td class="inputBoxPlacement"><%=f.text_field :contactnumber,:required => true, :class=>'inputTextbox',:title=>"Example format: +923332233445"%></td>
+                      <td class="fieldErrorPlacement"><%= @user.errors[:contactnumber][0] %></td>
+                    </tr>
+                    <tr>
+                      <td class="labelDefinitionTerm">Email: <span class="requiredFieldAsterisk">*</span></td>
+                      <td class="inputBoxPlacement"><%=f.text_field :email,:required => true, :class=>'inputTextbox', :title=>"e.g. 11030038@lums.edu.pk"%></td>
+                      <td class="fieldErrorPlacement"><%= @user.errors[:email][0] %></td>
+                      <td><%=f.text_field :department_id,:value=>'0',:hidden =>"true" %></td>
+                    </tr>
+                </table>
+             </div>
+         </div>
+         <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Teaching Assistant Information <span class="requiredFillExpander"> *</span></h2>
+           <%=f.fields_for :t_assistant do|builder|%>
+             <div class="expander">
+                <table>
+                    <tr>
+                        <td class="labelDefinitionTerm">Employee ID: <span class="requiredFieldAsterisk">*</span></td>
+                        <td class="inputBoxPlacement"><%=builder.text_field :employee_id,:required => true, :class=>'inputTextbox',:required=> 'true', :title=>'Special characters not allowed'%></td>
+                        <td class="fieldErrorPlacement"><%= @user.t_assistant.errors[:employee_id][0] %></td>
+                    </tr>
+                    <tr>
+                        <td class="labelDefinitionTerm">Evaluation GPA: </td>
+                        <td class="inputBoxPlacement"><%=builder.text_field :evalgpa, :class=>'inputTextbox', :title=>'Special characters not allowed'%></td>
+                        <td class="fieldErrorPlacement"><%= @user.t_assistant.errors[:evalgpa][0] %></td>
+                    </tr>
+                    <tr>
+                        <td class="labelDefinitionTerm">Upload Document:</td>
+                        <td class="inputBoxPlacement"><%= builder.file_field :document,:class=>"inputTextbox"%></td>
+                        <td class="fieldErrorPlacement"><%= @user.t_assistant.errors[:document_content_type][0] %></td>
+                    </tr>
+                   <tr> <td class="labelDefinitionTerm">Description: </td>
+                        <td class="inputBoxPlacement"><%=builder.text_area :description,:class=>'inputTextbox', :title=>'Enter Description',:cols =>90,:rows =>7%></td>
+                   </tr>
+                   
+
+                </table>
+             </div>
+           <%end%>
+         </div>
+
+
+         <div class="bottomButtons">
+           <table>
+             <tr>
+               <td><span class="submitErrorPlacement"></span></td>
+               <td><%=submit_tag "Save"%></td>
+             </tr>
+           </table>
+         </div>
+       </div>
+   <%#*form end%>
+  <%end%>
+
+<%end%>
+

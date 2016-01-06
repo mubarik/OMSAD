@@ -1,0 +1,54 @@
+ <table>
+    <tr>
+        <td class="labelDefinitionTerm">Inventory Type: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%=f.collection_select :inventory_type_id,@inventorytypes,:id,:inventorytypename,options={:prompt => "Select inventory type"}, {:class=>'dropdown', :id=>'normalSelectid',:required=> 'true'}%></td>
+        <td class="fieldErrorPlacement"><%= @inventory.errors[:inventory_type_id][0] %></td>
+    </tr>
+    <%#*<tr>%>
+        <%#*<td class="labelDefinitionTerm">Inventory Status: <span class="requiredFieldAsterisk">*</span></td>%>
+        <%#*<td class="inputBoxPlacement"><%=f.collection_select :inventory_status_id,@invstatus,:id,:inventorystatus,options={:prompt => "Select inventory status"}, {:class=>'dropdown',:required=> 'true'}%></td>%>
+        <%#*<td class="fieldErrorPlacement"><%= @inventory.errors[:inventory_status_id][0] %></td>%>
+    <%#*</tr>%>
+
+     <tr>
+         <td class="labelDefinitionTerm">Inventory ID: <span class="requiredFieldAsterisk">*</span></td>
+         <td class="inputBoxPlacement"><%= f.text_field :inventoryname, :class=>'inputTextbox',:required=> 'true', :title=>'Special Characters are not allowed'%></td>
+         <td class="fieldErrorPlacement"><%= @inventory.errors[:inventoryname][0] %></td>
+     </tr>
+
+     <tr>
+         <td class="labelDefinitionTerm">Barcode:</td>
+         <td class="inputBoxPlacement"><%= f.text_field :barcode, :class=>'inputTextbox', :title=>'Special Characters are not allowed'%></td>
+         <td class="fieldErrorPlacement"><%= @inventory.errors[:barcode][0] %></td>
+     </tr>
+
+
+    <tr>
+          <td class="labelDefinitionTerm">Description: </td>
+          <td class="inputBoxPlacement"><%= f.text_field :description, :class=>"inputTextbox", :title=>'Enter Description'%></td>
+    </tr>
+    <tr>
+          <td class="labelDefinitionTerm">Brand: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement"><%= f.text_field :brand,:class=>"inputTextbox",:required=> 'true', :title=>'Special Characters are not allowed'%></td>
+          <td class="fieldErrorPlacement"><%= @inventory.errors[:brand][0] %></td>
+    </tr>
+    <tr>
+          <td class="labelDefinitionTerm">Model: <span class="requiredFieldAsterisk">*</span></td>
+          <td class="inputBoxPlacement"><%= f.text_field :model,:class=>"inputTextbox",:required=> 'true', :title=>'Special Characters are not allowed'%></td>
+          <td class="fieldErrorPlacement"><%= @inventory.errors[:model][0] %></td>
+    </tr>
+            
+    <%#*<tr>%>
+        <%#*<td class="labelDefinitionTerm">Acquisition Date: </td>%>
+        <%#*<td class="inputBoxPlacement"><%=text_field_tag(:acqdate,nil,:class=>"uidatePicker",:required=>'true')%>
+        <%#*<td class="fieldErrorPlacement"><%= @inventory.errors[:acqdate][0] %>
+    <%#*</tr>%>
+    <%#*<tr>%>
+        <%#*<td class="labelDefinitionTerm">Owner: <span class="requiredFieldAsterisk">*</span></td>%>
+        <%#*<td class="inputBoxPlacement"><%=collection_select(:name,:id,@users,:id,:name,options={:prompt => "Please select the owner"}, :class => "dropdown",:required=> 'true')%>
+    <%#*</tr>%>
+    <%#*<tr>%>
+        <%#*<td class="labelDefinitionTerm">Ownership Start Date: </td>%>
+        <%#*<td class="inputBoxPlacement"><%=text_field_tag(:startdate,nil,:class=>"uidatePicker",:required=>'true')%>
+    <%#*</tr>%>
+    </table>

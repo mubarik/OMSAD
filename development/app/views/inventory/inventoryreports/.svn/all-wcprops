@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/DSSD_Summer2012/!svn/ver/5163/OMSAD/development/app/views/inventory/inventoryreports
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/898/OMSAD/development/app/views/inventory/inventoryreports/new.erb
+END
+_inventoryHistoryReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/DSSD_Summer2012/!svn/ver/5083/OMSAD/development/app/views/inventory/inventoryreports/_inventoryHistoryReport.html.erb
+END
+_inventoryTypeReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/5081/OMSAD/development/app/views/inventory/inventoryreports/_inventoryTypeReport.html.erb
+END
+_inventoryRoomAllocationReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/DSSD_Summer2012/!svn/ver/5080/OMSAD/development/app/views/inventory/inventoryreports/_inventoryRoomAllocationReport.html.erb
+END
+invhistory.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/898/OMSAD/development/app/views/inventory/inventoryreports/invhistory.erb
+END
+invtype.erb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/DSSD_Summer2012/!svn/ver/898/OMSAD/development/app/views/inventory/inventoryreports/invtype.erb
+END
+_inventoryStatusReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/DSSD_Summer2012/!svn/ver/5163/OMSAD/development/app/views/inventory/inventoryreports/_inventoryStatusReport.html.erb
+END
+invstatus.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/2943/OMSAD/development/app/views/inventory/inventoryreports/invstatus.erb
+END
+_inventoryAllocationReport.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/DSSD_Summer2012/!svn/ver/5098/OMSAD/development/app/views/inventory/inventoryreports/_inventoryAllocationReport.html.erb
+END
+invallocation.erb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/898/OMSAD/development/app/views/inventory/inventoryreports/invallocation.erb
+END
+old_index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/1637/OMSAD/development/app/views/inventory/inventoryreports/old_index.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/4709/OMSAD/development/app/views/inventory/inventoryreports/index.erb
+END

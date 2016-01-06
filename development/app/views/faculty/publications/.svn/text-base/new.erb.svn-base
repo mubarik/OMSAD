@@ -1,0 +1,294 @@
+<%= content_for :content do  %>
+
+<head>
+  <style type="text/css">
+  .ui-datepicker-year
+  {
+     display:none;
+  }
+  </style>
+</head>
+
+
+    <div class="pageHeadingBar">
+        <h1>Add Publications</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+
+
+    <%= form_tag({:controller => "faculty/publications",:class=>"my_form" ,:action => "create"},:id=>"myform") do %>
+      <div class="expandingBlock">
+         <div class="expanderHeaderBar" id="publicationBasicInfo">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Basic Information</h2>
+           <div class="expander">
+              <table>
+                <tr>
+                  <td class="labelDefinitionTerm">Title: <span class="requiredFieldAsterisk">*</span></td>
+                  <td><%= text_field_tag(:txtitle,nil,:title => 'i.e. Signature Verification using Wavelet Transform', :class=>"inputTextbox",:required=>'true') %></td>
+                </tr>
+
+                <tr>
+                  <td class="labelDefinitionTerm">Abstract:<span class="requiredFieldAsterisk">*</span> </td>
+                  <td><%= text_area_tag :txabstract,nil, :cols => 80, :rows => 9,:required => 'true'%></td>
+                </tr>
+
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Year: <span class="requiredFieldAsterisk">*</span></td>
+                  <td><%= text_field_tag(:txpublicationyear,nil,:title => 'i.e. 2001' ,:class=>"inputTextbox",:required=>'true')%></td>
+                </tr>
+
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Status: <span class="requiredFieldAsterisk">*</span></td>
+                  <td><%= text_field_tag(:txpublicationstatus,nil, :title => 'i.e. Submitted' , :class=>"inputTextbox",:required=>'true')%></td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Key Words: </td>
+                  <td><%= text_area_tag :txkeywords,nil, :cols => 80, :rows => 9 %></td>
+                </tr>
+
+                <tr>
+                  <td class="labelDefinitionTerm">Author: <span class="requiredFieldAsterisk">*</span></td>
+                  <td><%=collection_select(:author,:id,@authors,:id,:username,options={:prompt=>"Select Author"},:class => "dropdown",:required=>'true')%></td>
+                </tr>
+                <tr>
+                  <td>
+                    
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labelDefinitionTerm">Affiliation: <span class="requiredFieldAsterisk">*</span></td>
+                  <td><%= radio_button_tag :rbaffiliation, 1 , true %> Internal <%= radio_button_tag :rbaffiliation,0, false%> External</td>
+                </tr>
+
+                <tr>
+                  <td class="labelDefinitionTerm">Publication Type:</td>
+                  <td><%= select_tag :cbpublication_type_id, "<option> Select Publication type </option>
+                                                              <option>Workshop Publication</option>
+                                                              <option>Journal Publication</option>
+                                                              <option>Conference Publication</option>
+                                                              <option>Book Chapter Publication</option>
+                                                              <option>Technical Report Publication</option>
+                                                              <option>Book Publication</option>".html_safe,:class => "dropdown",:required => true %></td>
+                </tr>
+
+              </table>
+             <div class="expandingBlock">
+                      <div class="expanderHeaderBar">
+                         <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+                           <div>
+                               <h2>Co-Authors</h2>
+                           </div>
+                       <div class="expander" >
+                           <div id="dynDivContainer">
+                               <h3 >
+                                  <a id="dynDivAddCoAuthors" style="font-size: small;">Add Co-Author</a><br/>
+                               </h3>
+                                  <input id="dynDivAuthorFieldCount" name="dynDivAuthorFieldCount" type="hidden" value="0"/>
+                               <hr/>
+                           </div>
+                       </div>
+                      </div>
+                    </div>
+           </div>
+
+         </div>
+        <div class="expanderHeaderBar" id="conferencepublication" style ="display:none">
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Conference Publication</h2>
+
+             <div class="expander">
+                <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Conference Name: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txconferencename,nil,:title => 'i.e. International Conference on Computer Vision (ICCV)' , :class=>"inputTextbox",:required => true) %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Web site: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txconferencewebsite,nil,:title => 'i.e. www.lums.edu.pk' , :class=>"inputTextbox",:required => true) %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Start Date: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txconferencestartdate,nil ,:class=>"uidayMonthPicker",:required => true) %> <%= flash[:date] %> </td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">End Date: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txconferenceenddate,nil , :class=>"uidayMonthPicker",:required => true) %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Rank: </td>
+                    <td><%= text_field_tag(:txconferencerank,nil,:title => 'i.e. 25' ,:class=>"inputTextbox") %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Acceptance Rate: </td>
+                    <td><%= text_field_tag(:txconferenceacceptancerate,nil,:title => 'i.e. 60' ,:class=>"inputTextbox") %><%= flash[:acceptancerate] %></td>
+                    <td class="labelDefinitionTerm">% </td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">City: </td>
+                    <td><%= text_field_tag(:txconferencecity,nil,:title => 'i.e. Rawalpindi' ,:class=>"inputTextbox") %></td>
+                  </tr>
+
+                </table>
+             </div>
+
+         </div>
+
+         <div class="expanderHeaderBar" id="journalpublication" style ="display:none">
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Journal Publication</h2>
+
+             <div class="expander">
+                <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Journal Name: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txjournalname,nil,:title => 'i.e. IEEE Transactions on Image Processing' ,:class=>"inputTextbox",:required => 'true') %><%=flash[:journalname] %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Volume: </td>
+                    <td><%= text_field_tag(:txjournalvolume,nil,:title => 'i.e. 19' , :class=>"inputTextbox") %><%=flash[:volume] %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Impact Factor: </td>
+                    <td><%= text_field_tag(:txjournalimpactfactor,nil,:title => 'i.e. 8' ,:class=>"inputTextbox") %><%=flash[:impactfactor] %></td>
+                  </tr>
+
+                </table>
+             </div>
+
+         </div>
+
+        <div class="expanderHeaderBar" id="workshoppublication" style ="display:none">
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Workshop Publication</h2>
+
+             <div class="expander">
+                <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Workshop Name: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txworkshopname,nil,:title => 'i.e. International Workshop on Smart Appliances and Wearable Computing' ,:class=>"inputTextbox",:required => true) %><%=flash[:workshopname]%></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Conference Name: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txworkshopconference,nil,:title => 'i.e. International Conference on Computer Vision (ICCV)' ,:class=>"inputTextbox",:required => true) %><%=flash[:workshopconferencename]%></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Web site: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txworkshopwebsite,nil,:title => 'i.e. www.lums.edu.pk' ,:class=>"inputTextbox",:required => true) %><%=flash[:website]%></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Start Date: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txworkshopstartdate,nil ,:class=>"uidayMonthPicker",:required => true) %><%=flash[:workshopdate] %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">End Date: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txworkshopenddate,nil ,:class=>"uidayMonthPicker",:required => true) %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">City: </td>
+                    <td><%= text_field_tag(:txworkshopcity,nil,:title => 'i.e. Lahore' ,:title => 'Rawalpindi' ,:class=>"inputTextbox") %><%=flash[:workshopcity] %></td>
+                  </tr>
+
+                </table>
+             </div>
+
+         </div>
+
+        <div class="expanderHeaderBar" id="bookpublication" style ="display:none">
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Book Publication</h2>
+
+             <div class="expander">
+                <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Publisher Name: </td>
+                    <td><%= text_field_tag(:txbookpublishername,nil,:title => 'i.e. LUMS' ,:class=>"inputTextbox") %></td>
+                  </tr>
+
+                </table>
+             </div>
+
+         </div>
+
+        <div class="expanderHeaderBar" id="bookchapterpublication" style ="display:none">
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Book Chapter Publication</h2>
+
+             <div class="expander">
+                <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Book Name: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txbookchaptername,nil,:title => 'i.e. Requirements Specification' ,:class=>"inputTextbox",:required => true) %><%=flash[:bookname]%></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Editors: </td>
+                    <td><%= text_field_tag(:txbookchaptereditors,nil,:title => 'i.e. Dr. Hamid Abdul Basit' ,:class=>"inputTextbox") %><%=flash[:editors]%></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Publisher Name: </td>
+                    <td><%= text_field_tag(:txbookchapterpublisher,nil,:title => 'i.e. LUMS' ,:class=>"inputTextbox") %><%=flash[:publishername]%></td>
+                  </tr>
+
+                </table>
+             </div>
+
+         </div>
+
+        <div class="expanderHeaderBar" id="technicalreportpublication" style ="display:none">
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Technical Report Publication</h2>
+
+             <div class="expander">
+                <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Technical Report Number: <span class="requiredFieldAsterisk">*</span></td>
+                    <td><%= text_field_tag(:txtechnicalreportnumber,nil,:title => 'i.e. 2' ,:class=>"inputTextbox",:required => true) %><%= flash[:reportnumber] %></td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Department: </td>
+                    <td><%=collection_select(:department,:id,@departments,:id,:name,options={:prompt=>"Select a department"},:class => "dropdown")%></td>
+                  </tr>
+
+                </table>
+             </div>
+
+         </div>
+         <div class="bottomButtons">
+
+               <%#= button_tag "Cancel", :action => "index", :id => "students" %>
+
+
+               <%=submit_tag "Save"%>
+
+         </div>
+
+        </div>
+
+    <%end%>
+   <%end%>
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>

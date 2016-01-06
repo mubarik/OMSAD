@@ -1,0 +1,49 @@
+<% content_for :menu do %>
+  <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+    <div class="pageHeadingBar">
+      <h1>Import Courses</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+    <% if !flash[:notice].blank? %>
+      <div class="messages">
+        <p><%=flash[:notice]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+      <%end%>
+    <% if !flash[:msgRed].blank? %>
+      <div class="errors">
+        <p><%=flash[:msgRed]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+    
+  <%= nested_form_for @uploadcheck ,:html=>{:id=>"csvimportform",
+                                            :class=>'clientSideValidatedForm',
+                                            :multipart=>true},
+                                            :url =>{ :controller => "GraduateStudents/courses",
+                                            :action => "uploadfile"} do |f| %>
+
+<table>
+           <tr>
+             <td class="labelDefinitionTerm"><label> Select a CSV File :</label></td>
+         <td class="inputBoxPlacement"><%= f.file_field :uploadfile ,:required => true %></td>
+             <td class="fieldErrorPlacement"></td>
+           </tr>
+          </table>
+        <div class="bottomButtons" style="margin:0px;">
+          <table>
+            <tr>
+              <td></td>
+              <td>  <%= f.submit "Upload" %></td>
+            </tr>
+          </table>
+        </div>
+
+  <%end%>
+
+
+
+<% end %>

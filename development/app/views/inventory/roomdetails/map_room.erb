@@ -1,0 +1,1162 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<%= content_for :content do  %>
+
+  <div class="pageHeadingBar">
+        <h1>Assign Map Location </h1>
+  </div>
+  <hr class="headingLineBreak"/>
+   <% if !flash[:msgGreen].blank? %>
+      <div class="messages">
+        <p><%=flash[:msgGreen]%></p> 
+      </div>
+    <%end%>
+  
+  <div>
+    <br></br>
+
+<%= form_tag({:controller => "inventory/roomdetails" ,:class=>"my_form",:action => "maploc"},:id => @roomdetail.id,:method=>"post") do %>
+ 
+ 
+<input id="hidID" name="hidID" type="hidden" value="100"/>
+<%= text_field_tag(:roomid,@roomdetail.id,:type=>"hidden", :class=>"inputTextbox")  %>   
+<table width="95%"  style="border:2px;" align="center" bordercolor="#000000" cellspacing="0">
+
+    <tr>
+    <td width="45%">
+      <table width="100%" style="border:0px solid black;" align="center" cellspacing="0" cellpadding="0">
+		<tr>
+		  <td id="af" height="100" colspan="3" align="center" style="border:3px solid black;" bgcolor="#C4C4C4">PhD Lab
+                    <% for map_roomdetail in @map_roomdetails%>
+                      <% if map_roomdetail.map_location_id == 1%>
+                        <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Room No:1 </span>%>
+                          <span class="labelDefinitionDetails">
+                              <%unless map_roomdetail.room_detail.blank?%>
+                                <%=map_roomdetail.room_detail.roomnumber%>
+                              <%end%>
+                          </span>
+                      <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                          <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.room_detail.roomname%>
+                              <%#end%>
+                          <%#*</span>%>
+                      <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Status </span>%>
+                          <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.status%>
+                              <%#end%>
+                          <%#*</span>%>
+                      <br></br>
+                              <%unless !(map_roomdetail.room_detail.blank?)%>
+                                <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av1", :title=>"Room is Available")%>
+                              <%else%>
+                                <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc1", :title=>"Room is occupied")%>
+                              <%end%>
+                      <%end%>
+                    <%end%>
+                  </td>
+		</tr>
+                <tr>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                    <% for map_roomdetail in @map_roomdetails%>
+                      <% if map_roomdetail.map_location_id == 2%>
+                        <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Room No:2 </span>%>
+                            <span class="labelDefinitionDetails">
+                              <%unless map_roomdetail.room_detail.blank?%>
+                                <%=map_roomdetail.room_detail.roomnumber%>
+                              <%end%>
+                            </span>
+                    <%#*<br></br>%>
+                        <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                        <%#*<span class="labelDefinitionDetails">%>
+                          <%#unless map_roomdetail.room_detail.blank?%>
+                            <%#=map_roomdetail.room_detail.roomname%>
+                          <%#end%>
+                        <%#*</span>%>
+                    <%#*<br></br>%>
+                        <%#*<span class="labelDefinitionTerm">Status </span>%>
+                        <%#*<span class="labelDefinitionDetails">%>
+                          <%#unless map_roomdetail.room_detail.blank?%>
+                            <%#=map_roomdetail.status%>
+                          <%#end%>
+                        <%#*</span>%>
+                    <br></br>
+                          <%unless !(map_roomdetail.room_detail.blank?)%>
+                            <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av2", :title=>"Room is Available")%>
+                            <%else%>
+                            <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc2", :title=>"Room is occupied")%>
+                          <%end%>
+                        <%end%>
+                      <%end%>
+             
+                  </td>
+                  <td rowspan="8" width="10%">&nbsp;</td>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                    <% for map_roomdetail in @map_roomdetails%>
+                      <% if map_roomdetail.map_location_id == 3%>
+                        <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Room No:3 </span>%>
+                          <span class="labelDefinitionDetails">
+                            <%unless map_roomdetail.room_detail.blank?%>
+                              <%=map_roomdetail.room_detail.roomnumber%>
+                            <%end%>
+                          </span>
+                        <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                          <%#*<span class="labelDefinitionDetails">%>
+                            <%#unless map_roomdetail.room_detail.blank?%>
+                              <%#=map_roomdetail.room_detail.roomname%>
+                            <%#end%>
+                          <%#*</span>%>
+                        <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Status </span>%>
+                          <%#*<span class="labelDefinitionDetails">%>
+                            <%#unless map_roomdetail.room_detail.blank?%>
+                              <%#=map_roomdetail.status%>
+                            <%#end%>
+                          <%#*</span>%>
+                        <br></br>
+                          <%unless !(map_roomdetail.room_detail.blank?)%>
+                            <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av3", :title=>"Room is Available")%>
+                            <%else%>
+                            <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc3", :title=>"Room is occupied")%>
+                          <%end%>
+                        <%end%>
+                      <%end%>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                    <%#unless @map_roomdetails.blank?%>
+                      <% for map_roomdetail in @map_roomdetails%>
+                        <% if map_roomdetail.map_location_id == 4%>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Room No:4 </span>%>
+                            <span class="labelDefinitionDetails">
+                              <%unless map_roomdetail.room_detail.blank?%>
+                                <%=map_roomdetail.room_detail.roomnumber%> 
+                              <%end%>
+                            </span>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                            <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.room_detail.roomname%>
+                              <%#end%>
+                            <%#*</span>%>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Status </span>%>
+                            <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.status%>
+                              <%#end%>
+                            <%#*</span>%>
+                          <br></br>
+                            <%unless !(map_roomdetail.room_detail.blank?)%>
+                              <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av4", :title=>"Room is Available")%>
+                            <%else%>
+                              <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc4", :title=>"Room is occupied")%>
+                            <%end%>
+                          <%end%>
+                        <%end%>
+                      <%#end%>
+                  </td>
+                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                    <% for map_roomdetail in @map_roomdetails%>
+                      <% if map_roomdetail.map_location_id == 5%>
+                        <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Room No: 5</span>%>
+                          <span class="labelDefinitionDetails">
+                            <%unless map_roomdetail.room_detail.blank?%>
+                              <%=map_roomdetail.room_detail.roomnumber%>
+                            <%end%>
+                          </span>
+                        <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                          <%#*<span class="labelDefinitionDetails">%>
+                            <%#unless map_roomdetail.room_detail.blank?%>
+                              <%#=map_roomdetail.room_detail.roomname%>
+                            <%#end%>
+                          <%#*</span>%>
+                        <%#*<br></br>%>
+                          <%#*<span class="labelDefinitionTerm">Status </span>%>
+                          <%#*<span class="labelDefinitionDetails">%>
+                            <%#unless map_roomdetail.room_detail.blank?%>
+                              <%#=map_roomdetail.status%>
+                            <%#end%>
+                          <%#*</span>%>
+                        <br></br>
+                          <%unless !(map_roomdetail.room_detail.blank?)%>
+                            <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av5", :title=>"Room is Available")%>
+                          <%else%>
+                            <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc5", :title=>"Room is occupied")%>
+                          <%end%>
+                        <%end%>
+                      <%end%>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                      <% for map_roomdetail in @map_roomdetails%>
+                        <% if map_roomdetail.map_location_id == 6%>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Room No:6 </span>%>
+                            <span class="labelDefinitionDetails">
+                              <%unless map_roomdetail.room_detail.blank?%>
+                                <%=map_roomdetail.room_detail.roomnumber%>
+                              <%end%>
+                            </span>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                            <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.room_detail.roomname%>
+                              <%#end%>
+                            <%#*</span>%>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Status </span>%>
+                            <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.status%>
+                              <%#end%>
+                            <%#*</span>%>
+                          <br></br>
+                            <%unless !(map_roomdetail.room_detail.blank?)%>
+                              <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av6", :title=>"Room is Available")%>
+                            <%else%>
+                              <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc6", :title=>"Room is occupied")%>
+                            <%end%>
+                          <%end%>
+                        <%end%>
+                    </td>
+                    <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                      <% for map_roomdetail in @map_roomdetails%>
+                        <% if map_roomdetail.map_location_id == 7%>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Room No:7 </span>%>
+                            <span class="labelDefinitionDetails">
+                              <%unless map_roomdetail.room_detail.blank?%>
+                                <%=map_roomdetail.room_detail.roomnumber%>
+                              <%end%>
+                            </span>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                            <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.room_detail.roomname%>
+                              <%#end%>
+                            <%#*</span>%>
+                          <%#*<br></br>%>
+                            <%#*<span class="labelDefinitionTerm">Status </span>%>
+                            <%#*<span class="labelDefinitionDetails">%>
+                              <%#unless map_roomdetail.room_detail.blank?%>
+                                <%#=map_roomdetail.status%>
+                              <%#end%>
+                            <%#*</span>%>
+                          <br></br>
+                            <%unless !(map_roomdetail.room_detail.blank?)%>
+                              <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av7", :title=>"Room is Available")%>
+                            <%else%>
+                              <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc7", :title=>"Room is occupied")%>
+                            <%end%>
+                          <%end%>
+                        <%end%>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                        <% for map_roomdetail in @map_roomdetails%>
+                          <% if map_roomdetail.map_location_id == 8%>
+                            <%#*<br></br>%>
+                              <%#*<span class="labelDefinitionTerm">Room No:8 </span>%>
+                              <span class="labelDefinitionDetails">
+                                <%unless map_roomdetail.room_detail.blank?%>
+                                  <%=map_roomdetail.room_detail.roomnumber%>
+                                <%end%>
+                              </span>
+                            <%#*<br></br>%>
+                              <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                              <%#*<span class="labelDefinitionDetails">%>
+                                <%#unless map_roomdetail.room_detail.blank?%>
+                                  <%#=map_roomdetail.room_detail.roomname%>
+                                <%#end%>
+                              <%#*</span>%>
+                            <%#*<br></br>%>
+                              <%#*<span class="labelDefinitionTerm">Status </span>%>
+                              <%#*<span class="labelDefinitionDetails">%>
+                                <%#unless map_roomdetail.room_detail.blank?%>
+                                  <%#=map_roomdetail.status%>
+                                <%#end%>
+                              <%#*</span>%>
+                            <br></br>
+                              <%unless !(map_roomdetail.room_detail.blank?)%>
+                                <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av8", :title=>"Room is Available")%>
+                              <%else%>
+                                <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc8", :title=>"Room is occupied")%>
+                              <%end%>
+                            <%end%>
+                          <%end%>
+                      </td>
+                      <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#CDCDCD">Faculty Discussion
+                        <% for map_roomdetail in @map_roomdetails%>
+                          <% if map_roomdetail.map_location_id == 9%>
+                            <%#*<br></br>%>
+                              <%#*<span class="labelDefinitionTerm">Room No:9 </span>%>
+                              <span class="labelDefinitionDetails">
+                                <%unless map_roomdetail.room_detail.blank?%>
+                                  <%=map_roomdetail.room_detail.roomnumber%>
+                                <%end%>
+                              </span>
+                            <%#*<br></br>%>
+                              <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                              <%#*<span class="labelDefinitionDetails">%>
+                                <%#unless map_roomdetail.room_detail.blank?%>
+                                  <%#=map_roomdetail.room_detail.roomname%>
+                                <%#end%>
+                              <%#*</span>%>
+                            <%#*<br></br>%>
+                              <%#*<span class="labelDefinitionTerm">Status </span>%>
+                              <%#*<span class="labelDefinitionDetails">%>
+                                <%#unless map_roomdetail.room_detail.blank?%>
+                                  <%#=map_roomdetail.status%>
+                                <%#end%>
+                              <%#*</span>%>
+                            <br></br>
+                              <%unless !(map_roomdetail.room_detail.blank?)%>
+                                <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av9", :title=>"Room is Available")%>
+                              <%else%>
+                                <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc9", :title=>"Room is occupied")%>
+                              <%end%>
+                            <%end%>
+                          <%end%>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                          <% for map_roomdetail in @map_roomdetails%>
+                            <% if map_roomdetail.map_location_id == 10%>
+                              <%#*<br></br>%>
+                                <%#*<span class="labelDefinitionTerm">Room No:10 </span>%>
+                                <span class="labelDefinitionDetails">
+                                  <%unless map_roomdetail.room_detail.blank?%>
+                                    <%=map_roomdetail.room_detail.roomnumber%>
+                                  <%end%>
+                                </span>
+                              <%#*<br></br>%>
+                                <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                <%#*<span class="labelDefinitionDetails">%>
+                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                    <%#=map_roomdetail.room_detail.roomname%>
+                                  <%#end%>
+                                <%#*</span>%>
+                              <%#*<br></br>%>
+                                <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                <%#*<span class="labelDefinitionDetails">%>
+                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                    <%#=map_roomdetail.status%>
+                                  <%#end%>
+                                <%#*</span>%>
+                              <br></br>
+                                <%unless !(map_roomdetail.room_detail.blank?)%>
+                                  <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av10", :title=>"Room is Available")%>
+                                <%else%>
+                                  <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc10", :title=>"Room is occupied")%>
+                                <%end%>
+                              <%end%>
+                            <%end%>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                            <% for map_roomdetail in @map_roomdetails%>
+                              <% if map_roomdetail.map_location_id == 11%>
+                                <%#*<br></br>%>
+                                  <%#*<span class="labelDefinitionTerm">Room No:11 </span>%>
+                                  <span class="labelDefinitionDetails">
+                                    <%unless map_roomdetail.room_detail.blank?%>
+                                      <%=map_roomdetail.room_detail.roomnumber%>
+                                    <%end%>
+                                  </span>
+                                <%#*<br></br>%>
+                                  <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                  <%#*<span class="labelDefinitionDetails">%>
+                                    <%#unless map_roomdetail.room_detail.blank?%>
+                                      <%#=map_roomdetail.room_detail.roomname%>
+                                    <%#end%>
+                                  <%#*</span>%>
+                                <%#*<br></br>%>
+                                  <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                  <%#*<span class="labelDefinitionDetails">%>
+                                    <%#unless map_roomdetail.room_detail.blank?%>
+                                      <%#=map_roomdetail.status%>
+                                    <%#end%>
+                                  <%#*</span>%>
+                                <br></br>
+                                  <%unless !(map_roomdetail.room_detail.blank?)%>
+                                    <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av11", :title=>"Room is Available")%>
+                                  <%else%>
+                                    <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc11", :title=>"Room is occupied")%>
+                                  <%end%>
+                                <%end%>
+                              <%end%>
+                            </td>
+                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                              <% for map_roomdetail in @map_roomdetails%>
+                                <% if map_roomdetail.map_location_id == 12%>
+                                  <%#*<br></br>%>
+                                    <%#*<span class="labelDefinitionTerm">Room No:12 </span>%>
+                                    <span class="labelDefinitionDetails">
+                                      <%unless map_roomdetail.room_detail.blank?%>
+                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                      <%end%>
+                                    </span>
+                                  <%#*<br></br>%>
+                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                    <%#*<span class="labelDefinitionDetails">%>
+                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                        <%#=map_roomdetail.room_detail.roomname%>
+                                      <%#end%>
+                                    <%#*</span>%>
+                                  <%#*<br></br>%>
+                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                    <%#*<span class="labelDefinitionDetails">%>
+                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                        <%#=map_roomdetail.status%>
+                                      <%#end%>
+                                    <%#*</span>%>
+                                  <br></br>
+                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av12", :title=>"Room is Available")%>
+                                    <%else%>
+                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc12", :title=>"Room is occupied")%>
+                                    <%end%>
+                                  <%end%>
+                                <%end%>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                <% for map_roomdetail in @map_roomdetails%>
+                                  <% if map_roomdetail.map_location_id == 13%>
+                                    <%#*<br></br>%>
+                                      <%#*<span class="labelDefinitionTerm">Room No:13 </span>%>
+                                      <span class="labelDefinitionDetails">
+                                        <%unless map_roomdetail.room_detail.blank?%>
+                                          <%=map_roomdetail.room_detail.roomnumber%>
+                                        <%end%>
+                                      </span>
+                                    <%#*<br></br>%>
+                                      <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                      <%#*<span class="labelDefinitionDetails">%>
+                                        <%#unless map_roomdetail.room_detail.blank?%>
+                                          <%#=map_roomdetail.room_detail.roomname%>
+                                        <%#end%>
+                                      <%#*</span>%>
+                                    <%#*<br></br>%>
+                                      <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                      <%#*<span class="labelDefinitionDetails">%>
+                                        <%#unless map_roomdetail.room_detail.blank?%>
+                                          <%#=map_roomdetail.status%>
+                                        <%#end%>
+                                      <%#*</span>%>
+                                    <br></br>
+                                      <%unless !(map_roomdetail.room_detail.blank?)%>
+                                        <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av13", :title=>"Room is Available")%>
+                                      <%else%>
+                                        <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc13", :title=>"Room is occupied")%>
+                                      <%end%>
+                                    <%end%>
+                                  <%end%>
+                                </td>
+                                <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">S/w Engineering Lab
+                                  <% for map_roomdetail in @map_roomdetails%>
+                                    <% if map_roomdetail.map_location_id == 14%>
+                                      <%#*<br></br>%>
+                                        <%#*<span class="labelDefinitionTerm">Room No:14 </span>%>
+                                        <span class="labelDefinitionDetails">
+                                          <%unless map_roomdetail.room_detail.blank?%>
+                                            <%=map_roomdetail.room_detail.roomnumber%>
+                                          <%end%>
+                                        </span>
+                                      <%#*<br></br>%>
+                                        <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                        <%#*<span class="labelDefinitionDetails">%>
+                                          <%#unless map_roomdetail.room_detail.blank?%>
+                                            <%#=map_roomdetail.room_detail.roomname%>
+                                          <%#end%>
+                                        <%#*</span>%>
+                                      <%#*<br></br>%>
+                                        <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                        <%#*<span class="labelDefinitionDetails">%>
+                                          <%#unless map_roomdetail.room_detail.blank?%>
+                                            <%#=map_roomdetail.status%>
+                                          <%#end%>
+                                        <%#*</span>%>
+                                      <br></br>
+                                        <%unless !(map_roomdetail.room_detail.blank?)%>
+                                          <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av14", :title=>"Room is Available")%>
+                                        <%else%>
+                                          <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc14", :title=>"Room is occupied")%>
+                                        <%end%>
+                                      <%end%>
+                                    <%end%>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                    <% for map_roomdetail in @map_roomdetails%>
+                                      <% if map_roomdetail.map_location_id == 15%>
+                                        <%#*<br></br>%>
+                                          <%#*<span class="labelDefinitionTerm">Room No: 15</span>%>
+                                          <span class="labelDefinitionDetails">
+                                            <%unless map_roomdetail.room_detail.blank?%>
+                                              <%=map_roomdetail.room_detail.roomnumber%>
+                                            <%end%>
+                                          </span>
+                                        <%#*<br></br>%>
+                                          <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                          <%#*<span class="labelDefinitionDetails">%>
+                                            <%#unless map_roomdetail.room_detail.blank?%>
+                                              <%#=map_roomdetail.room_detail.roomname%>
+                                            <%#end%>
+                                          <%#*</span>%>
+                                        <%#*<br></br>%>
+                                          <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                          <%#*<span class="labelDefinitionDetails">%>
+                                            <%#unless map_roomdetail.room_detail.blank?%>
+                                              <%#=map_roomdetail.status%>
+                                            <%#end%>
+                                          <%#*</span>%>
+                                            <br></br>
+                                              <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av15", :title=>"Room is Available")%>
+                                              <%else%>
+                                                <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc15", :title=>"Room is occupied")%>
+                                              <%end%>
+                                            <%end%>
+                                          <%end%>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td height="75" colspan="3" width="45%" style="border:2px solid black;" cellpadding="0">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td height="75" colspan="3" align="center" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">
+                                          <p align="center">KADE
+                                          <% for map_roomdetail in @map_roomdetails%>
+                                            <% if map_roomdetail.map_location_id == 16%>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Room No:16 </span>%>
+                                                <span class="labelDefinitionDetails">
+                                                  <%unless map_roomdetail.room_detail.blank?%>
+                                                    <%=map_roomdetail.room_detail.roomnumber%>
+                                                  <%end%>
+                                                </span>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                <%#*<span class="labelDefinitionDetails">%>
+                                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                                    <%#=map_roomdetail.room_detail.roomname%>
+                                                  <%#end%>
+                                                <%#*</span>%>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                <%#*<span class="labelDefinitionDetails">%>
+                                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                                    <%#=map_roomdetail.status%>
+                                                  <%#end%>
+                                                <%#*</span>%>
+                                              <br></br>
+                                                <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                  <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av16", :title=>"Room is Available")%>
+                                                <%else%>
+                                                  <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc16", :title=>"Room is occupied")%>
+                                                <%end%>
+                                              <%end%>
+                                            <%end%>
+                                            </p>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                    <td  width="10%">&nbsp</td>
+                                    <td width="45%">
+                                      <table width="100%" style="border:0px solid black;" align="center" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                          <td height="100" colspan="3" align="center" width="45%" style="border:3px solid black;" cellpadding="0" bgcolor="#C4C4C4">Smart Lab
+                                            <% for map_roomdetail in @map_roomdetails%>
+                                            <% if map_roomdetail.map_location_id == 17%>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Room No:17 </span>%>
+                                                <span class="labelDefinitionDetails">
+                                                  <%unless map_roomdetail.room_detail.blank?%>
+                                                    <%=map_roomdetail.room_detail.roomnumber%>
+                                                  <%end%>
+                                                </span>
+                                               <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                <%#*<span class="labelDefinitionDetails">%>
+                                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                                    <%#=map_roomdetail.room_detail.roomname%>
+                                                  <%#end%>
+                                                <%#*</span>%>
+                                               <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                <%#*<span class="labelDefinitionDetails">%>
+                                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                                    <%#=map_roomdetail.status%>
+                                                  <%#end%>
+                                                <%#*</span>%>
+                                               <br></br>
+                                                <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                  <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av17", :title=>"Room is Available")%>
+                                                <%else%>
+                                                  <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc17", :title=>"Room is occupied")%>
+                                                <%end%>
+                                               <%end%>
+                                              <%end%>
+                                            </td>
+                                          </tr>
+                                      <tr>
+                                        <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                          <% for map_roomdetail in @map_roomdetails%>
+                                            <% if map_roomdetail.map_location_id == 18%>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Room No:18 </span>%>
+                                                <span class="labelDefinitionDetails">
+                                                  <%unless map_roomdetail.room_detail.blank?%>
+                                                    <%=map_roomdetail.room_detail.roomnumber%>
+                                                  <%end%>
+                                                </span>
+                                              <%#*<br></br>%>
+                                            <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                            <%#*<span class="labelDefinitionDetails">%>
+                                              <%#unless map_roomdetail.room_detail.blank?%>
+                                                <%#=map_roomdetail.room_detail.roomname%>
+                                              <%#end%>
+                                            <%#*</span>%>
+                                              <%#*<br></br>%>
+                                            <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                            <%#*<span class="labelDefinitionDetails">%>
+                                              <%#unless map_roomdetail.room_detail.blank?%>
+                                                <%#=map_roomdetail.status%>
+                                              <%#end%>
+                                            <%#*</span>%>
+                                              <br></br>
+                                                <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                  <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av18", :title=>"Room is Available")%>
+                                                <%else%>
+                                                  <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc18", :title=>"Room is occupied")%>
+                                                <%end%>
+                                              <%end%>
+                                            <%end%>
+                                          </td>
+                                          <td rowspan="8" width="10%">&nbsp;</td>
+                                          <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                            <% for map_roomdetail in @map_roomdetails%>
+                                              <% if map_roomdetail.map_location_id == 19%>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Room No:19 </span>%>
+                                                <span class="labelDefinitionDetails">
+                                                  <%unless map_roomdetail.room_detail.blank?%>
+                                                    <%=map_roomdetail.room_detail.roomnumber%>
+                                                  <%end%>
+                                                </span>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                <%#*<span class="labelDefinitionDetails">%>
+                                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                                    <%#=map_roomdetail.room_detail.roomname%>
+                                                  <%#end%>
+                                                <%#*</span>%>
+                                              <%#*<br></br>%>
+                                                <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                <%#*<span class="labelDefinitionDetails">%>
+                                                  <%#unless map_roomdetail.room_detail.blank?%>
+                                                    <%#=map_roomdetail.status%>
+                                                  <%#end%>
+                                                <%#*</span>%>
+                                              <br></br>
+                                                <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                  <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av19", :title=>"Room is Available")%>
+                                                <%else%>
+                                                  <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc19", :title=>"Room is occupied")%>
+                                                <%end%>
+                                               <%end%>
+                                              <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 20%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:20 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av20", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc20", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                            </td>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                 <% if map_roomdetail.map_location_id == 21%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:21 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                      <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                        <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av21", :title=>"Room is Available")%>
+                                                      <%else%>
+                                                        <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc21", :title=>"Room is occupied")%>
+                                                      <%end%>
+                                                    <%end%>
+                                                  <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                  <% if map_roomdetail.map_location_id == 22%>
+                                                    <%#*<br></br>%>
+                                                      <%#*<span class="labelDefinitionTerm">Room No:22 </span>%>
+                                                      <span class="labelDefinitionDetails">
+                                                        <%unless map_roomdetail.room_detail.blank?%>
+                                                          <%=map_roomdetail.room_detail.roomnumber%>
+                                                        <%end%>
+                                                      </span>
+                                                    <%#*<br></br>%>
+                                                      <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                      <%#*<span class="labelDefinitionDetails">%>
+                                                        <%#unless map_roomdetail.room_detail.blank?%>
+                                                          <%#=map_roomdetail.room_detail.roomname%>
+                                                        <%#end%>
+                                                      <%#*</span>%>
+                                                    <%#*<br></br>%>
+                                                      <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                      <%#*<span class="labelDefinitionDetails">%>
+                                                        <%#unless map_roomdetail.room_detail.blank?%>
+                                                          <%#=map_roomdetail.status%>
+                                                        <%#end%>
+                                                      <%#*</span>%>
+                                                    <br></br>
+                                                      <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                        <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av22", :title=>"Room is Available")%>
+                                                      <%else%>
+                                                        <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc22", :title=>"Room is occupied")%>
+                                                      <%end%>
+                                                    <%end%>
+                                                  <%end%>
+                                            </td>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 23%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:23 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av23", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc23", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#CDCDCD">Conference Room
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                               <% if map_roomdetail.map_location_id == 24%>
+                                                <%#*<br></br>%>
+                                                  <%#*<span class="labelDefinitionTerm">Room No:24 </span>%>
+                                                  <span class="labelDefinitionDetails">
+                                                    <%unless map_roomdetail.room_detail.blank?%>
+                                                      <%=map_roomdetail.room_detail.roomnumber%>
+                                                    <%end%>
+                                                  </span>
+                                                <%#*<br></br>%>
+                                                  <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                  <%#*<span class="labelDefinitionDetails">%>
+                                                    <%#unless map_roomdetail.room_detail.blank?%>
+                                                      <%#=map_roomdetail.room_detail.roomname%>
+                                                    <%#end%>
+                                                  <%#*</span>%>
+                                                <%#*<br></br>%>
+                                                  <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                  <%#*<span class="labelDefinitionDetails">%>
+                                                    <%#unless map_roomdetail.room_detail.blank?%>
+                                                      <%#=map_roomdetail.status%>
+                                                    <%#end%>
+                                                  <%#*</span>%>
+                                                <br></br>
+                                                  <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                    <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av24", :title=>"Room is Available")%>
+                                                  <%else%>
+                                                    <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc24", :title=>"Room is occupied")%>
+                                                  <%end%>
+                                                 <%end%>
+                                                <%end%>
+                                            </td>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 25%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:25 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av25", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc25", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 26%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:26 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av26", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc26", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 27%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:27 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av27", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc27", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                            </td>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 28%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:28 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                      <br></br>
+                                                        <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                          <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av28", :title=>"Room is Available")%>
+                                                        <%else%>
+                                                          <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc28", :title=>"Room is occupied")%>
+                                                        <%end%>
+                                                      <%end%>
+                                                    <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td rowspan="2" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">Computer Vision Lab
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 29%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:29 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av29", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc29", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                            </td>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 30%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:30 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av30", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc30", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#E0E0E0">
+                                              <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 31%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:31 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av31", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc31", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td height="75" colspan="3" width="45%" style="border:2px solid black;" cellpadding="0">&nbsp;</td>
+                                          </tr>
+                                          <tr>
+                                            <td height="75" colspan="3" width="45%" style="border:2px solid black;" cellpadding="0" bgcolor="#C4C4C4">
+                                              <p align="center">NEWT
+                                                <% for map_roomdetail in @map_roomdetails%>
+                                                <% if map_roomdetail.map_location_id == 32%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Room No:32 </span>%>
+                                                    <span class="labelDefinitionDetails">
+                                                      <%unless map_roomdetail.room_detail.blank?%>
+                                                        <%=map_roomdetail.room_detail.roomnumber%>
+                                                      <%end%>
+                                                    </span>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Name: </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.room_detail.roomname%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <%#*<br></br>%>
+                                                    <%#*<span class="labelDefinitionTerm">Status </span>%>
+                                                    <%#*<span class="labelDefinitionDetails">%>
+                                                      <%#unless map_roomdetail.room_detail.blank?%>
+                                                        <%#=map_roomdetail.status%>
+                                                      <%#end%>
+                                                    <%#*</span>%>
+                                                  <br></br>
+                                                    <%unless !(map_roomdetail.room_detail.blank?)%>
+                                                      <%=image_tag("green.bmp",:class=>"locavailable", :id=>"av32", :title=>"Room is Available")%>
+                                                    <%else%>
+                                                      <%=image_tag("red.bmp",:class=>"locavailable", :id=>"oc32", :title=>"Room is occupied")%>
+                                                    <%end%>
+                                                  <%end%>
+                                                <%end%>
+                                              </p>
+                                            </td>
+                                          </tr>
+                                      </table>
+                                    </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+       <div class="bottomButtons">
+        <%=submit_tag("Save")%>
+       </div>
+      </td>
+      <td></td>
+    </tr>
+</table>
+        <%end%>
+  </div>
+<%end%>
+  

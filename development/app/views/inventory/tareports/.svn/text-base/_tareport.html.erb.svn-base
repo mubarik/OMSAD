@@ -1,0 +1,31 @@
+      <%= grid(@ta_grid, :show_filters => :always) do |g|
+        g.blank_slate  do
+          "There are no records"
+        end
+        g.column :column_name => 'Employee ID', :attribute_name => 'employee_id', :no_filter => true , :model_class => TAssistant do |ta|
+            ta.user.t_assistant.employee_id
+        end
+        g.column :column_name => 'Name', :attribute_name => 'name', :in_csv => false, :model_class => User do |ta|
+          link_to ta.user.name, "/inventory/tassistants/"+(ta.user.id).to_s
+
+        
+        end
+        g.column :column_name => 'Name', :attribute_name => 'name',:in_html => false, :model_class => User do |ta|
+          ta.user.name
+        end
+        g.column :column_name => 'Email', :attribute_name => 'email', :model_class => User do |ta|
+          ta.user.email
+        end
+        g.column :column_name => 'Course Code', :attribute_name => 'coursecode' , :model_class => Course do |tacou|
+          tacou.course.coursecode.blank?? 'N/A' : tacou.course.coursecode
+        end
+        g.column :column_name => 'Course Name', :attribute_name => 'coursename' , :model_class => Course do |tacou|
+          tacou.course.coursename.blank?? 'N/A' : tacou.course.coursename
+        end
+        g.column :column_name => 'Semester', :attribute_name => 'offering' ,:custom_filter => [['Fall', 'fall'],['Spring', 'spring'], ['Summer', 'summer']], :model_class => Semester do |tacou|
+          tacou.semester.offering.blank?? 'N/A' : tacou.semester.offering
+        end
+        g.column :column_name => 'Year', :attribute_name => 'year' , :model_class => Semester do |tacou|
+          tacou.semester.year.blank?? 'N/A' : tacou.semester.year
+        end
+      end %>

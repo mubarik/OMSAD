@@ -1,0 +1,39 @@
+<%=form_tag({ :controller => "inventory/roomdetails", :action => "assignlocation", :id=>@iid}, :method=>"post") do %>
+<table  style="width: 500px; height: 100px; margin-top: 0">
+
+
+
+ 
+
+  <%#*<div id="map" style="background-image: url('/assets/room2.gif'); background-repeat:  no-repeat ; width: 500px; height: 500px;" >My Name is Afia Zafar;%>
+
+    <%#*<img id="av1" class="locavailable" title="Room is Available" src="/assets/green.bmp" alt="Green"></img>%>
+
+    <%#*<div id="map" style="background-image: url('/assets/Untitled.jpg'); background-repeat:  no-repeat ; width: 1500px; height: 500px;" >My Name is Afia Zafar;%>
+  <%#*</div>%>
+
+
+  <tr><td colspan="2" bgcolor="#996666" style=" color:white " >Location Assignment</td></tr>
+                               
+                               <%#*<tr><td class="labelDefinitionTerm">CPU ID</td><td class="labelDefinitionTerm">1125322</td></tr>%>
+                               <%#*<tr><td class="labelDefinitionTerm">Owner Name:</td><td class="labelDefinitionTerm"></td></tr>%>
+                               <%#*<tr><td class="labelDefinitionTerm">Ownership Start Date:</td><td class="labelDefinitionTerm">12-Apr-2010</td></tr>%>
+                               <%#*<tr><td class="labelDefinitionTerm">Ownership End Date:</td><td  class="labelDefinitionTerm">11-Jul-2011</td></tr>%>
+
+               <tr><td class="labelDefinitionTerm">Select Room: </td><td><div >
+                                                                <%=collection_select(:mroom,:id,@rooms,:id,:roomnumber,
+                                                                options={ :prompt=>"Select a Room"},
+                                                               :required=> 'true',
+                                                               :class=>"dropdown")%>
+                                                                </div></td><td><span class='error error-keyup-1' style='color:red; margin-left: 15px ; ' id="macqerror"></span></td>
+               </tr>
+
+               
+
+                <tr><td > </td><td>  <%=submit_tag("Save")%></td><td style="display:none"><%= text_field_tag(:hidMapId,params[:id])%></td></tr>
+
+
+
+
+</table>
+<%end%>

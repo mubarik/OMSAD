@@ -1,0 +1,49 @@
+<%= grid(@students_report_grid, :show_filters => :always) do |g|
+  g.row_attributes do |version|
+    {:style => 'text-align:left;'}
+  end
+  g.blank_slate  do
+    "No record found"
+  end
+  g.column :column_name => 'Roll No', :attribute_name => 'rollno', :in_csv => false , :model_class => Student do |st|
+     link_to st.user.student.rollno, "/GraduateStudents/students/"+(st.user.id).to_s
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_csv => false , :model_class => User do |st|
+     link_to st.user.name, "/GraduateStudents/students/"+(st.user.id).to_s
+  end
+  g.column :column_name => 'Roll No', :attribute_name => 'rollno', :in_html => false , :model_class => Student do |st|
+     st.user.student.rollno
+  end
+  g.column :column_name => 'Name', :attribute_name => 'name', :in_html => false , :model_class => User do |st|
+     st.user.name
+  end
+  g.column :column_name => 'Degree Level', :attribute_name => 'degreelevel', :custom_filter => [['MS', 'ms'],['PhD', 'phd']] , :model_class => Student do |st|
+    st.user.student.degreelevel.blank?? 'Not provided' : st.user.student.degreelevel
+  end
+  g.column :column_name => 'Publication Title' ,:attribute_name=>"title", :in_csv => false ,
+           :model_class=> Publication do |userpublication|
+     link_to userpublication.publication.title, "/faculty/"+(((userpublication.publication.publication_type.name).to_s).gsub(/\s+/, "")).downcase+"s/"+(userpublication.publication.id).to_s
+  end
+  g.column :column_name => 'Publication Title' ,:attribute_name=>"title", :in_html => false ,
+           :model_class=> Publication do |userpublication|
+     userpublication.publication.title
+  end
+  g.column :column_name => 'Publication Year' , :attribute_name=>"publicationyear" ,
+           :model_class=> Publication do |userpublication|
+    userpublication.publication.publicationyear.blank?? 'Not provided' : userpublication.publication.publicationyear
+  end
+
+  g.column  :column_name => 'Publication Status', :attribute_name=>"publicationstatus",
+            :model_class=> Publication do |userpublication|
+     userpublication.publication.publicationstatus.blank?? 'Not provided' : userpublication.publication.publicationstatus
+  end
+
+  g.column  :column_name => 'Publication Type', :attribute_name=>"name",
+            :model_class=> PublicationType do |userpublication|
+     userpublication.publication.publication_type.name.blank?? 'Not provided' : userpublication.publication.publication_type.name
+  end
+
+  g.column  :column_name => 'Author No', :attribute_name=>"authorindex" do |userpublication|
+     userpublication.authorindex.blank?? 'Not provided' :  userpublication.authorindex
+  end
+end -%>

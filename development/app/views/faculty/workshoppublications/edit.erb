@@ -1,0 +1,75 @@
+
+<%= content_for :content do  %>
+  ﻿<!DOCTYPE html>
+
+
+  <head>
+    <style type="text/css">
+      .ui-datepicker-year
+      {
+        display:none;
+      }
+    </style>
+  </head>
+
+
+  <div class="pageHeadingBar">
+    <h1>Edit Workshop Paper</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+   <% if !flash[:error].blank? %>
+      <div class="errors">
+        <p><%=flash[:error]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+
+  <%= nested_form_for @publication ,:html=>{:id=>"formPublications",
+                                                           :class=>'clientSideValidatedForm',
+                                                           :multipart=>true},
+                                       :url =>{ :controller => "faculty/workshoppublications",
+                                                   :action => "update",
+                                                   :id=>@publication.id}  do |publication_edit| %>
+  
+    <div class="expandingBlock">
+
+      <div class="expanderHeaderBar">
+
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Paper Details <span class="requiredFillExpander"> *</span></h2>
+           
+               <%= render  :partial=>"faculty/publication" ,
+                   :locals=>{:p=>publication_edit ,:publicationtype => PublicationTypes::WORKSHOP_PUBLICATION}%>
+        <div class="expanderHeaderBar">
+
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+        <h2>Workshop Details <span class="requiredFillExpander"> *</span></h2>
+          <%= render "newedit",:p=>publication_edit%>
+      </div>
+
+
+      <div class="bottomButtons">
+
+
+    <%#= button_tag "Cancel", :action => "index" %>
+
+                 <table>
+                   <tr>
+                   <td><span class="submitErrorPlacement"></span></td>
+                   <td>
+                       <%=publication_edit.submit "Save" , :id=>"saveButton"%>
+                   </td>
+                   </tr>
+                 </table>
+
+      </div>
+
+    </div>
+
+  <%end%>
+<%end%>
+
+
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>

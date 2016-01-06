@@ -1,0 +1,78 @@
+<script text="text/javascript">
+  $('.flexFacultyresearchGrants').flexigrid({
+        height:'auto',
+        colModel : [
+                {display: 'Principle Investigator', name : 'principleinvestigator', width : 150, align: 'center'},
+                {display: 'Department', name : 'department', width : 150, align: 'center'},
+                {display: 'Grant Number', name : 'grantnumber', width : 150, align: 'center'},
+                {display: 'Title', name : 'title', width : 150, align: 'center'},
+                {display: 'Amount', name : 'amount', width : 150, align: 'center'},
+                {display: 'Funding Agency', name : 'fundingagency', width : 150, align: 'center'},
+                {display: 'Start Date', name : 'startdate', width : 150, align: 'center'},
+                {display: 'End Date', name : 'enddate', width : 150, align: 'center'},
+           ]
+        });
+</script>
+
+<table class="flexFacultyresearchGrants">
+  <%for research_grant in faculty_grants %>
+    <tr>
+    <td>
+      <%if !research_grant.pi_name.blank?%>
+        <%=  research_grant.pi_name%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if research_grant.faculty_member.blank? or research_grant.faculty_member.user.blank?%>
+        Not provided
+      <%else%>
+        <%=research_grant.faculty_member.user.department.name.blank?? 'Not provided':research_grant.faculty_member.user.department.name%>
+      <%end%>
+    </td>
+    <td>
+      <%if !research_grant.grantnumber.blank?%>
+        <%=  research_grant.grantnumber%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !research_grant.title.blank?%>
+          <%= research_grant.title %>
+      <%else%>
+          Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !research_grant.amount.blank?%>
+       <%= research_grant.amount%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !research_grant.fundingagency.blank?%>
+        <%= research_grant.fundingagency%>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !research_grant.startdate.blank?%>
+       <%= research_grant.startdate %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !research_grant.enddate.blank?%>
+       <%= research_grant.enddate %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    </tr>
+  <%end%>
+</table>

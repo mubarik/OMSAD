@@ -1,0 +1,46 @@
+<% content_for :menu do %>
+  <%= render "graduate_students/navigationmenu" %>
+<%end%>
+
+<%= content_for :content do  %>
+  <div class="pageHeadingBar">
+    <h1>Reports</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <%= form_tag({:controller => 'reports', :action => 'create'}, :remote => true, :id=>"postform") do%>
+    <div class="groupBox" style="overflow: auto;">
+      <table style="float:left;">
+        <tr>
+          <td class="labelDefinitionTerm">Report type: </td>
+          <td class="inputBoxPlacement"><%= select_tag :selectreport ,"<option>All students' details</option>
+                                                                       <option>All students' detailed information</option>
+                                                                       <option>All students' enrolled semesters</option>
+                                                                       <option>All students' enrolled courses</option>
+                                                                       <option>All offered courses</option>
+                                                                       <option>All students' publications</option>
+                                                                       <option>All PhD students' details</option>
+                                                                       <option>Student's enrolled semesters</option>
+                                                                       <option>Student's enrolled courses</option>".html_safe,:required=> 'true', :title=>"Select report", :class=>'dropdown', :style=>'margin-left:9px;', :tabindex=>1%></td>
+          <td class="fieldErrorPlacement"></td>
+          <td style="width:245px;"><%= submit_tag "Show report", :style=>'float:right;', :tabindex=>3 %></td>
+        </tr>
+      </table>
+      <div class="clearFloatingAndStartFromBelow"></div>
+      <div id="reportsRollNumber" style="display:none">
+        <table>
+          <tr>
+            <td class="labelDefinitionTerm">Roll number: </td>
+            <td class="inputBoxPlacement" ><%=text_field_tag(:rollno,nil,:class=>'inputTextbox',:title=>"Enter an 8-digit number, e.g 11030038", :tabindex=>2)%></td>
+            <td class="fieldErrorPlacement" colspan="2"></td>
+          </tr>
+        </table>
+      </div>
+    </div><br/>
+  <%end%>
+
+  <div class="reportsGrid" id="reportsGrid">
+
+  </div>
+
+<%end%>

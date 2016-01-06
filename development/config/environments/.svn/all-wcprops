@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/DSSD_Summer2012/!svn/ver/2660/OMSAD/development/config/environments
+END
+test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/config/environments/test.rb
+END
+development.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/config/environments/development.rb
+END
+production.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/2660/OMSAD/development/config/environments/production.rb
+END

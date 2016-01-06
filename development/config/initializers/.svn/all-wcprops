@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/DSSD_Summer2012/!svn/ver/4330/OMSAD/development/config/initializers
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/config/initializers/inflections.rb
+END
+session_store.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/config/initializers/session_store.rb
+END
+wice_grid_config.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/DSSD_Summer2012/!svn/ver/875/OMSAD/development/config/initializers/wice_grid_config.rb
+END
+secret_token.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/config/initializers/secret_token.rb
+END
+backtrace_silencers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/config/initializers/backtrace_silencers.rb
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/4330/OMSAD/development/config/initializers/mime_types.rb
+END
+wrap_parameters.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/DSSD_Summer2012/!svn/ver/16/OMSAD/development/config/initializers/wrap_parameters.rb
+END

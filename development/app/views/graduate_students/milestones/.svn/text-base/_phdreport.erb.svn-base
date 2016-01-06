@@ -1,0 +1,26 @@
+<div class="cosupervisors">
+  <fieldset>
+    <legend><strong>Report:</strong></legend>
+    <div class ="rightImageButtons">
+       <%=cos.link_to_remove (image_tag("", :alt => '',:class=>'iconDeleteButton',:title=>'Delete'))%>
+    </div>
+    <table>
+       <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Status:</td>
+        <td class="inputBoxPlacement"><%=cos.select :reporttype, options_for_select([['Hec Half Yearly Report'],['Lums Semester Report']],cos.object.reporttype.blank?? 'Pending': cos.object.reporttype ),{},:class => 'dropdown' %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Status:</td>
+        <td class="inputBoxPlacement"><%=cos.select :reportstatus, options_for_select([['Cleared'],['Failed'],['Pending']],cos.object.reportstatus.blank?? 'Pending': cos.object.reportstatus ),{},:class => 'dropdown' %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Date:</td>
+        <td class="inputBoxPlacement"><%=cos.text_field :reportdate, :class=>'inputTextbox' %></td>
+        <td class="fieldErrorPlacement"></td>
+      </tr>
+    </table>
+  </fieldset>
+  <br/>
+</div>

@@ -1,0 +1,56 @@
+<script text="text/javascript">
+  $('.flexFacultyThesisSupervision').flexigrid({
+        height:'auto',
+        colModel : [
+                {display: 'Roll No', name : 'rollno', width : 150, align: 'center'},
+                {display: 'Student Name', name : 'studentname', width : 150, align: 'center'},
+                {display: 'Title', name : 'title', width : 150, align: 'center'},
+                {display: 'Part 1 Year', name : 'year', width : 150, align: 'center'},
+                {display: 'Part 2 Year', name : 'year', width : 150, align: 'center'},
+                {display: 'Proposal Defence Date', name : 'proposaldefencedate', width : 150, align: 'center'},
+           ]
+        });
+</script>
+
+<table class="flexFacultyThesisSupervision">
+  <%for thesis in ms_thesis_supervision %>
+    <tr>
+    <td>
+      <%if !thesis.student.rollno.blank?%>
+        <%=  thesis.student.rollno %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !thesis.student.user.name.blank?%>
+        <%= thesis.student.user.name %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !thesis.title.blank?%>
+        <%= thesis.title %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%if !thesis.student_semester_part1.blank?%>
+        <%= thesis.student_semester_part1.semester.offering + " " + thesis.student_semester_part1.semester.year %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+     <td>
+      <%if !thesis.student_semester_part2.blank?%>
+        <%= thesis.student_semester_part2.semester.offering + " " +thesis.student_semester_part2.semester.year %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    </tr>
+  <%end%>
+</table>
+

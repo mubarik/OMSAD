@@ -1,0 +1,61 @@
+<%if !fs.year.blank? %>
+  <div class="expanderHeaderBar">
+    <h4><%=  fs.year%> Services</h4>
+    <div class="expander">
+  <table>
+    <tr>
+      <%if !fs.universityservices.blank? %>
+      <td>
+          <label class="labelDefinitionTerm">
+            University Services:
+          </label>
+      </td>
+      <td>
+        <%=fs.universityservices %>
+      </td>
+      <%end%>
+    </tr>
+    <tr>
+      <%if !fs.outsideservices.blank? %>
+      <td>
+          <label class="labelDefinitionTerm">
+            Outside LUMS Services:
+          </label>
+      </td>
+      <td>
+
+        <%=fs.outsideservices %>
+      </td>
+      <%end%>
+    </tr>
+    <tr>
+      <%if !fs.advisoryroles.blank? %>
+      <td>
+          <label class="labelDefinitionTerm">
+            Advisory Roles:
+          </label>
+      </td>
+      <td>
+        <%=fs.advisoryroles %>
+      </td>
+      <%end%>
+    </tr>
+    <tr>
+      <%if !fs.statement.blank? %>
+        <td>
+          <label class="labelDefinitionTerm">
+            Statement on Future Plans:
+          </label>
+        </td>
+      <td>
+        <%=fs.statement%>
+      </td>
+      <%end%>
+    </tr>
+  </table>
+  </div>
+  </div>
+<%else%>
+  No Services Available
+<%end%>
+

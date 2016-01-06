@@ -1,0 +1,141 @@
+<%= content_for :content do  %>
+  <%= nested_form_for @project_conf ,:html=>{:id=>"formConfiguration",
+    :class=>'clientSideValidatedForm',
+    :multipart=>true},
+    :url =>{ :controller => "faculty/projectconfs",
+    :action => "update",:id=>@project_conf.id}  do |proj_new| %>
+
+
+    <div style="display:none;">
+      <div id="configData">
+        <%=render :partial=>"layouts/config_item_popup"%>
+      </div>
+    </div>
+    <div class="pageHeadingBar">
+      <h1>Configurations</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+    <% if !flash[:error].blank? %>
+      <div class="errors">
+        <p></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+
+    <div class="expandingBlock">
+
+      <div class="expanderHeaderBar">
+
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+        <h2>Departments <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span> </h2>
+        <div class="expander">
+          <a class="addConfigLink"
+             href="#configData">
+            <img alt=""
+                 class="iconAddButton"
+                 src=""
+                 style="margin-left:2px;margin-top: -3px"
+                 title="Add a Configuration"/>
+          </a>
+        </div>
+        <div class="expander">
+          <table class="flexDynamicConfigurations" table_type="nested_flex_table">
+            <%=proj_new.fields_for :departments do|dept_form|%>
+              <%=render "layouts/config_item",:c=>dept_form%>
+            <%end%>
+          </table>
+          <%=proj_new.link_to_add "Add a Seed",:departments,:hidden=>true,:id=>"config_nested_link",:link_type=>"grid_link"%>
+        </div>
+      </div>
+      <div class="expanderHeaderBar">
+
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+        <h2>Faculty Designations <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span> </h2>
+        <div class="expander">
+          <a class="addConfigLink"
+             href="#configData">
+            <img alt=""
+                 class="iconAddButton"
+                 src=""
+                 style="margin-left:2px;margin-top: -3px"
+                 title="Add a Configuration"/>
+          </a>
+        </div>
+        <div class="expander">
+          <table class="flexDynamicConfigurations" table_type="nested_flex_table">
+            <%=proj_new.fields_for :designations do|desig_form|%>
+              <%=render "layouts/config_item",:c=>desig_form%>
+            <%end%>
+          </table>
+          <%=proj_new.link_to_add "Add a Seed",:designations,:hidden=>true,:id=>"config_nested_link",:link_type=>"grid_link"%>
+        </div>
+      </div>
+
+
+      <div class="expanderHeaderBar">
+
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+        <h2>Faculty Statuses <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span> </h2>
+        <div class="expander">
+          <a class="addConfigLink"
+             href="#configData">
+            <img alt=""
+                 class="iconAddButton"
+                 src=""
+                 style="margin-left:2px;margin-top: -3px"
+                 title="Add a Configuration"/>
+          </a>
+        </div>
+        <div class="expander">
+          <table class="flexDynamicConfigurations" table_type="nested_flex_table">
+            <%=proj_new.fields_for :faculty_statuses do|status_form|%>
+              <%=render "layouts/config_item",:c=>status_form%>
+            <%end%>
+          </table>
+          <%=proj_new.link_to_add "Add a Seed",:faculty_statuses,:hidden=>true,:id=>"config_nested_link",:link_type=>"grid_link"%>
+        </div>
+      </div>
+
+
+      
+
+      
+
+      <div class="expanderHeaderBar">
+
+        <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+        <h2>Conference Ranks <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span> </h2>
+        <div class="expander">
+          <a class="addConfigLink"
+             href="#configData">
+            <img alt=""
+                 class="iconAddButton"
+                 src=""
+                 style="margin-left:2px;margin-top: -3px"
+                 title="Add a Configuration"/>
+          </a>
+        </div>
+        <div class="expander">
+          <table class="flexDynamicConfigurations" table_type="nested_flex_table">
+            <%=proj_new.fields_for :ranks do|conf_rank_form|%>
+              <%=render "layouts/config_item",:c=>conf_rank_form%>
+            <%end%>
+          </table>
+          <%=proj_new.link_to_add "Add a Seed",:ranks,:hidden=>true,:id=>"config_nested_link",:link_type=>"grid_link"%>
+        </div>
+      </div>
+
+      <div class="bottomButtons">
+    <%#= button_tag "Cancel", :action => "index", :id => "students" %>
+        <%=submit_tag "Save", :id=>"saveButton"%>
+      </div>
+
+
+
+    </div>
+
+  <%end%>
+<%end%>
+<% content_for :menu do %>
+  <%= render "faculty/navigationmenu" %>
+<%end%>

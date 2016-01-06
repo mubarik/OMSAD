@@ -1,0 +1,46 @@
+
+<%= javascript_include_tag "inventoryreports" %>
+<% content_for :menu do %>
+           <%= render "inventory/navigationmenuRATA" %>
+<% end %>
+
+<% content_for :content do %>
+<script>
+  function checkSelection()
+  {
+<%#*alert("s")%>
+   <%#*var report_type = document.getElementById('selectreport');%>
+     <%#*if(report_type.value=="0")%>
+       <%#*{%>
+
+       <%#*alert("n")%>
+       <%#*return false;%>
+       <%#*}%>
+  }
+</script>
+      <div class="pageHeadingBar">
+          <h1>TA Reports</h1>
+      </div>
+
+     <div class="dataBlock">
+      <%= form_tag({:controller => 'inventory/tareports', :action => 'create'},:remote => true, :id=>"postform") do%>
+          <div class="reportComboButton">
+            <%= select_tag :selectreportTA ,
+                                        options_for_select([['TA Report',1],
+                                                             ]),:prompt=>'Please select report',:required=> 'true'%>
+          
+             <div class ="reportCombo" id="tacombo" style="display:none">
+                   <%=collection_select(:tauser, :id, @talist,:id,:username,options={:prompt=>"Select TA"},:required=> 'true')%>
+             </div>
+           
+        </div>
+
+         <div class="reportTypeselection">
+          <%= button_tag "View Report"  , :id => "create_item_button", :onclick=>"javascript:checkSelection()" %>
+         </div>
+       <%end%>
+    </div>
+      <div class ="reportsGrid">
+
+      </div>
+<%end%>

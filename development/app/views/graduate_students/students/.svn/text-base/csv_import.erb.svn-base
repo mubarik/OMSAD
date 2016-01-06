@@ -1,0 +1,225 @@
+<% content_for :menu do %>
+  <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+
+
+  <div class="expandingBlock">
+
+    <div class="pageHeadingBar">
+      <h1>Import Students</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+      <% if !flash.now[:notice].blank? %>
+      <div class="messages">
+        <p><%=flash.now[:notice]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+      <%end%>
+
+     <% if !flash.now[:msgRed].blank? %>
+          <div class="errors">
+            <p><%=flash.now[:msgRed]%></p>
+          </div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+        <%end%>
+    <%#Student CSV Upload Expander%>
+
+    <div class="expanderHeaderBar" id="basicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Upload Students</h2>
+
+      <div class="expander">
+
+        <%= nested_form_for @uploadcheck ,:html=>{:id=>"csvimportform",
+                                            :class=>'clientSideValidatedForm',
+                                            :multipart=>true},
+                                            :url =>{ :controller => "GraduateStudents/students",
+                                            :action => "uploadfile"} do |f| %>
+<table>
+           <tr>
+             <td class="labelDefinitionTerm"><label > Select a CSV File :</label></td>
+         <td class="inputBoxPlacement"><%= f.file_field :uploadfile  %></td>
+             <td class="fieldErrorPlacement"></td>
+           </tr>
+          </table>
+        <div class="bottomButtons" style="margin:0px;">
+          <table>
+            <tr>
+              <td></td>
+              <td>  <%= f.submit "Upload" , :id=> 'student' %></td>
+            </tr>
+          </table>
+        </div>
+
+  <%end%>
+
+
+        <%#= form_tag({:controller => "/GraduateStudents/students",:class=>"" ,:action => "uploadfile", :multipart => true},:method=>"post") do %>
+          <%#*<table>%>
+           <%#*<tr>%>
+             <%#*<td class="labelDefinitionTerm"><label > Select a CSV File :</label></td>%>
+             <%#*<td><%= file_field :upload, 'uploadfile' %>
+             <%#*<td class="fieldErrorPlacement"></td>%>
+           <%#*</tr>%>
+          <%#*</table>%>
+
+          <%#*<div class="bottomButtons" style="margin:0px;">%>
+            <%#*<table>%>
+              <%#*<tr>%>
+                <%#*<td></td>%>
+                <%#*<td><%= submit_tag "Save"%>
+              <%#*</tr>%>
+            <%#*</table>%>
+          <%#*</div>%>
+        <%# end %>
+      </div>
+    </div>
+
+    <%#Student Courses CSV Upload Expander%>
+
+    <div class="expanderHeaderBar" id="basicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Upload Students' Courses</h2>
+
+      <div class="expander">
+
+        
+  <%= nested_form_for @uploadcheck ,:html=>{:id=>"csvstudentsemesterform",
+                                            :class=>'clientSideValidatedForm',
+                                            :multipart=>true},
+                                            :url =>{ :controller => "GraduateStudents/students",
+                                            :action => "uploadstudentsemester"} do |f| %>
+
+  <table>
+           <tr>
+             <td class="labelDefinitionTerm"><label > Select a CSV File :</label></td>
+         <td class="inputBoxPlacement"><%= f.file_field :uploadfile %></td>
+             <td class="fieldErrorPlacement"></td>
+           </tr>
+          </table>
+        <div class="bottomButtons" style="margin:0px;">
+          <table>
+            <tr>
+              <td></td>
+              <td>  <%= f.submit "Upload" , :id=> 'studentcourse'%></td>
+            </tr>
+          </table>
+        </div>
+
+  <%end%>
+      </div>
+    </div>
+
+
+    <%#PhD Details CSV Upload Expander%>
+
+    <div class="expanderHeaderBar" id="basicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Upload PhD Details</h2>
+
+      <div class="expander">
+
+          <%= nested_form_for @uploadcheck ,:html=>{:id=>"csvphd",
+                                            :class=>'clientSideValidatedForm',
+                                            :multipart=>true},
+                                            :url =>{ :controller => "GraduateStudents/students",
+                                            :action => "uploadphd"} do |f| %>
+
+          <table>
+           <tr>
+             <td class="labelDefinitionTerm"><label > Select a CSV File :</label></td>
+         <td class="inputBoxPlacement"><%= f.file_field :uploadfile %></td>
+             <td class="fieldErrorPlacement"></td>
+           </tr>
+          </table>
+        <div class="bottomButtons" style="margin:0px;">
+          <table>
+            <tr>
+              <td></td>
+              <td>  <%= f.submit "Upload" , :id=> 'phd' %></td>
+            </tr>
+          </table>
+        </div>
+
+  <%end%>
+      </div>
+    </div>
+
+
+    <%#MS Thesis CSV Upload Expander%>
+
+    <div class="expanderHeaderBar" id="basicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Upload MS Thesis Details</h2>
+
+      <div class="expander">
+
+       <%= nested_form_for @uploadcheck ,:html=>{:id=>"csvthesis",
+                                            :class=>'clientSideValidatedForm',
+                                            :multipart=>true},
+                                            :url =>{ :controller => "GraduateStudents/students",
+                                            :action => "uploadthesis"} do |f| %>
+
+<table>
+           <tr>
+             <td class="labelDefinitionTerm"><label > Select a CSV File :</label></td>
+         <td class="inputBoxPlacement"><%= f.file_field :uploadfile %></td>
+             <td class="fieldErrorPlacement"></td>
+           </tr>
+          </table>
+        <div class="bottomButtons" style="margin:0px;">
+          <table>
+            <tr>
+              <td></td>
+              <td>  <%= f.submit "Upload" , :id=> 'thesis'%></td>
+            </tr>
+          </table>
+        </div>
+
+  <%end%>
+      </div>
+    </div>
+
+
+    <%#Independent Studies CSV Upload Expander%>
+
+    <div class="expanderHeaderBar" id="basicInfoExpander">
+      <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+      <h2>Upload Independent Studies Details</h2>
+
+      <div class="expander">
+
+         <%= nested_form_for @uploadcheck ,:html=>{:id=>"csvstudy",
+                                            :class=>'clientSideValidatedForm',
+                                            :multipart=>true},
+                                            :url =>{ :controller => "GraduateStudents/students",
+                                            :action => "uploadstudy"} do |f| %>
+
+          <table>
+           <tr>
+             <td class="labelDefinitionTerm"><label > Select a CSV File :</label></td>
+             <td class="inputBoxPlacement"><%= f.file_field :uploadfile  %></td>
+             <td class="fieldErrorPlacement"></td>
+           </tr>
+          </table>
+         <div class="bottomButtons" style="margin:0px;">
+          <table>
+            <tr>
+             <td></td>
+             <td>  <%= f.submit "Upload" , :id=> 'study' %></td>
+            </tr>
+          </table>
+         </div>
+
+       <%end%>
+      </div>
+    </div>
+  </div>
+<% end %>

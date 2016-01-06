@@ -1,0 +1,490 @@
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    validateForm($("#formFacultyMember"))
+    $("#formFacultyMember").bind("nested:beforeFieldAdded",function(event)
+    {      
+      event.link.data("fieldAddtionErrorMessage","Please fill the required fields first")
+      checkInputsForAdditionWithRequiredLogic(event)
+    })
+    $("#formFacultyMember").bind("nested:fieldAdded",function(event)
+    {
+      event.field.find("*[id*=job_experiences]").each(function()
+      {
+        if ($(this).attr("id").indexOf("designation") > -1)
+        {
+          $(this).rules("add",alphabetAndCommonCharacterRule)
+          $(this).rules("add",
+          {
+            maxlength:50,
+            messages:
+              {
+              maxlength:"Max {0} characters allowed"
+            }
+          })
+        }
+        else if ($(this).attr("id").indexOf("organization")>-1)
+        {
+          $(this).rules("add",
+          {
+            required:true,
+            maxlength:50,
+            messages:
+              {
+              required:"Please enter an organization",
+              maxlength:"Max {0} characters allowed"
+            }
+          })
+        }
+        else if ($(this).attr("id").indexOf("to_year") > -1)
+        {
+          $(this).rules("add",
+          {
+            greaterThan:$(this).closest('tr').prev('tr').find("select:first"),
+            messages:
+              {
+              greaterThan:"cannot be less than from year"
+            }
+          })
+        }
+      })
+
+      event.field.find("*[id*=educational_information]").each(function()
+      {
+        if ($(this).attr("id").indexOf("degree")>-1)
+        {
+          $(this).rules("add",
+          {
+            required:true,
+            maxlength:30,
+            messages:
+              {
+              required:"Please enter a degree",
+              maxlength:"Max {0} characters allowed"
+            }
+          })
+        }
+        else
+        {
+          $(this).rules("add",
+          {
+            required:true,
+            maxlength:50,
+            messages:
+              {
+              required:"Please enter a university",
+              maxlength:"Max {0} characters allowed"
+            }
+          })
+        }
+      })
+      event.field.find("input[id*=awards_information]").each(function()
+      {
+        $(this).rules("add",
+        {
+          required:true,
+          maxlength:30,
+          messages:
+            {
+            required:"Please enter a title",
+            maxlength:"Max {0} characters allowed"
+          }
+        })
+      })
+      $("#formFacultyMember *[id*=inter_disciplinary_collaborators]").each(function()
+      {
+        if ($(this).attr("id").indexOf("name")>-1)
+        {
+          $(this).rules("add",alphabetRule)
+          $(this).rules("add",
+          {
+            required:true,
+            maxlength:30,
+            messages:
+            {
+              required:"Please enter a name",
+              maxlength:"Max {0} characters allowed"
+            }
+
+          })
+        }
+        else if ($(this).attr("id").indexOf("affiliation")>-1)
+        {
+          $(this).rules("add",alphabetRule)
+          $(this).rules("add",
+          {
+            required:true,
+            maxlength:30,
+            messages:
+            {
+              required:"Please enter an affliation",
+              maxlength:"Max {0} characters allowed"
+            }
+
+          })
+        }
+        else if ($(this).attr("id").indexOf("date")>-1)
+        {
+          attachDynamicDatePicker($(this))
+          
+          if ($(this).attr("id").indexOf("enddate")>-1)
+          {
+            $(this).rules("add",
+            {
+              greaterThanEndDate:$(this).closest('tr').prev('tr').find('input:first'),
+              messages:
+                {
+                greaterThanEndDate:"cannot be less than start date"
+              }
+            })
+          }
+        }
+      })
+    })
+    $("#formFacultyMember").bind("nested:fieldRemoved",function(event)
+    {
+      event.field.find("input,select").each(function()
+      {
+        $(this).rules("remove")
+        clearError($(this))
+      })
+    })
+  })
+
+
+
+</script>
+<div class="expandingBlock">
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>Basic Information <span class="requiredFillExpander"> *</span></h2>
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">Name:
+            <span class="requiredFieldAsterisk">*</span>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%= u.text_field :name,
+                :id=>:txname,
+                :required=>true,
+                :title=>'Only alphabets are allowed',
+                :class =>"inputTextbox"%>
+              <%=u.fields_for :user_user_types do |uut|%>
+                <%=uut.hidden_field :user_type_id%>
+              <%end%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @faculty_member.user.errors[:name][0] %>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Date of Birth: </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%= u.text_field :dateofbirth,
+                :id=>'txdate',
+                :class=>"uidatePicker"%>
+            <%end%>
+          </td>
+        </tr>
+      </table>
+      <tr>
+        <td>
+          <fieldset>
+            <legend><strong>Gender</strong></legend>
+            <%=fm.fields_for :user do |u|%>
+              <div class="firstRadioButton"><%=  u.radio_button :gender, 'Male',:checked => true%> Male</div>
+              <div class="otherRadioButtons"><%= u.radio_button :gender, 'Female'%> Female</div>
+            <%end%>
+          </fieldset>
+        </td>
+      </tr>
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Department:
+            <span class="requiredFieldAsterisk">*</span>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%=u.collection_select  :department_id,Department.all,:id,:name,
+                options={ :prompt=>"Select a department",
+                :selected=>u.object.department_id},
+                :id=>'csDepartments',
+                :required=> 'true',
+                :class=>"dropdown"%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement"></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">Joining Date: </td>
+          <td class="inputBoxPlacement">
+            <%= fm.text_field :joiningdate,
+              :id=>'txjoiningdate',
+              :class=>"uidatePicker"%>
+          </td>
+          <td class="fieldErrorPlacement">
+            <%= @faculty_member.errors[:joiningdate][0] %>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Designation:
+            <span class="requiredFieldAsterisk">*</span>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.collection_select  :faculty_member_designation_type_id,FacultyMemberDesignationType.sorted_designation_types,:id,:name,
+              options={:include_blank=>"Select a designation",
+              :selected=>fm.object.faculty_member_designation_type_id},
+              :required=> true,
+              :title   => "Please select a designation",
+              :class=>"dropdown"%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @faculty_member.errors[:designation][0] %>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Status <span class="requiredFieldAsterisk">*</span>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.collection_select  :faculty_member_status_type_id,FacultyMemberStatusType.all,:id,:name,
+              options={:include_blank=>"Select a status",
+              :selected=>fm.object.faculty_member_status_type_id},
+              :required=> true,
+              :title   => "Please select a status",
+              :class=>"dropdown"%>
+          </td>
+          <td class="fieldErrorPlacement"></td>
+        </tr>
+
+        <tr>
+          <td class="labelDefinitionTerm">
+            Upload Image:
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u| %>
+              <%= u.file_field :photo,
+                :class=>"inputTextbox"%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement">
+            <%= @faculty_member.user.errors[:photo_content_type][0] %>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Upload CV:
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.file_field :cv,
+              :class=>"inputTextbox"%>
+          </td>
+            <td class="fieldErrorPlacement">
+               <%= @faculty_member.errors[:cv_content_type][0] %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>
+      Contact Information <span class="requiredFillExpander"> *</span>
+    </h2>
+    <div class="expander">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Address:
+            <span class="requiredFieldAsterisk">*</span>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%=u.text_field :address,
+                :id=>'txaddress',
+                :required=>true,
+                :title => "Permanent address is required",
+                :class=>"inputTextbox"%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement"> <%= @faculty_member.user.errors[:address][0] %>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Office Number:<span class="requiredFieldAsterisk">
+              *
+            </span>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%=u.telephone_field :contactnumber,
+                :id=>'txofficeno',
+                :required=>true,
+                :class=>"inputTextbox",
+                :title=>"Required format: +92423444338"%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement"><%= @faculty_member.user.errors[:officenumber][0]%>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Mobile Number:
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%=u.telephone_field :officenumber,
+                :id=>'txmobileno',
+                :class=>"inputTextbox",
+                :title=>"Required format: +923339856745"%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement"> <%= @faculty_member.user.errors[:contactnumber][0] %>
+          </td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm">
+            Primary Email:
+            <span class="requiredFieldAsterisk">*</span>
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%=u.email_field  :email,
+                :id=>'txemailaddress',
+                :required=>true,
+                :class=>"inputTextbox",
+                :title=>"Required format: mno.xyz@lums.edu.pk"%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement"> <%= @faculty_member.user.errors[:email][0]%>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="labelDefinitionTerm">
+            Secondary Email:
+          </td>
+          <td class="inputBoxPlacement">
+            <%=fm.fields_for :user do |u|%>
+              <%=u.email_field  :secondaryemail,
+                :id=>'txsecondaryemailaddress',
+                :class=>"inputTextbox",
+                :title=>"Required format: abc@gmail.com"%>
+            <%end%>
+          </td>
+          <td class="fieldErrorPlacement"> <%= @faculty_member.user.errors[:secondaryemail][0]%>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <div class="headingDiv">
+      <h2>Education <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>
+    </div>
+    <div class="expander">
+      <%=fm.fields_for :educational_information do |educational_info|%>
+        <%render "educational_information" , :ei=>educational_info%>
+      <%end%>
+      <%=fm.link_to_add "Add Education", :educational_information, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left'%>
+      <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <div class="headingDiv">
+      <h2>Honors,Awards and Fellowships <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>
+    </div>
+    <div class="expander">
+      <%=fm.fields_for :awards_information do |awards|%>
+        <%render "awards_information" , :ai=>awards%>
+      <%end%>
+      <%=fm.link_to_add "Add an Award", :awards_information, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left'%>
+      <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <div class="headingDiv">
+      <h2>Job Experiences <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>
+    </div>
+    <div class="expander">
+      <%=fm.fields_for :job_experiences do |job_experience|%>
+        <%render "job_experience" , :je=>job_experience%>
+      <%end%>
+      <%=fm.link_to_add "Add Job Experience", :job_experiences, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left'%>
+      <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+    </div>
+  </div>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <div class="headingDiv">
+      <h2>Inter-disciplinary Collaborations <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>
+    </div>
+    <div class="expander">
+      <%=fm.fields_for :inter_disciplinary_collaborators do |collaborators|%>
+        <%render "inter_disciplinary_collaborators" , :idc => collaborators%>
+      <%end%>
+      <%=fm.link_to_add "Add inter-disciplinary collaborator", :inter_disciplinary_collaborators, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left' %>
+      <span class="dynamicFieldErrorPlacement" style="display:none; float:left;"></span>
+    </div>
+  </div>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>Research Interest</h2>
+    <div class="expander">
+      <%=fm.text_area    :researchinterests,
+        :cols =>90,
+        :rows =>9%>
+    </div>
+  </div>
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>Biography</h2>
+    <div class="expander">
+      <%=fm.text_area    :biography,
+        :cols =>90,
+        :rows =>9%>
+    </div>
+  </div>
+
+  <div class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <h2>Services</h2>
+    <div class="expander">
+      <div id="dynDivTeamContainer">
+        <%=fm.fields_for :services do |faculty_service|%>
+          <%=render "faculty_service",
+            :fs => faculty_service %>
+        <%end%>
+        <%= fm.link_to_add "Add Services", :services, :style=>'font-weight:bold; margin-left:15px;margin-bottom:10px;float:left'%>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="bottomButtons">
+<%#= button_tag "Cancel", :action => "index", :id => "students" %>
+    <table>
+      <tr>
+        <td><span class="submitErrorPlacement"></span></td>
+        <td>
+          <%=fm.submit "Save" , :id=>"saveButton"%>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

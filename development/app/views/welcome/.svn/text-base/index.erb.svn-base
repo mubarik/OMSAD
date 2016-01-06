@@ -1,0 +1,422 @@
+<% content_for :homepage do %>
+
+<style>
+  .heading {
+    padding:0px 0px 5px 0px;
+    border-bottom:1px solid #ccc;
+  }
+
+  .headingContainer {
+    padding:20px 0 0 0;
+    overflow: auto;
+  }
+
+  .headingDescription {
+    font-size: 13px;
+    float:left;
+    width:323px;
+    padding: 5px 10px 10px 0px;
+    text-align: justify;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .headingDescription h4 {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  .subHeadingDescription {
+    font-size: 13px;
+    float:left;
+    width:323px;
+    padding: 5px 0px 10px 2px;
+    text-align: justify;
+    line-height: 1.1em;
+    line-height: 1.5em;
+  }
+
+  .subheading {
+    padding: 5px;
+    margin-top: 5px;
+    width:295px;
+    background-color: #E0E1F5;
+    border-radius: 4px;
+  }
+
+  .subheading a:link, .subheading a:visited {
+    text-decoration:none;
+    color: black;
+  }
+
+  .subheading a:hover, .subheading a:focus {
+    text-decoration:none;
+    color:black;
+  }
+
+  .subheadingsContainer {
+    font-size: 15px;
+    float:left;
+    width:314px;
+    padding: 16px 10px 10px;
+  }
+
+  .subheadingDescription {
+    font-size: 15px;
+    float:left;
+    width:300px;
+    padding: 10px;
+  }
+
+  .pageHeadingBar {
+    float:left;
+    padding-right: 13px;
+  }
+
+
+  .linkHover {
+    background-color:#A64C10;
+    width: 295px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .closable {
+    
+  }
+
+  .arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 14px solid #A64C10;
+    margin-left: 307px;
+    margin-top: 5px;
+    display: none;
+  }
+
+  .leftfloatingDiv {
+    float:left;
+    height: 36px;
+  }
+
+  .whiteBack {
+    background-color: white;
+  }
+
+  .roundedBorder {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid #E0E1F5;
+    padding: 10px;
+    display: none;
+  }
+
+</style>
+
+  <%#*E0E1F5%>
+
+  <div id="homePageContainer">
+
+    <%#*Faculty Section%>
+
+    <div class="headingContainer">
+      <h1 class="heading">Faculty</h1>
+      <div class="closable">
+        <div class="headingDescription">
+          <p></p>
+        </div>
+        <div class="subheadingsContainer">
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Faculty", :controller => "faculty/facultymembers", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Research Grants", :controller => "faculty/researchgrants", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Books", :controller => "faculty/bookpublications", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Book Chapters", :controller => "faculty/bookchapterpublications", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Journal Papers", :controller => "faculty/journalpublications", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Conference Papers", :controller => "faculty/conferencepublications", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Workshop Papers", :controller => "faculty/workshoppublications", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Technical Reports", :controller => "faculty/technicalreportpublications", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Scholarly Report", :controller => "faculty/scholarlyreport", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Configurations", :controller => "faculty/projectconfs", :action => "new"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+        </div>
+        <div class="subHeadingDescription" id="preview">
+          <p class="roundedBorder"></p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <%#*Students Section%>
+
+    <div class="headingContainer">
+      <h1 class="heading">Students</h1>
+      <div class="closable">
+        <div class="headingDescription">
+          <p></p>
+        </div>
+        <div class="subheadingsContainer">
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Students", :controller=>'/GraduateStudents/students', :action=>'index'%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Courses", :controller=>'/GraduateStudents/courses', :action=>'index'%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Semesters", :controller=>'/GraduateStudents/semesters', :action=>'index'%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Configurations", :controller=>'/GraduateStudents/projectconfs', :action=>'new'%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+        </div>
+        <div class="subHeadingDescription" id="preview">
+          <p class="roundedBorder"></p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <%#*Inventory Section%>
+
+    <div class="headingContainer">
+      <h1 class="heading">Inventory</h1>
+      <div class="closable">
+        <div class="headingDescription">
+          <p></p>
+        </div>
+        <div class="subheadingsContainer">
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Inventory", :controller => "inventory/inventories", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Room", :controller => "inventory/roomdetails", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+        </div>
+        <div class="subHeadingDescription" id="preview">
+          <p class="roundedBorder"></p>
+        </div>
+      </div>
+    </div>
+
+
+    <%#*Staff Section%>
+
+    <div class="headingContainer">
+      <h1 class="heading">Staff</h1>
+      <div class="closable">
+        <div class="headingDescription">
+          <p></p>
+        </div>
+        <div class="subheadingsContainer">
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "External Research Assistant", :controller => "inventory/researchassistants", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "External Teaching Assistant", :controller => "inventory/tassistants", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Undergraduate Student", :controller => "inventory/ustudents", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+          <div class="leftfloatingDiv"><h4 class="subheading"><%=link_to "Administrative Staff", :controller => "inventory/astaffs", :action => "index"%></h4></div><div class="arrow-right"></div>
+          <div class="clearFloatingAndStartFromBelow"></div>
+        </div>
+        <div class="subHeadingDescription" id="preview">
+          <p class="roundedBorder"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="blueprint">
+    <div class="subHeadingDescription"></div>
+    <div class="subHeadingDescription"></div>
+    <div class="subHeadingDescription"></div>
+    <div class="subHeadingDescription"></div>
+  </div>
+
+<script>
+    $(document).ready(function() {
+
+     <%#*$('div.closable').each(function() {%>
+        <%#*//console.log($(this).height());%>
+        <%#*$(this).css('height',($(this).height())+'px');%>
+      <%#*});%>
+
+
+      $.assocArraySize = function(obj) {
+          var size = 0, key;
+          for (key in obj) {
+              if (obj.hasOwnProperty(key)) size++;
+          }
+          return size;
+      };
+
+
+      var descriptionsLevel2 = [];
+      var descriptionsLevel2ParaHeights = [];
+
+
+      function getSpacedString(str) {
+        var words = str.split('_');
+        return words.join(' ');
+      }
+
+      function getUnderscoredString(str) {
+        var words = str.split(' ');
+        return words.join('_');
+      }
+
+
+
+      $.ajax ({
+          type: "GET",
+          url: "homePageData.xml",
+          dataType: "xml",
+          success: function( descriptions ) {
+            var descriptionsLevel1 = [];
+            descriptionsLevel2 = [];
+            descriptionsLevel2ParaHeights = [];
+
+            $(descriptions).find("LUMSOMSADHomePageData").children().each(function(index1) {
+              var str = this.nodeName;
+              descriptionsLevel1[str] = $(this).attr("description");
+              descriptionsLevel2[str] = [];
+              descriptionsLevel2ParaHeights[str] = [];
+
+              $(this).children().each(function(index2) {
+                descriptionsLevel2[str][this.nodeName] = $(this).text();
+                $('div#blueprint div.subHeadingDescription').eq(index1).append("<p id='" + this.nodeName + "' class='roundedBorder'>" + $(this).text() + "</p>");
+              });
+              
+              $('div#blueprint div.subHeadingDescription').eq(index1).children('p').each(function () {
+                descriptionsLevel2ParaHeights[str][$(this).attr('id')] = $(this).outerHeight(true);
+              });
+            });
+
+            $('div.headingContainer').each(function(index) {
+              $(this).children('div.closable').children('div.headingDescription:first').children('p').text(descriptionsLevel1[$(this).children('h1').text()]);
+            });
+
+            $('div#blueprint').remove();
+ //           console.log(descriptionsLevel2ParaHeights);
+          }
+      });
+
+      <%#*$('div.closable').each(function() {%>
+        <%#*//console.log($(this).height());%>
+        <%#*$(this).css('height',($(this).height())+'px');%>
+      <%#*});%>
+
+
+      function equalHeight(group) {
+        var tallest = 0;
+        group.each(function() {
+          var thisHeight = $(this).height();
+          if(thisHeight > tallest) {
+            tallest = thisHeight;
+          }
+        });
+
+        <%#*var $heading = group.eq(0).closest('div.headingContainer h1');%>
+        <%#*console.log(descriptionsLevel2ParaHeights);%>
+
+
+//        console.log($heading.text());
+        <%#*for (var j=0 ; j<descriptionsLevel2ParaHeights[$heading.text()].length ; j++) {%>
+          <%#*if(descriptionsLevel2ParaHeights[$heading.text()][j] > tallest) {%>
+            <%#*tallest = thisHeight;%>
+          <%#*}%>
+        <%#*}%>
+//        console.log(tallest);
+        group.height(tallest);
+      }
+
+
+
+
+  //    $('div.headingContainer').each(function() {
+    //    equalHeight($(this).children('div.closable:first').children('div'));
+      //});
+      $('div#content:first').hide();
+      $('div.headingContainer:first').siblings().children('div.closable').hide();
+
+
+
+
+      $('h4.subheading').hover(function() {
+        $(this).addClass("linkHover");
+        $(this).parent().addClass('whiteBack');
+        $(this).children('a').css('color', 'white');
+        //$(this).closest('div.subheadingsContainer').find('.arrow-right').hide();
+        $(this).parent('div.leftfloatingDiv').next('div.arrow-right').show();        
+//        console.log($(this).parent('div.leftfloatingDiv').next('.arrow-right'));
+        $(this).css('cursor','pointer');
+        $(this).closest('.subheadingsContainer').next('div.subHeadingDescription').children('p').text(descriptionsLevel2[$(this).closest('div.closable').prev('h1').text()][getUnderscoredString($(this).text())]);
+        $(this).closest('.subheadingsContainer').next('div.subHeadingDescription').children('p').show();
+
+//        console.log($(this).closest('.subheadingsContainer').next('div.subHeadingDescription').children('p'));
+
+        var subParaHeight = descriptionsLevel2ParaHeights[$(this).closest('div.closable').prev('h1').text()][getUnderscoredString($(this).text())];
+        var displayPos = $(this).offset().top-$(this).closest('div.subheadingsContainer').offset().top - 7 - subParaHeight/2;
+//        console.log($(this).offset().top + " - " + $(this).closest('div.subheadingsContainer').offset().top + " - 7 - " + descriptionsLevel2ParaHeights[$(this).closest('div.closable').prev('h1').text()][getUnderscoredString($(this).text())] + " = " + displayPos);
+//        descriptionsLevel2ParaHeights[$(this).closest('div.closable').prev('h1').text()][getUnderscoredString($(this).text())] + " = "
+//        console.log(displayPos + ", " + descriptionsLevel2ParaHeights[$(this).closest('div.closable').prev('h1').text()][getUnderscoredString($(this).text())] + ", " + $(this).closest('div.closable').prev('h1').text() + ", " + getUnderscoredString($(this).text()));
+
+        var buttonTop = $(this).offset().top-$(this).closest('div.subheadingsContainer').offset().top;
+        var buttonBottom = buttonTop + $(this).height();
+        var topCheckedDisplayPos = displayPos < 14 ? 14 : displayPos;
+        var bottomPos = topCheckedDisplayPos + subParaHeight;
+        var lastSubHeadingPos = $(this).closest('div.subheadingsContainer').children('div:last').offset().top-$(this).closest('div.subheadingsContainer').offset().top;
+        var finalPosition = bottomPos < lastSubHeadingPos ? topCheckedDisplayPos: topCheckedDisplayPos-subParaHeight;
+        /*console.log("Button Top: " + buttonTop);
+        console.log("Button Bottom: " + buttonBottom);
+        console.log("Sub Para Height: " + subParaHeight);
+        console.log("Top Checked Position: " + topCheckedDisplayPos);
+        console.log("Bottom Position: " + bottomPos);
+        console.log("Last Subheading Position: " + lastSubHeadingPos);
+        console.log("Final Position: " + finalPosition);
+        finalPosition = 15+36+36;*/
+        $(this).closest('.subheadingsContainer').next('div.subHeadingDescription').children('p').css('margin-top', topCheckedDisplayPos +'px');
+        $(this).closest('.subheadingsContainer').next('div.subHeadingDescription').stop().show("slide", {direction: "left"}, 'fast', function() {
+//       console.log(descriptionsLevel2);
+//          $(this).children('p').css('margin-top', ($(this).position().top-$(this).closest('div.headingContainer').position().top-70)+'px');
+//descriptionsLevel2ParaHeights[$(this).closest('div.closable').prev('h1').text()][getUnderscoredString($(this).text())]
+        });
+      },
+
+      function() {
+        $(this).removeClass("linkHover");
+        $(this).parent().removeClass('whiteBack');
+        $(this).children('a').css('color', 'black');
+        $(this).parent('div.leftfloatingDiv').next('.arrow-right').hide();
+        $(this).parent().next('div#preview').children('p').text('');
+        $(this).closest('.subheadingsContainer').next('div.subHeadingDescription').children('p').hide();
+        $(this).closest('.subheadingsContainer').next('div.subHeadingDescription').children('p').text('');
+        $(this).closest('.subheadingsContainer').next('div.subHeadingDescription').stop().hide();
+      });
+
+      $('h4.subheading').click(function() {
+        window.location = $(this).children('a').attr('href');
+      });
+
+      $('div#homePageContainer a').click(function(event) {
+        event.preventDefault();
+      });
+
+
+
+      <%#*$('.headingContainer').on('mouseenter', function() {%>
+          <%#*$(this).children('div.closable').slideDown();%>
+          <%#*$(this).siblings().children('div.closable').slideUp();%>
+      <%#*});%>
+
+      $('div.headingContainer h1').click(function() {
+          $(this).next('div.closable').slideToggle();
+          if ($(this).parent('div.headingContainer').siblings().children('div.closable').is(':visible'))
+            $(this).parent('div.headingContainer').siblings().children('div.closable').slideUp();
+      });
+
+    });
+  </script>
+<% end %>

@@ -1,0 +1,27 @@
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+<% content_for :content do %>
+  <div class="pageHeadingBar">
+    <h1>Add Independent Studies</h1>
+  </div>
+  <hr class="headingLineBreak"/>
+
+  <% if !flash.now[:notice].blank? %>
+    <div class="messages">
+      <p><%=flash.now[:notice]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <% if !flash.now[:error].blank? %>
+    <div class="errors">
+      <p><%=flash.now[:error]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+  <%= nested_form_for @student,:url => { :controller => "GraduateStudents/independent_studies",:action => "create",:id=>@student.id,:saved=>@saved}, :html=>{:id=>'formMSIndependentStudies', :class=>'clientSideValidatedForm'}  do |student_new|%>
+    <%#= ins_new.hidden_field :student_id , :value => params[:id]%>
+    <%= render "newedit",:student =>student_new %>
+  <%end%>
+<%end%>

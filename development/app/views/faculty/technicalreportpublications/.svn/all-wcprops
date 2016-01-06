@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/DSSD_Summer2012/!svn/ver/5218/OMSAD/development/app/views/faculty/technicalreportpublications
+END
+importbibtex.erb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/4733/OMSAD/development/app/views/faculty/technicalreportpublications/importbibtex.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/4792/OMSAD/development/app/views/faculty/technicalreportpublications/new.html.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/5218/OMSAD/development/app/views/faculty/technicalreportpublications/show.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/DSSD_Summer2012/!svn/ver/5020/OMSAD/development/app/views/faculty/technicalreportpublications/_newedit.html.erb
+END
+import_data.erb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/DSSD_Summer2012/!svn/ver/5192/OMSAD/development/app/views/faculty/technicalreportpublications/import_data.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/4793/OMSAD/development/app/views/faculty/technicalreportpublications/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/DSSD_Summer2012/!svn/ver/4159/OMSAD/development/app/views/faculty/technicalreportpublications/index.erb
+END

@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        <td class="labelDefinitionTerm">LCD Type: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement"><%= f.text_field :lcdtype, :class=>"inputTextbox", :title=>'e.g flat screen' %></td>
+        <td class="fieldErrorPlacement"><%=f.object.errors[:lcdtype][0] %></td>
+    </tr>
+    <tr>
+        <td class="labelDefinitionTerm">Resolution: </td>
+        <td class="inputBoxPlacement"><%= f.text_field :resolution, :class=>"inputTextbox", :title=>'e.g. 1024 × 768 pixels' %></td>
+        <td class="fieldErrorPlacement"><%=f.object.errors[:resolution][0] %></td>
+    </tr>
+    <tr>
+        <td class="labelDefinitionTerm">Screen Size: </td>
+        <td class="inputBoxPlacement"><%= f.text_field :size, :class=>"inputTextbox", :title=>'e.g. 1024 × 768' %></td>
+        <td class="fieldErrorPlacement"><%=f.object.errors[:size][0] %></td>
+    </tr>
+</table>

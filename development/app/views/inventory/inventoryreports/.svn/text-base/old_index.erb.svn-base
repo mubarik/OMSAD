@@ -1,0 +1,127 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+
+      <div class="pageHeadingBar">
+          <h1>Inventory Reports</h1>
+      </div>
+
+     <div class="dataBlock">
+      <%= form_tag({:controller => 'inventory/inventoryreports', :action => 'create'},:remote => true, :id=>"postform") do%>
+        <div class="reportComboButton">
+          <%= select_tag :selectreport ,
+                                        options_for_select([['Select Report Type',0],
+                                                             ['Inventory Allocation Report',1],
+                                                             ['Inventory History Report',2],
+                                                             ['Inventory Type Report',3]]),:required=> 'true'%>
+            <div class ="reportCombo">
+                <%=collection_select(:invtype,:id,@inv_types,:id,:inventorytypename,options={:prompt=>"Select Inventory Type"})%>
+            </div>
+        </div>
+
+         <div class="reportTypeselection">
+          <%= button_tag "View Report" %>
+         </div>
+       <%end%>
+    </div>
+      <div class ="reportsGrid">
+
+      </div>
+  <br/>
+     <%if @query1 == true%>
+        <%= grid(@tasks_grid, :show_filters => :always) do |g|
+          g.column :column_name => 'Sr. No', :attribute_name => 'id', :model_class=>'Inventory',:no_filter => true   do |task|
+            task.inventory.id
+          end
+          g.column :column_name => 'Owner', :auto_reload => true, :attribute_name => 'name', :model_class=>'User',
+            :custom_filter => User.find(:all).map{|pr| [pr.name, pr.name]} do |task|
+            task.user.name
+          end
+          g.column :column_name => 'Inventory Name', :attribute_name => 'inventoryname', :model_class=>'Inventory' do |task|
+            task.inventory.inventoryname
+          end
+
+          g.column :column_name => 'Type', :attribute_name => 'inventorytypename', :model_class=>'InventoryType'  do |task|
+            task.inventory.inventory_type.inventorytypename
+          end
+
+          g.column :column_name => 'Brand', :attribute_name => 'brand',:model_class=>'Inventory'  do |task|
+            task.inventory.brand
+          end
+          g.column :column_name => 'Model', :attribute_name => 'model', :model_class=>'Inventory' do |task|
+            task.inventory.model
+          end
+           g.column :column_name => 'Start Date', :attribute_name => 'startdate', :no_filter => true   do |task|
+            task.startdate
+          end
+
+        end %>
+    <%elsif @query2 == true%>
+      <%= grid(@invhists_grid, :show_filters => :always) do |g|
+
+
+        g.column :column_name => 'Sr. No', :attribute_name => 'id',  :model_class=>"Inventory",:no_filter => true   do |invhist|
+          invhist.inventory.id
+        end
+
+        g.column :column_name => 'Name', :auto_reload => true, :attribute_name => 'inventoryname',  :model_class=>"Inventory",
+                 :custom_filter => Inventory.find(:all).map{|pr| [pr.inventoryname, pr.inventoryname]}   do |invhist|
+          invhist.inventory.inventoryname
+        end
+
+        g.column :column_name => 'Owner', :attribute_name => 'name', :model_class=>'User'  do |invhist|
+          invhist.user.name
+        end
+
+        g.column :column_name => 'Brand', :attribute_name => 'brand', :model_class=>"Inventory" do |invhist|
+          invhist.inventory.brand
+        end
+
+        g.column :column_name => 'Model', :attribute_name => 'model', :model_class=>"Inventory"   do |invhist|
+          invhist.inventory.model
+        end
+
+         g.column :column_name => 'Start Date', :attribute_name => 'startdate',:no_filter => true   do |invhist|
+          invhist.startdate
+        end
+
+        g.column :column_name => 'End Date', :attribute_name => 'enddate', :no_filter => true   do |invhist|
+          invhist.enddate
+        end
+
+      end %>
+    <%elsif @query3 == true%>
+      <%= grid(@invtypes_grid, :show_filters => :always) do |g|
+
+        g.column :column_name => 'Sr. No', :attribute_name => 'id', :model_class=>"Inventory", :no_filter => true   do |invtype|
+          invtype.inventory.id
+        end
+
+        g.column :column_name => 'Type', :auto_reload => true,:attribute_name => 'inventorytypename', :model_class=>"InventoryType",
+                 :custom_filter => InventoryType.find(:all).map{|pr| [pr.inventorytypename, pr.inventorytypename]}  do |invtype|
+          invtype.inventory_type.inventorytypename
+        end
+
+        g.column :column_name => 'Inventory Name', :attribute_name => 'inventoryname', :model_class=>"Inventory" do |invtype|
+          invtype.inventory.inventoryname
+        end
+
+
+        g.column :column_name => 'Brand', :attribute_name => 'brand', :model_class=>"Inventory" do |invtype|
+          invtype.inventory.brand
+        end
+
+        g.column :column_name => 'Model', :attribute_name => 'model', :model_class=>"Inventory"  do |invtype|
+          invtype.inventory.model
+        end
+
+        g.column :column_name => 'Owner', :attribute_name => 'name', :model_class=>"User" do |invtype|
+          invtype.user.name
+        end
+
+      end %>
+    <%end%>
+
+<%end%>

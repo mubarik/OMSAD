@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/DSSD_Summer2012/!svn/ver/5196/OMSAD/development/app/views/inventory/tassistants
+END
+destroy.erb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/1456/OMSAD/development/app/views/inventory/tassistants/destroy.erb
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/DSSD_Summer2012/!svn/ver/5195/OMSAD/development/app/views/inventory/tassistants/new.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/4514/OMSAD/development/app/views/inventory/tassistants/show.erb
+END
+update.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/1456/OMSAD/development/app/views/inventory/tassistants/update.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/1456/OMSAD/development/app/views/inventory/tassistants/create.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/5196/OMSAD/development/app/views/inventory/tassistants/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/3676/OMSAD/development/app/views/inventory/tassistants/index.erb
+END

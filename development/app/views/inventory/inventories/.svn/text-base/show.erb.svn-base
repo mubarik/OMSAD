@@ -1,0 +1,201 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+ 
+<div class="pageHeadingBar">
+        <h1>Inventory Details</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+    <div class="moreInfodisplayPicWithTextWrap">
+        <%if @inventory.inventory_type.inventorytypename == 'Printer'%>
+            <%=image_tag("iprinter.png", :class=>'displayPic')%>
+        <%elsif @inventory.inventory_type.inventorytypename == 'Scanner'%>
+            <%=image_tag("iscanner.png", :class=>'displayPic')%>
+      <%elsif @inventory.inventory_type.inventorytypename == 'LCD'%>
+            <%=image_tag("ilcd.png", :class=>'displayPic')%>
+        <%elsif @inventory.inventory_type.inventorytypename == 'CPU'%>
+            <%=image_tag("icpu.jpeg", :class=>'displayPic')%>
+        <%else%>
+            <%=image_tag("iinv3.jpeg", :class=>'displayPic')%>
+      
+        <%end%>
+
+        <h1><%=@inventory.inventoryname%></h1>
+    </div>
+
+    <div class="clearFloatingAndStartFromBelow"></div>
+    <div class="expandingBlock">
+       <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Inventory Information</h2>
+           <div class="expander">
+                <table>
+                  <tr><td class="labelDefinitionTerm">Type:</td><td class="labelDefinitionDetails"><%=  @inventory.inventory_type.inventorytypename %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Status:</td><td class="labelDefinitionDetails"><%=  @inventory.inventory_status.inventorystatus %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Barcode:</td><td class="labelDefinitionDetails"><%=  @inventory.barcode %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Description:</td><td class="labelDefinitionDetails"><%=  @inventory.description %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Brand:</td><td class="labelDefinitionDetails"><%=  @inventory.brand %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Model:</td><td class="labelDefinitionDetails"><%=  @inventory.model %></td></tr>
+               <%unless @inventory.research_grant.blank?%>
+                  <tr><td class="labelDefinitionTerm">Research Grant:</td><td class="labelDefinitionDetails"><%= @inventory.research_grant.title%></td></tr>
+               <%end%>
+               <%unless @inventory.inventory_location.blank?%>
+                  <tr><td class="labelDefinitionTerm">Associated Room:</td> <td class="labelDefinitionDetails"><%= @inventory.inventory_location.location.room_detail.roomnumber %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Associated Location:</td><td class="labelDefinitionDetails"><%= @inventory.inventory_location.location.locationname %></td></tr>
+               <%end%>
+                  <tr><td class="labelDefinitionTerm">Created At:</td><td class="labelDefinitionDetails"><%= @inventory.created_at%></td></tr>
+                  <tr><td class="labelDefinitionTerm">Updated At:</td><td class="labelDefinitionDetails"><%= @inventory.updated_at%></td></tr>
+                </table>
+           </div>
+       </div>
+
+
+           <%#*<div class="expanderHeaderBar">%>
+           <%#=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <%#*<h2>Ownership Information</h2>%>
+            <%#*<div class="expander">%>
+                  <%#*<table>%>
+                  <%#*<tr><td class="labelDefinitionTerm">Acquisition Date:</td><td class="labelDefinitionDetails"><%=  @inventory.acqdate %>
+                  <%#*<tr><td class="labelDefinitionTerm">Owner:</td><td class="labelDefinitionDetails"><%=  @inventoryowner.user.name %>
+                  <%#*<tr><td class="labelDefinitionTerm">Ownership Start Date:</td><td class="labelDefinitionDetails"><%=  @inventoryowner.startdate %>
+                  <%#*<tr><td class="labelDefinitionTerm">Ownership End Date:</td><td class="labelDefinitionDetails"><%=  @inventoryowner.enddate %>
+                  <%#*</table>%>
+
+            
+            <%#*</div>%>
+            <%#*</div>%>
+
+
+           <%if !(@printer.nil?)%>
+              <div class="expanderHeaderBar">
+               <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+               <h2>Printer Details</h2>
+                <div class="expander">
+                    <table>
+                        <tr><td class="labelDefinitionTerm">Technology: </td><td class="labelDefinitionDetails"><%=  @printer.technology.blank?? 'Not Provided': @printer.technology %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Speed: </td><td class="labelDefinitionDetails"><%=  @printer.speed.blank?? 'Not Provided': @printer.speed %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Memory: </td><td class="labelDefinitionDetails"><%=  @printer.memory.blank?? 'Not Provided': @printer.memory %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Media Type: </td><td class="labelDefinitionDetails"><%=  @printer.mediatype.blank?? 'Not Provided': @printer.mediatype %></td></tr>
+                    </table>
+                </div>
+            </div>
+          <%end%>
+
+          <%if !(@scanner.nil?)%>
+              <div class="expanderHeaderBar">
+               <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+               <h2>Scanner Details</h2>
+                <div class="expander">
+                    <table>
+                        <tr><td class="labelDefinitionTerm">Scanner Type: </td><td class="labelDefinitionDetails"><%=  @scanner.scannertype.blank?? 'Not Provided': @scanner.scannertype %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Resolution: </td><td class="labelDefinitionDetails"><%=  @scanner.resolution.blank?? 'Not Provided': @scanner.resolution %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Scan Size: </td><td class="labelDefinitionDetails"><%=  @scanner.scansize.blank?? 'Not Provided': @scanner.scansize %></td></tr>
+                        <tr><td class="labelDefinitionTerm">File Format: </td><td class="labelDefinitionDetails"><%=  @scanner.fileformate.blank?? 'Not Provided': @scanner.fileformate %></td></tr>
+                    </table>
+                </div>
+            </div>
+          <%end%>
+
+          <%if !(@lcd.nil?)%>
+              <div class="expanderHeaderBar">
+               <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+               <h2>LCD Details</h2>
+                <div class="expander">
+                    <table>
+                        <tr><td class="labelDefinitionTerm">LCD Type: </td><td class="labelDefinitionDetails"><%=  @lcd.lcdtype.blank?? 'Not Provided': @lcd.lcdtype %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Resolution: </td><td class="labelDefinitionDetails"><%=  @lcd.resolution.blank?? 'Not Provided': @lcd.resolution %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Screen Size: </td><td class="labelDefinitionDetails"><%=  @lcd.size.blank?? 'Not Provided': @lcd.size %></td></tr>
+                    </table>
+                </div>
+            </div>
+          <%end%>
+
+         <%if !(@cpu.nil?)%>
+              <div class="expanderHeaderBar">
+               <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+               <h2>CPU Details</h2>
+                <div class="expander">
+                    <table>
+                        <tr><td class="labelDefinitionTerm">Processor Name: </td><td class="labelDefinitionDetails"><%=  @cpu.processorname.blank?? 'Not Provided': @cpu.processorname %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Number Of Cores: </td><td class="labelDefinitionDetails"><%= @cpu.numberofcores.blank?? 'Not Provided': @cpu.numberofcores %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Number Of Threads: </td><td class="labelDefinitionDetails"><%= @cpu.numberofthreads.blank?? 'Not Provided': @cpu.numberofthreads %></td></tr>
+                         <tr><td class="labelDefinitionTerm">Memory: </td><td class="labelDefinitionDetails"><%=  @cpu.cpumemory.blank?? 'Not Provided':@cpu.cpumemory %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Hard Disk: </td><td class="labelDefinitionDetails"><%= @cpu.hard_disk.blank?? 'Not Provided':@cpu.hard_disk %></td></tr>
+                        <tr><td class="labelDefinitionTerm">DVD ROM: </td><td class="labelDefinitionDetails"><%= @cpu.dvdrom.blank?? 'Not Provided': @cpu.dvdrom %></td></tr>
+                         <tr><td class="labelDefinitionTerm">CD ROM: </td><td class="labelDefinitionDetails"><%= @cpu.cdrom.blank?? 'Not Provided': @cpu.cdrom %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Keyboard: </td><td class="labelDefinitionDetails"><%= @cpu.keyboard.blank?? 'Not Provided': @cpu.keyboard %></td></tr>
+                        <tr><td class="labelDefinitionTerm">Mouse: </td><td class="labelDefinitionDetails"><%=  @cpu.mouse.blank?? 'Not Provided':@cpu.mouse %></td></tr>
+                         <tr><td class="labelDefinitionTerm">Sound Card: </td><td class="labelDefinitionDetails"><%= @cpu.sound_card.blank?? 'Not Provided': @cpu.sound_card %></td></tr>
+                        <tr><td class="labelDefinitionTerm">VGA: </td><td class="labelDefinitionDetails"><%= @cpu.vga.blank?? 'Not Provided': @cpu.vga %></td></tr>
+                        <tr><td class="labelDefinitionTerm">RAM:</td><td class="labelDefinitionDetails"><%=  @cpu.ram.blank?? 'Not Provided':@cpu.ram %></td></tr>
+                    </table>
+                </div>
+            </div>
+          <%end%>
+      <%#if !(@invownhists.nil?)%>
+       <%#*<div class="expanderHeaderBar">%>
+               <%#=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+               <%#*<h2>Ownership Information</h2>%>
+               <%#*<div class="expander">%>
+                 <%#*<table>%>
+                  <%#*<tr><td class="labelDefinitionTerm">Acquisition Date:</td><td class="labelDefinitionDetails"><%=  @inventory.acqdate %>
+                  <%#*</td></tr>%>
+                  <%#unless @inventoryowner.blank?%>
+                  <%#*<tr><td class="labelDefinitionTerm">Owner:</td><td class="labelDefinitionDetails"><%=  @inventoryowner.user.name %>
+                  <%#*</td></tr>%>
+                  <%#*<tr><td class="labelDefinitionTerm">Ownership Start Date:</td><td class="labelDefinitionDetails"><%=  @inventoryowner.startdate %>
+                  <%#*</td></tr>%>
+                  <%#*<tr><td class="labelDefinitionTerm">Ownership End Date:</td><td class="labelDefinitionDetails"><%=  @inventoryowner.enddate %>
+                  <%#*</td></tr>%>
+                  <%#end%>
+                  <%#*</table>%>
+                 <%#*<br/>%>
+                  <%#*<table class="clsInvHistory">%>
+                   <%# for invownhist in @invownhists %>
+                     <%#*<tr>%>
+                       <%#*<td>%>
+                         <%#= invownhist.user.name%>
+                       <%#*</td>%>
+                       <%#*<td>%>
+                         <%#=  invownhist.startdate %>
+                       <%#*</td>%>
+                       <%#*<td>%>
+                          <%#=  invownhist.enddate %>
+                       <%#*</td>%>
+                       
+                     <%#*</tr>%>
+                   <%#end%>
+             <%#*</table>%>
+               <%#*</div>%>
+       <%#*</div>%>
+      <%#end%>
+
+     <%if !(@invownhists.nil?)%>
+       <div class="expanderHeaderBar">
+
+               <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+
+         <h2>Ownership History</h2>
+
+         <div class="expander">
+           <table class="clsInvHistory">
+
+                  <% for invownhist in @invownhists %>
+                     <tr>
+                       <td><%=invownhist.user.name%></td>
+                       <td><%=invownhist.startdate %></td>
+                       <td><%=invownhist.enddate %></td>
+                     </tr>
+                   <%end%>
+             </table>
+               </div>
+       </div>
+    <%end%>
+     </div>
+<% end %>
+

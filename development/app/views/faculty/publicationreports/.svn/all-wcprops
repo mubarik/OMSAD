@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/DSSD_Summer2012/!svn/ver/1989/OMSAD/development/app/views/faculty/publicationreports
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/DSSD_Summer2012/!svn/ver/1430/OMSAD/development/app/views/faculty/publicationreports/new.erb
+END
+departmentpublications.erb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/DSSD_Summer2012/!svn/ver/878/OMSAD/development/app/views/faculty/publicationreports/departmentpublications.erb
+END
+_departmentpublications.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/DSSD_Summer2012/!svn/ver/1988/OMSAD/development/app/views/faculty/publicationreports/_departmentpublications.html.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/842/OMSAD/development/app/views/faculty/publicationreports/create.erb
+END
+facultypublications.erb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/DSSD_Summer2012/!svn/ver/878/OMSAD/development/app/views/faculty/publicationreports/facultypublications.erb
+END
+_facultypublications.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/DSSD_Summer2012/!svn/ver/1989/OMSAD/development/app/views/faculty/publicationreports/_facultypublications.html.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/DSSD_Summer2012/!svn/ver/1656/OMSAD/development/app/views/faculty/publicationreports/index.erb
+END

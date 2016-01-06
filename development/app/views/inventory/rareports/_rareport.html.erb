@@ -1,0 +1,34 @@
+      <%= grid(@ra_grid, :show_filters => :always) do |g|
+       g.blank_slate  do
+        "There are no records"
+        end
+          #g.column :column_name => 'Sr. No', :attribute_name => 'id', :no_filter => true   do |invtype|
+          #invtype.id
+        #end
+          #g.column :column_name => 'User ID', :attribute_name => 'user_id', :no_filter => true   do |invtype|
+          #invtype.user_id
+        #end
+          g.column :column_name => 'Employee ID', :attribute_name => 'employee_id', :no_filter => true   do |rec|
+          rec.employee_id.blank?? 'N/A' : rec.employee_id
+        end
+          
+           g.column :column_name => 'Name', :attribute_name => 'name', :model_class=>"User" do |rec|
+             link_to rec.user.name, "/inventory/researchassistants/"+(rec.user.id).to_s
+           #rec.user.blank?? 'Not Provided' : rec.user.name
+        end
+          
+          g.column :column_name => 'Supervisor', :attribute_name => 'name', :model_class=> User do |rec|
+          rec.faculty_member.blank?? 'N/A' : rec.faculty_member.user.name
+        end
+
+          g.column :column_name => 'Research Grant', :attribute_name => 'title' , :no_filter => true, :model_class=> ResearchGrant do |rec|
+          rec.research_grant.blank?? 'N/A' : rec.research_grant.title
+        end
+
+          g.column :column_name => 'Grant Amount', :attribute_name => 'amount', :no_filter => true, :model_class=> ResearchGrant do |rec|
+          rec.research_grant.blank?? 'N/A' : rec.research_grant.amount
+        end
+          g.column :column_name => 'Description', :attribute_name => 'description', :no_filter => true   do |rec|
+          rec.description.blank?? 'N/A' : rec.description
+        end
+      end %>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OMSAD</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "datePicker.js" %>
+  <%= javascript_include_tag  "jquery-ui.js" %>
+  <%=javascript_include_tag :defaults %>
+  <%= include_wice_grid_assets %>
+  <%= include_wice_grid_assets(:load_on_demand => false) %>
+  <%= include_wice_grid_assets(:include_calendar => true) %>
+  <%= csrf_meta_tags %>
+<link rel="stylesheet" type="text/css" href="application.css" />
+</head>
+<body>
+  <div id ="pagewrap">
+      <div id="OSMAD_header">
+        <div class="headerWrap">
+          <div id="completeLogo">
+            <%=image_tag("lumsLogo.jpg" , :class=>'logo')%>
+            <h1 class="pageHeading">OMSAD</h1>
+            <div class="appDescriptionFont">Online Management System for Academic Departments &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          </div>
+        </div>
+
+      <div class="clearFloatingAndStartFromBelow"></div>
+
+      <div id="header_right">
+          <p id ="headerRight_panel">
+            <a href="http://lums.edu.pk" class="headerFooterLinks">LUMS Home</a> &nbsp;|&nbsp;
+            <a href="http://lums.edu.pk/sdsb" class="headerFooterLinks">SDSB Home</a> &nbsp;|&nbsp;
+            <a href="http://lums.edu.pk/shssl" class="headerFooterLinks">SHSSL Home</a> &nbsp;|&nbsp;
+            <a href="http://lums.edu.pk/sse" class="headerFooterLinks">SSE Home</a> &nbsp;|&nbsp;
+            <%= link_to "About Us", {:controller => "/teammembers" , :action => "index"} %>
+          </p>
+        </div>
+      </div>
+
+      <div class="clearFloatingAndStartFromBelow"></div>
+
+      
+  <div class="clearFloatingAndStartFromBelow"></div>
+
+  <div id="headerTab">
+      <ul id="list-nav">
+           <li><%= link_to "HOME", :controller =>"/welcome", :action=> "index"%></li>
+           <li><%= link_to "FACULTY", :controller =>"faculty/facultymembers", :action=> "index"%></li>
+           <li><%= link_to "STUDENTS", :controller =>"GraduateStudents/students", :action=> "index"%></li>
+           <li><%= link_to "INVENTORY / DESK", :controller =>"inventory/inventories", :action=> "index"%></li>
+           <li><%= link_to "STAFF" , :controller => "inventory/researchassistants" , :action => "index"%></li>
+      </ul>
+  </div>
+  <div class="clearFloatingAndStartFromBelow"></div>
+
+  <div id="mainContent" >
+    <%= yield :homepage %>
+    <div id="leftNavigationMenu">
+      <%= yield :menu%>
+    </div>
+
+    <div id="content">
+      <div class="breadcrumb"><%= render_breadcrumbs %></div>
+        <%= yield :content%>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div id="footer_left">
+         Copyright &copy;2012 Lahore University of Management Sciences
+    </div>
+
+    <div id="footer_right">
+      <a href='http://www.lums.edu.pk' class="headerFooterLinks">Home</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

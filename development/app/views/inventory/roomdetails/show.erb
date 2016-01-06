@@ -1,0 +1,95 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+<div class="pageHeadingBar">
+        <h1>Room Details</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+    <div class="moreInfodisplayPicWithTextWrap">
+        <%=image_tag("locimg1.jpeg", :class=>'displayPic')%>
+        <h1><%=@roomdetail.roomnumber%></h1>
+    </div>
+        <div class="clearFloatingAndStartFromBelow"></div>
+        <div class="expandingBlock">
+          <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Room Description</h2>
+           <div class="expander">
+                <table>
+                  <tr><td class="labelDefinitionTerm">Room Type:</td><td class="labelDefinitionDetails"><%=  @roomdetail.location_type.locationtypename %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Room Name:</td><td class="labelDefinitionDetails"><%=  @roomdetail.roomname %></td></tr>
+                  <tr><td class="labelDefinitionTerm">Description:</td><td class="labelDefinitionDetails"><%= @roomdetail.description %></td></tr>
+                </table>
+                 
+           </div>
+       </div>
+
+
+           <div class="expanderHeaderBar">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Associated Desks </h2>
+            <div class="expander">
+              <div   style="overflow: auto; height :400px">
+            <%unless @locations.blank?%>
+              <% for location in @locations%>
+                  <div class="dataBlock" >
+                      <div class="displayPicWithTextWrap">
+                        <%=image_tag("locimg3.jpeg", :class=>'displayPic')%>
+                         <h3><%= location.locationname%></h3>
+                            <table>
+                              <tr><td class="labelDefinitionTerm">Room No.:</td>
+                              <%unless location.room_detail.roomnumber.blank?%>
+                              <td><%=label_tag(:lblModel,location.room_detail.roomnumber,:class=>"labelDefinitionDetails") %></td></tr><%end%>
+
+                              <tr><td class="labelDefinitionTerm">Description:</td><td>
+                              <%unless location.description.blank?%>
+                               <%=label_tag(:lblInvType,location.description,:class=>"labelDefinitionDetails") %></td></tr><%end%>
+                              
+                               <tr><td class="labelDefinitionTerm">Owner:</td>
+                                  <%unless location.location_ownership.user_id.blank?%>
+                                      <td class="labelDefinitionDetails"><%=  location.location_ownership.user.name %></td></tr><%end%>
+
+                             <tr><td class="labelDefinitionTerm">Ownership Start Date:</td>
+                              <%unless location.location_ownership.startdate.blank?%>
+                                  <td class="labelDefinitionDetails"><%= location.location_ownership.startdate %></td></tr> <%end%>
+                             
+                            </table>
+                         <br/>
+                    <div style ="margin-left:145px;">
+                      <%unless location.location_ownership_hists.blank?%>
+                         <h2 style="display:inline-block">Ownership History<hr/></h2>
+                         <br/><br/>
+                                  <table class="clsLocHistory">
+                                   <% for lochist in location.location_ownership_hists  %>
+                                     <tr>
+                                       <%unless lochist.user_id.blank?%>
+                                       <td>   <%= lochist.user.name%>    </td><%end%>
+                                       <%unless lochist.startdate.blank?%>
+                                       <td>   <%= lochist.startdate %>   </td><%end%>
+                                       <%unless lochist.enddate.blank?%>
+                                       <td>   <%= lochist.enddate %>    </td><%end%>
+                                     </tr>
+                                   <%end%>
+                             </table>
+
+                      <%end%>
+                      </div>
+                         
+                       </div>
+                   </div>
+                
+
+
+              <%end%>
+       <%end%>
+              </div>
+
+            </div>
+      </div>
+
+
+      </div>
+<% end %>
+

@@ -1,0 +1,33 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+
+      <div class="pageHeadingBar">
+          <h1>Room Reports</h1>
+      </div>
+
+     <div class="dataBlock">
+      <%= form_tag({:controller => 'inventory/locationreports', :action => 'create'},:remote => true, :id=>"postform") do%>
+        <div class="reportComboButton">
+          <%= select_tag :selectreport ,
+                                        options_for_select([ ['Room Allocation Report',1],
+                                                             ['Desk History Report',2],
+                                                             ['Room Type Report',3]]),:prompt=>'Please select report',:required=> 'true'%>
+            <%#*<div class ="reportCombo">%>
+                <%#=collection_select(:invtype,:id,@inv_types,:id,:locationtypename,options={:prompt=>"Select Room Type"})%>
+            <%#*</div>%>
+        </div>
+
+         <div class="reportTypeselection">
+          <%= button_tag "View Report" %>
+         </div>
+       <%end%>
+    </div>
+
+  <div class ="reportsGrid">
+
+      </div>
+
+<%end%>

@@ -1,0 +1,65 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+dataCorrectEntrybook:
+  id: 1
+  title : Robotics
+  abstract: I am abstract of Publication
+  publication_type_id: 6
+  publicationyear: 2004
+  publicationstatus: Submitted
+  keywords: publication
+  doi: www.lums.edu.pk
+
+dataCorrectEntrybookchapter:
+  id: 2
+  title : Introduction
+  abstract: I am chapter of book
+  publication_type_id: 5
+  publicationyear: 2004
+  publicationstatus: Submitted
+  keywords: chapter
+  doi: www.lums.edu.pk
+
+dataCorrectEntryTechnical:
+  id: 3
+  title : Technical Report
+  abstract: I am technical report
+  publication_type_id: 4
+  publicationyear: 2005
+  publicationstatus: Submitted
+  keywords: report
+  doi: www.lums.edu.pk
+
+dataCorrectEntryConference:
+  id: 4
+  title : Conference Publication
+  abstract: I am conference publication
+  publication_type_id: 3
+  publicationyear: 2006
+  publicationstatus: Submitted
+  keywords: conference
+  doi: www.lums.edu.pk
+
+dataCorrectEntryJournal:
+  id: 5
+  title : Journal Publication
+  abstract: I am Journal publication
+  publication_type_id: 2
+  publicationyear: 2007
+  publicationstatus: Submitted
+  keywords: Journal
+  doi: www.lums.edu.pk
+
+dataCorrectEntryworkshop:
+  id: 6
+  title : workshop Publication
+  abstract: I am workshop publication
+  publication_type_id: 1
+  publicationyear: 2009
+  publicationstatus: Submitted
+  keywords: workshop
+  doi: www.lums.edu.pk

@@ -1,0 +1,26 @@
+<%#IndependentStudies Add/Edit Expander%>
+<div class="expandingBlock">
+  
+    <%#IndependentStudies Expander%>
+    <%=student.fields_for :independent_studies do |ins|%>
+      <%= render "independentStudy",:ins=>ins%>
+    <%end%>
+    <%= student.link_to_add "Add another independent study", :independent_studies, :style=>'font-weight:bold; margin-left:20px; margin-top:20px; float:left' %>
+    <span class="dynamicFieldErrorPlacement" style="display:none; margin-top:20px; float:left;">Please fill in the above Independent Study's information first</span>
+    <div class="bottomButtons">
+      <table>
+        <tr><td><span class="submitErrorPlacement"></span></td>
+          <%if @saved=="true"%>
+            <%if @savedtonext=="true"%>
+              <td><%= button "Finish", {:controller=>'students',:action=>'index'}, :class=>'standardButtonSize'%></td>
+            <%else%>
+              <td style="padding-right: 6px;"><%= button "Finish", {:controller=>'students',:action=>'index'}, :class=>'standardButtonSize'%></td>
+              <td><%= submit_tag "Save"%></td>
+            <%end%>
+          <%else%>
+            <td><%= submit_tag "Save"%></td>
+          <%end%>
+        </tr>
+      </table>
+    </div>
+</div>

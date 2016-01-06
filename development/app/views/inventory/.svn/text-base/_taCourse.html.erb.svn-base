@@ -1,0 +1,80 @@
+<div class="expanderHeaderBar" id="taCourseInfoExpander">
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Add TA Courses</h2>
+              <%if @viewing == "tacourse" %>
+                <script>
+                  $(function() {
+                    closeFirstExpander();
+                    $("#taCourseInfoExpander").children('.expander').slideDown('slow');
+                    $("#taCourseInfoExpander").children('img').fadeOut('slow');
+                  });
+                </script>
+              <%end%>
+           <div class="expander">
+
+             <table>
+               <tr>
+                 <td>
+                   <% if !flash[:uploadFail].blank? %>
+                    <div class="errors">
+                      <p><%=flash[:uploadFail]%></p>
+                    </div>
+                    <div class="clearFloatingAndStartFromBelow"></div>
+                   <%end%>
+                 </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= link_to(image_tag("", :alt => '', :class=>'iconAddButton',
+                                           :style=>'margin-left:10px; margin-top:-3px;',
+                                           :title=>'Add Course'), {:controller => :tacourses, :action => 'new',
+                                           :id => @user.id}, {:class => "fancybox" }) %>
+                  </td>
+                </tr>
+             </table>
+           </div>
+            <div class="expander">
+             <% unless @user.ta_courses.blank? %>
+               <h4>Courses assigned</h4>
+               <hr/>
+               <table class="flexTACoursegrid">
+                 <% for ta_course in @user.ta_courses %>
+                 <%#  @facultymember.faculty_courses.each do |ta_course| %>
+                 <tr>
+                   <td>
+                     <%= ta_course.course.coursecode %>
+                   </td>
+                   <td>
+                     <%= ta_course.course.coursename%>
+                   </td>
+                   <td>
+                     <%= ta_course.course.credithrs %>
+                   </td>
+                   <td>
+                     <%= ta_course.semester.offering%>
+                   </td>
+                   <td>
+                     <%= ta_course.semester.year%>
+                   </td>
+                   <td>
+                     <%= ta_course.evalgpa%>
+                   </td>
+                   <td class="labelDefinitionDetails">
+                        <%= link_to ta_course.document_file_name.blank?? '' : ta_course.document_file_name,  ta_course.document.url  %>
+                      </td>
+                   <td>
+                      <%= link_to "Edit",{:controller => :tacourses,
+                                         :action => 'edit', :id => ta_course.id},
+                                         {:class => "fancybox" } %>
+                   </td>
+                   <td>
+                    <%= link_to "Delete",{:controller => :tacourses,:action =>"destroy",:id =>ta_course.id},:method => 'delete' %>
+                    </td>
+
+               </tr>
+              <%end%>
+             </table>
+            <%end%>
+           </div>
+         </div>
+

@@ -1,0 +1,9 @@
+<% content_for :content do %>
+    <% if !flash[:notice].blank? %>
+      <div class="messages">
+        <p><%=flash[:notice]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+<%end%>
+

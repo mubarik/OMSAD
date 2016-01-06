@@ -1,0 +1,24 @@
+<div class="pageHeadingBar">
+<h1>Courses List</h1>
+</div>
+<hr class="headingLineBreak"/>
+<%@courses=@semester.courses%>
+<%if !@courses.blank?%>
+  <%= form_tag({:controller => "semester_courses", :action => "delete_courses", :method => "post", :id => @semesterid}) do%>
+    <div class="groupBox">
+      <% @courses.each do |course| %>
+        <p class="formfield">
+          <%=check_box_tag("courseid[]" ,course.id)%>
+          <input style="color:black;" class="label" type="text" disabled="disabled" value="<%=course.coursecode.to_s+" "+course.coursename.to_s %>"/>
+        </p>
+      <%end%>
+    </div>
+    <div class="bottomButtons">
+      <%=submit_tag("Delete")%>
+    </div>
+  <%end%>
+<%else%>
+  <strong>We're sorry. No course is available right now.</strong>
+<%end%>
+
+

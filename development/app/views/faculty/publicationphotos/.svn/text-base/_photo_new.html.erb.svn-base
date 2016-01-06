@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  $(document).ready(function()
+{
+
+    if (("#imageGalleryExpander").length>0)
+    {
+
+        
+
+      if ($("#imageGallerExpander").next('.expander').css('display') != 'none')
+      {
+        $(".publicationImageGallery").animate(
+          {
+              opacity:1
+          },3000)
+      }
+    }
+
+})
+</script>
+<table>
+  <tr>
+      <td class="inputTextbox">
+        <%= pp.file_field :image, :style=>'float:left; margin-top:2px;' %>
+      </td>
+     <td>
+      <%= pp.link_to_remove(image_tag("",:alt=>"", :class=>"iconDeleteButton"))%>
+    </td>
+    <td style="display:none;"/>
+    <td class="fieldErrorPlacement">
+      <%= pp.object.errors[:image_content_type][0] %>
+    </td>
+  </tr>
+</table>
+

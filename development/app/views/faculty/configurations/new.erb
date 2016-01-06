@@ -1,0 +1,274 @@
+<%= content_for :content do  %>
+  <%#= nested_form_for @publication ,:html=>{:id=>"formPublications",
+                                                              :class=>'clientSideValidatedForm',
+                                                              :multipart=>true},
+                                          :url =>{ :controller => "faculty/configurations",
+                                                     :action => "create"}  do |configuration_new| %>
+
+
+
+
+ <%#end%>
+
+
+    <div id="authorsExpander" class="expanderHeaderBar">
+    <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+    <%=hidden_field_tag(:moduleType,"Authors")%>
+    <div class="headingDiv">
+      <h2>Authors <span id="dynErrorSpan" class="dynamicFieldErrorPlacement"></span>
+      </h2>
+    </div>
+
+    
+    <div class="pageHeadingBar">
+        <h1>Configurations</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+    <% if !flash[:error].blank? %>
+      <div class="errors">
+        <p></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+
+   <div class="expandingBlock">
+
+       <div class="expanderHeaderBar">
+
+           <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+           <h2>Departments</h2>
+           <div class="expander">
+                      <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+           </div>
+       </div>
+
+
+        <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Designations </h2>
+            <div class ="expander">
+                                      <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+              </div>
+        </div>
+
+       <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Book status </h2>
+            <div class ="expander">
+                                    <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+              </div>
+        </div>
+
+        <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Book chapter status </h2>
+            <div class ="expander">
+                                     <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+              </div>
+        </div>
+         <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Journal status </h2>
+            <div class ="expander">
+                        <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+              </div>
+        </div>
+         <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Conference status </h2>
+            <div class ="expander">
+                         <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+              </div>
+        </div>
+         <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Workshop status </h2>
+            <div class ="expander">
+                          <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+              </div>
+        </div>
+         <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Technical report status </h2>
+            <div class ="expander">
+                        <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+
+              </div>
+        </div>
+
+
+         <div class="expanderHeaderBar" >
+
+            <%=image_tag("", :alt=>'', :class=>'expanderDownButton')%>
+             <h2>Conference Rank </h2>
+            <div class ="expander">
+
+                        <table>
+                          <tr>
+                            <td>
+                                 <%= text_field :title,
+                                          :id=>"txgranttitle",
+                                          :title=>"Only numbers and characters are allowed",
+                                          :class=>"inputTextbox"%>
+                           </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h4>
+                                   <%=link_to "Add a seed" %>
+                              </h4>
+                            </td>
+                          </tr>
+                         </table>
+              </div>
+        </div>
+
+        <div class="bottomButtons">
+               <%#= button_tag "Cancel", :action => "index", :id => "students" %>
+               <%=submit_tag "Save", :id=>"saveButton"%>
+        </div>
+     
+     
+
+     </div>
+
+
+<%end%>
+<% content_for :menu do %>
+   <%= render "faculty/navigationmenu" %>
+<%end%>

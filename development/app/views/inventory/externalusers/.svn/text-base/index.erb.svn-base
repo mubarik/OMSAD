@@ -1,0 +1,36 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenuRATA" %>
+<% end %>
+
+<% content_for :content do %>
+   <div class="pageHeadingBar">
+          <h1>RA/TA</h1>
+   </div>
+    <hr class="headingLineBreak"/>
+
+
+    <% if @externalusers.empty? %>
+        <p class="notifyRed"> *No Record Found</p>
+      <% else %>
+
+       <%unless @externalusers.blank?%>
+           <% for externaluser in @externalusers%>
+        <div class="dataBlock">
+          <div class="displayPicWithTextWrap">
+            <%=image_tag("book.jpeg", :class=>'displayPic')%>
+              <div class="displayPicAlignedText">
+                    <h3>Employee</h3>
+                          <table>
+                             <tr><td class="labelDefinitionTerm">Employee ID :</td><td><%=label_tag(:lblEmployeeID,externaluser.employee_id,:class=>"labelDefinitionDetails") %></td></tr>
+                             <tr><td class="labelDefinitionTerm">Designation :</td><td><%=label_tag(:lblDesignation,externaluser.designation,:class=>"labelDefinitionDetails") %></td></tr>
+                             <tr><td class="labelDefinitionTerm">Description :</td><td><%=label_tag(:lblDescription,externaluser.description,:class=>"labelDefinitionDetails") %></td></tr>
+                          </table>
+
+              </div>
+          </div>
+       </div>
+
+    <%end%>
+        <%end%>
+  <% end%>
+<%end%>

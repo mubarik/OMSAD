@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/DSSD_Summer2012/!svn/ver/1238/OMSAD/development/app/views/inventory/externalusers
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/1235/OMSAD/development/app/views/inventory/externalusers/new.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/757/OMSAD/development/app/views/inventory/externalusers/create.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/DSSD_Summer2012/!svn/ver/1238/OMSAD/development/app/views/inventory/externalusers/index.erb
+END

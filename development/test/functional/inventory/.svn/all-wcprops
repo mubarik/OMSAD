@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/DSSD_Summer2012/!svn/ver/4216/OMSAD/development/test/functional/inventory
+END
+scanners_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/2796/OMSAD/development/test/functional/inventory/scanners_controller_test.rb
+END
+rareports_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/4216/OMSAD/development/test/functional/inventory/rareports_controller_test.rb
+END
+tareports_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/DSSD_Summer2012/!svn/ver/4216/OMSAD/development/test/functional/inventory/tareports_controller_test.rb
+END
+inventories_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/DSSD_Summer2012/!svn/ver/2795/OMSAD/development/test/functional/inventory/inventories_controller_test.rb
+END
+lcds_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/2796/OMSAD/development/test/functional/inventory/lcds_controller_test.rb
+END
+printers_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/DSSD_Summer2012/!svn/ver/2796/OMSAD/development/test/functional/inventory/printers_controller_test.rb
+END
+cpus_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/2797/OMSAD/development/test/functional/inventory/cpus_controller_test.rb
+END

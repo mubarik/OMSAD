@@ -1,0 +1,77 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+
+<% content_for :content do %>
+
+<%= form_tag({:controller => "inventory/printers", :action => "update"},:id => @inventory.id, :method=>"put") do%>
+
+  <div class ="contentwrapper">
+
+            <div class= "contentHeading">  <h3 style="margin-top: 10px;"> Add Inventory Details</h3>  </div>
+            <div class ="contentHeadingLine">     <hr/>
+             
+              
+            </div>
+  </div>
+
+ <div style="margin-left: 5%;margin-top:5%; ">
+
+    <div class="formfield">
+      <div class ="Label_Tag_Setting">
+        <%= label_tag(:lblinventoryname, "Inventory Name: ") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:speed,@inventory.inventoryname)%>
+      </div>
+      <br/><br/>
+    </div>
+
+    <div class="formfield">
+      <div class ="Label_Tag_Setting">
+        <%= label_tag(:lbltechnology,"Technology:") %>
+      </div>
+      <div style="width:35%;float:left;">
+      <%=text_field_tag(:technology,@printer.technology)%>
+      </div><div></div>
+      <br/><br/>
+    </div>
+
+    <div class="formfield">
+      <div class ="Label_Tag_Setting">
+        <%= label_tag(:lblspeed, "Speed:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:speed,@printer.speed)%>
+      </div>
+      <br/><br/>
+    </div>
+
+   <div class="formfield">
+      <div class ="Label_Tag_Setting">
+        <%= label_tag(:lblmemory, "Memory:") %>
+      </div>
+      <div style="width:70%;float:left;">
+         <%=text_field_tag(:memory,@printer.memory)%>
+      </div>
+      <br/><br/>
+  </div>
+   <div class="formfield">
+      <div class ="Label_Tag_Setting">
+        <%= label_tag(:lblmediatype, "MediaType:") %>
+      </div>
+      <div style="width:70%;float:left;">
+        <%=text_field_tag(:mediatype,@printer.mediatype)%>
+      </div>
+      <br/><br/>
+  </div>
+
+  <br/>
+     <div style="width:50%;float:left;">       </div>
+     <div style="width:70%;float:right;">
+        <%=submit_tag("Save")%>
+     </div>
+
+<%end%>
+<%end%>

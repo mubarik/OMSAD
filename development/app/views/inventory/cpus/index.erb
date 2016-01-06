@@ -1,0 +1,52 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+ <% content_for :content do %>
+
+  <div class ="ContentWraper">
+
+      <div class= "contentHeading"> <h3 style="margin-top: 10px;"> CPU CRUD page</h3>   </div>
+      <div class ="contentHeadingLine"> <hr/> </div>
+       <%=flash[:notice]%>
+
+  <div class ="contentinfowraper">
+   <% if @cpus.empty? %>
+   <p class="notifyRed"> * No Record Found</p>
+                    <div style="float:right; padding-right:1%">
+                         <%= link_to(image_tag("/assets/view_Details.png"), {:controller => :cpus, :action => 'new'}) %>
+                    </div>
+   <% else %>
+       <%unless @cpus.blank?%>
+           <% for cpu in @cpus%>
+
+              <div class="contentinfo">
+                <div class="contentinfoimagewrap" >
+                  <div class="contentinfoImage"> <%=image_tag("inv.png")%> </div>
+
+                       <div class="contentinfo_desc_left">
+                            <strong class="contentinfo_desc_left_name">
+
+                                  <%=cpu.id%></strong><br/>
+                                  <br/><br/>
+                                  <strong>  <%= label_tag(:lbllcdType,"Sound Card:") %> </strong><%= cpu.sound_card%>
+                                  <br/><br/>
+                                  <strong><%= label_tag(:lblresolution,"Vga:") %> </strong><%=cpu.vga%>
+                                  <br/><br/>
+                                  <strong><%= label_tag(:lblsize,"RAM:") %> </strong><%=cpu.ram%>
+                                  <br/><br/>
+                       </div>
+
+                 </div>
+                    <div style="float:right; padding-right:1%">
+                         <%= link_to(image_tag("/assets/Edit_32.png",      {:alt => 'edit',   :class=>"rollover"}), {:controller => "inventory/cpus", :action => 'edit',    :id => cpu.id},:method => :get) %>
+                         <%= link_to(image_tag("/assets/Delete-32_1.png",  {:alt => 'delete', :class=>"rollover"}), {:controller => "inventory/cpus", :action => 'destroy', :id => cpu.id},:method => :delete) %>
+                         <%= link_to(image_tag("/assets/view_Details.png"), {:controller => :cpus, :action => 'new'}) %>
+                    </div>
+
+           </div> <div style ="width: 95%;" class ="contentLine">   <hr/>    </div>
+            <%end%>
+       <%end%>
+       <%end%>
+      </div>
+<%end%>

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/DSSD_Summer2012/!svn/ver/5312/OMSAD/development/app/views/faculty/researchgrants
+END
+new.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/DSSD_Summer2012/!svn/ver/2859/OMSAD/development/app/views/faculty/researchgrants/new.erb
+END
+_dynamicentities.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/DSSD_Summer2012/!svn/ver/5154/OMSAD/development/app/views/faculty/researchgrants/_dynamicentities.html.erb
+END
+_teammembers.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/DSSD_Summer2012/!svn/ver/5154/OMSAD/development/app/views/faculty/researchgrants/_teammembers.erb
+END
+show.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/4426/OMSAD/development/app/views/faculty/researchgrants/show.erb
+END
+_newedit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/DSSD_Summer2012/!svn/ver/5312/OMSAD/development/app/views/faculty/researchgrants/_newedit.html.erb
+END
+create.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/517/OMSAD/development/app/views/faculty/researchgrants/create.erb
+END
+edit.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/DSSD_Summer2012/!svn/ver/3198/OMSAD/development/app/views/faculty/researchgrants/edit.erb
+END
+index.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/DSSD_Summer2012/!svn/ver/4158/OMSAD/development/app/views/faculty/researchgrants/index.erb
+END

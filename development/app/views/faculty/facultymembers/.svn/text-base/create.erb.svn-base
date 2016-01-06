@@ -1,0 +1,4 @@
+<% content_for :content do %>
+  <h2>Data is saved</h2>
+  <%=flash[:notice]%>
+<%end%>

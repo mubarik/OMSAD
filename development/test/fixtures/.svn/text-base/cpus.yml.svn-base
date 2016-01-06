@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+cputest:
+  processorname: "FF3"
+  numberofcores: 2
+  numberofthreads: 3
+  cpumemory: "120GB"
+  hard_disk: "300GB"
+  dvdrom: "RW"
+  cdrom: "R"
+  keyboard: "Alpha"
+  mouse: "Alpha"
+  sound_card: "Alpha"
+  vga: "Alpha"
+  ram: "Alpha"

@@ -1,0 +1,31 @@
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<%= stylesheet_link_tag    "common" %>
+
+<% content_for :content do %>
+    <div class="pageHeadingBar">
+        <h1>Edit Student Record</h1>
+    </div>
+    <hr class="headingLineBreak"/>
+
+    <% if !flash[:notice].blank? %>
+      <div class="messages">
+        <p><%=flash[:notice]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+
+    <% if !flash.now[:error].blank? %>
+      <div class="errors">
+        <p><%=flash.now[:error]%></p>
+      </div>
+      <div class="clearFloatingAndStartFromBelow"></div>
+    <%end%>
+
+        <%= form_for @user,:url => { :controller => "GraduateStudents/students",:action => "update",:id=>@user.id}, :html=>{:id=>'formStudent', :class=>'clientSideValidatedForm'}  do |user_new|%>
+        <%#= render :partial=>"newedit", :object=>@student, :as=>@student%>
+      <%= render "newedit",:u =>user_new %>
+    <%end%>
+<%end%>

@@ -1,0 +1,90 @@
+<%= stylesheet_link_tag "common" %>
+
+<% content_for :menu do %>
+    <%= render "graduate_students/navigationmenu" %>
+<% end %>
+
+<% content_for :content do %>
+  <div class="pageHeadingBar" style="float:left;">
+    <h1>Add Student</h1>
+  </div>
+
+  <%#Buttons for sliding page from step 1 to 4 and back%>
+
+  <%#*<table style="float:right; margin-top: 22px; margin-right: 1%;">%>
+    <%#*<td class="standardButtonSize"><button id="btnBack" onclick="slideBack()" style="margin-right:6px; display: none;"> << Back </button></td>%>
+    <%#*<td class="standardButtonSize"><button id="btnNext" onclick="slideNext()"> Next >> </button></td>%>
+  <%#*</table>%>
+
+
+  <div class="clearFloatingAndStartFromBelow"></div>
+
+  <hr class="headingLineBreak"/>
+
+  <% if !flash.now[:notice].blank? %>
+    <div class="messages">
+      <p><%=flash.now[:notice]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <% if !flash.now[:error].blank? %>
+    <div class="errors">
+      <p><%=flash.now[:error]%></p>
+    </div>
+    <div class="clearFloatingAndStartFromBelow"></div>
+  <%end%>
+
+  <%= form_for @user,:url => { :controller => "GraduateStudents/students",:action => "create"}, :html=>{:id=>'formStudent', :class=>'clientSideValidatedForm'}  do |user_new|%>
+     <%#=@user.errors.full_messages%>
+     <%#= render :partial=>"newedit", :object=>@student, :as=>@student%>
+     <%= render "newedit",:u =>user_new %>
+  <%end%>
+
+
+
+<%#Script for sliding page from step 1 to 4 and back%>
+
+<%#*<script>%>
+  <%#*function slideNext() {%>
+    <%#*if ($('div.step1').is(':visible')) {%>
+      <%#*$('div.step1').hide("slide", { direction: "left" }, function() {%>
+        <%#*$('div.step2').show("slide", { direction: "right" });%>
+        <%#*$('button#btnBack').fadeIn();%>
+      <%#*});%>
+    <%#*}%>
+    <%#*else if ($('div.step2').is(':visible')) {%>
+      <%#*$('div.step2').hide("slide", { direction: "left" }, function() {%>
+        <%#*$('div.step3').show("slide", { direction: "right" });%>
+      <%#*});%>
+    <%#*}%>
+    <%#*else if ($('div.step3').is(':visible')) {%>
+      <%#*$('div.step3').hide("slide", { direction: "left" }, function() {%>
+        <%#*$('div.step4').show("slide", { direction: "right" });%>
+        <%#*$('button#btnNext').fadeOut();%>
+      <%#*});%>
+    <%#*}%>
+  <%#*}%>
+
+  <%#*function slideBack() {%>
+    <%#*if ($('div.step4').is(':visible')) {%>
+      <%#*$('div.step4').hide("slide", { direction: "right" }, function() {%>
+        <%#*$('div.step3').show("slide", { direction: "left" });%>
+        <%#*$('button#btnNext').fadeIn();%>
+      <%#*});%>
+    <%#*}%>
+    <%#*else if ($('div.step3').is(':visible')) {%>
+      <%#*$('div.step3').hide("slide", { direction: "right" }, function() {%>
+        <%#*$('div.step2').show("slide", { direction: "left" });%>
+      <%#*});%>
+    <%#*}%>
+    <%#*else if ($('div.step2').is(':visible')) {%>
+      <%#*$('div.step2').hide("slide", { direction: "right" }, function() {%>
+        <%#*$('div.step1').show("slide", { direction: "left" });%>
+        <%#*$('button#btnBack').fadeOut();%>
+    <%#*});%>
+    <%#*}%>
+  <%#*}%>
+
+<%#*</script>%>
+<%end%>

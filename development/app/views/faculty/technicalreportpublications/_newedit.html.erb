@@ -1,0 +1,34 @@
+
+
+<div class="expander">
+  <%=p.fields_for :technical_report_publication do |c|%>
+                <table>
+                  <tr>
+                    <td class="labelDefinitionTerm">Technical Report Number: <span class="requiredFieldAsterisk">*</span></td>
+                    <td class="inputBoxPlacement">
+                      <%= c.text_field :technicalreportnumber,
+                                         :id => "txtechnicalreportnumber",
+                                         :title => 'Only digits are allowed i.e. 2' ,
+                                         #:required => true,
+                                         :class=>"inputTextbox"%>
+                    </td>
+                    <td class ="fieldErrorPlacement">
+                      <%= @publication.technical_report_publication.errors[:technicalreportnumber][0] %>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="labelDefinitionTerm">Department: <span class="requiredFieldAsterisk">*</span></td>
+                    <td class ="inputBoxPlacement">
+                        <%= c.collection_select :department_id,Department.all,:id,:name,
+                                                                options={ :prompt=>"Select a department",
+                                                                             :selected=>:department_id},
+                                                               :required=> 'true',
+                                                               :class=>"dropdown"%>
+                    </td>
+                    <td class ="fieldErrorPlacement"></td>
+                  </tr>
+
+                </table>
+  <%end%>
+</div>

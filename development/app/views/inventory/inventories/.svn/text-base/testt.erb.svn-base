@@ -1,0 +1,33 @@
+<% content_for :menu do %>
+        <%= render "inventory/navigationmenu" %>
+<% end %>
+
+<%= content_for :content do  %>
+
+       <div class="pageHeadingBar">
+         <h1>Inventory Ownership Details <br></br> <%=@invrec.inventoryname%></h1>
+      </div>
+
+
+      <hr class="headingLineBreak"/>
+      <table class="clsInvOHist">
+
+                              <% for invownhist in @invownhists %>
+                                 <tr>
+                                   <td><%=invownhist.user.name%></td>
+                                   <td><%=invownhist.startdate %></td>
+                                   <td><%=invownhist.enddate %></td>
+                                   <td>
+                                      <%= link_to "Change ownership",{:controller => :inventories,
+                                                         :action => 'popupindexhistory', :id => invownhist.inventory_id},
+                                                         {:class => "fancybox" } %>
+                                   </td>
+                                 </tr>
+                               <%end%>
+       </table>
+
+      <%#*<div class="bottomButtons">%>
+  <%#=submit_tag("Submit")%>
+<%#*</div>%>
+
+<%end%>

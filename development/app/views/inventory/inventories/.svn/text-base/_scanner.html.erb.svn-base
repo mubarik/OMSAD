@@ -1,0 +1,22 @@
+<table>
+    <tr>
+      <td class="labelDefinitionTerm">Scanner Type: <span class="requiredFieldAsterisk">*</span></td>
+      <td class="inputBoxPlacement"><%= f.text_field :scannertype, :class=>"inputTextbox", :title=>'e.g. flatbed' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:scannertype][0] %></td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">Resolution: </td>
+      <td class="inputBoxPlacement"><%= f.text_field :resolution, :class=>"inputTextbox", :title=>'e.g. 300x300 dpi' %></td>
+      <td class="fieldErrorPlacement"><%=f.object.errors[:resolution][0] %></td>
+    </tr>
+    <tr>
+        <td class="labelDefinitionTerm">Scan Size: </td>
+        <td class="inputBoxPlacement"><%= f.text_field :scansize, :class=>"inputTextbox", :title=>'e.g. A3 size' %></td>
+        <td class="fieldErrorPlacement"><%=f.object.errors[:scansize][0] %></td>
+    </tr>
+    <tr>
+        <td class="labelDefinitionTerm">File Format: </td>
+        <td class="inputBoxPlacement"><%= f.text_field :fileformate, :class=>"inputTextbox", :title=>'e.g. jpg' %></td>
+        <td class="fieldErrorPlacement"><%=f.object.errors[:fileformate][0] %></td>
+    </tr>
+</table>

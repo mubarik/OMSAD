@@ -1,0 +1,92 @@
+<div class="expander">
+  <%=p.fields_for :journal_publication do |c|%>
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm">Journal Name: <span class="requiredFieldAsterisk">*</span></td>
+        <td class="inputBoxPlacement">
+              <%= c.text_field  :journalname,
+                                           :id=>"txjournalname",
+                                           :title => 'Special characters are not allowed e.g IEEE Transactions on Image Processing' ,
+                                           :class=>"inputTextbox",
+                                           :required => true %>
+
+        </td>
+        <td class ="fieldErrorPlacement">
+          <%= @publication.journal_publication.errors[:journalname][0] %>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Volume:</td>
+        <td class="inputBoxPlacement">
+            <%= c.text_field  :volume,
+                                        :id=>"txjournalvolume",
+                                        :title=>'Enter the volume of journal in digits between 1 to 1000',
+                                        :class=>"inputTextbox" %>
+                                        
+        </td>
+        <td class ="fieldErrorPlacement">
+          <%= @publication.journal_publication.errors[:volume][0] %>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Issue Number: </td>
+        <td class="inputBoxPlacement">
+            <%= c.text_field  :issuenumber,
+                                        :id=>"txjournalnumber",
+                                        :title=>'Enter the Issue number of journal in digits between 1 to 12 e.g 9',
+                                        :class=>"inputTextbox" %>
+                                        
+        </td>
+        <td class ="fieldErrorPlacement">
+          <%= @publication.journal_publication.errors[:issuenumber][0] %>
+        </td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm">Impact Factor: </td>
+        <td class="inputBoxPlacement">
+            <%= c.text_field  :impactfactor,
+                                        :id=>"txjournalimpactfactor",
+                                        :title=>'Enter the impact factor of journal e.g 8.1',
+                                        :class=>"inputTextbox"%>
+        </td>
+        <td class ="fieldErrorPlacement">
+          <%= @publication.journal_publication.errors[:impactfactor][0] %>
+        </td>
+      </tr>
+      <tr>
+      <td class="labelDefinitionTerm">Year: </td>
+      <td>
+        <%= c.select :year, 1947..Time.now.year, {} , :class => "dropdown"  %>
+      </td>
+      <td class ="fieldErrorPlacement">
+         <%= @publication.journal_publication.errors[:year][0] %>
+      </td>
+      </tr>
+      <tr>
+      <td class="labelDefinitionTerm">Reference: </td>
+      <td class="inputBoxPlacement">
+          <%= c.text_field  :reference,
+                                           :id=>"txconferencereference",
+                                           :title => "Specical characters are not allowed",
+                                           :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+         <%= @publication.journal_publication.errors[:reference][0] %>
+      </td>
+    </tr>
+    <tr>
+      <td class="labelDefinitionTerm">Reference Website: </td>
+      <td class="inputBoxPlacement">
+          <%= c.text_field  :referenceweb,
+                                           :id=>"txconferencereferenceweb",
+                                           :title => "Enter the website of reference website e.g http://www.lums.edu.pk",
+                                           :class=>"inputTextbox"%>
+      </td>
+      <td class ="fieldErrorPlacement">
+         <%= @publication.journal_publication.errors[:referenceweb][0] %>
+      </td>
+    </tr>
+     
+    </table>
+  <%end%>
+</div>

@@ -1,0 +1,2 @@
+module Inventory::CpusHelper
+end

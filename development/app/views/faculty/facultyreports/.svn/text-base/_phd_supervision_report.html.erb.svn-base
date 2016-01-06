@@ -1,0 +1,44 @@
+<%= grid(@phd_supervisions_grid,:show_filters=>:always) do |g|
+  g.blank_slate  do
+    "There are no records"
+  end
+
+  g.column :column_name => 'Roll No',
+           :attribute_name=>"rollno" ,:in_csv=>false,
+           :model_class=>"Student" do |milestone|
+           link_to milestone.student.rollno, "/GraduateStudents/students/"+(milestone.student.user_id).to_s
+
+  end
+  g.column :column_name => 'Student Name',
+           :attribute_name=>"name",:in_csv=>false,
+           :model_class=>"User" do |milestone|
+            link_to milestone.student.user.name, "/GraduateStudents/students/"+(milestone.student.user.id).to_s
+  end
+  g.column :column_name => 'Roll No',
+           :attribute_name=>"rollno",:in_html=>false,
+           :model_class=>"Student" do |milestone|
+           milestone.student.rollno
+  end
+  g.column :column_name => 'Student Name',
+           :attribute_name=>"name",:in_html=>false,
+           :model_class=>"User" do |milestone|
+            milestone.student.user.name
+  end
+  g.column :column_name => 'Title',
+           :attribute_name=> "title",
+           :model_class=>"Milestone" do |milestone|
+            milestone.title.blank?? 'Not provided' :milestone.title
+  end
+  g.column :column_name => 'Proposal Submission Date',
+           :attribute_name=>"proposalsubmission",
+           :model_class=>"Milestone" do |milestone|
+            milestone.proposalsubmission
+
+  end
+  g.column :column_name => 'Thesis Defence Date',
+           :attribute_name=> "thesisdefence",
+           :model_class=>"Milestone" do |milestone|
+            milestone.thesisdefence
+
+  end
+end -%>

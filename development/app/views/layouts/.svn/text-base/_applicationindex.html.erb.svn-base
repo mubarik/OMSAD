@@ -1,0 +1,79 @@
+<div class="dataBlock">
+    <div class="displayPicWithTextWrap">
+      <%=link_to(image_tag(wrapper.imgsrc, :alt=>"" ,:class=>wrapper.imgclass),
+                         :controller => wrapper.controller,
+                         :action => "show",
+                         :id =>wrapper.id)%>
+       <div class="displayPicAlignedText">
+          <h3><%=link_to wrapper.title,
+                         :controller => wrapper.controller,
+                         :action => "show",
+                         :id =>wrapper.id%></h3>
+          <table>
+            <tr>
+              <td>
+                 <%=label_tag(:facultymembername,wrapper.l_1,
+                              :class=>"labelDefinitionTerm")%>
+              </td>
+              <td>
+                 <%=label_tag(:facultymembername,wrapper.h_1)%>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                 <%=label_tag(:facultymembername,wrapper.l_2,
+                              :class=>"labelDefinitionTerm")%>
+              </td>
+              <td>
+                 <%=label_tag(:facultymembername,wrapper.h_2)%>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                 <%=label_tag(:facultymembername,wrapper.l_3,
+                              :class=>"labelDefinitionTerm")%>
+              </td>
+              <td>
+                 <%=label_tag(:facultymembername,wrapper.h_3)%>
+              </td>
+            </tr>
+            <tr>
+              <td>                
+                 <%=label_tag(:facultymembername,wrapper.l_4,
+                              :class=>"labelDefinitionTerm")%>
+              </td>
+              <td>
+                 <%=label_tag(:facultymembername,wrapper.h_4)%>
+              </td>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+    <div class ="rightImageButtons">
+      <%if wrapper.assign != false%>
+        
+       <%= link_to(image_tag("", :alt => '', :class=>'iconAddHistButton',
+                                       :title=>'Add Ownership History'), 
+                                     {:controller => wrapper.controller, :action => 'popupindexhistory',
+                                       :id => wrapper.id}, {:class => "fancybox"}) %>
+     <% end%>
+        <%= link_to(image_tag("", :alt=>'',
+                                  :class=>'iconEditButton',
+                                  :title=>'Edit'),
+                                 {:controller => wrapper.controller,
+                                  :action => 'edit',
+                                  :id => wrapper.id},
+                                  :method => :get) %>
+        <%= link_to(image_tag("", :alt => '',
+                                  :class=>'iconDeleteButton',
+                                  :title=>'Delete'),
+                                { :controller => wrapper.controller,
+                                  :action => 'destroy',
+                                  :id => wrapper.id},
+                                  :method =>:delete, :confirm => "Are you sure you want to delete?") %>
+    </div>
+</div>
+
+
+

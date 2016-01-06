@@ -1,0 +1,36 @@
+<%= javascript_include_tag "faculty/publicationReports" %>
+<%= content_for :content do  %>
+       <div class="pageHeadingBar">
+          <h1>Publication Reports</h1>
+      </div>
+
+     <div class="dataBlock">
+      <%= form_tag({:controller => "faculty/publicationreports", :action => "create"}, :remote => true, :id=>"postform") do %>
+          <div class="reportComboButton">
+                          <%= select_tag :streporttype,options_for_select([['Faculty',3],
+                                                                           ['Department',4]]),:required=> 'true' %>
+            <div class ="reportCombo">
+                <%=collection_select(:csfaculty,:id,@faculty_members,:id,:username,options={:prompt=>"Select a Faculty Member"},:required=> true)%>
+           </div>
+           </div>
+            <div class="reportTypeselection">
+                          <%= submit_tag "Show Report" %>
+
+            </div>
+        
+      <%end%>
+
+     </div>
+
+    <div class="reportsGrid">
+      
+      </div>
+
+
+
+   
+
+<%end%>
+ <% content_for :menu do %>
+ <%= render "faculty/navigationmenu" %>
+<%end%>

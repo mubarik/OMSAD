@@ -1,0 +1,44 @@
+<div class="cosupervisors">
+  <fieldset>
+    <legend><strong>Co-supervisor:</strong></legend>
+    <%if @mode != 'supervisor'%>
+      <div class ="rightImageButtons">
+         <%=cos.link_to_remove (image_tag("", :alt => '',:class=>'iconDeleteButton',:title=>'Delete'))%>
+      </div>
+    <%end%>
+    <%if cos.object.affiliationwithlums %>
+      <%@affiliation ='1' %>
+    <%else%>
+      <%@affiliation ='0' %>
+    <%end%>
+    <table>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Affiliated with LUMS:</td>
+        <td class="inputBoxPlacement"><%=cos.select :affiliationwithlums, options_for_select([['No','0'],['Yes','1']],@affiliation),{}, :class=>'dropdown affiliationWithLUMSSelector', :title=>"Enter an whole number" %></td>
+      </tr>
+      <tr>
+        <td class="labelDefinitionTerm" style="width: 138px;">Name:</td>
+        <td class="inputBoxPlacement">
+          <%=cos.collection_select :faculty_member_id,FacultyMember.all,:id,:username,{:include_blank=>"Please select",:selected => (cos.object.faculty_member_id)},:class => "dropdown cosupervisorNameSelector",:required=>true,:style=>"display:none;" %>
+          <%=cos.text_field :cosupervisorname, :class=>'inputTextbox cosupervisorNameTextBox',:required=>true,:title=>"Enter alphabets only" %>
+        </td>
+        <td class="fieldErrorPlacement" style="width:170px;"><%= cos.object.errors[:faculty_member_id][0] %></td>
+      </tr>
+    </table>
+    <div id="externalCoSupervisorFields">
+      <table>
+        <tr>
+          <td class="labelDefinitionTerm" style="width: 138px;">Email address:</td>
+          <td class="inputBoxPlacement"><%=cos.text_field :email, :class=>'inputTextbox cosupervisorEmailTextBox', :title=>"Example format: abc.def@lums.edu.pk" %></td>
+          <td class="fieldErrorPlacement"></td>
+        </tr>
+        <tr>
+          <td class="labelDefinitionTerm" style="width: 138px;">Designation:</td>
+          <td class="inputBoxPlacement"><%=cos.text_field :designation, :class=>'inputTextbox cosupervisorDesignationTextBox', :title=>"Enter their designation" %></td>
+          <td class="fieldErrorPlacement"></td>
+      </tr>
+      </table>
+    </div>
+  </fieldset>
+  <br/>
+</div>

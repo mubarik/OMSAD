@@ -1,0 +1,38 @@
+<script text="text/javascript">
+  $('.flexFacultyProjectSupervision').flexigrid({
+        height:'auto',
+        colModel : [
+                {display: 'Roll No', name : 'rollno', width : 150, align: 'center'},
+                {display: 'Student Name', name : 'studentname', width : 150, align: 'center'},
+                {display: 'Title', name : 'title', width : 150, align: 'center'},
+                {display: 'Year', name : 'year', width : 150, align: 'center'},
+                {display: 'Proposal Defence Date', name : 'proposaldefencedate', width : 150, align: 'center'},
+           ]
+        });
+</script>
+
+<table class="flexFacultyProjectSupervision">
+  <%for project in ms_project_supervision %>
+    <tr>
+    <td >
+     <%=  project.student.rollno %>
+    </td>
+    <td>
+     <%= project.student.user.name %>
+    </td>
+    <td>
+      <%= project.title %>
+    </td>
+    <td>
+      <%if !project.student_semester_part1.blank?%>
+        <%= project.student_semester_part1.semester.offering + " " + project.student_semester_part1.semester.year %>
+      <%else%>
+        Not provided
+      <%end%>
+    </td>
+    <td>
+      <%= project.proposaldefencedate %>
+    </td>
+    </tr>
+  <%end%>
+</table>
